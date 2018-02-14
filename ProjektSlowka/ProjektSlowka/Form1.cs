@@ -19,6 +19,7 @@ namespace ProjektSlowka
 
         void funkcjaHuberta(int id)
         {
+            const string Zmiana = "miana";
             id = 2;
         }
 
