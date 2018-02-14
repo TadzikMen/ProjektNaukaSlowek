@@ -17,6 +17,11 @@ namespace ProjektSlowka
             InitializeComponent();
         }
 
+        void funkcjaHuberta(int id)
+        {
+            id = 2;
+        }
+
         void funkcja()
         {
             Console.WriteLine("cos");
