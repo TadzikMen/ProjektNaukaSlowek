@@ -20,6 +20,7 @@ namespace ProjektSlowka
         void funkcja()
         {
             Console.WriteLine("cos");
+            Console.WriteLine("cos");
             Console.Write("");
         }
         private void Form1_Load(object sender, EventArgs e)
