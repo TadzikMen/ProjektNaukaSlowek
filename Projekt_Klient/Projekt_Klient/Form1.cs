@@ -16,5 +16,6 @@ namespace Projekt_Klient
         {
             InitializeComponent();
         }
+        private void Funkcyjka() { }
     }
 }
