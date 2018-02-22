@@ -16,5 +16,10 @@ namespace Projekt_Klient
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
