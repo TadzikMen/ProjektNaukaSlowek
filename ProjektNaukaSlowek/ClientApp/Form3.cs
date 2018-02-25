@@ -18,22 +18,22 @@ namespace ClientApp
         }
         StreamReader sr;
         string tekst, login2, haslo2;
-        int dupa, l=0;
-        char leszcz;
+        int dlugosc, l=0;
+        char spacja;
         private void ZalogujSie_Click(object sender, EventArgs e)
         {
 
             sr = new StreamReader("baza.txt");
             tekst = sr.ReadLine();
-            dupa = tekst.Length;
+            dlugosc = tekst.Length;
             
-            for(int i=0; i<dupa; i++)
+            for(int i=0; i<dlugosc; i++)
             {
-                leszcz = Convert.ToChar(tekst[i]);
-                if (leszcz == 32)
+                spacja = Convert.ToChar(tekst[i]);
+                if (spacja == 32)
                 {
                     if (l > 0)
-                        i = dupa;
+                        i = dlugosc;
                     l++;
                 }
                 if (l == 0)
