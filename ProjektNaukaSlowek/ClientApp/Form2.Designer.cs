@@ -46,7 +46,7 @@
             // 
             this.Zarejestruj.Location = new System.Drawing.Point(219, 403);
             this.Zarejestruj.Name = "Zarejestruj";
-            this.Zarejestruj.Size = new System.Drawing.Size(102, 43);
+            this.Zarejestruj.Size = new System.Drawing.Size(102, 54);
             this.Zarejestruj.TabIndex = 0;
             this.Zarejestruj.Text = "Zarejestruj";
             this.Zarejestruj.UseVisualStyleBackColor = true;
@@ -136,7 +136,7 @@
             // 
             this.Wróć.Location = new System.Drawing.Point(54, 403);
             this.Wróć.Name = "Wróć";
-            this.Wróć.Size = new System.Drawing.Size(96, 43);
+            this.Wróć.Size = new System.Drawing.Size(102, 54);
             this.Wróć.TabIndex = 11;
             this.Wróć.Text = "Wróć";
             this.Wróć.UseVisualStyleBackColor = true;

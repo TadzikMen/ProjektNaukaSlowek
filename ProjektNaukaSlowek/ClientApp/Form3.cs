@@ -38,18 +38,19 @@ namespace ClientApp
                 }
                 if (l == 0)
                     login2 += tekst[i];
-                else
+                else if (i!=dlugosc && spacja!=32)
                     haslo2 += tekst[i];
                 
             }
             if (Login2.Text == login2 && Haslo2.Text == haslo2)
             {
-                MessageBox.Show("Jest ok");
+                MessageBox.Show("Zalogowano");
             }
             else
                 MessageBox.Show("Niepoprawny login lub/i hasło");
             Form1 f = new Form1();
-            f.ShowDialog();
+            f.Show();
+            Opacity = 0;
             
 
         }
@@ -57,9 +58,8 @@ namespace ClientApp
         private void Wroc_Click(object sender, EventArgs e)
         {
             Form1 f = new Form1();
-            Form3 f3 = new Form3();
-            f3.Close();
-            f.ShowDialog();
+            f.Show();
+            Opacity = 0;
         }
     }
 }

@@ -25,13 +25,15 @@ namespace ClientApp
             sw = new StreamWriter("baza.txt");
             sw.WriteLine(Login.Text + " " + Haslo.Text + " " + Imie.Text + " " +Nazwisko.Text + " " + Email.Text);
             sw.Close();
-            f.ShowDialog();
+            f.Show();
+            Opacity = 0;
         }
 
         private void Wróć_Click(object sender, EventArgs e)
         {
             Form1 f = new Form1();
-            f.ShowDialog();
+            f.Show();
+            Opacity = 0;
         }
         
 
