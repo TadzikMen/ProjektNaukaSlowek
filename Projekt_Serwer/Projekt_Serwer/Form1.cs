@@ -19,8 +19,7 @@ namespace Projekt_Serwer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            int h = 0;
-            double g = 0;
+            string daga = "najlepsza";
         }
     }
 }

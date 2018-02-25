@@ -16,5 +16,25 @@ namespace ClientApp
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Logowanie_Click(object sender, EventArgs e)
+        {
+            Form3 f3 = new Form3();
+            f3.Show();
+            Opacity = 0;
+
+        }
+
+        private void Rejestracja_Click(object sender, EventArgs e)
+        {
+            Form2 f2 = new Form2();
+            f2.Show();
+            Opacity = 0;
+        }
     }
 }
