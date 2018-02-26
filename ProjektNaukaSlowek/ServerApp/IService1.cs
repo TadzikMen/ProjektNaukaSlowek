@@ -19,7 +19,9 @@ namespace ServerApp
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
-        // TODO: Add your service operations here
+		// TODO: Add your service operations here
+		[OperationContract]
+		bool SprawdzDaneLogowania(string login, string haslo);
     }
 
 
