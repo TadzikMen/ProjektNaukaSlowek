@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using System.IO;
 namespace ClientApp
 {
-    public partial class Form2 : Form
+    public partial class Rejestracja : Form
     {
-        public Form2()
+        public Rejestracja()
         {
             InitializeComponent();
         }
@@ -21,7 +21,7 @@ namespace ClientApp
 
         private void Zarejestruj_Click(object sender, EventArgs e)
         {
-            Form1 f = new Form1();
+            MenuGlowne f = new MenuGlowne();
             sw = new StreamWriter("baza.txt");
             sw.WriteLine(Login.Text + " " + Haslo.Text + " " + Imie.Text + " " +Nazwisko.Text + " " + Email.Text);
             sw.Close();
@@ -31,14 +31,12 @@ namespace ClientApp
 
         private void Wróć_Click(object sender, EventArgs e)
         {
-            Form1 f = new Form1();
+            MenuGlowne f = new MenuGlowne();
             f.Show();
             Opacity = 0;
         }
-        
 
-
-        private void Form2_Load(object sender, EventArgs e)
+        private void Rejestracja_Load(object sender, EventArgs e)
         {
 
         }

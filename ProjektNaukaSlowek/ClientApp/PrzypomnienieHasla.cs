@@ -10,30 +10,24 @@ using System.Windows.Forms;
 
 namespace ClientApp
 {
-    public partial class Form1 : Form
+    public partial class PrzypomnienieHasla : Form
     {
-        public Form1()
+        public PrzypomnienieHasla()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Wroc_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Logowanie_Click(object sender, EventArgs e)
-        {
-            Form3 f3 = new Form3();
-            f3.Show();
+            Logowanie f = new Logowanie();
+            f.Show();
             Opacity = 0;
-
         }
 
-        private void Rejestracja_Click(object sender, EventArgs e)
+        private void ZatwierdzDane_Click(object sender, EventArgs e)
         {
-            Form2 f2 = new Form2();
-            f2.Show();
+            WeryfikacjaKodu f = new WeryfikacjaKodu();
+            f.Show();
             Opacity = 0;
         }
     }

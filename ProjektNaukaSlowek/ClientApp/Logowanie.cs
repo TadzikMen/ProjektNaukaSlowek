@@ -10,15 +10,23 @@ using System.Windows.Forms;
 using System.IO;
 namespace ClientApp
 {
-    public partial class Form3 : Form
+    public partial class Logowanie : Form
     {
-        public Form3()
+        public Logowanie()
         {
             InitializeComponent();
         }
         StreamReader sr;
         string tekst, login2, haslo2;
         int dlugosc, l=0;
+
+        private void PrzypomnienieHasla_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            PrzypomnienieHasla f = new PrzypomnienieHasla();
+            f.Show();
+            Opacity = 0;
+        }
+
         char spacja;
 
 		private void ZalogujSie_Click(object sender, EventArgs e)
@@ -28,6 +36,7 @@ namespace ClientApp
 			//	bool czyPoprawneDane = client.
 			//}
 
+            //weryfikacja logowania
 			sr = new StreamReader("baza.txt");
 			tekst = sr.ReadLine();
 			dlugosc = tekst.Length;
@@ -53,16 +62,17 @@ namespace ClientApp
 			}
 			else
 				MessageBox.Show("Niepoprawny login lub/i hasło");
-			Form1 f = new Form1();
-			f.Show();
-			Opacity = 0;
+
+            MenuGlowne f = new MenuGlowne();
+            f.Show();
+            Opacity = 0;
 
 
 		}
 
 		private void Wroc_Click(object sender, EventArgs e)
         {
-            Form1 f = new Form1();
+            MenuGlowne f = new MenuGlowne();
             f.Show();
             Opacity = 0;
         }
