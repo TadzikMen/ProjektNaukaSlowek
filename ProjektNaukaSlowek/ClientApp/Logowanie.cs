@@ -15,6 +15,7 @@ namespace ClientApp
         public Logowanie()
         {
             InitializeComponent();
+            //MenuGlowne.MenuGlowneInstance.Close();
         }
         StreamReader sr;
         string tekst, login2, haslo2;
@@ -73,8 +74,21 @@ namespace ClientApp
 		private void Wroc_Click(object sender, EventArgs e)
         {
             MenuGlowne f = new MenuGlowne();
-            f.Show();
-            Opacity = 0;
+            //f.Show();
+            //Opacity = 0;
+            WindowState = FormWindowState.Minimized;
+            ShowInTaskbar = false;
+            Visible = false;
+
+            //Open another form 
+            MenuGlowne mg = new MenuGlowne
+            {
+                //since we open it from a minimezed window - it will not be focused unless we put it as TopMost.
+                TopMost = true
+            };
+            mg.Show();
+            //now that that it is topmost and shown - we want to set its behavior to be normal window again.
+            mg.TopMost = false;
         }
     }
 }
