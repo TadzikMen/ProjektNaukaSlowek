@@ -29,6 +29,7 @@ namespace ClientApp
 			bool log = false;
 			try
 			{
+				//Wywołanie funkcji po stronie serwera
 				using (var client = new WcfService.Service1Client())
 				{
 					log = await client.SprawdzDaneLogowaniaAsync(Login2.Text, Haslo2.Text);
