@@ -36,10 +36,13 @@ namespace ServerApp
 			Logowanie log = new Logowanie();
 			List<Logowanie> listaLoginow;
 
+			//utworzenie obiektu bazy danych
 			using (var db = new System.Data.SqlClient.SqlConnection
 			(System.Configuration.ConfigurationManager.ConnectionStrings[
 				"PolaczenieZBazaDanych"].ConnectionString))
 			{
+				//otworzenie połączenia z bazą
+				//jeśli baza jest wyłączona, lub jej nie ma - wywala wyjątek po stronie klienta
 				db.Open();
 				using (var cmd = new System.Data.SqlClient.SqlCommand())
 				{
@@ -51,6 +54,7 @@ namespace ServerApp
 						listaLoginow = new List<Logowanie>();
 						while (dr.Read())
 						{
+							//zczytywanie rekordów podanych w zapytaniu i zapisanie do listy
 							listaLoginow.Add(new DTO.Logowanie()
 							{
 								Login = (string)dr["login_uzytkownika"],
@@ -60,7 +64,7 @@ namespace ServerApp
 					}
 				}
 			}
-
+			//porównanie loginu z text boxów na kliencie z rekordami w bazie
 			foreach (var item in listaLoginow)
 			{
 				if (item.Login == login && item.Haslo == haslo)
