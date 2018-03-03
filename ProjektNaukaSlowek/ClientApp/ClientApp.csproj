@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\Wcf\Reference.cs">
+    <Compile Include="Connected Services\WcfService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -108,17 +108,17 @@
     <EmbeddedResource Include="WeryfikacjaKodu.resx">
       <DependentUpon>WeryfikacjaKodu.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Connected Services\Wcf\ClientApp.Wcf.CompositeType.datasource">
+    <None Include="Connected Services\WcfService\ClientApp.WcfService.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\Wcf\Service1.wsdl" />
-    <None Include="Connected Services\Wcf\Service1.xsd">
+    <None Include="Connected Services\WcfService\Service1.wsdl" />
+    <None Include="Connected Services\WcfService\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\Wcf\Service11.xsd">
+    <None Include="Connected Services\WcfService\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\Wcf\Service12.xsd">
+    <None Include="Connected Services\WcfService\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -138,19 +138,19 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\Wcf\" />
+    <WCFMetadataStorage Include="Connected Services\WcfService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\Wcf\Service1.disco" />
+    <None Include="Connected Services\WcfService\Service1.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\Wcf\configuration91.svcinfo" />
+    <None Include="Connected Services\WcfService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\Wcf\configuration.svcinfo" />
+    <None Include="Connected Services\WcfService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\Wcf\Reference.svcmap">
+    <None Include="Connected Services\WcfService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

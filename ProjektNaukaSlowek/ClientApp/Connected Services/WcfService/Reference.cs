@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClientApp.Wcf {
+namespace ClientApp.WcfService {
     using System.Runtime.Serialization;
     using System;
     
@@ -75,7 +75,7 @@ namespace ClientApp.Wcf {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Wcf.IService1")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WcfService.IService1")]
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
@@ -85,19 +85,25 @@ namespace ClientApp.Wcf {
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        ClientApp.Wcf.CompositeType GetDataUsingDataContract(ClientApp.Wcf.CompositeType composite);
+        ClientApp.WcfService.CompositeType GetDataUsingDataContract(ClientApp.WcfService.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<ClientApp.Wcf.CompositeType> GetDataUsingDataContractAsync(ClientApp.Wcf.CompositeType composite);
+        System.Threading.Tasks.Task<ClientApp.WcfService.CompositeType> GetDataUsingDataContractAsync(ClientApp.WcfService.CompositeType composite);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SprawdzDaneLogowania", ReplyAction="http://tempuri.org/IService1/SprawdzDaneLogowaniaResponse")]
+        bool SprawdzDaneLogowania(string login, string haslo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SprawdzDaneLogowania", ReplyAction="http://tempuri.org/IService1/SprawdzDaneLogowaniaResponse")]
+        System.Threading.Tasks.Task<bool> SprawdzDaneLogowaniaAsync(string login, string haslo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IService1Channel : ClientApp.Wcf.IService1, System.ServiceModel.IClientChannel {
+    public interface IService1Channel : ClientApp.WcfService.IService1, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Service1Client : System.ServiceModel.ClientBase<ClientApp.Wcf.IService1>, ClientApp.Wcf.IService1 {
+    public partial class Service1Client : System.ServiceModel.ClientBase<ClientApp.WcfService.IService1>, ClientApp.WcfService.IService1 {
         
         public Service1Client() {
         }
@@ -126,12 +132,20 @@ namespace ClientApp.Wcf {
             return base.Channel.GetDataAsync(value);
         }
         
-        public ClientApp.Wcf.CompositeType GetDataUsingDataContract(ClientApp.Wcf.CompositeType composite) {
+        public ClientApp.WcfService.CompositeType GetDataUsingDataContract(ClientApp.WcfService.CompositeType composite) {
             return base.Channel.GetDataUsingDataContract(composite);
         }
         
-        public System.Threading.Tasks.Task<ClientApp.Wcf.CompositeType> GetDataUsingDataContractAsync(ClientApp.Wcf.CompositeType composite) {
+        public System.Threading.Tasks.Task<ClientApp.WcfService.CompositeType> GetDataUsingDataContractAsync(ClientApp.WcfService.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
+        }
+        
+        public bool SprawdzDaneLogowania(string login, string haslo) {
+            return base.Channel.SprawdzDaneLogowania(login, haslo);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SprawdzDaneLogowaniaAsync(string login, string haslo) {
+            return base.Channel.SprawdzDaneLogowaniaAsync(login, haslo);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServerApp.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -32,37 +33,46 @@ namespace ServerApp
 
 		public bool SprawdzDaneLogowania(string login, string haslo)
 		{
-			string tekst;
-			string login2 = "";
-			string haslo2="";
-			int dlugosc, l = 0;
-			char spacja;
-			System.IO.StreamReader sr = new System.IO.StreamReader("baza.txt");
-			tekst = sr.ReadLine();
-			dlugosc = tekst.Length;
+			Logowanie log = new Logowanie();
+			List<Logowanie> listaLoginow;
 
-			for (int i = 0; i < dlugosc; i++)
+			using (var db = new System.Data.SqlClient.SqlConnection
+			(System.Configuration.ConfigurationManager.ConnectionStrings[
+				"PolaczenieZBazaDanych"].ConnectionString))
 			{
-				spacja = Convert.ToChar(tekst[i]);
-				if (spacja == 32)
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
 				{
-					if (l > 0)
-						i = dlugosc;
-					l++;
+					cmd.Connection = db;
+					cmd.CommandText = "SELECT * FROM Uzytkownicy";
+
+					using (var dr = cmd.ExecuteReader())
+					{
+						listaLoginow = new List<Logowanie>();
+						while (dr.Read())
+						{
+							listaLoginow.Add(new DTO.Logowanie()
+							{
+								Login = (string)dr["login_uzytkownika"],
+								Haslo = (string)dr["haslo_uzytkownika"],
+							});
+						}
+					}
 				}
-				if (l == 0)
-					login2 += tekst[i];
-				else if (i != dlugosc && spacja != 32)
-					haslo2 += tekst[i];
-
 			}
 
-			if (login == login2 && haslo == haslo2)
+			foreach (var item in listaLoginow)
 			{
-				return true;
+				if (item.Login == login && item.Haslo == haslo)
+				{
+					log.Login = login;
+					log.Haslo = haslo;
+					return true;
+				}
+
 			}
-			else
-				return false;
+			
+			return false;
 		}
 	}
 }
