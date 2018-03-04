@@ -12,6 +12,7 @@ namespace ClientApp
 {
     public partial class WeryfikacjaKodu : Form
     {
+
         public WeryfikacjaKodu()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace ClientApp
 
         private void ZmienHaslo_Click(object sender, EventArgs e)
         {
+            
             Logowanie f = new Logowanie();
             f.Show();
             Opacity = 0;
