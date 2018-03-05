@@ -20,8 +20,9 @@ namespace ClientApp
         private void Wroc_Click(object sender, EventArgs e)
         {
             Logowanie f = new Logowanie();
-            f.Show();
+            f.Visible = true;
             Opacity = 0;
+            this.Close();
         }
 
         private void ZatwierdzDane_Click(object sender, EventArgs e)

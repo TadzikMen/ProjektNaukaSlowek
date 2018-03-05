@@ -20,15 +20,17 @@ namespace ClientApp
         private void Wroc_Click(object sender, EventArgs e)
         {
             PrzypomnienieHasla f = new PrzypomnienieHasla();
-            f.Show();
+            f.ShowDialog();
             Opacity = 0;
+            this.Close();
         }
 
         private void ZmienHaslo_Click(object sender, EventArgs e)
         {
             Logowanie f = new Logowanie();
-            f.Show();
+            f.ShowDialog();
             Opacity = 0;
+            this.Close();
         }
     }
 }

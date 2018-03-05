@@ -20,8 +20,11 @@ namespace ClientApp
         private void PrzypomnienieHasla_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             PrzypomnienieHasla f = new PrzypomnienieHasla();
-            f.Show();
+            this.Visible = false;
+            f.ShowDialog();
             Opacity = 0;
+
+            
         }
 
 		private async void ZalogujSie_Click(object sender, EventArgs e)
@@ -60,15 +63,17 @@ namespace ClientApp
             MenuGlowne f = new MenuGlowne();
             WindowState = FormWindowState.Minimized;
             ShowInTaskbar = false;
-            Visible = false;
+           
 
-            //Open another form 
-            MenuGlowne mg = new MenuGlowne
-            {
-                TopMost = true
-            };
-            mg.Show();
-            mg.TopMost = false;
+            ////Open another form Otwarcie wielu formatek, ale nie zamykają się(są ukryte i tworzone nowe instancje
+            //MenuGlowne mg = new MenuGlowne
+            //{
+            //    TopMost = true
+            //};
+            //mg.Visible = true;
+            f.ShowDialog();
+          //  mg.TopMost = false;
+            this.Close();
         }
     }
 }

@@ -25,15 +25,19 @@ namespace ClientApp
             sw = new StreamWriter("baza.txt");
             sw.WriteLine(Login.Text + " " + Haslo.Text + " " + Imie.Text + " " +Nazwisko.Text + " " + Email.Text);
             sw.Close();
-            f.Show();
+            WindowState = FormWindowState.Minimized;
+            ShowInTaskbar = false;
+            f.ShowDialog();
             Opacity = 0;
+            this.Close();
         }
 
         private void Wróć_Click(object sender, EventArgs e)
         {
             MenuGlowne f = new MenuGlowne();
-            f.Show();
+            f.ShowDialog();
             Opacity = 0;
+            this.Close();
         }
 
         private void Rejestracja_Load(object sender, EventArgs e)
