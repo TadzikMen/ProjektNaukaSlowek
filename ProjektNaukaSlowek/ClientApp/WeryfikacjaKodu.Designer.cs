@@ -29,33 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WeryfikacjaKodu));
-            this.label1 = new System.Windows.Forms.Label();
-            this.KodWeryfikacyjny = new System.Windows.Forms.TextBox();
             this.Wroc = new System.Windows.Forms.Button();
             this.ZmienHaslo = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.NoweHaslo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(674, 398);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(299, 39);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Kod weryfikacyjny:";
-            // 
-            // KodWeryfikacyjny
-            // 
-            this.KodWeryfikacyjny.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.KodWeryfikacyjny.Location = new System.Drawing.Point(1135, 398);
-            this.KodWeryfikacyjny.Name = "KodWeryfikacyjny";
-            this.KodWeryfikacyjny.Size = new System.Drawing.Size(138, 36);
-            this.KodWeryfikacyjny.TabIndex = 1;
             // 
             // Wroc
             // 
@@ -114,8 +92,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ZmienHaslo);
             this.Controls.Add(this.Wroc);
-            this.Controls.Add(this.KodWeryfikacyjny);
-            this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "WeryfikacjaKodu";
@@ -127,9 +103,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox KodWeryfikacyjny;
         private System.Windows.Forms.Button Wroc;
         private System.Windows.Forms.Button ZmienHaslo;
         private System.Windows.Forms.Label label2;
