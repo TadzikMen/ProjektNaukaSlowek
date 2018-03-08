@@ -13,23 +13,39 @@ namespace ServerApp
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        public string GetData(int value)
-        {
-            return string.Format("You entered: {0}", value);
-        }
+		public void DodajUzytkownika(string login, string haslo, string imie, string nazwisko, string email)
+		{
+			DTO.Rejestracja uzytkownik = new Rejestracja();
+			int Id;
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
-        }
+			uzytkownik.Login = login;
+			uzytkownik.Haslo = haslo;
+			uzytkownik.Imie = imie;
+			uzytkownik.Nazwisko = nazwisko;
+			uzytkownik.Email = email;
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+					"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText = "INSERT INTO Uzytkownicy(login_uzytkownika, haslo_uzytkownika, imie_uzytkownika, nazwisko_uzytkownika, email_uzytkownika) " +
+						"VALUES(@Login, @Haslo, @Imie, @Nazwisko, @Email);" +
+						"SELECT SCOPE_IDENTITY();";
+
+					cmd.Parameters.AddWithValue("@Login", uzytkownik.Login);
+					cmd.Parameters.AddWithValue("@Haslo", uzytkownik.Haslo);
+					cmd.Parameters.AddWithValue("@Imie", uzytkownik.Imie);
+					cmd.Parameters.AddWithValue("@Nazwisko", uzytkownik.Nazwisko);
+					cmd.Parameters.AddWithValue("@Email", uzytkownik.Email);
+
+					Id = (int)(decimal)cmd.ExecuteScalar();
+				}
+			}
+		}
 
 		public bool SprawdzDaneLogowania(string login, string haslo)
 		{
@@ -78,5 +94,25 @@ namespace ServerApp
 			
 			return false;
 		}
+
+		public string GetData(int value)
+        {
+            return string.Format("You entered: {0}", value);
+        }
+
+        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        {
+            if (composite == null)
+            {
+                throw new ArgumentNullException("composite");
+            }
+            if (composite.BoolValue)
+            {
+                composite.StringValue += "Suffix";
+            }
+            return composite;
+        }
+
+
 	}
 }

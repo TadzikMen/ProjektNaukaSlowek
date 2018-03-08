@@ -22,6 +22,9 @@ namespace ServerApp
 		// TODO: Add your service operations here
 		[OperationContract]
 		bool SprawdzDaneLogowania(string login, string haslo);
+
+		[OperationContract]
+		void DodajUzytkownika(string login, string haslo, string imie, string nazwisko, string email);
     }
 
 

@@ -17,32 +17,38 @@ namespace ClientApp
             InitializeComponent();
         }
 
-        StreamWriter sw;
+		private async void btnZarejestruj_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				using (var client = new WcfService.Service1Client())
+				{
+					await client.DodajUzytkownikaAsync(tbxLogin.Text, tbxHaslo.Text, tbxImie.Text, tbxNazwisko.Text, tbxEmail.Text);
+				}
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show(this, ex.ToString(), "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			finally
+			{
+				this.DialogResult = DialogResult.OK;
+				MessageBox.Show(this, "Użytkownik został dodany pomyślnie!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MenuGlowne f = new MenuGlowne();
+				WindowState = FormWindowState.Minimized;
+				ShowInTaskbar = false;
+				f.ShowDialog();
+				this.Close();
+			}
+		}
 
-        private void Zarejestruj_Click(object sender, EventArgs e)
-        {
-            MenuGlowne f = new MenuGlowne();
-            sw = new StreamWriter("baza.txt");
-            sw.WriteLine(Login.Text + " " + Haslo.Text + " " + Imie.Text + " " +Nazwisko.Text + " " + Email.Text);
-            sw.Close();
-            WindowState = FormWindowState.Minimized;
-            ShowInTaskbar = false;
-            f.ShowDialog();
-            Opacity = 0;
-            this.Close();
-        }
-
-        private void Wróć_Click(object sender, EventArgs e)
-        {
-            MenuGlowne f = new MenuGlowne();
-            f.ShowDialog();
-            Opacity = 0;
-            this.Close();
-        }
-
-        private void Rejestracja_Load(object sender, EventArgs e)
-        {
-
-        }
-    }
+		private void btnWróć_Click(object sender, EventArgs e)
+		{
+			MenuGlowne f = new MenuGlowne();
+			WindowState = FormWindowState.Minimized;
+			ShowInTaskbar = false;
+			f.ShowDialog();
+			this.Close();
+		}
+	}
 }

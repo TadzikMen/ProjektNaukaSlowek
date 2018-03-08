@@ -28,200 +28,204 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Rejestracja));
-            this.Zarejestruj = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.Login = new System.Windows.Forms.TextBox();
-            this.Imie = new System.Windows.Forms.TextBox();
-            this.Nazwisko = new System.Windows.Forms.TextBox();
-            this.Email = new System.Windows.Forms.TextBox();
-            this.Haslo = new System.Windows.Forms.TextBox();
-            this.Wróć = new System.Windows.Forms.Button();
-            this.SuspendLayout();
-            // 
-            // Zarejestruj
-            // 
-            this.Zarejestruj.BackColor = System.Drawing.SystemColors.Info;
-            this.Zarejestruj.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Zarejestruj.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Zarejestruj.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.Zarejestruj.Location = new System.Drawing.Point(1112, 732);
-            this.Zarejestruj.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Zarejestruj.Name = "Zarejestruj";
-            this.Zarejestruj.Size = new System.Drawing.Size(180, 91);
-            this.Zarejestruj.TabIndex = 0;
-            this.Zarejestruj.Text = "Zarejestruj";
-            this.Zarejestruj.UseVisualStyleBackColor = false;
-            this.Zarejestruj.Click += new System.EventHandler(this.Zarejestruj_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(668, 187);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 39);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Login:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(670, 283);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 39);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Imię:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(670, 392);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(173, 39);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Nazwisko:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label4.Location = new System.Drawing.Point(670, 497);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 39);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Email:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(668, 597);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(114, 39);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Hasło:";
-            // 
-            // Login
-            // 
-            this.Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Login.Location = new System.Drawing.Point(1144, 190);
-            this.Login.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Login.Name = "Login";
-            this.Login.Size = new System.Drawing.Size(132, 36);
-            this.Login.TabIndex = 6;
-            // 
-            // Imie
-            // 
-            this.Imie.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Imie.Location = new System.Drawing.Point(1144, 283);
-            this.Imie.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Imie.Name = "Imie";
-            this.Imie.Size = new System.Drawing.Size(132, 36);
-            this.Imie.TabIndex = 7;
-            // 
-            // Nazwisko
-            // 
-            this.Nazwisko.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Nazwisko.Location = new System.Drawing.Point(1144, 392);
-            this.Nazwisko.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Nazwisko.Name = "Nazwisko";
-            this.Nazwisko.Size = new System.Drawing.Size(132, 36);
-            this.Nazwisko.TabIndex = 8;
-            // 
-            // Email
-            // 
-            this.Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Email.Location = new System.Drawing.Point(1144, 497);
-            this.Email.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(132, 36);
-            this.Email.TabIndex = 9;
-            // 
-            // Haslo
-            // 
-            this.Haslo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Haslo.Location = new System.Drawing.Point(1144, 597);
-            this.Haslo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Haslo.Name = "Haslo";
-            this.Haslo.Size = new System.Drawing.Size(132, 36);
-            this.Haslo.TabIndex = 10;
-            this.Haslo.UseSystemPasswordChar = true;
-            // 
-            // Wróć
-            // 
-            this.Wróć.BackColor = System.Drawing.SystemColors.Info;
-            this.Wróć.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Wróć.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Wróć.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.Wróć.Location = new System.Drawing.Point(628, 732);
-            this.Wróć.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Wróć.Name = "Wróć";
-            this.Wróć.Size = new System.Drawing.Size(180, 91);
-            this.Wróć.TabIndex = 11;
-            this.Wróć.Text = "Wróć";
-            this.Wróć.UseVisualStyleBackColor = false;
-            this.Wróć.Click += new System.EventHandler(this.Wróć_Click);
-            // 
-            // Rejestracja
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1412, 825);
-            this.Controls.Add(this.Wróć);
-            this.Controls.Add(this.Haslo);
-            this.Controls.Add(this.Email);
-            this.Controls.Add(this.Nazwisko);
-            this.Controls.Add(this.Imie);
-            this.Controls.Add(this.Login);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.Zarejestruj);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MaximizeBox = false;
-            this.Name = "Rejestracja";
-            this.Text = "Rejestracja";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Rejestracja_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Rejestracja));
+			this.btnZarejestruj = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.tbxLogin = new System.Windows.Forms.TextBox();
+			this.tbxHaslo = new System.Windows.Forms.TextBox();
+			this.tbxImie = new System.Windows.Forms.TextBox();
+			this.tbxNazwisko = new System.Windows.Forms.TextBox();
+			this.tbxEmail = new System.Windows.Forms.TextBox();
+			this.btnWróć = new System.Windows.Forms.Button();
+			this.SuspendLayout();
+			// 
+			// btnZarejestruj
+			// 
+			this.btnZarejestruj.BackColor = System.Drawing.SystemColors.Info;
+			this.btnZarejestruj.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnZarejestruj.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.btnZarejestruj.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+			this.btnZarejestruj.Location = new System.Drawing.Point(834, 595);
+			this.btnZarejestruj.Margin = new System.Windows.Forms.Padding(2);
+			this.btnZarejestruj.Name = "btnZarejestruj";
+			this.btnZarejestruj.Size = new System.Drawing.Size(135, 74);
+			this.btnZarejestruj.TabIndex = 0;
+			this.btnZarejestruj.Text = "Zarejestruj";
+			this.btnZarejestruj.UseVisualStyleBackColor = false;
+			this.btnZarejestruj.Click += new System.EventHandler(this.btnZarejestruj_Click);
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.label1.Location = new System.Drawing.Point(501, 152);
+			this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(88, 31);
+			this.label1.TabIndex = 1;
+			this.label1.Text = "Login:";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.label2.Location = new System.Drawing.Point(502, 230);
+			this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(92, 31);
+			this.label2.TabIndex = 2;
+			this.label2.Text = "Hasło:";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.label3.Location = new System.Drawing.Point(502, 318);
+			this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(73, 31);
+			this.label3.TabIndex = 3;
+			this.label3.Text = "Imię:";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.label4.Location = new System.Drawing.Point(502, 404);
+			this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(140, 31);
+			this.label4.TabIndex = 4;
+			this.label4.Text = "Nazwisko:";
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.label5.Location = new System.Drawing.Point(501, 485);
+			this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(98, 31);
+			this.label5.TabIndex = 5;
+			this.label5.Text = "E-Mail:";
+			// 
+			// tbxLogin
+			// 
+			this.tbxLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.tbxLogin.Location = new System.Drawing.Point(757, 154);
+			this.tbxLogin.Margin = new System.Windows.Forms.Padding(2);
+			this.tbxLogin.Name = "tbxLogin";
+			this.tbxLogin.Size = new System.Drawing.Size(201, 30);
+			this.tbxLogin.TabIndex = 6;
+			// 
+			// tbxHaslo
+			// 
+			this.tbxHaslo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.tbxHaslo.Location = new System.Drawing.Point(757, 230);
+			this.tbxHaslo.Margin = new System.Windows.Forms.Padding(2);
+			this.tbxHaslo.Name = "tbxHaslo";
+			this.tbxHaslo.Size = new System.Drawing.Size(201, 30);
+			this.tbxHaslo.TabIndex = 7;
+			this.tbxHaslo.UseSystemPasswordChar = true;
+			// 
+			// tbxImie
+			// 
+			this.tbxImie.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.tbxImie.Location = new System.Drawing.Point(757, 318);
+			this.tbxImie.Margin = new System.Windows.Forms.Padding(2);
+			this.tbxImie.Name = "tbxImie";
+			this.tbxImie.Size = new System.Drawing.Size(201, 30);
+			this.tbxImie.TabIndex = 8;
+			// 
+			// tbxNazwisko
+			// 
+			this.tbxNazwisko.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.tbxNazwisko.Location = new System.Drawing.Point(757, 404);
+			this.tbxNazwisko.Margin = new System.Windows.Forms.Padding(2);
+			this.tbxNazwisko.Name = "tbxNazwisko";
+			this.tbxNazwisko.Size = new System.Drawing.Size(201, 30);
+			this.tbxNazwisko.TabIndex = 9;
+			// 
+			// tbxEmail
+			// 
+			this.tbxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.tbxEmail.Location = new System.Drawing.Point(757, 485);
+			this.tbxEmail.Margin = new System.Windows.Forms.Padding(2);
+			this.tbxEmail.Name = "tbxEmail";
+			this.tbxEmail.Size = new System.Drawing.Size(201, 30);
+			this.tbxEmail.TabIndex = 10;
+			// 
+			// btnWróć
+			// 
+			this.btnWróć.BackColor = System.Drawing.SystemColors.Info;
+			this.btnWróć.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnWróć.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.btnWróć.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+			this.btnWróć.Location = new System.Drawing.Point(471, 595);
+			this.btnWróć.Margin = new System.Windows.Forms.Padding(2);
+			this.btnWróć.Name = "btnWróć";
+			this.btnWróć.Size = new System.Drawing.Size(135, 74);
+			this.btnWróć.TabIndex = 11;
+			this.btnWróć.Text = "Wróć";
+			this.btnWróć.UseVisualStyleBackColor = false;
+			this.btnWróć.Click += new System.EventHandler(this.btnWróć_Click);
+			// 
+			// Rejestracja
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+			this.ClientSize = new System.Drawing.Size(1028, 609);
+			this.Controls.Add(this.btnWróć);
+			this.Controls.Add(this.tbxEmail);
+			this.Controls.Add(this.tbxNazwisko);
+			this.Controls.Add(this.tbxImie);
+			this.Controls.Add(this.tbxHaslo);
+			this.Controls.Add(this.tbxLogin);
+			this.Controls.Add(this.label5);
+			this.Controls.Add(this.label4);
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.btnZarejestruj);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Margin = new System.Windows.Forms.Padding(2);
+			this.MaximizeBox = false;
+			this.Name = "Rejestracja";
+			this.Text = "Rejestracja";
+			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			this.ResumeLayout(false);
+			this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button Zarejestruj;
+        private System.Windows.Forms.Button btnZarejestruj;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox Login;
-        private System.Windows.Forms.TextBox Imie;
-        private System.Windows.Forms.TextBox Nazwisko;
-        private System.Windows.Forms.TextBox Email;
-        private System.Windows.Forms.TextBox Haslo;
-        private System.Windows.Forms.Button Wróć;
+        private System.Windows.Forms.TextBox tbxLogin;
+        private System.Windows.Forms.TextBox tbxHaslo;
+        private System.Windows.Forms.TextBox tbxImie;
+        private System.Windows.Forms.TextBox tbxNazwisko;
+        private System.Windows.Forms.TextBox tbxEmail;
+        private System.Windows.Forms.Button btnWróć;
     }
 }

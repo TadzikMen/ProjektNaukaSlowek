@@ -95,6 +95,12 @@ namespace ClientApp.WcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SprawdzDaneLogowania", ReplyAction="http://tempuri.org/IService1/SprawdzDaneLogowaniaResponse")]
         System.Threading.Tasks.Task<bool> SprawdzDaneLogowaniaAsync(string login, string haslo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DodajUzytkownika", ReplyAction="http://tempuri.org/IService1/DodajUzytkownikaResponse")]
+        void DodajUzytkownika(string login, string haslo, string imie, string nazwisko, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DodajUzytkownika", ReplyAction="http://tempuri.org/IService1/DodajUzytkownikaResponse")]
+        System.Threading.Tasks.Task DodajUzytkownikaAsync(string login, string haslo, string imie, string nazwisko, string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -146,6 +152,14 @@ namespace ClientApp.WcfService {
         
         public System.Threading.Tasks.Task<bool> SprawdzDaneLogowaniaAsync(string login, string haslo) {
             return base.Channel.SprawdzDaneLogowaniaAsync(login, haslo);
+        }
+        
+        public void DodajUzytkownika(string login, string haslo, string imie, string nazwisko, string email) {
+            base.Channel.DodajUzytkownika(login, haslo, imie, nazwisko, email);
+        }
+        
+        public System.Threading.Tasks.Task DodajUzytkownikaAsync(string login, string haslo, string imie, string nazwisko, string email) {
+            return base.Channel.DodajUzytkownikaAsync(login, haslo, imie, nazwisko, email);
         }
     }
 }
