@@ -58,6 +58,7 @@
     <Compile Include="MenuGlowne.Designer.cs">
       <DependentUpon>MenuGlowne.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ObslugaRejestracji.cs" />
     <Compile Include="Rejestracja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +112,9 @@
     <None Include="Connected Services\WcfService\ClientApp.WcfService.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\WcfService\ClientApp.WcfService.Uwierzytelnianie.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\WcfService\Service1.wsdl" />
     <None Include="Connected Services\WcfService\Service1.xsd">
       <SubType>Designer</SubType>
@@ -119,6 +123,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\WcfService\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WcfService\Service13.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">

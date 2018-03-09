@@ -25,6 +25,9 @@ namespace ServerApp
 
 		[OperationContract]
 		void DodajUzytkownika(string login, string haslo, string imie, string nazwisko, string email);
+
+		[OperationContract]
+		List<DTO.Uwierzytelnianie> PobierzLoginyIMaile();
     }
 
 

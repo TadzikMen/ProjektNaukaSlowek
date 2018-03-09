@@ -9,10 +9,28 @@ using System.Text;
 
 namespace ServerApp
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
-    public class Service1 : IService1
-    {
+	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
+	// NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
+	public class Service1 : IService1
+	{
+		public string GetData(int value)
+		{
+			return string.Format("You entered: {0}", value);
+		}
+
+		public CompositeType GetDataUsingDataContract(CompositeType composite)
+		{
+			if (composite == null)
+			{
+				throw new ArgumentNullException("composite");
+			}
+			if (composite.BoolValue)
+			{
+				composite.StringValue += "Suffix";
+			}
+			return composite;
+		}
+
 		public void DodajUzytkownika(string login, string haslo, string imie, string nazwisko, string email)
 		{
 			DTO.Rejestracja uzytkownik = new Rejestracja();
@@ -89,30 +107,41 @@ namespace ServerApp
 					log.Haslo = haslo;
 					return true;
 				}
-
 			}
-			
+
 			return false;
 		}
 
-		public string GetData(int value)
-        {
-            return string.Format("You entered: {0}", value);
-        }
+		public List<DTO.Uwierzytelnianie> PobierzLoginyIMaile()
+		{
+			List<Uwierzytelnianie> listaLoginowMaili;
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
-        }
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+					"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText = "SELECT login_uzytkownika, email_uzytkownika FROM Uzytkownicy";
 
+					using (var dr = cmd.ExecuteReader())
+					{
+						listaLoginowMaili = new List<Uwierzytelnianie>();
+						while (dr.Read())
+						{
+							listaLoginowMaili.Add(new Uwierzytelnianie
+							{
+								Login = (string)dr["login_uzytkownika"],
+								Email = (string)dr["email_uzytkownika"]
+							});
+						}
+					}
+				}
+			}
 
+			return listaLoginowMaili;
+		}
 	}
 }

@@ -7,12 +7,10 @@ using System.Runtime.Serialization;
 namespace ServerApp.DTO
 {
 	[DataContract]
-	public class Rejestracja : Logowanie
+	public class Uwierzytelnianie
 	{
 		[DataMember]
-		public string Imie { get; set; }
-		[DataMember]
-		public string Nazwisko { get; set; }
+		public string Login { get; set; }
 		[DataMember]
 		public string Email { get; set; }
 	}

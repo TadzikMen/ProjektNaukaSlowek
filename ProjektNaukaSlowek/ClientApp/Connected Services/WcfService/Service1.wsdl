@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:64114/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:64114/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:64114/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServerApp" />
+      <xsd:import schemaLocation="http://localhost:64114/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetData_InputMessage">
@@ -31,6 +32,12 @@
   <wsdl:message name="IService1_DodajUzytkownika_OutputMessage">
     <wsdl:part name="parameters" element="tns:DodajUzytkownikaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_PobierzLoginyIMaile_InputMessage">
+    <wsdl:part name="parameters" element="tns:PobierzLoginyIMaile" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PobierzLoginyIMaile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PobierzLoginyIMaileResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -47,6 +54,10 @@
     <wsdl:operation name="DodajUzytkownika">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DodajUzytkownika" message="tns:IService1_DodajUzytkownika_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DodajUzytkownikaResponse" message="tns:IService1_DodajUzytkownika_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PobierzLoginyIMaile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PobierzLoginyIMaile" message="tns:IService1_PobierzLoginyIMaile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PobierzLoginyIMaileResponse" message="tns:IService1_PobierzLoginyIMaile_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -80,6 +91,15 @@
     </wsdl:operation>
     <wsdl:operation name="DodajUzytkownika">
       <soap:operation soapAction="http://tempuri.org/IService1/DodajUzytkownika" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PobierzLoginyIMaile">
+      <soap:operation soapAction="http://tempuri.org/IService1/PobierzLoginyIMaile" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
