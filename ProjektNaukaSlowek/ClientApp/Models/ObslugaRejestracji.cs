@@ -12,9 +12,9 @@ namespace ClientApp.Models
 		public List<Uwierzytelnianie> Lista { get => _lista; set => _lista = value; }
 		public bool SprawdzCzyIstniejeUzytkownik(List<Uwierzytelnianie> daneWejsciowe, string login, string email)
 		{
-			for (int i = 0; i < daneWejsciowe.Count; i++)
+			foreach (var item in daneWejsciowe)
 			{
-				if (daneWejsciowe[i].Login == login || daneWejsciowe[i].Email == email)
+				if (item.Login == login || item.Email == email)
 					return false;
 			}
 

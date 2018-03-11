@@ -19,8 +19,6 @@ namespace ClientApp
 
 		private async void btnZarejestruj_Click(object sender, EventArgs e)
 		{
-			bool czyPoprawneDane;
-
 			try
 			{
 				using (var client = new WcfService.Service1Client())
@@ -29,7 +27,11 @@ namespace ClientApp
 					Models.ObslugaRejestracji or = new Models.ObslugaRejestracji();
 
 					obiektListy.Lista = await client.PobierzLoginyIMaileAsync();
-					czyPoprawneDane = or.SprawdzCzyIstniejeUzytkownik(obiektListy.Lista, tbxLogin.Text, tbxEmail.Text);
+					if (!or.SprawdzCzyIstniejeUzytkownik(obiektListy.Lista, tbxLogin.Text, tbxEmail.Text))
+					{
+						MessageBox.Show(this, "Podany użytkownik lub e-mail już został użyty!", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						return;
+					}
 					await client.DodajUzytkownikaAsync(tbxLogin.Text, tbxHaslo.Text, tbxImie.Text, tbxNazwisko.Text, tbxEmail.Text);
 				}
 			}
