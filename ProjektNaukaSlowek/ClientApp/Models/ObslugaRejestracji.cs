@@ -13,7 +13,7 @@ namespace ClientApp.Models
 		public List<Uwierzytelnianie> Lista { get => _lista; set => _lista = value; }
 		public bool SprawdzDaneWejsciowe(string login, string haslo, string imie, string nazwisko, string email)
 		{
-			if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(haslo) || string.IsNullOrEmpty(imie) || string.IsNullOrEmpty(nazwisko) || string.IsNullOrEmpty(email))
+			if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(haslo) || string.IsNullOrEmpty(email))
 				return false;
 			else
 				return true;
