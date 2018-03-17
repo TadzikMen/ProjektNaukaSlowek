@@ -19,19 +19,29 @@ namespace ClientApp
 
 		private async void btnZarejestruj_Click(object sender, EventArgs e)
 		{
+			bool czyPoprawneDane = true;
+
 			try
 			{
 				using (var client = new WcfService.Service1Client())
 				{
-					Models.ObslugaRejestracji obiektListy = new Models.ObslugaRejestracji();
+					//Models.ObslugaRejestracji obiektListy = new Models.ObslugaRejestracji();
 					Models.ObslugaRejestracji or = new Models.ObslugaRejestracji();
 
-					obiektListy.Lista = await client.PobierzLoginyIMaileAsync();
-					if (!or.SprawdzCzyIstniejeUzytkownik(obiektListy.Lista, tbxLogin.Text, tbxEmail.Text))
+					czyPoprawneDane = or.SprawdzDaneWejsciowe(tbxLogin.Text, tbxHaslo.Text, tbxImie.Text, tbxNazwisko.Text, tbxEmail.Text);
+					or.Lista = await client.PobierzLoginyIMaileAsync();
+
+					if (!or.SprawdzCzyIstniejeUzytkownik(or.Lista, tbxLogin.Text, tbxEmail.Text))
 					{
 						MessageBox.Show(this, "Podany użytkownik lub e-mail już został użyty!", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 						return;
 					}
+					else if (!czyPoprawneDane)
+					{
+						MessageBox.Show(this, "Wypełnij wszystkie pola!", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						return;
+					}
+
 					await client.DodajUzytkownikaAsync(tbxLogin.Text, tbxHaslo.Text, tbxImie.Text, tbxNazwisko.Text, tbxEmail.Text);
 				}
 			}
@@ -41,7 +51,6 @@ namespace ClientApp
 			}
 			finally
 			{
-				this.DialogResult = DialogResult.OK;
 				MessageBox.Show(this, "Użytkownik został dodany pomyślnie!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				MenuGlowne f = new MenuGlowne();
 				WindowState = FormWindowState.Minimized;
