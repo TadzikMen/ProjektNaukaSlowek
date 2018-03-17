@@ -20,14 +20,14 @@ namespace ClientApp
 		private async void btnZarejestruj_Click(object sender, EventArgs e)
 		{
 			bool czyPoprawneDane = true;
-
+			
 			try
 			{
 				using (var client = new WcfService.Service1Client())
 				{
 					//Models.ObslugaRejestracji obiektListy = new Models.ObslugaRejestracji();
 					Models.ObslugaRejestracji or = new Models.ObslugaRejestracji();
-
+					
 					czyPoprawneDane = or.SprawdzDaneWejsciowe(tbxLogin.Text, tbxHaslo.Text, tbxImie.Text, tbxNazwisko.Text, tbxEmail.Text);
 					or.Lista = await client.PobierzLoginyIMaileAsync();
 
@@ -41,17 +41,19 @@ namespace ClientApp
 						MessageBox.Show(this, "Wypełnij wszystkie pola!", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 						return;
 					}
-
-					await client.DodajUzytkownikaAsync(tbxLogin.Text, tbxHaslo.Text, tbxImie.Text, tbxNazwisko.Text, tbxEmail.Text);
+					else
+					{
+						await client.DodajUzytkownikaAsync(tbxLogin.Text, tbxHaslo.Text, tbxImie.Text, tbxNazwisko.Text, tbxEmail.Text);
+						MessageBox.Show(this, "Użytkownik został dodany pomyślnie!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					}
 				}
 			}
 			catch(Exception ex)
 			{
-				MessageBox.Show(this, ex.ToString(), "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(this, ex.Message, "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			finally
 			{
-				MessageBox.Show(this, "Użytkownik został dodany pomyślnie!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				MenuGlowne f = new MenuGlowne();
 				WindowState = FormWindowState.Minimized;
 				ShowInTaskbar = false;
