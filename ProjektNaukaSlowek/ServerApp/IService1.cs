@@ -12,7 +12,6 @@ namespace ServerApp
     [ServiceContract]
     public interface IService1
     {
-
         [OperationContract]
         string GetData(int value);
 
@@ -24,10 +23,13 @@ namespace ServerApp
 		bool SprawdzDaneLogowania(string login, string haslo);
 
 		[OperationContract]
-		void DodajUzytkownika(string login, string haslo, string imie, string nazwisko, string email);
+		void DodajUzytkownika(string login, string haslo, string email, string imie = null, string nazwisko = null);
 
 		[OperationContract]
 		List<DTO.Uwierzytelnianie> PobierzLoginyIMaile();
+
+		[OperationContract]
+		void WyslijMailaRejestracja(string login, string haslo, string email, string imie = null, string nazwisko = null);
     }
 
 
