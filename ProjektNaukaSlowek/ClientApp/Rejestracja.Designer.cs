@@ -42,6 +42,8 @@
 			this.tbxEmail = new System.Windows.Forms.TextBox();
 			this.btnWróć = new System.Windows.Forms.Button();
 			this.label6 = new System.Windows.Forms.Label();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// btnZarejestruj
@@ -51,7 +53,7 @@
 			this.btnZarejestruj.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.btnZarejestruj.ForeColor = System.Drawing.SystemColors.ActiveBorder;
 			this.btnZarejestruj.Location = new System.Drawing.Point(834, 595);
-			this.btnZarejestruj.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btnZarejestruj.Margin = new System.Windows.Forms.Padding(2);
 			this.btnZarejestruj.Name = "btnZarejestruj";
 			this.btnZarejestruj.Size = new System.Drawing.Size(135, 74);
 			this.btnZarejestruj.TabIndex = 0;
@@ -128,7 +130,7 @@
 			// 
 			this.tbxLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.tbxLogin.Location = new System.Drawing.Point(757, 154);
-			this.tbxLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tbxLogin.Margin = new System.Windows.Forms.Padding(2);
 			this.tbxLogin.Name = "tbxLogin";
 			this.tbxLogin.Size = new System.Drawing.Size(201, 30);
 			this.tbxLogin.TabIndex = 6;
@@ -137,7 +139,7 @@
 			// 
 			this.tbxHaslo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.tbxHaslo.Location = new System.Drawing.Point(757, 230);
-			this.tbxHaslo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tbxHaslo.Margin = new System.Windows.Forms.Padding(2);
 			this.tbxHaslo.Name = "tbxHaslo";
 			this.tbxHaslo.Size = new System.Drawing.Size(201, 30);
 			this.tbxHaslo.TabIndex = 7;
@@ -147,7 +149,7 @@
 			// 
 			this.tbxImie.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.tbxImie.Location = new System.Drawing.Point(757, 318);
-			this.tbxImie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tbxImie.Margin = new System.Windows.Forms.Padding(2);
 			this.tbxImie.Name = "tbxImie";
 			this.tbxImie.Size = new System.Drawing.Size(201, 30);
 			this.tbxImie.TabIndex = 8;
@@ -156,7 +158,7 @@
 			// 
 			this.tbxNazwisko.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.tbxNazwisko.Location = new System.Drawing.Point(757, 404);
-			this.tbxNazwisko.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tbxNazwisko.Margin = new System.Windows.Forms.Padding(2);
 			this.tbxNazwisko.Name = "tbxNazwisko";
 			this.tbxNazwisko.Size = new System.Drawing.Size(201, 30);
 			this.tbxNazwisko.TabIndex = 9;
@@ -165,7 +167,7 @@
 			// 
 			this.tbxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.tbxEmail.Location = new System.Drawing.Point(757, 485);
-			this.tbxEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tbxEmail.Margin = new System.Windows.Forms.Padding(2);
 			this.tbxEmail.Name = "tbxEmail";
 			this.tbxEmail.Size = new System.Drawing.Size(201, 30);
 			this.tbxEmail.TabIndex = 10;
@@ -177,7 +179,7 @@
 			this.btnWróć.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.btnWróć.ForeColor = System.Drawing.SystemColors.ActiveBorder;
 			this.btnWróć.Location = new System.Drawing.Point(471, 595);
-			this.btnWróć.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btnWróć.Margin = new System.Windows.Forms.Padding(2);
 			this.btnWróć.Name = "btnWróć";
 			this.btnWróć.Size = new System.Drawing.Size(135, 74);
 			this.btnWróć.TabIndex = 11;
@@ -198,12 +200,22 @@
 			this.label6.TabIndex = 12;
 			this.label6.Text = "* - Opcjonalne";
 			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Location = new System.Drawing.Point(311, 238);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(401, 197);
+			this.pictureBox1.TabIndex = 13;
+			this.pictureBox1.TabStop = false;
+			// 
 			// Rejestracja
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
 			this.ClientSize = new System.Drawing.Size(1028, 609);
+			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.btnWróć);
 			this.Controls.Add(this.tbxEmail);
@@ -218,11 +230,12 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btnZarejestruj);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.Margin = new System.Windows.Forms.Padding(2);
 			this.MaximizeBox = false;
 			this.Name = "Rejestracja";
 			this.Text = "Rejestracja";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -243,5 +256,6 @@
         private System.Windows.Forms.TextBox tbxEmail;
         private System.Windows.Forms.Button btnWróć;
 		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.PictureBox pictureBox1;
 	}
 }

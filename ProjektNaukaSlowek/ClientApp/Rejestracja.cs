@@ -12,13 +12,18 @@ namespace ClientApp
 {
     public partial class Rejestracja : Form
     {
+		CNSpinner.ProgressSpinner spinner = new CNSpinner.ProgressSpinner();
+
 		public Rejestracja()
         {
             InitializeComponent();
+			pictureBox1.Visible = false;
         }
-
 		private async void btnZarejestruj_Click(object sender, EventArgs e)
 		{
+			pictureBox1.Visible = true;
+			this.Enabled = false;
+			
 			bool czyPoprawneDane = true;
 			try
 			{
@@ -36,11 +41,15 @@ namespace ClientApp
 
 					if (!or.SprawdzCzyIstniejeUzytkownik(or.Lista, tbxLogin.Text, tbxEmail.Text))
 					{
+						pictureBox1.Visible = false;
+						this.Enabled = true;
 						MessageBox.Show(this, "Podany użytkownik lub e-mail już został użyty!", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 						return;
 					}
 					else if (!czyPoprawneDane)
 					{
+						pictureBox1.Visible = false;
+						this.Enabled = true;
 						MessageBox.Show(this, "Wypełnij wszystkie pola!", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 						return;
 					}
@@ -48,7 +57,6 @@ namespace ClientApp
 					{
 						await client.WyslijMailaRejestracjaAsync(or.Login, or.Haslo, or.Email, or.Imie, or.Nazwisko);
 						await client.DodajUzytkownikaAsync(or.Login, or.Haslo, or.Email, or.Imie, or.Nazwisko);
-						MessageBox.Show(this, "Użytkownik został dodany pomyślnie!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					}
 				}
 			}
@@ -58,6 +66,9 @@ namespace ClientApp
 			}
 			finally
 			{
+				pictureBox1.Visible = false;
+				MessageBox.Show(this, "Użytkownik został dodany pomyślnie!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				spinner.Stop();
 				MenuGlowne f = new MenuGlowne();
 				//WindowState = FormWindowState.Minimized;
 				ShowInTaskbar = false;
@@ -69,7 +80,7 @@ namespace ClientApp
 		private void btnWróć_Click(object sender, EventArgs e)
 		{
 			MenuGlowne f = new MenuGlowne();
-			WindowState = FormWindowState.Minimized;
+			//WindowState = FormWindowState.Minimized;
 			ShowInTaskbar = false;
 			f.ShowDialog();
 			this.Close();
