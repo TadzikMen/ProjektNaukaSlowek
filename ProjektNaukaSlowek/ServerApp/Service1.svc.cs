@@ -64,46 +64,46 @@ namespace ServerApp
 				}
 			}
 		}
-        //public void DodajSlowka(string jezyk, string slowko, string tlumaczenie, string kategoria)
-        //{
-        //    DTO.Zarzadzaj slowka = new Zarzadzaj();
-        //    int Id;
+		//public void DodajSlowka(string jezyk, string slowko, string tlumaczenie, string kategoria)
+		//{
+		//    DTO.Zarzadzaj slowka = new Zarzadzaj();
+		//    int Id;
 
-        //    slowka.jezyk = jezyk;
-        //    slowka.slowko = slowko;
-        //    slowka.tlumaczenie = tlumaczenie;
-        //    slowka.kategoria = kategoria;
-           
-
-        //    using (var db = new System.Data.SqlClient.SqlConnection(
-        //        System.Configuration.ConfigurationManager.ConnectionStrings[
-        //            "PolaczenieZBazaDanych"].ConnectionString))
-        //    {
-        //        db.Open();
-        //        using (var cmd = new System.Data.SqlClient.SqlCommand())
-        //        {
-        //            cmd.Connection = db;
-        //            cmd.CommandText = "INSERT INTO SLOWKA(JEZYK, SLOWKO, TLUMACZENIE, KATEGORIA) " +
-        //                "VALUES(@jezyk, @slowko, @tlumaczenie, @kategoria);" +
-        //                "SELECT SCOPE_IDENTITY();";
-
-        //            cmd.Parameters.AddWithValue("@Login", slowka.jezyk);
-        //            cmd.Parameters.AddWithValue("@Haslo", slowka.slowko);
-        //            cmd.Parameters.AddWithValue("@Imie", slowka.tlumaczenie);
-
-        //            Id = (int)(decimal)cmd.ExecuteScalar();
-        //        }
-        //    }
-        //}
+		//    slowka.jezyk = jezyk;
+		//    slowka.slowko = slowko;
+		//    slowka.tlumaczenie = tlumaczenie;
+		//    slowka.kategoria = kategoria;
 
 
+		//    using (var db = new System.Data.SqlClient.SqlConnection(
+		//        System.Configuration.ConfigurationManager.ConnectionStrings[
+		//            "PolaczenieZBazaDanych"].ConnectionString))
+		//    {
+		//        db.Open();
+		//        using (var cmd = new System.Data.SqlClient.SqlCommand())
+		//        {
+		//            cmd.Connection = db;
+		//            cmd.CommandText = "INSERT INTO SLOWKA(JEZYK, SLOWKO, TLUMACZENIE, KATEGORIA) " +
+		//                "VALUES(@jezyk, @slowko, @tlumaczenie, @kategoria);" +
+		//                "SELECT SCOPE_IDENTITY();";
+
+		//            cmd.Parameters.AddWithValue("@Login", slowka.jezyk);
+		//            cmd.Parameters.AddWithValue("@Haslo", slowka.slowko);
+		//            cmd.Parameters.AddWithValue("@Imie", slowka.tlumaczenie);
+
+		//            Id = (int)(decimal)cmd.ExecuteScalar();
+		//        }
+		//    }
+		//}
 
 
-        public bool SprawdzDaneLogowania(string login, string haslo)
+
+
+		public bool SprawdzDaneLogowania(string login, string haslo)
 		{
 			Logowanie log = new Logowanie();
 			List<Logowanie> listaLoginow;
-			
+
 			using (var db = new System.Data.SqlClient.SqlConnection
 			(System.Configuration.ConfigurationManager.ConnectionStrings[
 				"PolaczenieZBazaDanych"].ConnectionString))
@@ -174,11 +174,11 @@ namespace ServerApp
 			return listaLoginowMaili;
 		}
 
-		public void WyslijMailaRejestracja(string login, string haslo, string email, string imie = null, string nazwisko=null)
+		public void WyslijMailaRejestracja(string login, string haslo, string email, string imie = null, string nazwisko = null)
 		{
 			string _wiadomosc;
 			WysylanieMaila mail = new WysylanieMaila(email);
-			
+
 			if (String.IsNullOrEmpty(imie))
 				_wiadomosc = $"Dziękujemy za rejestrację w serwisie Nauka Słówek, {login}!\n Twoje hasło dostępu to: {haslo}";
 			else
@@ -192,10 +192,12 @@ namespace ServerApp
 				_wiadomosc
 				);
 			System.Net.NetworkCredential netCred = new System.Net.NetworkCredential("naukaslowek.adm@gmail.com", "diagrama");
-			System.Net.Mail.SmtpClient smtpobj = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
-			smtpobj.EnableSsl = true;
-			smtpobj.Credentials = netCred;
-			smtpobj.Send(mailMess);			
+			System.Net.Mail.SmtpClient smtpobj = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587)
+			{
+				EnableSsl = true,
+				Credentials = netCred
+			};
+			smtpobj.Send(mailMess);
 		}
 	}
 }
