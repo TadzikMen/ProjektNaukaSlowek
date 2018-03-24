@@ -12,8 +12,6 @@ namespace ClientApp
 {
     public partial class Rejestracja : Form
     {
-		CNSpinner.ProgressSpinner spinner = new CNSpinner.ProgressSpinner();
-
 		public Rejestracja()
         {
             InitializeComponent();
@@ -68,7 +66,6 @@ namespace ClientApp
 			{
 				pictureBox1.Visible = false;
 				MessageBox.Show(this, "Użytkownik został dodany pomyślnie!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				spinner.Stop();
 				MenuGlowne f = new MenuGlowne();
 				//WindowState = FormWindowState.Minimized;
 				ShowInTaskbar = false;
