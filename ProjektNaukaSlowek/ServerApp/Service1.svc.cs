@@ -64,37 +64,37 @@ namespace ServerApp
 				}
 			}
 		}
-        //public void DodajSlowka(string jezyk, string slowko, string tlumaczenie, string kategoria)
-        //{
-        //    DTO.Zarz slowka = new Zarzadzaj();
-        //    int Id;
+        public void DodajSlowka(string jezyk, string slowko, string tlumaczenie, string kategoria)
+        {
+            DTO.Zarzadzaj slowka = new Zarzadzaj();
+            int Id;
 
-        //    slowka.jezyk = jezyk;
-        //    slowka.slowko = slowko;
-        //    slowka.tlumaczenie = tlumaczenie;
-        //    slowka.kategoria = kategoria;
+            slowka.jezyk = jezyk;
+            slowka.slowko = slowko;
+            slowka.tlumaczenie = tlumaczenie;
+            slowka.kategoria = kategoria;
            
 
-        //    using (var db = new System.Data.SqlClient.SqlConnection(
-        //        System.Configuration.ConfigurationManager.ConnectionStrings[
-        //            "PolaczenieZBazaDanych"].ConnectionString))
-        //    {
-        //        db.Open();
-        //        using (var cmd = new System.Data.SqlClient.SqlCommand())
-        //        {
-        //            cmd.Connection = db;
-        //            cmd.CommandText = "INSERT INTO SLOWKA(JEZYK, SLOWKO, TLUMACZENIE, KATEGORIA) " +
-        //                "VALUES(@jezyk, @slowko, @tlumaczenie, @kategoria);" +
-        //                "SELECT SCOPE_IDENTITY();";
+            using (var db = new System.Data.SqlClient.SqlConnection(
+                System.Configuration.ConfigurationManager.ConnectionStrings[
+                    "PolaczenieZBazaDanych"].ConnectionString))
+            {
+                db.Open();
+                using (var cmd = new System.Data.SqlClient.SqlCommand())
+                {
+                    cmd.Connection = db;
+                    cmd.CommandText = "INSERT INTO SLOWKA(JEZYK, SLOWKO, TLUMACZENIE, KATEGORIA) " +
+                        "VALUES(@jezyk, @slowko, @tlumaczenie, @kategoria);" +
+                        "SELECT SCOPE_IDENTITY();";
 
-        //            cmd.Parameters.AddWithValue("@Login", slowka.jezyk);
-        //            cmd.Parameters.AddWithValue("@Haslo", slowka.slowko);
-        //            cmd.Parameters.AddWithValue("@Imie", slowka.tlumaczenie);
+                    cmd.Parameters.AddWithValue("@Login", slowka.jezyk);
+                    cmd.Parameters.AddWithValue("@Haslo", slowka.slowko);
+                    cmd.Parameters.AddWithValue("@Imie", slowka.tlumaczenie);
 
-        //            Id = (int)(decimal)cmd.ExecuteScalar();
-        //        }
-        //    }
-        //}
+                    Id = (int)(decimal)cmd.ExecuteScalar();
+                }
+            }
+        }
 
 
 
