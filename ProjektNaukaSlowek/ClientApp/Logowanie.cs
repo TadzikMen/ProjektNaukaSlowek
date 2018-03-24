@@ -47,7 +47,12 @@ namespace ClientApp
 				if (log == true)
 				{
 					MessageBox.Show(this, "Zalogowano pomyślnie!", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				}
+                    Aplikacja f = new Aplikacja();
+                    WindowState = FormWindowState.Minimized;
+                    ShowInTaskbar = false;
+                    f.ShowDialog();
+                    this.Close();
+                }
 				else
 				{
 					MessageBox.Show(this, "Brak użytkownika w bazie!", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -75,5 +80,6 @@ namespace ClientApp
           //  mg.TopMost = false;
             this.Close();
         }
+        
     }
 }
