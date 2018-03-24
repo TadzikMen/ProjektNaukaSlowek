@@ -95,10 +95,7 @@ namespace ServerApp
 		//        }
 		//    }
 		//}
-
-
-
-
+		
 		public bool SprawdzDaneLogowania(string login, string haslo)
 		{
 			Logowanie log = new Logowanie();
