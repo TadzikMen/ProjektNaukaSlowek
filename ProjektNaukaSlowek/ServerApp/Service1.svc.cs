@@ -31,7 +31,7 @@ namespace ServerApp
 			return composite;
 		}
 
-		public void DodajUzytkownika(string login, string haslo, string imie, string nazwisko, string email)
+		public void DodajUzytkownika(string login, string haslo, string email, string imie = null, string nazwisko = null)
 		{
 			DTO.Rejestracja uzytkownik = new Rejestracja();
 			int Id;
@@ -172,6 +172,30 @@ namespace ServerApp
 			}
 
 			return listaLoginowMaili;
+		}
+
+		public void WyslijMailaRejestracja(string login, string haslo, string email, string imie = null, string nazwisko=null)
+		{
+			string _wiadomosc;
+			WysylanieMaila mail = new WysylanieMaila(email);
+			
+			if (String.IsNullOrEmpty(imie))
+				_wiadomosc = $"Dziękujemy za rejestrację w serwisie Nauka Słówek, {login}!\n Twoje hasło dostępu to: {haslo}";
+			else
+				_wiadomosc = $"Dziękujemy za rejestrację w serwisie Nauka Słówek, {imie} {nazwisko}!\n Twoje hasło dostępu to {haslo}";
+
+
+			System.Net.Mail.MailMessage mailMess = new System.Net.Mail.MailMessage(
+				"naukaslowek.adm@gmail.com",
+				email,
+				"Witamy w Serwisie Nauka Słówek!",
+				_wiadomosc
+				);
+			System.Net.NetworkCredential netCred = new System.Net.NetworkCredential("naukaslowek.adm@gmail.com", "diagrama");
+			System.Net.Mail.SmtpClient smtpobj = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
+			smtpobj.EnableSsl = true;
+			smtpobj.Credentials = netCred;
+			smtpobj.Send(mailMess);			
 		}
 	}
 }

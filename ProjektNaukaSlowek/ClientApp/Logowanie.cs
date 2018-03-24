@@ -61,7 +61,7 @@ namespace ClientApp
 		private void Wroc_Click(object sender, EventArgs e)
         {
             MenuGlowne f = new MenuGlowne();
-            WindowState = FormWindowState.Minimized;
+            //WindowState = FormWindowState.Minimized;
             ShowInTaskbar = false;
            
 

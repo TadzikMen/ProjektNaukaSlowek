@@ -158,16 +158,22 @@ namespace ClientApp.WcfService {
         System.Threading.Tasks.Task<bool> SprawdzDaneLogowaniaAsync(string login, string haslo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DodajUzytkownika", ReplyAction="http://tempuri.org/IService1/DodajUzytkownikaResponse")]
-        void DodajUzytkownika(string login, string haslo, string imie, string nazwisko, string email);
+        void DodajUzytkownika(string login, string haslo, string email, string imie, string nazwisko);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DodajUzytkownika", ReplyAction="http://tempuri.org/IService1/DodajUzytkownikaResponse")]
-        System.Threading.Tasks.Task DodajUzytkownikaAsync(string login, string haslo, string imie, string nazwisko, string email);
+        System.Threading.Tasks.Task DodajUzytkownikaAsync(string login, string haslo, string email, string imie, string nazwisko);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzLoginyIMaile", ReplyAction="http://tempuri.org/IService1/PobierzLoginyIMaileResponse")]
         System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie> PobierzLoginyIMaile();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzLoginyIMaile", ReplyAction="http://tempuri.org/IService1/PobierzLoginyIMaileResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>> PobierzLoginyIMaileAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/WyslijMailaRejestracja", ReplyAction="http://tempuri.org/IService1/WyslijMailaRejestracjaResponse")]
+        void WyslijMailaRejestracja(string login, string haslo, string email, string imie, string nazwisko);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/WyslijMailaRejestracja", ReplyAction="http://tempuri.org/IService1/WyslijMailaRejestracjaResponse")]
+        System.Threading.Tasks.Task WyslijMailaRejestracjaAsync(string login, string haslo, string email, string imie, string nazwisko);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -221,12 +227,12 @@ namespace ClientApp.WcfService {
             return base.Channel.SprawdzDaneLogowaniaAsync(login, haslo);
         }
         
-        public void DodajUzytkownika(string login, string haslo, string imie, string nazwisko, string email) {
-            base.Channel.DodajUzytkownika(login, haslo, imie, nazwisko, email);
+        public void DodajUzytkownika(string login, string haslo, string email, string imie, string nazwisko) {
+            base.Channel.DodajUzytkownika(login, haslo, email, imie, nazwisko);
         }
         
-        public System.Threading.Tasks.Task DodajUzytkownikaAsync(string login, string haslo, string imie, string nazwisko, string email) {
-            return base.Channel.DodajUzytkownikaAsync(login, haslo, imie, nazwisko, email);
+        public System.Threading.Tasks.Task DodajUzytkownikaAsync(string login, string haslo, string email, string imie, string nazwisko) {
+            return base.Channel.DodajUzytkownikaAsync(login, haslo, email, imie, nazwisko);
         }
         
         public System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie> PobierzLoginyIMaile() {
@@ -235,6 +241,14 @@ namespace ClientApp.WcfService {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>> PobierzLoginyIMaileAsync() {
             return base.Channel.PobierzLoginyIMaileAsync();
+        }
+        
+        public void WyslijMailaRejestracja(string login, string haslo, string email, string imie, string nazwisko) {
+            base.Channel.WyslijMailaRejestracja(login, haslo, email, imie, nazwisko);
+        }
+        
+        public System.Threading.Tasks.Task WyslijMailaRejestracjaAsync(string login, string haslo, string email, string imie, string nazwisko) {
+            return base.Channel.WyslijMailaRejestracjaAsync(login, haslo, email, imie, nazwisko);
         }
     }
 }
