@@ -140,12 +140,12 @@
             // 
             this.lblNazwa.AutoSize = true;
             this.lblNazwa.BackColor = System.Drawing.Color.Silver;
-            this.lblNazwa.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblNazwa.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblNazwa.ForeColor = System.Drawing.Color.DarkRed;
             this.lblNazwa.Location = new System.Drawing.Point(388, 48);
             this.lblNazwa.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNazwa.Name = "lblNazwa";
-            this.lblNazwa.Size = new System.Drawing.Size(130, 51);
+            this.lblNazwa.Size = new System.Drawing.Size(126, 48);
             this.lblNazwa.TabIndex = 9;
             this.lblNazwa.Text = "Witaj ";
             // 
@@ -154,7 +154,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1371, 750);
+            this.ClientSize = new System.Drawing.Size(1623, 861);
             this.Controls.Add(this.lblNazwa);
             this.Controls.Add(this.btnWyloguj);
             this.Controls.Add(this.btnZarzadzaj);
