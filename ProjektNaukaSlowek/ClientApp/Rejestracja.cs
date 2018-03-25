@@ -35,7 +35,7 @@ namespace ClientApp
 						tbxNazwisko.Text);
 					
 					czyPoprawneDane = or.SprawdzDaneWejsciowe(tbxLogin.Text, tbxHaslo.Text, tbxEmail.Text);
-				//	or.Lista = await client.PobierzLoginyIMaileAsync();
+					or.Lista = await client.PobierzLoginyIMaileAsync();
 
 					if (!or.SprawdzCzyIstniejeUzytkownik(or.Lista, tbxLogin.Text, tbxEmail.Text))
 					{
