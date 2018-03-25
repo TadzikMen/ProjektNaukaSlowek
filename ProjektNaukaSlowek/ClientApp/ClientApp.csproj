@@ -76,7 +76,9 @@
     <Compile Include="MenuGlowne.Designer.cs">
       <DependentUpon>MenuGlowne.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ObslugaLogowania.cs" />
     <Compile Include="Models\ObslugaRejestracji.cs" />
+    <Compile Include="Models\ObslugaUzytkownika.cs" />
     <Compile Include="Rejestracja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +175,9 @@
       <DependentUpon>ZobaczSwojeOsiagniecia.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Connected Services\WcfService\ClientApp.WcfService.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WcfService\ClientApp.WcfService.Logowanie.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\WcfService\ClientApp.WcfService.Uwierzytelnianie.datasource">

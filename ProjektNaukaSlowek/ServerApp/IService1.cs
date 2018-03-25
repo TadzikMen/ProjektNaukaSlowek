@@ -23,6 +23,9 @@ namespace ServerApp
 		bool SprawdzDaneLogowania(string login, string haslo);
 
 		[OperationContract]
+		DTO.Logowanie PrzekazDaneDoZalogowania(string login);
+
+		[OperationContract]
 		void DodajUzytkownika(string login, string haslo, string email, string imie = null, string nazwisko = null);
 
 		[OperationContract]

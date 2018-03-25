@@ -16,5 +16,15 @@ namespace ClientApp
         {
             InitializeComponent();
         }
-    }
+
+		private void btnZatwierdzZmiany_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnWroc_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

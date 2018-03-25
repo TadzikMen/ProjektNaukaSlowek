@@ -109,7 +109,7 @@ namespace ServerApp
 				using (var cmd = new System.Data.SqlClient.SqlCommand())
 				{
 					cmd.Connection = db;
-					cmd.CommandText = "SELECT * FROM Uzytkownicy";
+					cmd.CommandText = "SELECT login_uzytkownika, haslo_uzytkownika FROM Uzytkownicy";
 
 					using (var dr = cmd.ExecuteReader())
 					{
@@ -195,6 +195,35 @@ namespace ServerApp
 				Credentials = netCred
 			};
 			smtpobj.Send(mailMess);
+		}
+
+		public Logowanie PrzekazDaneDoZalogowania(string login)
+		{
+			Logowanie zalogowanyUzytkownik = new Logowanie();
+
+			zalogowanyUzytkownik.Login = login;
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+					"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText = "SELECT login_uzytkownika FROM Uzytkownicy WHERE login_uzytkownika=@login";
+
+					using (var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							zalogowanyUzytkownik.Login = (string)dr["login_uzytkownika"];
+						}
+					}
+				}
+			}
+
+			return zalogowanyUzytkownik;
 		}
 	}
 }

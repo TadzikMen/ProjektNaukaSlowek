@@ -76,6 +76,67 @@ namespace ClientApp.WcfService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Logowanie", Namespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO")]
+    [System.SerializableAttribute()]
+    public partial class Logowanie : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HasloField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LoginField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Haslo {
+            get {
+                return this.HasloField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HasloField, value) != true)) {
+                    this.HasloField = value;
+                    this.RaisePropertyChanged("Haslo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Login {
+            get {
+                return this.LoginField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LoginField, value) != true)) {
+                    this.LoginField = value;
+                    this.RaisePropertyChanged("Login");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Uwierzytelnianie", Namespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO")]
     [System.SerializableAttribute()]
     public partial class Uwierzytelnianie : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -157,6 +218,12 @@ namespace ClientApp.WcfService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SprawdzDaneLogowania", ReplyAction="http://tempuri.org/IService1/SprawdzDaneLogowaniaResponse")]
         System.Threading.Tasks.Task<bool> SprawdzDaneLogowaniaAsync(string login, string haslo);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PrzekazDaneDoZalogowania", ReplyAction="http://tempuri.org/IService1/PrzekazDaneDoZalogowaniaResponse")]
+        ClientApp.WcfService.Logowanie PrzekazDaneDoZalogowania(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PrzekazDaneDoZalogowania", ReplyAction="http://tempuri.org/IService1/PrzekazDaneDoZalogowaniaResponse")]
+        System.Threading.Tasks.Task<ClientApp.WcfService.Logowanie> PrzekazDaneDoZalogowaniaAsync(string login);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DodajUzytkownika", ReplyAction="http://tempuri.org/IService1/DodajUzytkownikaResponse")]
         void DodajUzytkownika(string login, string haslo, string email, string imie, string nazwisko);
         
@@ -225,6 +292,14 @@ namespace ClientApp.WcfService {
         
         public System.Threading.Tasks.Task<bool> SprawdzDaneLogowaniaAsync(string login, string haslo) {
             return base.Channel.SprawdzDaneLogowaniaAsync(login, haslo);
+        }
+        
+        public ClientApp.WcfService.Logowanie PrzekazDaneDoZalogowania(string login) {
+            return base.Channel.PrzekazDaneDoZalogowania(login);
+        }
+        
+        public System.Threading.Tasks.Task<ClientApp.WcfService.Logowanie> PrzekazDaneDoZalogowaniaAsync(string login) {
+            return base.Channel.PrzekazDaneDoZalogowaniaAsync(login);
         }
         
         public void DodajUzytkownika(string login, string haslo, string email, string imie, string nazwisko) {
