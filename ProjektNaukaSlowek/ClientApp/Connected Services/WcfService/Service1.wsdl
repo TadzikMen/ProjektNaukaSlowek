@@ -26,6 +26,12 @@
   <wsdl:message name="IService1_SprawdzDaneLogowania_OutputMessage">
     <wsdl:part name="parameters" element="tns:SprawdzDaneLogowaniaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_PrzekazDaneDoZalogowania_InputMessage">
+    <wsdl:part name="parameters" element="tns:PrzekazDaneDoZalogowania" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PrzekazDaneDoZalogowania_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PrzekazDaneDoZalogowaniaResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_DodajUzytkownika_InputMessage">
     <wsdl:part name="parameters" element="tns:DodajUzytkownika" />
   </wsdl:message>
@@ -37,6 +43,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_PobierzLoginyIMaile_OutputMessage">
     <wsdl:part name="parameters" element="tns:PobierzLoginyIMaileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_WyslijMailaRejestracja_InputMessage">
+    <wsdl:part name="parameters" element="tns:WyslijMailaRejestracja" />
+  </wsdl:message>
+  <wsdl:message name="IService1_WyslijMailaRejestracja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:WyslijMailaRejestracjaResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
@@ -51,6 +63,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/SprawdzDaneLogowania" message="tns:IService1_SprawdzDaneLogowania_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/SprawdzDaneLogowaniaResponse" message="tns:IService1_SprawdzDaneLogowania_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="PrzekazDaneDoZalogowania">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PrzekazDaneDoZalogowania" message="tns:IService1_PrzekazDaneDoZalogowania_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PrzekazDaneDoZalogowaniaResponse" message="tns:IService1_PrzekazDaneDoZalogowania_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="DodajUzytkownika">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DodajUzytkownika" message="tns:IService1_DodajUzytkownika_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DodajUzytkownikaResponse" message="tns:IService1_DodajUzytkownika_OutputMessage" />
@@ -58,6 +74,10 @@
     <wsdl:operation name="PobierzLoginyIMaile">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/PobierzLoginyIMaile" message="tns:IService1_PobierzLoginyIMaile_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/PobierzLoginyIMaileResponse" message="tns:IService1_PobierzLoginyIMaile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WyslijMailaRejestracja">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/WyslijMailaRejestracja" message="tns:IService1_WyslijMailaRejestracja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/WyslijMailaRejestracjaResponse" message="tns:IService1_WyslijMailaRejestracja_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -89,6 +109,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="PrzekazDaneDoZalogowania">
+      <soap:operation soapAction="http://tempuri.org/IService1/PrzekazDaneDoZalogowania" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DodajUzytkownika">
       <soap:operation soapAction="http://tempuri.org/IService1/DodajUzytkownika" style="document" />
       <wsdl:input>
@@ -100,6 +129,15 @@
     </wsdl:operation>
     <wsdl:operation name="PobierzLoginyIMaile">
       <soap:operation soapAction="http://tempuri.org/IService1/PobierzLoginyIMaile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WyslijMailaRejestracja">
+      <soap:operation soapAction="http://tempuri.org/IService1/WyslijMailaRejestracja" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

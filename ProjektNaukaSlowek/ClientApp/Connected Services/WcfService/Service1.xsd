@@ -45,14 +45,28 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="PrzekazDaneDoZalogowania">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PrzekazDaneDoZalogowaniaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ServerApp.DTO" minOccurs="0" name="PrzekazDaneDoZalogowaniaResult" nillable="true" type="q3:Logowanie" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="DodajUzytkownika">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="haslo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="imie" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="nazwisko" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -69,8 +83,24 @@
   <xs:element name="PobierzLoginyIMaileResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ServerApp.DTO" minOccurs="0" name="PobierzLoginyIMaileResult" nillable="true" type="q3:ArrayOfUwierzytelnianie" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ServerApp.DTO" minOccurs="0" name="PobierzLoginyIMaileResult" nillable="true" type="q4:ArrayOfUwierzytelnianie" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WyslijMailaRejestracja">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="haslo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="imie" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nazwisko" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WyslijMailaRejestracjaResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

@@ -47,10 +47,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aplikacja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aplikacja.Designer.cs">
+      <DependentUpon>Aplikacja.cs</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\WcfService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="EdycjaUseraAdmina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EdycjaUseraAdmina.Designer.cs">
+      <DependentUpon>EdycjaUseraAdmina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KontynuujNauke.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KontynuujNauke.Designer.cs">
+      <DependentUpon>KontynuujNauke.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuGlowne.cs">
       <SubType>Form</SubType>
@@ -58,7 +76,9 @@
     <Compile Include="MenuGlowne.Designer.cs">
       <DependentUpon>MenuGlowne.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ObslugaLogowania.cs" />
     <Compile Include="Models\ObslugaRejestracji.cs" />
+    <Compile Include="Models\ObslugaUzytkownika.cs" />
     <Compile Include="Rejestracja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,12 +99,45 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RozpocznijNauke.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RozpocznijNauke.Designer.cs">
+      <DependentUpon>RozpocznijNauke.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SprawdzSwojePostepy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SprawdzSwojePostepy.Designer.cs">
+      <DependentUpon>SprawdzSwojePostepy.cs</DependentUpon>
+    </Compile>
     <Compile Include="WeryfikacjaKodu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WeryfikacjaKodu.Designer.cs">
       <DependentUpon>WeryfikacjaKodu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Zarzadzaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Zarzadzaj.Designer.cs">
+      <DependentUpon>Zarzadzaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ZobaczSwojeOsiagniecia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZobaczSwojeOsiagniecia.Designer.cs">
+      <DependentUpon>ZobaczSwojeOsiagniecia.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Aplikacja.resx">
+      <DependentUpon>Aplikacja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EdycjaUseraAdmina.resx">
+      <DependentUpon>EdycjaUseraAdmina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KontynuujNauke.resx">
+      <DependentUpon>KontynuujNauke.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuGlowne.resx">
       <DependentUpon>MenuGlowne.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,10 +159,25 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RozpocznijNauke.resx">
+      <DependentUpon>RozpocznijNauke.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SprawdzSwojePostepy.resx">
+      <DependentUpon>SprawdzSwojePostepy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WeryfikacjaKodu.resx">
       <DependentUpon>WeryfikacjaKodu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Zarzadzaj.resx">
+      <DependentUpon>Zarzadzaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZobaczSwojeOsiagniecia.resx">
+      <DependentUpon>ZobaczSwojeOsiagniecia.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Connected Services\WcfService\ClientApp.WcfService.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WcfService\ClientApp.WcfService.Logowanie.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\WcfService\ClientApp.WcfService.Uwierzytelnianie.datasource">
