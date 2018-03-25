@@ -75,5 +75,10 @@ namespace ClientApp
           //  mg.TopMost = false;
             this.Close();
         }
+
+        private void Logowanie_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
