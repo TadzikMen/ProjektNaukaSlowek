@@ -211,15 +211,8 @@ namespace ServerApp
 				using (var cmd = new System.Data.SqlClient.SqlCommand())
 				{
 					cmd.Connection = db;
-					cmd.CommandText = "SELECT login_uzytkownika FROM Uzytkownicy WHERE login_uzytkownika=@login";
-
-					using (var dr = cmd.ExecuteReader())
-					{
-						while (dr.Read())
-						{
-							zalogowanyUzytkownik.Login = (string)dr["login_uzytkownika"];
-						}
-					}
+					cmd.CommandText = "SELECT login_uzytkownika FROM Uzytkownicy WHERE login_uzytkownika = @Login";
+					cmd.Parameters.Add("nazwa_uzytkownika", System.Data.SqlDbType.NVarChar).Value = zalogowanyUzytkownik.Login;
 				}
 			}
 

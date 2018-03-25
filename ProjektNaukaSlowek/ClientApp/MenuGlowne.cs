@@ -24,7 +24,6 @@ namespace ClientApp
 		private void Logowanie_Click(object sender, EventArgs e)
 		{
 			Logowanie logowanie = new Logowanie();
-			WindowState = FormWindowState.Minimized;
 			ShowInTaskbar = false;
 
 			logowanie.ShowDialog();
@@ -34,7 +33,6 @@ namespace ClientApp
         private void Rejestracja_Click(object sender, EventArgs e)
         {
             Rejestracja rejestracja = new Rejestracja();
-            //WindowState = FormWindowState.Minimized;
             ShowInTaskbar = false;
             rejestracja.ShowDialog();
             Opacity = 0;

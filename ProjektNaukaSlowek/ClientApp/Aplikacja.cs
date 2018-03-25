@@ -17,6 +17,11 @@ namespace ClientApp
             InitializeComponent();
         }
 
+		public string PobierzUzytkownika
+		{
+			set { lblNazwa.Text += value; }
+		}
+
         private void btnEdytujProfil_Click(object sender, EventArgs e)
         {
             EdycjaUseraAdmina f = new EdycjaUseraAdmina();

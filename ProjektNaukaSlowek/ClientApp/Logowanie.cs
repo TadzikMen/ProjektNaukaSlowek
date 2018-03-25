@@ -17,6 +17,11 @@ namespace ClientApp
             InitializeComponent();
         }
 
+		public string PrzekazUzytkownika
+		{
+			get { return tbxLogin.Text; }
+		}
+
         private void PrzypomnienieHasla_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             PrzypomnienieHasla f = new PrzypomnienieHasla();
@@ -50,6 +55,7 @@ namespace ClientApp
 					}
 					MessageBox.Show(this, "Zalogowano pomyślnie!", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Aplikacja f = new Aplikacja();
+					f.PobierzUzytkownika = obsLogowania.Login.Login;
                     ShowInTaskbar = false;
                     f.ShowDialog();
                     this.Close();
