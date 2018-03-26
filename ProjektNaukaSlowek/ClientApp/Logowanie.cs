@@ -77,6 +77,13 @@ namespace ClientApp
             f.ShowDialog();
             this.Close();
         }
-        
+
+        private void tbxHaslo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ZalogujSie_Click(sender,e);
+            }
+        }
     }
 }

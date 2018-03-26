@@ -166,6 +166,7 @@
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(267, 36);
             this.tbxEmail.TabIndex = 10;
+            this.tbxEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxEmail_KeyDown);
             // 
             // btnWróć
             // 
@@ -198,7 +199,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(710, 294);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(535, 242);
             this.pictureBox1.TabIndex = 13;
