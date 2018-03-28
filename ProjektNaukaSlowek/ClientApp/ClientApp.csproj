@@ -105,6 +105,12 @@
     <Compile Include="RozpocznijNauke.Designer.cs">
       <DependentUpon>RozpocznijNauke.cs</DependentUpon>
     </Compile>
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="SprawdzSwojePostepy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     </Compile>
     <EmbeddedResource Include="RozpocznijNauke.resx">
       <DependentUpon>RozpocznijNauke.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SprawdzSwojePostepy.resx">
       <DependentUpon>SprawdzSwojePostepy.cs</DependentUpon>

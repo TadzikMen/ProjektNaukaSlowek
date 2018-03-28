@@ -16,10 +16,20 @@ namespace ClientApp
 
         public MenuGlowne()
         {
+			System.Threading.Thread task = new System.Threading.Thread(new System.Threading.ThreadStart(SplashStart));
+			task.Start();
+			System.Threading.Thread.Sleep(5000);
+
             MenuGlowneInstance = this;
-            
+
             InitializeComponent();
+			task.Abort();
         }
+
+		public void SplashStart()
+		{
+			Application.Run(new SplashScreen());
+		}
 
 		private void Logowanie_Click(object sender, EventArgs e)
 		{
