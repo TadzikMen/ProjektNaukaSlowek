@@ -144,6 +144,7 @@ namespace ClientApp
 			catch (Exception ex)
 			{
 				MessageBox.Show(this, ex.Message, "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				weryfikacja = false;
 			}
 			finally
 			{
