@@ -29,17 +29,19 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.progressBar1 = new System.Windows.Forms.ProgressBar();
+			this.pasekPostepu = new System.Windows.Forms.ProgressBar();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.LblTimer = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
-			// progressBar1
+			// pasekPostepu
 			// 
-			this.progressBar1.Location = new System.Drawing.Point(94, 153);
-			this.progressBar1.Name = "progressBar1";
-			this.progressBar1.Size = new System.Drawing.Size(232, 23);
-			this.progressBar1.TabIndex = 0;
+			this.pasekPostepu.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.pasekPostepu.Location = new System.Drawing.Point(131, 190);
+			this.pasekPostepu.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+			this.pasekPostepu.Name = "pasekPostepu";
+			this.pasekPostepu.Size = new System.Drawing.Size(479, 23);
+			this.pasekPostepu.TabIndex = 0;
 			// 
 			// timer1
 			// 
@@ -49,8 +51,9 @@
 			// 
 			// LblTimer
 			// 
+			this.LblTimer.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.LblTimer.AutoSize = true;
-			this.LblTimer.Location = new System.Drawing.Point(186, 226);
+			this.LblTimer.Location = new System.Drawing.Point(368, 237);
 			this.LblTimer.Name = "LblTimer";
 			this.LblTimer.Size = new System.Drawing.Size(0, 13);
 			this.LblTimer.TabIndex = 1;
@@ -59,13 +62,13 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(420, 331);
+			this.ClientSize = new System.Drawing.Size(763, 464);
 			this.Controls.Add(this.LblTimer);
-			this.Controls.Add(this.progressBar1);
+			this.Controls.Add(this.pasekPostepu);
+			this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "SplashScreen";
 			this.ShowInTaskbar = false;
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "SplashScreen";
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -74,7 +77,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.ProgressBar progressBar1;
+		private System.Windows.Forms.ProgressBar pasekPostepu;
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.Label LblTimer;
 	}

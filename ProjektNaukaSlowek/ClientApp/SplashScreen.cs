@@ -15,14 +15,15 @@ namespace ClientApp
 		public SplashScreen()
 		{
 			InitializeComponent();
+			this.WindowState = FormWindowState.Maximized;
 		}
 
 		private void timer1_Tick(object sender, EventArgs e)
 		{
-			progressBar1.Increment(1);
-			LblTimer.Text = progressBar1.Value.ToString() +"%";
+			pasekPostepu.Increment(1);
+			LblTimer.Text = pasekPostepu.Value.ToString() +"%";
 
-			if (progressBar1.Value == 100)
+			if (pasekPostepu.Value == 100)
 				timer1.Stop();
 		}
 	}
