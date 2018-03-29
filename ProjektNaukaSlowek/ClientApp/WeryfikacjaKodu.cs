@@ -20,19 +20,13 @@ namespace ClientApp
 
         private void Wroc_Click(object sender, EventArgs e)
         {
-            PrzypomnienieHasla f = new PrzypomnienieHasla();
-            f.ShowDialog();
-            Opacity = 0;
-            this.Close();
+			Owner.Show();
+			Hide();
         }
 
         private void ZmienHaslo_Click(object sender, EventArgs e)
         {
-            
-            Logowanie f = new Logowanie();
-            f.ShowDialog();
-            Opacity = 0;
-            this.Close();
+
         }
     }
 }

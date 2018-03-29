@@ -13,6 +13,7 @@ namespace ClientApp
     public partial class Logowanie : Form
     {
 		Aplikacja frmAplikacja;
+		PrzypomnienieHasla frmPrzypomnienieHasla;
         public Logowanie()
         {
             InitializeComponent();
@@ -25,11 +26,21 @@ namespace ClientApp
 
         private void PrzypomnienieHasla_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            PrzypomnienieHasla f = new PrzypomnienieHasla();
-            this.Visible = false;
-            f.ShowDialog();
-            Opacity = 0;
-        }
+			if (frmPrzypomnienieHasla == null)
+			{
+				frmPrzypomnienieHasla = new PrzypomnienieHasla();
+				frmPrzypomnienieHasla.FormClosed += PrzypomnienieHasla_FormClosed;
+			}
+
+			frmPrzypomnienieHasla.Show(this);
+			Hide();
+		}
+
+		private void PrzypomnienieHasla_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			frmPrzypomnienieHasla = null;
+			Show();
+		}
 
 		private async void ZalogujSie_Click(object sender, EventArgs e)
 		{
@@ -62,6 +73,8 @@ namespace ClientApp
 						frmAplikacja.FormClosed += Aplikacja_FormClosed;
 					}
 					frmAplikacja.PobierzUzytkownika = obsLogowania.Login.Login;
+					tbxLogin.Text = null;
+					tbxHaslo.Text = null;
 					frmAplikacja.Show(this);
 					Hide();
                 }
