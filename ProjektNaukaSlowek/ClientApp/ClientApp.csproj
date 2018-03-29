@@ -76,6 +76,7 @@
     <Compile Include="MenuGlowne.Designer.cs">
       <DependentUpon>MenuGlowne.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ObslugaFormatek.cs" />
     <Compile Include="Models\ObslugaLogowania.cs" />
     <Compile Include="Models\ObslugaRejestracji.cs" />
     <Compile Include="Models\ObslugaSplashScreena.cs" />

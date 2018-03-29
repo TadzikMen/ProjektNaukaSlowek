@@ -12,7 +12,8 @@ namespace ClientApp
 {
     public partial class MenuGlowne : Form
     {
-        public static MenuGlowne MenuGlowneInstance;
+		Logowanie frmLogowanie;
+		Rejestracja frmRejestracja;
 		
 		public MenuGlowne()
 		{
@@ -22,17 +23,10 @@ namespace ClientApp
 				task.Start();
 				System.Threading.Thread.Sleep(5000);
 				Models.ObslugaSplashScreena.czySplashZostalOdpalony = true;
-
-				InitializeComponent();
-				MenuGlowneInstance = this;
-
 				task.Abort();
 			}
-			else
-			{
-				InitializeComponent();
-				MenuGlowneInstance = this;
-			}
+			InitializeComponent();
+			
 			Models.ObslugaSplashScreena.czySplashZostalOdpalony = true;
 		}
 
@@ -43,20 +37,38 @@ namespace ClientApp
 
 		private void Logowanie_Click(object sender, EventArgs e)
 		{
-			Logowanie logowanie = new Logowanie();
-			ShowInTaskbar = false;
+			if (frmLogowanie == null)
+			{
+				frmLogowanie = new Logowanie();
+				frmLogowanie.FormClosed += Logowanie_FormClosed;
+			}
 
-			logowanie.ShowDialog();
-			this.Close();
+			frmLogowanie.Show(this);
+			Hide();
+		}
+
+		private void Logowanie_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			frmLogowanie = null;
+			Show();
 		}
 
         private void Rejestracja_Click(object sender, EventArgs e)
         {
-            Rejestracja rejestracja = new Rejestracja();
-            ShowInTaskbar = false;
-            rejestracja.ShowDialog();
-            Opacity = 0;
-            this.Close();
-        }
-    }
+			if (frmRejestracja == null)
+			{
+				frmRejestracja = new Rejestracja();
+				frmRejestracja.FormClosed += Logowanie_FormClosed;
+			}
+
+			frmRejestracja.Show(this);
+			Hide();
+		}
+
+		private void Rejestracja_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			frmRejestracja = null;
+			Show();
+		}
+	}
 }

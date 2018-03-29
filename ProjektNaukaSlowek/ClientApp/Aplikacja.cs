@@ -12,7 +12,14 @@ namespace ClientApp
 {
     public partial class Aplikacja : Form
     {
-        public Aplikacja()
+		EdycjaUseraAdmina frmEdycjaUseraAdmina;
+		RozpocznijNauke frmRozpocznijNauke;
+		KontynuujNauke frmKontynuujNauke;
+		SprawdzSwojePostepy frmSprawdzSwojePostepy;
+		Zarzadzaj frmZarzadzaj;
+		ZobaczSwojeOsiagniecia frmZobaczSwojeOsiagniecia;
+
+		public Aplikacja()
         {
             InitializeComponent();
         }
@@ -24,56 +31,116 @@ namespace ClientApp
 
         private void btnEdytujProfil_Click(object sender, EventArgs e)
         {
-            EdycjaUseraAdmina f = new EdycjaUseraAdmina();
-            WindowState = FormWindowState.Minimized;
-            ShowInTaskbar = false;
-            f.ShowDialog();
-            this.Close();
-        }
+			if (frmEdycjaUseraAdmina == null)
+			{
+				frmEdycjaUseraAdmina = new EdycjaUseraAdmina();
+				frmEdycjaUseraAdmina.FormClosed += EdycjaUseraAdmina_FormClosed;
+			}
 
-        private void btnRozpocznijNauke_Click(object sender, EventArgs e)
-        {
-            RozpocznijNauke f = new RozpocznijNauke();
-            WindowState = FormWindowState.Minimized;
-            ShowInTaskbar = false;
-            f.ShowDialog();
-            this.Close();
-        }
+			frmEdycjaUseraAdmina.Show(this);
+			Hide();
+		}
 
-        private void btnKontynuujNauke_Click(object sender, EventArgs e)
-        {
-            KontynuujNauke f = new KontynuujNauke();
-            WindowState = FormWindowState.Minimized;
-            ShowInTaskbar = false;
-            f.ShowDialog();
-            this.Close();
-        }
+		private void EdycjaUseraAdmina_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			frmEdycjaUseraAdmina = null;
+			Show();
+		}
 
-        private void btnSprawdzPostepy_Click(object sender, EventArgs e)
+		private void btnRozpocznijNauke_Click(object sender, EventArgs e)
         {
-            SprawdzSwojePostepy f = new SprawdzSwojePostepy();
-            WindowState = FormWindowState.Minimized;
-            ShowInTaskbar = false;
-            f.ShowDialog();
-            this.Close();
-        }
+			if (frmRozpocznijNauke == null)
+			{
+				frmRozpocznijNauke = new RozpocznijNauke();
+				frmRozpocznijNauke.FormClosed += RozpocznijNauke_FormClosed;
+			}
 
-        private void btnZarzadzaj_Click(object sender, EventArgs e)
-        {
-            Zarzadzaj f = new Zarzadzaj();
-            WindowState = FormWindowState.Minimized;
-            ShowInTaskbar = false;
-            f.ShowDialog();
-            this.Close();
-        }
+			frmEdycjaUseraAdmina.Show(this);
+			Hide();
+		}
 
-        private void btnZobaczOsiagniecia_Click(object sender, EventArgs e)
+		private void RozpocznijNauke_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			frmRozpocznijNauke = null;
+			Show();
+		}
+
+		private void btnKontynuujNauke_Click(object sender, EventArgs e)
         {
-            ZobaczSwojeOsiagniecia f = new ZobaczSwojeOsiagniecia();
-            WindowState = FormWindowState.Minimized;
-            ShowInTaskbar = false;
-            f.ShowDialog();
-            this.Close();
-        }
-    }
+			if (frmKontynuujNauke == null)
+			{
+				frmKontynuujNauke = new KontynuujNauke();
+				frmKontynuujNauke.FormClosed += KontynuujNauke_FormClosed;
+			}
+
+			frmEdycjaUseraAdmina.Show(this);
+			Hide();
+		}
+
+		private void KontynuujNauke_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			frmKontynuujNauke = null;
+			Show();
+		}
+
+		private void btnSprawdzPostepy_Click(object sender, EventArgs e)
+        {
+			if (frmSprawdzSwojePostepy == null)
+			{
+				frmSprawdzSwojePostepy = new SprawdzSwojePostepy();
+				frmSprawdzSwojePostepy.FormClosed += SprawdzSwojePostepy_FormClosed;
+			}
+
+			frmEdycjaUseraAdmina.Show(this);
+			Hide();
+		}
+
+		private void SprawdzSwojePostepy_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			frmSprawdzSwojePostepy = null;
+			Show();
+		}
+
+		private void btnZarzadzaj_Click(object sender, EventArgs e)
+        {
+			if (frmZarzadzaj == null)
+			{
+				frmZarzadzaj = new Zarzadzaj();
+				frmZarzadzaj.FormClosed += Zarzadzaj_FormClosed;
+			}
+
+			frmZarzadzaj.Show(this);
+			Hide();
+		}
+
+		private void Zarzadzaj_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			frmZarzadzaj = null;
+			Show();
+		}
+
+		private void btnZobaczOsiagniecia_Click(object sender, EventArgs e)
+        {
+			if (frmZobaczSwojeOsiagniecia == null)
+			{
+				frmZobaczSwojeOsiagniecia = new ZobaczSwojeOsiagniecia();
+				frmZobaczSwojeOsiagniecia.FormClosed += ZobaczOsiagniecia_FormClosed;
+			}
+
+			frmZobaczSwojeOsiagniecia.Show(this);
+			Hide();
+		}
+
+		private void ZobaczOsiagniecia_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			frmZobaczSwojeOsiagniecia = null;
+			Show();
+		}
+
+		private void btnWyloguj_Click(object sender, EventArgs e)
+		{
+			Owner.Show();
+			Hide();
+		}
+	}
 }

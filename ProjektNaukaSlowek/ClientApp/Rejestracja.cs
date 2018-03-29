@@ -151,22 +151,16 @@ namespace ClientApp
                 {
                     pictureBox1.Visible = false;
                     MessageBox.Show(this, "Użytkownik został dodany pomyślnie!", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MenuGlowne f = new MenuGlowne();
-                    //WindowState = FormWindowState.Minimized;
-                    ShowInTaskbar = false;
-                    f.ShowDialog();
-                    this.Close();
-                }
+					Owner.Show();
+					Hide();
+				}
 			}
 		}
 
 		private void btnWróć_Click(object sender, EventArgs e)
 		{
-			MenuGlowne f = new MenuGlowne();
-			//WindowState = FormWindowState.Minimized;
-			ShowInTaskbar = false;
-			f.ShowDialog();
-			this.Close();
+			Owner.Show();
+			Hide();
 		}
 
         private void tbxEmail_KeyDown(object sender, KeyEventArgs e)

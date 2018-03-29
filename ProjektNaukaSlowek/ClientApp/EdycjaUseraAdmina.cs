@@ -19,12 +19,14 @@ namespace ClientApp
 
 		private void btnZatwierdzZmiany_Click(object sender, EventArgs e)
 		{
-
+			Owner.Show();
+			Hide();
 		}
 
 		private void btnWroc_Click(object sender, EventArgs e)
 		{
-
+			Owner.Show();
+			Hide();
 		}
 	}
 }

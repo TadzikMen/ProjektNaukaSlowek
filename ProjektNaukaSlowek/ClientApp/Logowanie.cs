@@ -12,6 +12,7 @@ namespace ClientApp
 {
     public partial class Logowanie : Form
     {
+		Aplikacja frmAplikacja;
         public Logowanie()
         {
             InitializeComponent();
@@ -55,11 +56,14 @@ namespace ClientApp
 					}
 					
 					MessageBox.Show(this, "Zalogowano pomyślnie!", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Aplikacja f = new Aplikacja();
-					f.PobierzUzytkownika = obsLogowania.Login.Login;
-                    ShowInTaskbar = false;
-                    f.ShowDialog();
-                    this.Close();
+					if (frmAplikacja == null)
+					{
+						frmAplikacja = new Aplikacja();
+						frmAplikacja.FormClosed += Aplikacja_FormClosed;
+					}
+					frmAplikacja.PobierzUzytkownika = obsLogowania.Login.Login;
+					frmAplikacja.Show(this);
+					Hide();
                 }
 				else
 				{
@@ -73,11 +77,15 @@ namespace ClientApp
 
 		private void Wroc_Click(object sender, EventArgs e)
         {
-            MenuGlowne f = new MenuGlowne();
-            ShowInTaskbar = false;
-            f.ShowDialog();
-            this.Close();
+			Owner.Show();
+			Hide();
         }
+
+		private void Aplikacja_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			frmAplikacja = null;
+			Show();
+		}
 
         private void tbxHaslo_KeyDown(object sender, KeyEventArgs e)
         {
