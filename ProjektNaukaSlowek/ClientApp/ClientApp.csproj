@@ -78,6 +78,7 @@
     </Compile>
     <Compile Include="Models\ObslugaLogowania.cs" />
     <Compile Include="Models\ObslugaRejestracji.cs" />
+    <Compile Include="Models\ObslugaSplashScreena.cs" />
     <Compile Include="Models\ObslugaUzytkownika.cs" />
     <Compile Include="Rejestracja.cs">
       <SubType>Form</SubType>

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ClientApp.Models
 {
-	public static class ObslugaUzytkownika
+	public static class ObslugaSplashScreena
 	{
-		public static string IdUzytkownika { get; set; }
+		public static bool czySplashZostalOdpalony = false;
 	}
 }

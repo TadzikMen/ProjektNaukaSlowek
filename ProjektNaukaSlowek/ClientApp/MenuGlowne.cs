@@ -13,17 +13,27 @@ namespace ClientApp
     public partial class MenuGlowne : Form
     {
         public static MenuGlowne MenuGlowneInstance;
-
+		
 		public MenuGlowne()
 		{
-			System.Threading.Thread task = new System.Threading.Thread(new System.Threading.ThreadStart(SplashStart));
-			task.Start();
-			System.Threading.Thread.Sleep(5000);
+			if (!Models.ObslugaSplashScreena.czySplashZostalOdpalony)
+			{
+				System.Threading.Thread task = new System.Threading.Thread(new System.Threading.ThreadStart(SplashStart));
+				task.Start();
+				System.Threading.Thread.Sleep(5000);
+				Models.ObslugaSplashScreena.czySplashZostalOdpalony = true;
 
-			InitializeComponent();
-			MenuGlowneInstance = this;
+				InitializeComponent();
+				MenuGlowneInstance = this;
 
-			task.Abort();
+				task.Abort();
+			}
+			else
+			{
+				InitializeComponent();
+				MenuGlowneInstance = this;
+			}
+			Models.ObslugaSplashScreena.czySplashZostalOdpalony = true;
 		}
 
 		public void SplashStart()

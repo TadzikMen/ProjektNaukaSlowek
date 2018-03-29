@@ -53,6 +53,7 @@ namespace ClientApp
 					{
 						obsLogowania.Login = await client.PrzekazDaneDoZalogowaniaAsync(tbxLogin.Text);
 					}
+					
 					MessageBox.Show(this, "Zalogowano pomyślnie!", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Aplikacja f = new Aplikacja();
 					f.PobierzUzytkownika = obsLogowania.Login.Login;
