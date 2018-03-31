@@ -36,6 +36,7 @@ namespace ServerApp
 			uzytkownik.Imie = imie;
 			uzytkownik.Nazwisko = nazwisko;
 			uzytkownik.Email = email;
+			uzytkownik.CzyZalogowany = false;
 
 			using (var db = new System.Data.SqlClient.SqlConnection(
 				System.Configuration.ConfigurationManager.ConnectionStrings[
@@ -45,8 +46,9 @@ namespace ServerApp
 				using (var cmd = new System.Data.SqlClient.SqlCommand())
 				{
 					cmd.Connection = db;
-					cmd.CommandText = "INSERT INTO Uzytkownicy(login_uzytkownika, haslo_uzytkownika, imie_uzytkownika, nazwisko_uzytkownika, email_uzytkownika) " +
-						"VALUES(@Login, @Haslo, @Imie, @Nazwisko, @Email);" +
+					cmd.CommandText = "INSERT INTO Uzytkownicy(" +
+						"login_uzytkownika, haslo_uzytkownika, imie_uzytkownika, nazwisko_uzytkownika, email_uzytkownika, czy_zalogowany) " +
+						"VALUES(@Login, @Haslo, @Imie, @Nazwisko, @Email, @CzyZalogowany);" +
 						"SELECT SCOPE_IDENTITY();";
 
 					cmd.Parameters.AddWithValue("@Login", uzytkownik.Login);
@@ -54,6 +56,7 @@ namespace ServerApp
 					cmd.Parameters.AddWithValue("@Imie", uzytkownik.Imie);
 					cmd.Parameters.AddWithValue("@Nazwisko", uzytkownik.Nazwisko);
 					cmd.Parameters.AddWithValue("@Email", uzytkownik.Email);
+					cmd.Parameters.AddWithValue("@CzyZalogowany", uzytkownik.CzyZalogowany);
 
 					Id = (int)(decimal)cmd.ExecuteScalar();
 				}
@@ -213,6 +216,15 @@ namespace ServerApp
 			}
 
 			return zalogowanyUzytkownik;
+		}
+
+		public List<int> PrzekazListeZalogowanych(string login)
+		{
+			List<int> listaUzytkownikow = new List<int>();
+			
+			listaUzytkownikow.Add(Sesja.IdUzytkownika);
+
+			return listaUzytkownikow;
 		}
 	}
 }

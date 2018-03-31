@@ -10,8 +10,6 @@ namespace ServerApp.DTO
 	public static class Sesja
 	{
 		[DataMember]
-		public static string IdUzytkownika { get; set; }
-		[DataMember]
-		public static string HasloUzytkownika { get; set; }
+		public static int IdUzytkownika { get; set; }
 	}
 }

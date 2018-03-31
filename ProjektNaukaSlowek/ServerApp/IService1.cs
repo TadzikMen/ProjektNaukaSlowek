@@ -33,6 +33,9 @@ namespace ServerApp
 
 		[OperationContract]
 		void WyslijMailaRejestracja(string login, string haslo, string email, string imie = null, string nazwisko = null);
+
+		[OperationContract]
+		List<int> PrzekazListeZalogowanych(string login);
     }
 
 

@@ -13,5 +13,7 @@ namespace ServerApp.DTO
 		public string Login { get; set; }
 		[DataMember]
 		public string Haslo { get; set; }
+		[DataMember]
+		public bool CzyZalogowany { get; set; }
 	}
 }

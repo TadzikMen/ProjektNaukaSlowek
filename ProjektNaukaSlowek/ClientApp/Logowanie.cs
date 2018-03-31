@@ -63,20 +63,23 @@ namespace ClientApp
 				{
 					using (var client = new WcfService.Service1Client())
 					{
-						obsLogowania.Login = await client.PrzekazDaneDoZalogowaniaAsync(tbxLogin.Text);
+						obsLogowania.DaneLogowania = await client.PrzekazDaneDoZalogowaniaAsync(tbxLogin.Text);
 					}
 					
 					MessageBox.Show(this, "Zalogowano pomyślnie!", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					
 					if (frmAplikacja == null)
 					{
 						frmAplikacja = new Aplikacja();
 						frmAplikacja.FormClosed += Aplikacja_FormClosed;
 					}
-					frmAplikacja.PobierzUzytkownika = obsLogowania.Login.Login;
-					tbxLogin.Text = null;
-					tbxHaslo.Text = null;
+
 					frmAplikacja.Show(this);
 					Hide();
+
+					frmAplikacja.PobierzUzytkownika = obsLogowania.DaneLogowania.Login;
+					tbxLogin.Text = null;
+					tbxHaslo.Text = null;
                 }
 				else
 				{

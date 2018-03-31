@@ -8,17 +8,17 @@ namespace ClientApp.Models
 {
     public class ObslugaLogowania
     {
-        private WcfService.Logowanie _login;
-        public WcfService.Logowanie Login
+        private WcfService.Logowanie _daneLogowania;
+        public WcfService.Logowanie DaneLogowania
         {
             get
             {
-                return _login;
+                return _daneLogowania;
             }
 
             set
             {
-                _login = value;
+                _daneLogowania = value;
             }
         }
     }
