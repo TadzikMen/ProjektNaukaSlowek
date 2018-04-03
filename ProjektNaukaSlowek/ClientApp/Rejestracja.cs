@@ -52,6 +52,7 @@ namespace ClientApp
 			//       Niepoprawne: js@proseware..com
 			//       Poprawne: js@proseware.com9
 			//       Poprawne: j.s@server1.proseware.com
+
 			if (string.IsNullOrEmpty(email))
 				return false;
 			else if (System.Text.RegularExpressions.Regex.IsMatch(
@@ -63,8 +64,6 @@ namespace ClientApp
 				return true;
 			else
 				return false;
-
-
 		}
 
 		private bool SprawdzenieImieINazwisko(string imie, string nazwisko)
