@@ -18,20 +18,18 @@ namespace ClientApp
             InitializeComponent();
         }
 
-        public bool WalidacjaHasla(string haslo)
-        {
-            if(haslo.Length < 8)
-                return false;
-            
-            else
-            {
-				if ((haslo.Any(c => char.IsUpper(c))) && haslo.Any(c => char.IsDigit(c)))
-					return true;
+		public bool WalidacjaHasla(string haslo)
+		{
+			if (haslo.Length < 8)
+				return false;
 
-				else
-					return false;
-            }
-        }
+			if ((haslo.Any(c => char.IsUpper(c))) && haslo.Any(c => char.IsDigit(c)))
+				return true;
+
+			else
+				return false;
+
+		}
 
 		private bool SprawdzenieEmail(string email)
 		{
@@ -40,13 +38,13 @@ namespace ClientApp
 			//$	Zakończenie dopasowuje koniec ciągu.
 
 			// Przykładowe interpretacje funkcji:
-			//       Poprawne: david.jones@proseware.com
-			//       Poprawne: d.j@server1.proseware.com
-			//       Poprawne: jones@ms1.proseware.com
-			//       Niepoprawne: j.@server1.proseware.com
+			//       Poprawne: prezes.jarosław@straszydlo.com
+			//       Poprawne: d.j@server1.prokotlet.com
+			//       Poprawne: antoni@do1.broni.com
+			//       Niepoprawne: j.@ry.dzyk.com
 			//       Poprawne: j@proseware.com9
 			//       Poprawne: js#internal@proseware.com
-			//       Poprawne: j_9@[129.126.118.1]
+			//       Poprawne: j_9@[129.666.118.1]
 			//       Niepoprawne: j..s@proseware.com
 			//       Niepoprawne: js*@proseware.com
 			//       Niepoprawne: js@proseware..com
