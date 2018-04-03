@@ -198,9 +198,10 @@ namespace ServerApp
 
 		public Logowanie PrzekazDaneDoZalogowania(string login)
 		{
-			Logowanie zalogowanyUzytkownik = new Logowanie();
-
-			zalogowanyUzytkownik.Login = login;
+			Logowanie zalogowanyUzytkownik = new Logowanie
+			{
+				Login = login
+			};
 
 			using (var db = new System.Data.SqlClient.SqlConnection(
 				System.Configuration.ConfigurationManager.ConnectionStrings[

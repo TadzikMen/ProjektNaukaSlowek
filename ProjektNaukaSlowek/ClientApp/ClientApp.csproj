@@ -81,6 +81,12 @@
     <Compile Include="Models\ObslugaRejestracji.cs" />
     <Compile Include="Models\ObslugaSplashScreena.cs" />
     <Compile Include="Models\ObslugaUzytkownika.cs" />
+    <Compile Include="Oczekiwanie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Oczekiwanie.Designer.cs">
+      <DependentUpon>Oczekiwanie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rejestracja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuGlowne.resx">
       <DependentUpon>MenuGlowne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Oczekiwanie.resx">
+      <DependentUpon>Oczekiwanie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rejestracja.resx">
       <DependentUpon>Rejestracja.cs</DependentUpon>
