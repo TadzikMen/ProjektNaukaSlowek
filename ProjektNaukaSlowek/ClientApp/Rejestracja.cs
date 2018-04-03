@@ -33,15 +33,41 @@ namespace ClientApp
             }
         }
 
-        private bool SprawdzenieEmail(string Email)
-        {
-			if (Email.Contains("@"))
+		private bool SprawdzenieEmail(string email)
+		{
+			//(@) Dopasowanie znaku @. Jest to pierwsza grupa przechwytywania.
+			//(.+) Odpowiada jedno lub więcej wystąpień dowolnego znaku. Jest to druga grupa przechwytywania.
+			//$	Zakończenie dopasowuje koniec ciągu.
+
+			// Przykładowe interpretacje funkcji:
+			//       Poprawne: david.jones@proseware.com
+			//       Poprawne: d.j@server1.proseware.com
+			//       Poprawne: jones@ms1.proseware.com
+			//       Niepoprawne: j.@server1.proseware.com
+			//       Poprawne: j@proseware.com9
+			//       Poprawne: js#internal@proseware.com
+			//       Poprawne: j_9@[129.126.118.1]
+			//       Niepoprawne: j..s@proseware.com
+			//       Niepoprawne: js*@proseware.com
+			//       Niepoprawne: js@proseware..com
+			//       Poprawne: js@proseware.com9
+			//       Poprawne: j.s@server1.proseware.com
+			if (string.IsNullOrEmpty(email))
+				return false;
+			else if (System.Text.RegularExpressions.Regex.IsMatch(
+				email,
+				@"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+				@"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+				System.Text.RegularExpressions.RegexOptions.IgnoreCase)
+				)
 				return true;
 			else
 				return false;
-        }
 
-        private bool SprawdzenieImieINazwisko(string imie, string nazwisko)
+
+		}
+
+		private bool SprawdzenieImieINazwisko(string imie, string nazwisko)
         {
 			if (imie == string.Empty || nazwisko == string.Empty)
 				return true;
