@@ -138,9 +138,9 @@ namespace ServerApp
 			return false;
 		}
 
-		public List<DTO.Uwierzytelnianie> PobierzLoginyIMaile()
+		public List<DTO.Uwierzytelnianie> PobierzLoginyMaileImiona()
 		{
-			List<Uwierzytelnianie> listaLoginowMaili;
+			List<Uwierzytelnianie> listaLoginowMailiImion;
 
 			using (var db = new System.Data.SqlClient.SqlConnection(
 				System.Configuration.ConfigurationManager.ConnectionStrings[
@@ -150,24 +150,25 @@ namespace ServerApp
 				using (var cmd = new System.Data.SqlClient.SqlCommand())
 				{
 					cmd.Connection = db;
-					cmd.CommandText = "SELECT login_uzytkownika, email_uzytkownika FROM Uzytkownicy";
+					cmd.CommandText = "SELECT login_uzytkownika, email_uzytkownika, imie_uzytkownika FROM Uzytkownicy";
 
 					using (var dr = cmd.ExecuteReader())
 					{
-						listaLoginowMaili = new List<Uwierzytelnianie>();
+						listaLoginowMailiImion = new List<Uwierzytelnianie>();
 						while (dr.Read())
 						{
-							listaLoginowMaili.Add(new Uwierzytelnianie
+							listaLoginowMailiImion.Add(new Uwierzytelnianie
 							{
 								Login = (string)dr["login_uzytkownika"],
-								Email = (string)dr["email_uzytkownika"]
+								Email = (string)dr["email_uzytkownika"],
+								Imie = (string)dr["imie_uzytkownika"]
 							});
 						}
 					}
 				}
 			}
 
-			return listaLoginowMaili;
+			return listaLoginowMailiImion;
 		}
 
 		public void WyslijMailaRejestracja(string login, string haslo, string email, string imie = null, string nazwisko = null)
@@ -176,9 +177,9 @@ namespace ServerApp
 			WysylanieMaila mail = new WysylanieMaila(email);
 
 			if (String.IsNullOrEmpty(imie))
-				_wiadomosc = $"Dziękujemy za rejestrację w serwisie Nauka Słówek, {login}!\n Twoje hasło dostępu to: {haslo}";
+				_wiadomosc = $"Dziękujemy za rejestrację w serwisie Nauka Słówek, {login}!\nTwoje hasło dostępu to: {haslo}";
 			else
-				_wiadomosc = $"Dziękujemy za rejestrację w serwisie Nauka Słówek, {imie} {nazwisko}!\n Twoje hasło dostępu to {haslo}";
+				_wiadomosc = $"Dziękujemy za rejestrację w serwisie Nauka Słówek, {imie} {nazwisko}!\nTwoje hasło dostępu to {haslo}";
 
 
 			System.Net.Mail.MailMessage mailMess = new System.Net.Mail.MailMessage(
@@ -217,15 +218,6 @@ namespace ServerApp
 			}
 
 			return zalogowanyUzytkownik;
-		}
-
-		public List<int> PrzekazListeZalogowanych(string login)
-		{
-			List<int> listaUzytkownikow = new List<int>();
-			
-			listaUzytkownikow.Add(Sesja.IdUzytkownika);
-
-			return listaUzytkownikow;
 		}
 	}
 }

@@ -7,9 +7,9 @@ using System.Web;
 namespace ServerApp.DTO
 {
 	[DataContract]
-	public static class Sesja
+	public class Sesja
 	{
 		[DataMember]
-		public static int IdUzytkownika { get; set; }
+		public List<int> IdUzytkownika { get; set; }
 	}
 }

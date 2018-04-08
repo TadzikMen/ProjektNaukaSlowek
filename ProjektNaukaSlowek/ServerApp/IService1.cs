@@ -29,14 +29,11 @@ namespace ServerApp
 		void DodajUzytkownika(string login, string haslo, string email, string imie = null, string nazwisko = null);
 
 		[OperationContract]
-		List<DTO.Uwierzytelnianie> PobierzLoginyIMaile();
+		List<DTO.Uwierzytelnianie> PobierzLoginyMaileImiona();
 
 		[OperationContract]
 		void WyslijMailaRejestracja(string login, string haslo, string email, string imie = null, string nazwisko = null);
-
-		[OperationContract]
-		List<int> PrzekazListeZalogowanych(string login);
-    }
+	}
 
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.

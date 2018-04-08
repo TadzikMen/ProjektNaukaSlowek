@@ -69,13 +69,11 @@ namespace ClientApp
 			if (imie == string.Empty || nazwisko == string.Empty)
 				return true;
             else if(Convert.ToInt32(imie[0]) > 65 && Convert.ToInt32(imie[0]) < 90 && Convert.ToInt32(nazwisko[0]) > 65 && Convert.ToInt32(nazwisko[0]) < 90)
-            {
                 return true;
-            }
+            
             else
-            {
                 return false;
-            }
+
         }
 
 		public void WyswietlOczekiwanie()
@@ -88,7 +86,7 @@ namespace ClientApp
 			oczekiwanie = new System.Threading.Thread(WyswietlOczekiwanie);
 			oczekiwanie.Start();
 			this.Enabled = false;
-						
+
 			bool czyPoprawneDane = true;
             bool weryfikacja = true;
 
@@ -104,7 +102,7 @@ namespace ClientApp
 						tbxNazwisko.Text);
 					
 					czyPoprawneDane = obsRejestracji.SprawdzDaneWejsciowe(tbxLogin.Text, tbxHaslo.Text, tbxEmail.Text);
-					obsRejestracji.Lista = await client.PobierzLoginyIMaileAsync();
+					obsRejestracji.Lista = await client.PobierzLoginyMaileImionaAsync();
 
                     if (!obsRejestracji.SprawdzCzyIstniejeUzytkownik(obsRejestracji.Lista, tbxLogin.Text, tbxEmail.Text))
 					{

@@ -84,6 +84,9 @@ namespace ClientApp.WcfService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CzyZalogowanyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string HasloField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -96,6 +99,19 @@ namespace ClientApp.WcfService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CzyZalogowany {
+            get {
+                return this.CzyZalogowanyField;
+            }
+            set {
+                if ((this.CzyZalogowanyField.Equals(value) != true)) {
+                    this.CzyZalogowanyField = value;
+                    this.RaisePropertyChanged("CzyZalogowany");
+                }
             }
         }
         
@@ -148,6 +164,9 @@ namespace ClientApp.WcfService {
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImieField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LoginField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -169,6 +188,19 @@ namespace ClientApp.WcfService {
                 if ((object.ReferenceEquals(this.EmailField, value) != true)) {
                     this.EmailField = value;
                     this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Imie {
+            get {
+                return this.ImieField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImieField, value) != true)) {
+                    this.ImieField = value;
+                    this.RaisePropertyChanged("Imie");
                 }
             }
         }
@@ -230,11 +262,11 @@ namespace ClientApp.WcfService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DodajUzytkownika", ReplyAction="http://tempuri.org/IService1/DodajUzytkownikaResponse")]
         System.Threading.Tasks.Task DodajUzytkownikaAsync(string login, string haslo, string email, string imie, string nazwisko);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzLoginyIMaile", ReplyAction="http://tempuri.org/IService1/PobierzLoginyIMaileResponse")]
-        System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie> PobierzLoginyIMaile();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzLoginyMaileImiona", ReplyAction="http://tempuri.org/IService1/PobierzLoginyMaileImionaResponse")]
+        System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie> PobierzLoginyMaileImiona();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzLoginyIMaile", ReplyAction="http://tempuri.org/IService1/PobierzLoginyIMaileResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>> PobierzLoginyIMaileAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzLoginyMaileImiona", ReplyAction="http://tempuri.org/IService1/PobierzLoginyMaileImionaResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>> PobierzLoginyMaileImionaAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/WyslijMailaRejestracja", ReplyAction="http://tempuri.org/IService1/WyslijMailaRejestracjaResponse")]
         void WyslijMailaRejestracja(string login, string haslo, string email, string imie, string nazwisko);
@@ -310,12 +342,12 @@ namespace ClientApp.WcfService {
             return base.Channel.DodajUzytkownikaAsync(login, haslo, email, imie, nazwisko);
         }
         
-        public System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie> PobierzLoginyIMaile() {
-            return base.Channel.PobierzLoginyIMaile();
+        public System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie> PobierzLoginyMaileImiona() {
+            return base.Channel.PobierzLoginyMaileImiona();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>> PobierzLoginyIMaileAsync() {
-            return base.Channel.PobierzLoginyIMaileAsync();
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>> PobierzLoginyMaileImionaAsync() {
+            return base.Channel.PobierzLoginyMaileImionaAsync();
         }
         
         public void WyslijMailaRejestracja(string login, string haslo, string email, string imie, string nazwisko) {

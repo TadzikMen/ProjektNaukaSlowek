@@ -13,5 +13,7 @@ namespace ServerApp.DTO
 		public string Login { get; set; }
 		[DataMember]
 		public string Email { get; set; }
+		[DataMember]
+		public string Imie { get; set; }
 	}
 }

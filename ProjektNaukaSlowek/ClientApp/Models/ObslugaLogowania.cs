@@ -9,17 +9,20 @@ namespace ClientApp.Models
     public class ObslugaLogowania
     {
         private WcfService.Logowanie _daneLogowania;
-        public WcfService.Logowanie DaneLogowania
+		private WcfService.Uwierzytelnianie _listaDoPrzekazaniaWLogowaniu;
+		
+		public WcfService.Logowanie DaneLogowania
         {
             get
-            {
-                return _daneLogowania;
-            }
-
+			{
+				return _daneLogowania;
+			}
             set
             {
                 _daneLogowania = value;
             }
         }
-    }
+		public List<WcfService.Uwierzytelnianie> ListaUserow { get; set; }
+
+	}
 }
