@@ -55,14 +55,15 @@
 			// 
 			// tbxNrPoziomu
 			// 
+			this.tbxNrPoziomu.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.tbxNrPoziomu.Cursor = System.Windows.Forms.Cursors.Arrow;
 			this.tbxNrPoziomu.Enabled = false;
-			this.tbxNrPoziomu.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.tbxNrPoziomu.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.tbxNrPoziomu.Location = new System.Drawing.Point(211, 12);
 			this.tbxNrPoziomu.Multiline = true;
 			this.tbxNrPoziomu.Name = "tbxNrPoziomu";
 			this.tbxNrPoziomu.ReadOnly = true;
-			this.tbxNrPoziomu.Size = new System.Drawing.Size(250, 83);
+			this.tbxNrPoziomu.Size = new System.Drawing.Size(298, 70);
 			this.tbxNrPoziomu.TabIndex = 1;
 			// 
 			// textBox2
