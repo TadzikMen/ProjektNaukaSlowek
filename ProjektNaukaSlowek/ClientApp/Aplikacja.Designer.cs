@@ -102,6 +102,7 @@
 			// btnEdytujProfil
 			// 
 			this.btnEdytujProfil.BackColor = System.Drawing.SystemColors.Info;
+			this.btnEdytujProfil.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnEdytujProfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.btnEdytujProfil.ForeColor = System.Drawing.SystemColors.ActiveBorder;
 			this.btnEdytujProfil.Location = new System.Drawing.Point(1059, 71);
@@ -116,6 +117,7 @@
 			// btnZarzadzaj
 			// 
 			this.btnZarzadzaj.BackColor = System.Drawing.SystemColors.Info;
+			this.btnZarzadzaj.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnZarzadzaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.btnZarzadzaj.ForeColor = System.Drawing.SystemColors.ActiveBorder;
 			this.btnZarzadzaj.Location = new System.Drawing.Point(1059, 174);
@@ -159,7 +161,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-			this.ClientSize = new System.Drawing.Size(1005, 671);
+			this.ClientSize = new System.Drawing.Size(1083, 671);
 			this.Controls.Add(this.lblNazwa);
 			this.Controls.Add(this.btnWyloguj);
 			this.Controls.Add(this.btnZarzadzaj);
