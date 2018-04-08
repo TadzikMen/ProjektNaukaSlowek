@@ -55,7 +55,7 @@ namespace ClientApp
 				frmRozpocznijNauke.FormClosed += RozpocznijNauke_FormClosed;
 			}
 
-			frmEdycjaUseraAdmina.Show(this);
+			frmRozpocznijNauke.Show(this);
 			Hide();
 		}
 
@@ -73,7 +73,7 @@ namespace ClientApp
 				frmKontynuujNauke.FormClosed += KontynuujNauke_FormClosed;
 			}
 
-			frmEdycjaUseraAdmina.Show(this);
+			frmKontynuujNauke.Show(this);
 			Hide();
 		}
 
@@ -91,7 +91,7 @@ namespace ClientApp
 				frmSprawdzSwojePostepy.FormClosed += SprawdzSwojePostepy_FormClosed;
 			}
 
-			frmEdycjaUseraAdmina.Show(this);
+			frmSprawdzSwojePostepy.Show(this);
 			Hide();
 		}
 

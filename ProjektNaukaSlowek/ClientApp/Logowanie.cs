@@ -68,7 +68,7 @@ namespace ClientApp
 					using (var client = new WcfService.Service1Client())
 					{
 						obsLogowania.DaneLogowania = await client.PrzekazDaneDoZalogowaniaAsync(tbxLogin.Text);
-						obsLogowania.ListaUserow = await client.PobierzLoginyMaileImionaAsync();
+						//obsLogowania.ListaUserow = await client.PobierzLoginyMaileImionaAsync();
 					}
 					
 					

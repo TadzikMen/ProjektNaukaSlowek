@@ -15,6 +15,18 @@ namespace ClientApp
         public RozpocznijNauke()
         {
             InitializeComponent();
-        }
+			//Do późniejszej poprawy KONIECZNIE
+			cmBxFormaNauki.Items.Add("Pełny Kurs");
+			cmBxFormaNauki.Items.Add("Fiszki");
+			cmBxFormaNauki.Items.Add("Gramatyka");
+
+			cmBxWyborJezyka.Items.Add("Angielski");
+			cmBxWyborJezyka.Items.Add("Niemiecki");
+			cmBxWyborJezyka.Items.Add("Hiszpański");
+
+			cmBxWyborPoziomu.Items.Add("Podstawowy");
+			cmBxWyborPoziomu.Items.Add("Średniozaawansowany");
+			cmBxWyborPoziomu.Items.Add("Zaawansowany");
+		}
     }
 }
