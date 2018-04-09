@@ -191,14 +191,18 @@ namespace ServerApp
 
 		public FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom)
 		{
-			DTO.FormyNauki formyNauki = new FormyNauki
+			throw new NotImplementedException();
+		}
+
+		public Slowka ZwrocTlumaczenieSlowka(string slowo)
+		{
+			DTO.Slowka slowka = new Slowka
 			{
-				FormaNauki = formaNauki,
-				WybranyJezyk = jezyk,
-				Poziom = poziom
+				WprowadzoneSlowo = slowo
 			};
 
-			return formyNauki;
+
+			return slowka;
 		}
 	}
 }

@@ -36,6 +36,9 @@ namespace ServerApp
 
 		[OperationContract]
 		DTO.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom);
+
+		[OperationContract]
+		DTO.Slowka ZwrocTlumaczenieSlowka(string slowo);
 	}
 
 
