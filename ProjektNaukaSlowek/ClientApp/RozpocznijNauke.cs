@@ -13,16 +13,16 @@ namespace ClientApp
     public partial class RozpocznijNauke : Form
     {
 		Fiszki frmFiszki;
-
         public RozpocznijNauke()
         {
             InitializeComponent();
 
 			//Do późniejszej poprawy
 			UzupelnijWartosci();
-		}
-
-		public string PrzekazNumerPoziomu
+            
+    }
+        
+        public string PrzekazNumerPoziomu
 		{
 			get { return cmBxWyborPoziomu.SelectedItem.ToString(); }
 		}
@@ -32,8 +32,9 @@ namespace ClientApp
 			cmBxFormaNauki.Items.Add("Pełny Kurs");
 			cmBxFormaNauki.Items.Add("Fiszki");
 			cmBxFormaNauki.Items.Add("Gramatyka");
+            cmBxFormaNauki.Items.Add("Słownik");
 
-			cmBxWyborJezyka.Items.Add("Angielski");
+            cmBxWyborJezyka.Items.Add("Angielski");
 			cmBxWyborJezyka.Items.Add("Niemiecki");
 			cmBxWyborJezyka.Items.Add("Hiszpański");
 
@@ -75,5 +76,24 @@ namespace ClientApp
 			frmFiszki = null;
 			Show();
 		}
-	}
+
+        private void RozpocznijNauke_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmBxFormaNauki_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (cmBxFormaNauki.SelectedItem.ToString() == "Słownik")
+            {
+                cmBxWyborJezyka.Enabled = false;
+                cmBxWyborPoziomu.Enabled = false;
+            }
+            else
+            {
+                cmBxWyborJezyka.Enabled = true;
+                cmBxWyborPoziomu.Enabled = true;
+            }
+        }
+    }
 }
