@@ -70,6 +70,24 @@
     <Compile Include="Fiszki.Designer.cs">
       <DependentUpon>Fiszki.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gramatyka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gramatyka.Designer.cs">
+      <DependentUpon>Gramatyka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gramatyka2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gramatyka2.Designer.cs">
+      <DependentUpon>Gramatyka2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gramatyka3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gramatyka3.Designer.cs">
+      <DependentUpon>Gramatyka3.cs</DependentUpon>
+    </Compile>
     <Compile Include="KontynuujNauke.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +138,12 @@
     <Compile Include="RozpocznijNauke.Designer.cs">
       <DependentUpon>RozpocznijNauke.cs</DependentUpon>
     </Compile>
+    <Compile Include="Slownik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Slownik.Designer.cs">
+      <DependentUpon>Slownik.cs</DependentUpon>
+    </Compile>
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +155,24 @@
     </Compile>
     <Compile Include="SprawdzSwojePostepy.Designer.cs">
       <DependentUpon>SprawdzSwojePostepy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test2.Designer.cs">
+      <DependentUpon>Test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TlumaczenieSlowek.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TlumaczenieSlowek.Designer.cs">
+      <DependentUpon>TlumaczenieSlowek.cs</DependentUpon>
     </Compile>
     <Compile Include="WeryfikacjaKodu.cs">
       <SubType>Form</SubType>
@@ -158,6 +200,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fiszki.resx">
       <DependentUpon>Fiszki.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gramatyka.resx">
+      <DependentUpon>Gramatyka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gramatyka2.resx">
+      <DependentUpon>Gramatyka2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gramatyka3.resx">
+      <DependentUpon>Gramatyka3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KontynuujNauke.resx">
       <DependentUpon>KontynuujNauke.cs</DependentUpon>
@@ -189,11 +240,23 @@
     <EmbeddedResource Include="RozpocznijNauke.resx">
       <DependentUpon>RozpocznijNauke.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Slownik.resx">
+      <DependentUpon>Slownik.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SprawdzSwojePostepy.resx">
       <DependentUpon>SprawdzSwojePostepy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test2.resx">
+      <DependentUpon>Test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TlumaczenieSlowek.resx">
+      <DependentUpon>TlumaczenieSlowek.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WeryfikacjaKodu.resx">
       <DependentUpon>WeryfikacjaKodu.cs</DependentUpon>

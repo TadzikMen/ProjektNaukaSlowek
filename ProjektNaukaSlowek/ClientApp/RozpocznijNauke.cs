@@ -66,7 +66,7 @@ namespace ClientApp
 				frmFiszki.Show(this);
 				Hide();
 
-				frmFiszki.PobierzNumerPoziomu = "Poziom: " + rozpoczynanieNauki.Poziom;
+				//frmFiszki.PobierzNumerPoziomu = "Poziom: " + rozpoczynanieNauki.Poziom;
 			}
 		}
 

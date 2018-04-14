@@ -37,13 +37,14 @@ namespace ClientApp
 
 		private void Logowanie_Click(object sender, EventArgs e)
 		{
-			if (frmLogowanie == null)
-			{
-				frmLogowanie = new Logowanie();
-				frmLogowanie.FormClosed += Logowanie_FormClosed;
-			}
-
-			frmLogowanie.Show(this);
+            //if (frmLogowanie == null)
+            //{
+            //	frmLogowanie = new Logowanie();
+            //	frmLogowanie.FormClosed += Logowanie_FormClosed;
+            //}
+            //frmLogowanie.Show(this);
+            Slownik f = new Slownik();
+            f.ShowDialog();
 			Hide();
 		}
 
