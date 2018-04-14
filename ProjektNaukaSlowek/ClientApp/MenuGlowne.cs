@@ -36,15 +36,14 @@ namespace ClientApp
 		}
 
 		private void Logowanie_Click(object sender, EventArgs e)
-		{
-			if (frmLogowanie == null)
-			{
-				frmLogowanie = new Logowanie();
-				frmLogowanie.FormClosed += Logowanie_FormClosed;
-			}
-
-			frmLogowanie.Show(this);
-			Hide();
+        {
+            if (frmLogowanie == null)
+            {
+                frmLogowanie = new Logowanie();
+                frmLogowanie.FormClosed += Logowanie_FormClosed;
+            }
+            frmLogowanie.Show(this);
+            Hide();
 		}
 
 		private void Logowanie_FormClosed(object sender, FormClosedEventArgs e)

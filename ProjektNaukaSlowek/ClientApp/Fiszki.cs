@@ -18,10 +18,10 @@ namespace ClientApp
 			
 		}
 
-		public string PobierzNumerPoziomu
-		{
-			set { tbxNrPoziomu.Text = value; }
-		}
+		//public string PobierzNumerPoziomu
+		//{
+		//	set { tbxNrPoziomu.Text = value; }
+		//}
 
 		private void btnTlumacz_Click(object sender, EventArgs e)
 		{
@@ -33,5 +33,15 @@ namespace ClientApp
 			Owner.Show();
 			Hide();
 		}
-	}
+
+        private void Fiszki_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnKolejneSlowko_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
