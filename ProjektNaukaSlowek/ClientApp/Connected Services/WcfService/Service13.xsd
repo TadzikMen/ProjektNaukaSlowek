@@ -40,9 +40,10 @@
   <xs:element name="Slowka" nillable="true" type="tns:Slowka" />
   <xs:complexType name="Sesja">
     <xs:sequence>
+      <xs:element minOccurs="0" name="CzasOstatniejAkcji" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CzasZalogowania" type="xs:dateTime" />
       <xs:element minOccurs="0" name="IdUzytkownika" type="xs:int" />
       <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ListaTokenow" nillable="true" type="q1:ArrayOfstring" />
-      <xs:element minOccurs="0" name="PobraneTokeny" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

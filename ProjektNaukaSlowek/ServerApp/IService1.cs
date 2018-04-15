@@ -41,7 +41,7 @@ namespace ServerApp
 		DTO.Slowka ZwrocTlumaczenieSlowka(string slowo);
 
 		[OperationContract]
-		DTO.Sesja GenerujToken();
+		DTO.Sesja GenerujToken(string login);
 	}
 
 

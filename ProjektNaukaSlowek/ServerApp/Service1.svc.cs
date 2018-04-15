@@ -205,14 +205,17 @@ namespace ServerApp
 			return slowka;
 		}
 
-		public Sesja GenerujToken()
+		public Sesja GenerujToken(string login)
 		{
 			//Wzór tokenu: XYZ123456
 			Sesja sesja = new Sesja();
+			Logowanie logowanie = new Logowanie();
 			Random rand = new Random();
 			char[] slowaTokenu = new char[9];
 			int symbol;
-			int id;
+			int idTokenu;
+			byte czyZalogowany = 1;
+			logowanie.Login = login;
 			
 			using (var db = new System.Data.SqlClient.SqlConnection(
 				System.Configuration.ConfigurationManager.ConnectionStrings[
@@ -230,6 +233,14 @@ namespace ServerApp
 							sesja.ListaTokenow.Add( 
 								(string)dr["TOKEN"]
 							);
+						}
+					}
+					cmd.CommandText = "SELECT id_uzytkownika FROM Uzytkownicy WHERE login_uzytkownika=@Login";
+					using (var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							sesja.IdUzytkownika = (int)dr["id_uzytkownika"];
 						}
 					}
 				}
@@ -287,7 +298,12 @@ namespace ServerApp
 					cmd.Parameters.AddWithValue("@CZAS_LOGOWANIA", sesja.CzasZalogowania);
 					cmd.Parameters.AddWithValue("@CZAS_OSTATNIEJ_AKCJI", sesja.CzasOstatniejAkcji);
 
-					id = (int)(decimal)cmd.ExecuteScalar();
+					idTokenu = (int)(decimal)cmd.ExecuteScalar();
+
+					cmd.CommandText = "UPDATE Uzytkownicy SET ID_TOKEN=@idTokenu, czy_zalogowany=1 WHERE id_uzytkownika=@IdUzytkownika";
+					cmd.Parameters.AddWithValue("@IdUzytkownika",sesja.IdUzytkownika);
+					cmd.Parameters.AddWithValue("@idTokenu", idTokenu);
+					cmd.Parameters.AddWithValue("@czy_zalogowany", czyZalogowany);
 				}
 			}
 

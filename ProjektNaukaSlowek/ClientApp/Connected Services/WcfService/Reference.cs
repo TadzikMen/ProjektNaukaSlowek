@@ -376,13 +376,16 @@ namespace ClientApp.WcfService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CzasOstatniejAkcjiField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CzasZalogowaniaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdUzytkownikaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Collections.Generic.List<string> ListaTokenowField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PobraneTokenyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TokenField;
@@ -394,6 +397,32 @@ namespace ClientApp.WcfService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CzasOstatniejAkcji {
+            get {
+                return this.CzasOstatniejAkcjiField;
+            }
+            set {
+                if ((this.CzasOstatniejAkcjiField.Equals(value) != true)) {
+                    this.CzasOstatniejAkcjiField = value;
+                    this.RaisePropertyChanged("CzasOstatniejAkcji");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CzasZalogowania {
+            get {
+                return this.CzasZalogowaniaField;
+            }
+            set {
+                if ((this.CzasZalogowaniaField.Equals(value) != true)) {
+                    this.CzasZalogowaniaField = value;
+                    this.RaisePropertyChanged("CzasZalogowania");
+                }
             }
         }
         
@@ -419,19 +448,6 @@ namespace ClientApp.WcfService {
                 if ((object.ReferenceEquals(this.ListaTokenowField, value) != true)) {
                     this.ListaTokenowField = value;
                     this.RaisePropertyChanged("ListaTokenow");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PobraneTokeny {
-            get {
-                return this.PobraneTokenyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PobraneTokenyField, value) != true)) {
-                    this.PobraneTokenyField = value;
-                    this.RaisePropertyChanged("PobraneTokeny");
                 }
             }
         }
@@ -518,10 +534,10 @@ namespace ClientApp.WcfService {
         System.Threading.Tasks.Task<ClientApp.WcfService.Slowka> ZwrocTlumaczenieSlowkaAsync(string slowo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GenerujToken", ReplyAction="http://tempuri.org/IService1/GenerujTokenResponse")]
-        ClientApp.WcfService.Sesja GenerujToken();
+        ClientApp.WcfService.Sesja GenerujToken(string login);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GenerujToken", ReplyAction="http://tempuri.org/IService1/GenerujTokenResponse")]
-        System.Threading.Tasks.Task<ClientApp.WcfService.Sesja> GenerujTokenAsync();
+        System.Threading.Tasks.Task<ClientApp.WcfService.Sesja> GenerujTokenAsync(string login);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -623,12 +639,12 @@ namespace ClientApp.WcfService {
             return base.Channel.ZwrocTlumaczenieSlowkaAsync(slowo);
         }
         
-        public ClientApp.WcfService.Sesja GenerujToken() {
-            return base.Channel.GenerujToken();
+        public ClientApp.WcfService.Sesja GenerujToken(string login) {
+            return base.Channel.GenerujToken(login);
         }
         
-        public System.Threading.Tasks.Task<ClientApp.WcfService.Sesja> GenerujTokenAsync() {
-            return base.Channel.GenerujTokenAsync();
+        public System.Threading.Tasks.Task<ClientApp.WcfService.Sesja> GenerujTokenAsync(string login) {
+            return base.Channel.GenerujTokenAsync(login);
         }
     }
 }
