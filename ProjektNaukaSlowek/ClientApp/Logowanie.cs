@@ -54,8 +54,6 @@ namespace ClientApp
 				using (var client = new WcfService.Service1Client())
 				{
 					log = await client.SprawdzDaneLogowaniaAsync(tbxLogin.Text, tbxHaslo.Text);
-					//await client.GenerujTokenAsync(obsLogowania.DaneLogowania.Login);
-					
 				}
 			}
 			catch (Exception ex)
@@ -69,7 +67,7 @@ namespace ClientApp
 					using (var client = new WcfService.Service1Client())
 					{
 						obsLogowania.DaneLogowania = await client.PrzekazDaneDoZalogowaniaAsync(tbxLogin.Text);
-						
+						await client.GenerujTokenAsync(obsLogowania.DaneLogowania.Login);
 					}
 					
 					MessageBox.Show(this, "Zalogowano pomyślnie!", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Information);

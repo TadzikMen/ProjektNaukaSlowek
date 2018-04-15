@@ -209,13 +209,15 @@ namespace ServerApp
 		{
 			//Wzór tokenu: XYZ123456
 			Sesja sesja = new Sesja();
-			Logowanie logowanie = new Logowanie();
+			Logowanie logowanie = new Logowanie
+			{
+				Login = login
+			};
 			Random rand = new Random();
 			char[] slowaTokenu = new char[9];
 			int symbol;
 			int idTokenu;
 			byte czyZalogowany = 1;
-			logowanie.Login = login;
 			
 			using (var db = new System.Data.SqlClient.SqlConnection(
 				System.Configuration.ConfigurationManager.ConnectionStrings[
@@ -236,6 +238,7 @@ namespace ServerApp
 						}
 					}
 					cmd.CommandText = "SELECT id_uzytkownika FROM Uzytkownicy WHERE login_uzytkownika=@Login";
+					cmd.Parameters.Add("@Login", System.Data.SqlDbType.NVarChar).Value = logowanie.Login;
 					using (var dr = cmd.ExecuteReader())
 					{
 						while (dr.Read())
@@ -263,25 +266,28 @@ namespace ServerApp
 			foreach (var item in slowaTokenu)
 				sesja.Token += item;
 
-			while (sesja.ListaTokenow.Contains(sesja.Token))
+			if (sesja.ListaTokenow != null)
 			{
-				for (int i = 0; i < 9; i++)
+				while (sesja.ListaTokenow.Contains(sesja.Token))
 				{
-					if (i < 3)
+					for (int i = 0; i < 9; i++)
 					{
-						symbol = rand.Next(65, 90);
-						slowaTokenu[i] = (char)symbol;
-					}
-					else
-					{
-						symbol = rand.Next(48, 57);
-						slowaTokenu[i] = (char)symbol;
+						if (i < 3)
+						{
+							symbol = rand.Next(65, 90);
+							slowaTokenu[i] = (char)symbol;
+						}
+						else
+						{
+							symbol = rand.Next(48, 57);
+							slowaTokenu[i] = (char)symbol;
+						}
 					}
 				}
 			}
 
 			sesja.CzasZalogowania = DateTime.Now;
-			sesja.CzasOstatniejAkcji = DateTime.Now;
+			sesja.CzasOstatniejAkcji = sesja.CzasZalogowania;
 
 			using (var db = new System.Data.SqlClient.SqlConnection(
 				System.Configuration.ConfigurationManager.ConnectionStrings[
@@ -300,10 +306,12 @@ namespace ServerApp
 
 					idTokenu = (int)(decimal)cmd.ExecuteScalar();
 
-					cmd.CommandText = "UPDATE Uzytkownicy SET ID_TOKEN=@idTokenu, czy_zalogowany=1 WHERE id_uzytkownika=@IdUzytkownika";
-					cmd.Parameters.AddWithValue("@IdUzytkownika",sesja.IdUzytkownika);
-					cmd.Parameters.AddWithValue("@idTokenu", idTokenu);
+					cmd.CommandText = "UPDATE Uzytkownicy SET ID_TOKEN=@ID_TOKEN, czy_zalogowany=1 WHERE id_uzytkownika=@id_uzytkownika";
+					cmd.Parameters.AddWithValue("@id_uzytkownika", sesja.IdUzytkownika);
+					cmd.Parameters.AddWithValue("@ID_TOKEN", idTokenu);
 					cmd.Parameters.AddWithValue("@czy_zalogowany", czyZalogowany);
+
+					cmd.ExecuteNonQuery();
 				}
 			}
 
