@@ -15,13 +15,22 @@ namespace ClientApp
 		public Fiszki()
 		{
 			InitializeComponent();
-			
+			PobierzSlowko();
 		}
 
 		//public string PobierzNumerPoziomu
 		//{
 		//	set { tbxNrPoziomu.Text = value; }
 		//}
+
+		private async void PobierzSlowko()
+		{
+			
+			using (var client = new WcfService.Service1Client())
+			{
+				txbSlowkoPolskie.Text = await client.LosujSlowkoDoFiszkiAsync(Models.Token.NumerToken);
+			}
+		}
 
 		private void btnTlumacz_Click(object sender, EventArgs e)
 		{
@@ -41,7 +50,8 @@ namespace ClientApp
 
         private void btnKolejneSlowko_Click(object sender, EventArgs e)
         {
-
+			txbTlumaczenie.Text = null;
+			PobierzSlowko();
         }
     }
 }

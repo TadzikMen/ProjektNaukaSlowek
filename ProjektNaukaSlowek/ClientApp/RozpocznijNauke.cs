@@ -13,14 +13,14 @@ namespace ClientApp
     public partial class RozpocznijNauke : Form
     {
 		Fiszki frmFiszki;
-        public RozpocznijNauke()
-        {
-            InitializeComponent();
+		public RozpocznijNauke()
+		{
+			InitializeComponent();
 
 			//Do późniejszej poprawy
 			UzupelnijWartosci();
-            
-    }
+
+		}
         
         public string PrzekazNumerPoziomu
 		{

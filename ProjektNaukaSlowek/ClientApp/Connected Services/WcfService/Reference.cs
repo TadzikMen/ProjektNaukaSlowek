@@ -307,67 +307,6 @@ namespace ClientApp.WcfService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Slowka", Namespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO")]
-    [System.SerializableAttribute()]
-    public partial class Slowka : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TlumaczenieSlowkaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string WprowadzoneSlowoField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TlumaczenieSlowka {
-            get {
-                return this.TlumaczenieSlowkaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TlumaczenieSlowkaField, value) != true)) {
-                    this.TlumaczenieSlowkaField = value;
-                    this.RaisePropertyChanged("TlumaczenieSlowka");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string WprowadzoneSlowo {
-            get {
-                return this.WprowadzoneSlowoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.WprowadzoneSlowoField, value) != true)) {
-                    this.WprowadzoneSlowoField = value;
-                    this.RaisePropertyChanged("WprowadzoneSlowo");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Sesja", Namespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO")]
     [System.SerializableAttribute()]
     public partial class Sesja : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -522,16 +461,30 @@ namespace ClientApp.WcfService {
         System.Threading.Tasks.Task WyslijMailaRejestracjaAsync(string login, string haslo, string email, string imie, string nazwisko);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RozpocznijNauke", ReplyAction="http://tempuri.org/IService1/RozpocznijNaukeResponse")]
-        ClientApp.WcfService.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Logowanie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
+        ClientApp.WcfService.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom, object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RozpocznijNauke", ReplyAction="http://tempuri.org/IService1/RozpocznijNaukeResponse")]
-        System.Threading.Tasks.Task<ClientApp.WcfService.FormyNauki> RozpocznijNaukeAsync(string formaNauki, string jezyk, string poziom);
+        System.Threading.Tasks.Task<ClientApp.WcfService.FormyNauki> RozpocznijNaukeAsync(string formaNauki, string jezyk, string poziom, object token);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ZwrocTlumaczenieSlowka", ReplyAction="http://tempuri.org/IService1/ZwrocTlumaczenieSlowkaResponse")]
-        ClientApp.WcfService.Slowka ZwrocTlumaczenieSlowka(string slowo);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LosujSlowkoDoFiszki", ReplyAction="http://tempuri.org/IService1/LosujSlowkoDoFiszkiResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Logowanie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
+        string LosujSlowkoDoFiszki(object token);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ZwrocTlumaczenieSlowka", ReplyAction="http://tempuri.org/IService1/ZwrocTlumaczenieSlowkaResponse")]
-        System.Threading.Tasks.Task<ClientApp.WcfService.Slowka> ZwrocTlumaczenieSlowkaAsync(string slowo);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LosujSlowkoDoFiszki", ReplyAction="http://tempuri.org/IService1/LosujSlowkoDoFiszkiResponse")]
+        System.Threading.Tasks.Task<string> LosujSlowkoDoFiszkiAsync(object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GenerujToken", ReplyAction="http://tempuri.org/IService1/GenerujTokenResponse")]
         ClientApp.WcfService.Sesja GenerujToken(string login);
@@ -623,20 +576,20 @@ namespace ClientApp.WcfService {
             return base.Channel.WyslijMailaRejestracjaAsync(login, haslo, email, imie, nazwisko);
         }
         
-        public ClientApp.WcfService.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom) {
-            return base.Channel.RozpocznijNauke(formaNauki, jezyk, poziom);
+        public ClientApp.WcfService.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom, object token) {
+            return base.Channel.RozpocznijNauke(formaNauki, jezyk, poziom, token);
         }
         
-        public System.Threading.Tasks.Task<ClientApp.WcfService.FormyNauki> RozpocznijNaukeAsync(string formaNauki, string jezyk, string poziom) {
-            return base.Channel.RozpocznijNaukeAsync(formaNauki, jezyk, poziom);
+        public System.Threading.Tasks.Task<ClientApp.WcfService.FormyNauki> RozpocznijNaukeAsync(string formaNauki, string jezyk, string poziom, object token) {
+            return base.Channel.RozpocznijNaukeAsync(formaNauki, jezyk, poziom, token);
         }
         
-        public ClientApp.WcfService.Slowka ZwrocTlumaczenieSlowka(string slowo) {
-            return base.Channel.ZwrocTlumaczenieSlowka(slowo);
+        public string LosujSlowkoDoFiszki(object token) {
+            return base.Channel.LosujSlowkoDoFiszki(token);
         }
         
-        public System.Threading.Tasks.Task<ClientApp.WcfService.Slowka> ZwrocTlumaczenieSlowkaAsync(string slowo) {
-            return base.Channel.ZwrocTlumaczenieSlowkaAsync(slowo);
+        public System.Threading.Tasks.Task<string> LosujSlowkoDoFiszkiAsync(object token) {
+            return base.Channel.LosujSlowkoDoFiszkiAsync(token);
         }
         
         public ClientApp.WcfService.Sesja GenerujToken(string login) {

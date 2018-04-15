@@ -189,20 +189,59 @@ namespace ServerApp
 			return zalogowanyUzytkownik;
 		}
 
-		public FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom)
+		public string LosujSlowkoDoFiszki(string poziom, object token)
 		{
-			throw new NotImplementedException();
-		}
+			string wylosowaneSlowo;
+			int indeks;
+			List<string> listaPolskichSlowek;
+			Random rand = new Random();
 
-		public Slowka ZwrocTlumaczenieSlowka(string slowo)
-		{
-			DTO.Slowka slowka = new Slowka
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+					"PolaczenieZBazaDanych"].ConnectionString))
 			{
-				WprowadzoneSlowo = slowo
-			};
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText = "SELECT * FROM TLUMACZENIA";
 
+					using (var dr = cmd.ExecuteReader())
+					{
+						listaPolskichSlowek = new List<string>();
+						while (dr.Read())
+						{
+							listaPolskichSlowek.Add((string)dr["TLUMACZENIE"]);
+						}
+					}
+				}
+			}
 
-			return slowka;
+			indeks = rand.Next(listaPolskichSlowek.Count - 1);
+			wylosowaneSlowo = listaPolskichSlowek[indeks];
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+			System.Configuration.ConfigurationManager.ConnectionStrings[
+				"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText = "SELECT SLOWKO FROM SLOWKA WHERE ID_TLUMACZENIA";
+
+					using (var dr = cmd.ExecuteReader())
+					{
+						listaPolskichSlowek = new List<string>();
+						while (dr.Read())
+						{
+							listaPolskichSlowek.Add((string)dr["TLUMACZENIE"]);
+						}
+					}
+				}
+			}
+
+			return wylosowaneSlowo;
 		}
 
 		public Sesja GenerujToken(string login)
@@ -315,6 +354,20 @@ namespace ServerApp
 			}
 
 			return sesja;
+		}
+
+		public DTO.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom, object token)
+		{
+			FormyNauki formyNauki = new FormyNauki
+			{
+				FormaNauki = formaNauki,
+				WybranyJezyk = jezyk,
+				Poziom = poziom
+			};
+
+
+
+			return formyNauki;
 		}
 	}
 }

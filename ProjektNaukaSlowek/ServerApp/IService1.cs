@@ -35,13 +35,15 @@ namespace ServerApp
 		void WyslijMailaRejestracja(string login, string haslo, string email, string imie = null, string nazwisko = null);
 
 		[OperationContract]
-		DTO.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom);
+		DTO.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom, object token);
 
 		[OperationContract]
-		DTO.Slowka ZwrocTlumaczenieSlowka(string slowo);
+		string LosujSlowkoDoFiszki(string poziom, object token);
 
 		[OperationContract]
 		DTO.Sesja GenerujToken(string login);
+
+
 	}
 
 

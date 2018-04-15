@@ -106,6 +106,7 @@
     <Compile Include="Models\ObslugaSplashScreena.cs" />
     <Compile Include="Models\ObslugaUzytkownika.cs" />
     <Compile Include="Models\RozpoczynanieNauki.cs" />
+    <Compile Include="Models\Token.cs" />
     <Compile Include="Oczekiwanie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,9 +278,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\WcfService\ClientApp.WcfService.Sesja.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WcfService\ClientApp.WcfService.Slowka.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\WcfService\ClientApp.WcfService.Uwierzytelnianie.datasource">

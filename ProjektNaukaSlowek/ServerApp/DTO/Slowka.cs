@@ -13,5 +13,7 @@ namespace ServerApp.DTO
 		public string TlumaczenieSlowka { get; set; }
 		[DataMember]
 		public string WprowadzoneSlowo { get; set; }
+		[DataMember]
+		public string Kategoria { get; set; }
 	}
 }

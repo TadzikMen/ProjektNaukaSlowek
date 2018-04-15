@@ -66,8 +66,10 @@ namespace ClientApp
 				{
 					using (var client = new WcfService.Service1Client())
 					{
+						WcfService.Sesja sesja = new WcfService.Sesja();
 						obsLogowania.DaneLogowania = await client.PrzekazDaneDoZalogowaniaAsync(tbxLogin.Text);
-						await client.GenerujTokenAsync(obsLogowania.DaneLogowania.Login);
+						sesja = await client.GenerujTokenAsync(obsLogowania.DaneLogowania.Login);
+						Models.Token.NumerToken = sesja.Token;
 					}
 					
 					MessageBox.Show(this, "Zalogowano pomyślnie!", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Information);
