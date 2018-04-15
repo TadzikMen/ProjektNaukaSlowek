@@ -211,13 +211,13 @@ namespace ServerApp
 			Sesja sesja = new Sesja();
 			Logowanie logowanie = new Logowanie
 			{
-				Login = login
+				Login = login,
+				CzyZalogowany = true
 			};
 			Random rand = new Random();
 			char[] slowaTokenu = new char[9];
 			int symbol;
 			int idTokenu;
-			byte czyZalogowany = 1;
 			
 			using (var db = new System.Data.SqlClient.SqlConnection(
 				System.Configuration.ConfigurationManager.ConnectionStrings[
@@ -307,9 +307,8 @@ namespace ServerApp
 					idTokenu = (int)(decimal)cmd.ExecuteScalar();
 
 					cmd.CommandText = "UPDATE Uzytkownicy SET ID_TOKEN=@ID_TOKEN, czy_zalogowany=1 WHERE id_uzytkownika=@id_uzytkownika";
-					cmd.Parameters.AddWithValue("@id_uzytkownika", sesja.IdUzytkownika);
 					cmd.Parameters.AddWithValue("@ID_TOKEN", idTokenu);
-					cmd.Parameters.AddWithValue("@czy_zalogowany", czyZalogowany);
+					cmd.Parameters.AddWithValue("@czy_zalogowany", logowanie.CzyZalogowany);
 
 					cmd.ExecuteNonQuery();
 				}
