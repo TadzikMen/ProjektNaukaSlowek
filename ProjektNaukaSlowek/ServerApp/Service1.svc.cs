@@ -208,10 +208,11 @@ namespace ServerApp
 		public Sesja GenerujToken()
 		{
 			//Wzór tokenu: XYZ123456
-			Sesja token = new Sesja();
+			Sesja sesja = new Sesja();
 			Random rand = new Random();
 			char[] slowaTokenu = new char[9];
 			int symbol;
+			int id;
 			
 			using (var db = new System.Data.SqlClient.SqlConnection(
 				System.Configuration.ConfigurationManager.ConnectionStrings[
@@ -226,7 +227,7 @@ namespace ServerApp
 					{
 						while (dr.Read())
 						{
-							token.ListaTokenow.Add( 
+							sesja.ListaTokenow.Add( 
 								(string)dr["TOKEN"]
 							);
 						}
@@ -249,9 +250,9 @@ namespace ServerApp
 			}
 
 			foreach (var item in slowaTokenu)
-				token.Token += item;
+				sesja.Token += item;
 
-			while (token.ListaTokenow.Contains(token.Token))
+			while (sesja.ListaTokenow.Contains(sesja.Token))
 			{
 				for (int i = 0; i < 9; i++)
 				{
@@ -267,8 +268,30 @@ namespace ServerApp
 					}
 				}
 			}
-			
-			return token;
+
+			sesja.CzasZalogowania = DateTime.Now;
+			sesja.CzasOstatniejAkcji = DateTime.Now;
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+					"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText = "INSERT INTO TOKEN_ACCESS(ID_UZYTKOWNIKA, TOKEN, CZAS_LOGOWANIA, CZAS_OSTATNIEJ_AKCJI)" +
+						"VALUES(@ID_UZYTKOWNIKA, @TOKEN, @CZAS_LOGOWANIA, @CZAS_OSTATNIEJ_AKCJI); SELECT SCOPE_IDENTITY()";
+					cmd.Parameters.AddWithValue("@ID_UZYTKOWNIKA", sesja.IdUzytkownika);
+					cmd.Parameters.AddWithValue("@TOKEN", sesja.Token);
+					cmd.Parameters.AddWithValue("@CZAS_LOGOWANIA", sesja.CzasZalogowania);
+					cmd.Parameters.AddWithValue("@CZAS_OSTATNIEJ_AKCJI", sesja.CzasOstatniejAkcji);
+
+					id = (int)(decimal)cmd.ExecuteScalar();
+				}
+			}
+
+			return sesja;
 		}
 	}
 }
