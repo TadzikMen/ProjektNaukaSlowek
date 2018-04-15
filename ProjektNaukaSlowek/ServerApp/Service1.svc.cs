@@ -204,5 +204,73 @@ namespace ServerApp
 
 			return slowka;
 		}
+
+		public Sesja LosujToken()
+		{
+			Sesja token = new Sesja();
+			Random rand = new Random();
+			List<string> pobraneTokenyZBazy;
+			char[] slowaTokenu = new char[6];
+			int symbol;
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+					"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText = "SELECT TOKEN FROM TOKEN_ACCESS";
+					using (var dr = cmd.ExecuteReader())
+					{
+						pobraneTokenyZBazy = new List<string>();
+						while (dr.Read())
+						{
+							pobraneTokenyZBazy.Add( 
+								(string)dr["TOKEN"]
+							);
+						}
+					}
+				}
+			}
+
+			for (int i = 0; i < 6; i++)
+			{
+				if (i < 3)
+				{
+					symbol = rand.Next(65, 90);
+					slowaTokenu[i] = (char)symbol;
+				}
+				else
+				{
+					symbol = rand.Next(48, 57);
+					slowaTokenu[i] = (char)symbol;
+				}
+			}
+
+			foreach (var item in slowaTokenu)
+				token.Token += item;
+
+			while (pobraneTokenyZBazy.Contains(token.Token))
+			{
+				for (int i = 0; i < 6; i++)
+				{
+					if (i < 3)
+					{
+						symbol = rand.Next(65, 90);
+						slowaTokenu[i] = (char)symbol;
+					}
+					else
+					{
+						symbol = rand.Next(48, 57);
+						slowaTokenu[i] = (char)symbol;
+					}
+				}
+			}
+			
+			//Wzór tokenu: XYZ123
+			return token;
+		}
 	}
 }

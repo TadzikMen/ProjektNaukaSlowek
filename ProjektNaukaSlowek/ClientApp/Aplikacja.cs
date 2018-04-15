@@ -139,6 +139,7 @@ namespace ClientApp
 
 		private void btnWyloguj_Click(object sender, EventArgs e)
 		{
+			lblNazwa.Text = "Witaj ";
 			Owner.Show();
 			Hide();
 		}

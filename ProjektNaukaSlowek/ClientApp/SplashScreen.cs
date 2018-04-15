@@ -21,7 +21,6 @@ namespace ClientApp
 		private void timer1_Tick(object sender, EventArgs e)
 		{
 			pasekPostepu.Increment(1);
-			LblTimer.Text = pasekPostepu.Value.ToString() +"%";
 
 			if (pasekPostepu.Value == 100)
 				timer1.Stop();

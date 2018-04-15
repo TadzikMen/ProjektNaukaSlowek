@@ -45,7 +45,6 @@ namespace ClientApp
 		private async void ZalogujSie_Click(object sender, EventArgs e)
 		{
 			Models.ObslugaLogowania obsLogowania = new Models.ObslugaLogowania();
-			int indeksSzukanegoUsera;
 
 			bool log = false;
 			try
@@ -66,7 +65,7 @@ namespace ClientApp
 					using (var client = new WcfService.Service1Client())
 					{
 						obsLogowania.DaneLogowania = await client.PrzekazDaneDoZalogowaniaAsync(tbxLogin.Text);
-						//obsLogowania.ListaUserow = await client.PobierzLoginyMaileImionaAsync();
+						
 					}
 					
 					MessageBox.Show(this, "Zalogowano pomyślnie!", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Information);
