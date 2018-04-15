@@ -270,7 +270,16 @@
     <None Include="Connected Services\WcfService\ClientApp.WcfService.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\WcfService\ClientApp.WcfService.FormyNauki.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\WcfService\ClientApp.WcfService.Logowanie.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WcfService\ClientApp.WcfService.Sesja.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WcfService\ClientApp.WcfService.Slowka.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\WcfService\ClientApp.WcfService.Uwierzytelnianie.datasource">
@@ -287,6 +296,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\WcfService\Service13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WcfService\Service14.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">

@@ -205,14 +205,14 @@ namespace ServerApp
 			return slowka;
 		}
 
-		public Sesja LosujToken()
+		public Sesja GenerujToken()
 		{
+			//Wzór tokenu: XYZ123456
 			Sesja token = new Sesja();
 			Random rand = new Random();
-			List<string> pobraneTokenyZBazy;
-			char[] slowaTokenu = new char[6];
+			char[] slowaTokenu = new char[9];
 			int symbol;
-
+			
 			using (var db = new System.Data.SqlClient.SqlConnection(
 				System.Configuration.ConfigurationManager.ConnectionStrings[
 					"PolaczenieZBazaDanych"].ConnectionString))
@@ -224,10 +224,9 @@ namespace ServerApp
 					cmd.CommandText = "SELECT TOKEN FROM TOKEN_ACCESS";
 					using (var dr = cmd.ExecuteReader())
 					{
-						pobraneTokenyZBazy = new List<string>();
 						while (dr.Read())
 						{
-							pobraneTokenyZBazy.Add( 
+							token.ListaTokenow.Add( 
 								(string)dr["TOKEN"]
 							);
 						}
@@ -235,7 +234,7 @@ namespace ServerApp
 				}
 			}
 
-			for (int i = 0; i < 6; i++)
+			for (int i = 0; i < 9; i++)
 			{
 				if (i < 3)
 				{
@@ -252,9 +251,9 @@ namespace ServerApp
 			foreach (var item in slowaTokenu)
 				token.Token += item;
 
-			while (pobraneTokenyZBazy.Contains(token.Token))
+			while (token.ListaTokenow.Contains(token.Token))
 			{
-				for (int i = 0; i < 6; i++)
+				for (int i = 0; i < 9; i++)
 				{
 					if (i < 3)
 					{
@@ -269,7 +268,6 @@ namespace ServerApp
 				}
 			}
 			
-			//Wzór tokenu: XYZ123
 			return token;
 		}
 	}

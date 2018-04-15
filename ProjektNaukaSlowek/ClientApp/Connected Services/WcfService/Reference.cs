@@ -228,6 +228,237 @@ namespace ClientApp.WcfService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FormyNauki", Namespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO")]
+    [System.SerializableAttribute()]
+    public partial class FormyNauki : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FormaNaukiField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PoziomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WybranyJezykField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FormaNauki {
+            get {
+                return this.FormaNaukiField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FormaNaukiField, value) != true)) {
+                    this.FormaNaukiField = value;
+                    this.RaisePropertyChanged("FormaNauki");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Poziom {
+            get {
+                return this.PoziomField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PoziomField, value) != true)) {
+                    this.PoziomField = value;
+                    this.RaisePropertyChanged("Poziom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WybranyJezyk {
+            get {
+                return this.WybranyJezykField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WybranyJezykField, value) != true)) {
+                    this.WybranyJezykField = value;
+                    this.RaisePropertyChanged("WybranyJezyk");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Slowka", Namespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO")]
+    [System.SerializableAttribute()]
+    public partial class Slowka : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TlumaczenieSlowkaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WprowadzoneSlowoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TlumaczenieSlowka {
+            get {
+                return this.TlumaczenieSlowkaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TlumaczenieSlowkaField, value) != true)) {
+                    this.TlumaczenieSlowkaField = value;
+                    this.RaisePropertyChanged("TlumaczenieSlowka");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WprowadzoneSlowo {
+            get {
+                return this.WprowadzoneSlowoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WprowadzoneSlowoField, value) != true)) {
+                    this.WprowadzoneSlowoField = value;
+                    this.RaisePropertyChanged("WprowadzoneSlowo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Sesja", Namespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO")]
+    [System.SerializableAttribute()]
+    public partial class Sesja : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdUzytkownikaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<string> ListaTokenowField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PobraneTokenyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TokenField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdUzytkownika {
+            get {
+                return this.IdUzytkownikaField;
+            }
+            set {
+                if ((this.IdUzytkownikaField.Equals(value) != true)) {
+                    this.IdUzytkownikaField = value;
+                    this.RaisePropertyChanged("IdUzytkownika");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<string> ListaTokenow {
+            get {
+                return this.ListaTokenowField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ListaTokenowField, value) != true)) {
+                    this.ListaTokenowField = value;
+                    this.RaisePropertyChanged("ListaTokenow");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PobraneTokeny {
+            get {
+                return this.PobraneTokenyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PobraneTokenyField, value) != true)) {
+                    this.PobraneTokenyField = value;
+                    this.RaisePropertyChanged("PobraneTokeny");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Token {
+            get {
+                return this.TokenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TokenField, value) != true)) {
+                    this.TokenField = value;
+                    this.RaisePropertyChanged("Token");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WcfService.IService1")]
     public interface IService1 {
@@ -273,6 +504,24 @@ namespace ClientApp.WcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/WyslijMailaRejestracja", ReplyAction="http://tempuri.org/IService1/WyslijMailaRejestracjaResponse")]
         System.Threading.Tasks.Task WyslijMailaRejestracjaAsync(string login, string haslo, string email, string imie, string nazwisko);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RozpocznijNauke", ReplyAction="http://tempuri.org/IService1/RozpocznijNaukeResponse")]
+        ClientApp.WcfService.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RozpocznijNauke", ReplyAction="http://tempuri.org/IService1/RozpocznijNaukeResponse")]
+        System.Threading.Tasks.Task<ClientApp.WcfService.FormyNauki> RozpocznijNaukeAsync(string formaNauki, string jezyk, string poziom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ZwrocTlumaczenieSlowka", ReplyAction="http://tempuri.org/IService1/ZwrocTlumaczenieSlowkaResponse")]
+        ClientApp.WcfService.Slowka ZwrocTlumaczenieSlowka(string slowo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ZwrocTlumaczenieSlowka", ReplyAction="http://tempuri.org/IService1/ZwrocTlumaczenieSlowkaResponse")]
+        System.Threading.Tasks.Task<ClientApp.WcfService.Slowka> ZwrocTlumaczenieSlowkaAsync(string slowo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GenerujToken", ReplyAction="http://tempuri.org/IService1/GenerujTokenResponse")]
+        ClientApp.WcfService.Sesja GenerujToken();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GenerujToken", ReplyAction="http://tempuri.org/IService1/GenerujTokenResponse")]
+        System.Threading.Tasks.Task<ClientApp.WcfService.Sesja> GenerujTokenAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -356,6 +605,30 @@ namespace ClientApp.WcfService {
         
         public System.Threading.Tasks.Task WyslijMailaRejestracjaAsync(string login, string haslo, string email, string imie, string nazwisko) {
             return base.Channel.WyslijMailaRejestracjaAsync(login, haslo, email, imie, nazwisko);
+        }
+        
+        public ClientApp.WcfService.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom) {
+            return base.Channel.RozpocznijNauke(formaNauki, jezyk, poziom);
+        }
+        
+        public System.Threading.Tasks.Task<ClientApp.WcfService.FormyNauki> RozpocznijNaukeAsync(string formaNauki, string jezyk, string poziom) {
+            return base.Channel.RozpocznijNaukeAsync(formaNauki, jezyk, poziom);
+        }
+        
+        public ClientApp.WcfService.Slowka ZwrocTlumaczenieSlowka(string slowo) {
+            return base.Channel.ZwrocTlumaczenieSlowka(slowo);
+        }
+        
+        public System.Threading.Tasks.Task<ClientApp.WcfService.Slowka> ZwrocTlumaczenieSlowkaAsync(string slowo) {
+            return base.Channel.ZwrocTlumaczenieSlowkaAsync(slowo);
+        }
+        
+        public ClientApp.WcfService.Sesja GenerujToken() {
+            return base.Channel.GenerujToken();
+        }
+        
+        public System.Threading.Tasks.Task<ClientApp.WcfService.Sesja> GenerujTokenAsync() {
+            return base.Channel.GenerujTokenAsync();
         }
     }
 }

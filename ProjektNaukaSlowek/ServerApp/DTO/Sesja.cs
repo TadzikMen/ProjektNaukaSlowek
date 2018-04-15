@@ -14,6 +14,10 @@ namespace ServerApp.DTO
 		[DataMember]
 		public int IdUzytkownika { get; set; }
 		[DataMember]
-		public string PobraneTokeny { get; set; }
+		public DateTime CzasZalogowania { get; set; }
+		[DataMember]
+		public DateTime CzasOstatniejAkcji { get; set; }
+		[DataMember]
+		public List<string> ListaTokenow { get; set; } 
 	}
 }

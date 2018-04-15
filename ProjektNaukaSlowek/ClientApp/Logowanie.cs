@@ -45,13 +45,15 @@ namespace ClientApp
 		private async void ZalogujSie_Click(object sender, EventArgs e)
 		{
 			Models.ObslugaLogowania obsLogowania = new Models.ObslugaLogowania();
-
 			bool log = false;
+
 			try
 			{
 				using (var client = new WcfService.Service1Client())
 				{
 					log = await client.SprawdzDaneLogowaniaAsync(tbxLogin.Text, tbxHaslo.Text);
+					WcfService.Sesja obslugaSesji = await client.GenerujTokenAsync();
+					
 				}
 			}
 			catch (Exception ex)
