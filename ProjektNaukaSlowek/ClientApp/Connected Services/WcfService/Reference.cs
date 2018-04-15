@@ -307,6 +307,99 @@ namespace ClientApp.WcfService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Slowka", Namespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO")]
+    [System.SerializableAttribute()]
+    public partial class Slowka : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string KategoriaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PoziomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TlumaczenieSlowkaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WprowadzoneSlowoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Kategoria {
+            get {
+                return this.KategoriaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KategoriaField, value) != true)) {
+                    this.KategoriaField = value;
+                    this.RaisePropertyChanged("Kategoria");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Poziom {
+            get {
+                return this.PoziomField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PoziomField, value) != true)) {
+                    this.PoziomField = value;
+                    this.RaisePropertyChanged("Poziom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TlumaczenieSlowka {
+            get {
+                return this.TlumaczenieSlowkaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TlumaczenieSlowkaField, value) != true)) {
+                    this.TlumaczenieSlowkaField = value;
+                    this.RaisePropertyChanged("TlumaczenieSlowka");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WprowadzoneSlowo {
+            get {
+                return this.WprowadzoneSlowoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WprowadzoneSlowoField, value) != true)) {
+                    this.WprowadzoneSlowoField = value;
+                    this.RaisePropertyChanged("WprowadzoneSlowo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Sesja", Namespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO")]
     [System.SerializableAttribute()]
     public partial class Sesja : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -467,6 +560,7 @@ namespace ClientApp.WcfService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
         ClientApp.WcfService.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom, object token);
         
@@ -480,11 +574,12 @@ namespace ClientApp.WcfService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
-        string LosujSlowkoDoFiszki(string poziom, string kategoria, object token);
+        ClientApp.WcfService.Slowka LosujSlowkoDoFiszki(string poziom, string kategoria, object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LosujSlowkoDoFiszki", ReplyAction="http://tempuri.org/IService1/LosujSlowkoDoFiszkiResponse")]
-        System.Threading.Tasks.Task<string> LosujSlowkoDoFiszkiAsync(string poziom, string kategoria, object token);
+        System.Threading.Tasks.Task<ClientApp.WcfService.Slowka> LosujSlowkoDoFiszkiAsync(string poziom, string kategoria, object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GenerujToken", ReplyAction="http://tempuri.org/IService1/GenerujTokenResponse")]
         ClientApp.WcfService.Sesja GenerujToken(string login);
@@ -584,11 +679,11 @@ namespace ClientApp.WcfService {
             return base.Channel.RozpocznijNaukeAsync(formaNauki, jezyk, poziom, token);
         }
         
-        public string LosujSlowkoDoFiszki(string poziom, string kategoria, object token) {
+        public ClientApp.WcfService.Slowka LosujSlowkoDoFiszki(string poziom, string kategoria, object token) {
             return base.Channel.LosujSlowkoDoFiszki(poziom, kategoria, token);
         }
         
-        public System.Threading.Tasks.Task<string> LosujSlowkoDoFiszkiAsync(string poziom, string kategoria, object token) {
+        public System.Threading.Tasks.Task<ClientApp.WcfService.Slowka> LosujSlowkoDoFiszkiAsync(string poziom, string kategoria, object token) {
             return base.Channel.LosujSlowkoDoFiszkiAsync(poziom, kategoria, token);
         }
         

@@ -12,23 +12,19 @@ namespace ClientApp
 {
 	public partial class Fiszki : Form
 	{
-		public Fiszki()
+		public Fiszki(string jezyk, string poziom)
 		{
 			InitializeComponent();
-			PobierzSlowko();
+			txbxJezyk.Text = jezyk;
+			txbxPoziom.Text = poziom;
 		}
-
-		//public string PobierzNumerPoziomu
-		//{
-		//	set { tbxNrPoziomu.Text = value; }
-		//}
 
 		private async void PobierzSlowko()
 		{
-			
+			WcfService.Slowka slowko = new WcfService.Slowka();
 			using (var client = new WcfService.Service1Client())
 			{
-				txbSlowkoPolskie.Text = await client.LosujSlowkoDoFiszkiAsync(Models.Token.NumerToken);
+				slowko = await client.LosujSlowkoDoFiszkiAsync(cmbbxKategoria.SelectedText, cmbbxKategoria.SelectedText, Models.Token.NumerToken);
 			}
 		}
 

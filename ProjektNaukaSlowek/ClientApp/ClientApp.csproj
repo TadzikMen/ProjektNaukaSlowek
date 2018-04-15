@@ -280,6 +280,9 @@
     <None Include="Connected Services\WcfService\ClientApp.WcfService.Sesja.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\WcfService\ClientApp.WcfService.Slowka.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\WcfService\ClientApp.WcfService.Uwierzytelnianie.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

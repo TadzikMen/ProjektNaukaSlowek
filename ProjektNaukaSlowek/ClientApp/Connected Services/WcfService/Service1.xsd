@@ -132,7 +132,7 @@
   <xs:element name="LosujSlowkoDoFiszkiResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="LosujSlowkoDoFiszkiResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ServerApp.DTO" minOccurs="0" name="LosujSlowkoDoFiszkiResult" nillable="true" type="q6:Slowka" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -146,7 +146,7 @@
   <xs:element name="GenerujTokenResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ServerApp.DTO" minOccurs="0" name="GenerujTokenResult" nillable="true" type="q6:Sesja" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ServerApp.DTO" minOccurs="0" name="GenerujTokenResult" nillable="true" type="q7:Sesja" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
