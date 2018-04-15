@@ -26,8 +26,8 @@
   <xs:complexType name="FormyNauki">
     <xs:sequence>
       <xs:element minOccurs="0" name="FormaNauki" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Jezyk" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Poziom" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="WybranyJezyk" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="FormyNauki" nillable="true" type="tns:FormyNauki" />

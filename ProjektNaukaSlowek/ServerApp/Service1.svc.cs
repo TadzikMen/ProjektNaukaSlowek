@@ -189,8 +189,13 @@ namespace ServerApp
 			return zalogowanyUzytkownik;
 		}
 
-		public string LosujSlowkoDoFiszki(string poziom, object token)
+		public DTO.Slowka LosujSlowkoDoFiszki(string poziom, string kategoria, object token)
 		{
+			DTO.Slowka slowka = new Slowka
+			{
+				Poziom = poziom,
+				Kategoria = kategoria
+			};
 			string wylosowaneSlowo;
 			int indeks;
 			List<string> listaPolskichSlowek;
@@ -228,7 +233,12 @@ namespace ServerApp
 				using (var cmd = new System.Data.SqlClient.SqlCommand())
 				{
 					cmd.Connection = db;
-					cmd.CommandText = "SELECT SLOWKO FROM SLOWKA WHERE ID_TLUMACZENIA";
+					cmd.CommandText = "SELECT JEZYK.JEZYK, SLOWKA.SLOWKO, KATEGORIE.KATEGORIA, TLUMACZENIA.TLUMACZENIE " +
+						"FROM SLOWKA " +
+						"INNER JOIN TLUMACZENIA " +
+						"ON SLOWKA.ID_TLUMACZENIA = TLUMACZENIA.ID_TLUMACZENIA " +
+						"INNER JOIN JEZYK ON SLOWKA.ID_JEZYKA = JEZYK.ID_JEZYKA " +
+						"INNER JOIN KATEGORIE ON SLOWKA.ID_KATEGORII = KATEGORIE.ID_KATEGORII";
 
 					using (var dr = cmd.ExecuteReader())
 					{
@@ -241,7 +251,7 @@ namespace ServerApp
 				}
 			}
 
-			return wylosowaneSlowo;
+			return slowka;
 		}
 
 		public Sesja GenerujToken(string login)
@@ -361,11 +371,31 @@ namespace ServerApp
 			FormyNauki formyNauki = new FormyNauki
 			{
 				FormaNauki = formaNauki,
-				WybranyJezyk = jezyk,
+				Jezyk = jezyk,
 				Poziom = poziom
 			};
 
+			using (var db = new System.Data.SqlClient.SqlConnection(
+			System.Configuration.ConfigurationManager.ConnectionStrings[
+				"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText = "SELECT FORMY_NAUKI.FORMA_NAUKI, POZIOMY.POZIOM, JEZYK.JEZYK " +
+						"FROM FORMY_NAUKI " +
+						"INNER JOIN POSTEP " +
+						"ON FORMY_NAUKI.ID_FORMY = POSTEP.ID_FORMY " +
+						"INNER JOIN POZIOMY " +
+						"ON POSTEP.ID_POZIOMU = POZIOMY.ID_POZIOMU " +
+						"INNER JOIN JEZYK ON POSTEP.ID_JEZYKA = JEZYK.ID_JEZYKA";
 
+					cmd.Parameters.Add("@FormaNauki", System.Data.SqlDbType.NChar).Value = formyNauki.FormaNauki;
+					cmd.Parameters.Add("@Poziom", System.Data.SqlDbType.NVarChar).Value = formyNauki.Poziom;
+					cmd.Parameters.Add("@Jezyk", System.Data.SqlDbType.NChar).Value = formyNauki.Jezyk;
+				}
+			}
 
 			return formyNauki;
 		}
