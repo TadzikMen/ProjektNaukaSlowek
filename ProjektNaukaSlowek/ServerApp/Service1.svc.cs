@@ -257,11 +257,15 @@ namespace ServerApp
 		public Sesja GenerujToken(string login)
 		{
 			//Wzór tokenu: XYZ123456
-			Sesja sesja = new Sesja();
+			Sesja sesja = new Sesja
+			{
+				ListaTokenow = new List<string>()
+			};
 			Logowanie logowanie = new Logowanie
 			{
 				Login = login,
 				CzyZalogowany = true
+				
 			};
 			Random rand = new Random();
 			char[] slowaTokenu = new char[9];
@@ -335,7 +339,7 @@ namespace ServerApp
 				}
 			}
 
-			sesja.CzasZalogowania = DateTime.Now;
+			sesja.CzasZalogowania = DateTime.UtcNow;
 			sesja.CzasOstatniejAkcji = sesja.CzasZalogowania;
 
 			using (var db = new System.Data.SqlClient.SqlConnection(
