@@ -38,12 +38,10 @@ namespace ServerApp
 		DTO.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom, object token);
 
 		[OperationContract]
-		DTO.Slowka LosujSlowkoDoFiszki(string poziom, string kategoria, object token);
+		DTO.Slowka LosujSlowkoDoFiszki(string jezyk, string poziom, string kategoria, object token);
 
 		[OperationContract]
 		DTO.Sesja GenerujToken(string login);
-
-
 	}
 
 

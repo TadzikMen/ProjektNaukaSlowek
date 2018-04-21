@@ -315,16 +315,19 @@ namespace ClientApp.WcfService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string JezykField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string KategoriaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PoziomField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TlumaczenieSlowkaField;
+        private string SlowkoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string WprowadzoneSlowoField;
+        private string TlumaczenieField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -333,6 +336,19 @@ namespace ClientApp.WcfService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Jezyk {
+            get {
+                return this.JezykField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.JezykField, value) != true)) {
+                    this.JezykField = value;
+                    this.RaisePropertyChanged("Jezyk");
+                }
             }
         }
         
@@ -363,27 +379,27 @@ namespace ClientApp.WcfService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TlumaczenieSlowka {
+        public string Slowko {
             get {
-                return this.TlumaczenieSlowkaField;
+                return this.SlowkoField;
             }
             set {
-                if ((object.ReferenceEquals(this.TlumaczenieSlowkaField, value) != true)) {
-                    this.TlumaczenieSlowkaField = value;
-                    this.RaisePropertyChanged("TlumaczenieSlowka");
+                if ((object.ReferenceEquals(this.SlowkoField, value) != true)) {
+                    this.SlowkoField = value;
+                    this.RaisePropertyChanged("Slowko");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string WprowadzoneSlowo {
+        public string Tlumaczenie {
             get {
-                return this.WprowadzoneSlowoField;
+                return this.TlumaczenieField;
             }
             set {
-                if ((object.ReferenceEquals(this.WprowadzoneSlowoField, value) != true)) {
-                    this.WprowadzoneSlowoField = value;
-                    this.RaisePropertyChanged("WprowadzoneSlowo");
+                if ((object.ReferenceEquals(this.TlumaczenieField, value) != true)) {
+                    this.TlumaczenieField = value;
+                    this.RaisePropertyChanged("Tlumaczenie");
                 }
             }
         }
@@ -576,10 +592,10 @@ namespace ClientApp.WcfService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
-        ClientApp.WcfService.Slowka LosujSlowkoDoFiszki(string poziom, string kategoria, object token);
+        ClientApp.WcfService.Slowka LosujSlowkoDoFiszki(string jezyk, string poziom, string kategoria, object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LosujSlowkoDoFiszki", ReplyAction="http://tempuri.org/IService1/LosujSlowkoDoFiszkiResponse")]
-        System.Threading.Tasks.Task<ClientApp.WcfService.Slowka> LosujSlowkoDoFiszkiAsync(string poziom, string kategoria, object token);
+        System.Threading.Tasks.Task<ClientApp.WcfService.Slowka> LosujSlowkoDoFiszkiAsync(string jezyk, string poziom, string kategoria, object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GenerujToken", ReplyAction="http://tempuri.org/IService1/GenerujTokenResponse")]
         ClientApp.WcfService.Sesja GenerujToken(string login);
@@ -679,12 +695,12 @@ namespace ClientApp.WcfService {
             return base.Channel.RozpocznijNaukeAsync(formaNauki, jezyk, poziom, token);
         }
         
-        public ClientApp.WcfService.Slowka LosujSlowkoDoFiszki(string poziom, string kategoria, object token) {
-            return base.Channel.LosujSlowkoDoFiszki(poziom, kategoria, token);
+        public ClientApp.WcfService.Slowka LosujSlowkoDoFiszki(string jezyk, string poziom, string kategoria, object token) {
+            return base.Channel.LosujSlowkoDoFiszki(jezyk, poziom, kategoria, token);
         }
         
-        public System.Threading.Tasks.Task<ClientApp.WcfService.Slowka> LosujSlowkoDoFiszkiAsync(string poziom, string kategoria, object token) {
-            return base.Channel.LosujSlowkoDoFiszkiAsync(poziom, kategoria, token);
+        public System.Threading.Tasks.Task<ClientApp.WcfService.Slowka> LosujSlowkoDoFiszkiAsync(string jezyk, string poziom, string kategoria, object token) {
+            return base.Channel.LosujSlowkoDoFiszkiAsync(jezyk, poziom, kategoria, token);
         }
         
         public ClientApp.WcfService.Sesja GenerujToken(string login) {

@@ -50,7 +50,7 @@
 			this.txbSlowkoPolskie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
 			this.txbSlowkoPolskie.Enabled = false;
 			this.txbSlowkoPolskie.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.txbSlowkoPolskie.Location = new System.Drawing.Point(375, 474);
+			this.txbSlowkoPolskie.Location = new System.Drawing.Point(375, 510);
 			this.txbSlowkoPolskie.Multiline = true;
 			this.txbSlowkoPolskie.Name = "txbSlowkoPolskie";
 			this.txbSlowkoPolskie.ReadOnly = true;
@@ -65,7 +65,7 @@
 			this.txbTlumaczenie.Cursor = System.Windows.Forms.Cursors.Arrow;
 			this.txbTlumaczenie.Enabled = false;
 			this.txbTlumaczenie.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.txbTlumaczenie.Location = new System.Drawing.Point(917, 474);
+			this.txbTlumaczenie.Location = new System.Drawing.Point(917, 510);
 			this.txbTlumaczenie.Multiline = true;
 			this.txbTlumaczenie.Name = "txbTlumaczenie";
 			this.txbTlumaczenie.ReadOnly = true;
@@ -82,7 +82,7 @@
 			this.textBox4.Enabled = false;
 			this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.textBox4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.textBox4.Location = new System.Drawing.Point(375, 413);
+			this.textBox4.Location = new System.Drawing.Point(375, 449);
 			this.textBox4.Multiline = true;
 			this.textBox4.Name = "textBox4";
 			this.textBox4.ReadOnly = true;
@@ -99,7 +99,7 @@
 			this.textBox5.Enabled = false;
 			this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.textBox5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.textBox5.Location = new System.Drawing.Point(917, 413);
+			this.textBox5.Location = new System.Drawing.Point(917, 449);
 			this.textBox5.Multiline = true;
 			this.textBox5.Name = "textBox5";
 			this.textBox5.ReadOnly = true;
@@ -114,7 +114,7 @@
 			this.btnTlumacz.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnTlumacz.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.btnTlumacz.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.btnTlumacz.Location = new System.Drawing.Point(689, 450);
+			this.btnTlumacz.Location = new System.Drawing.Point(689, 486);
 			this.btnTlumacz.Name = "btnTlumacz";
 			this.btnTlumacz.Size = new System.Drawing.Size(137, 63);
 			this.btnTlumacz.TabIndex = 6;
@@ -129,7 +129,7 @@
 			this.btnWroc.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnWroc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.btnWroc.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.btnWroc.Location = new System.Drawing.Point(626, 685);
+			this.btnWroc.Location = new System.Drawing.Point(626, 721);
 			this.btnWroc.Name = "btnWroc";
 			this.btnWroc.Size = new System.Drawing.Size(255, 62);
 			this.btnWroc.TabIndex = 7;
@@ -144,7 +144,7 @@
 			this.btnKolejneSlowko.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnKolejneSlowko.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.btnKolejneSlowko.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.btnKolejneSlowko.Location = new System.Drawing.Point(689, 578);
+			this.btnKolejneSlowko.Location = new System.Drawing.Point(689, 614);
 			this.btnKolejneSlowko.Name = "btnKolejneSlowko";
 			this.btnKolejneSlowko.Size = new System.Drawing.Size(137, 65);
 			this.btnKolejneSlowko.TabIndex = 8;
@@ -196,7 +196,7 @@
 			this.cmbbxKategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.cmbbxKategoria.FormattingEnabled = true;
 			this.cmbbxKategoria.Location = new System.Drawing.Point(810, 246);
-			this.cmbbxKategoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.cmbbxKategoria.Margin = new System.Windows.Forms.Padding(2);
 			this.cmbbxKategoria.Name = "cmbbxKategoria";
 			this.cmbbxKategoria.Size = new System.Drawing.Size(302, 39);
 			this.cmbbxKategoria.TabIndex = 12;
@@ -206,7 +206,7 @@
 			this.txbxPoziom.Enabled = false;
 			this.txbxPoziom.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.txbxPoziom.Location = new System.Drawing.Point(810, 179);
-			this.txbxPoziom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.txbxPoziom.Margin = new System.Windows.Forms.Padding(2);
 			this.txbxPoziom.Name = "txbxPoziom";
 			this.txbxPoziom.Size = new System.Drawing.Size(302, 38);
 			this.txbxPoziom.TabIndex = 13;
@@ -217,7 +217,7 @@
 			this.txbxJezyk.Enabled = false;
 			this.txbxJezyk.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.txbxJezyk.Location = new System.Drawing.Point(810, 126);
-			this.txbxJezyk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.txbxJezyk.Margin = new System.Windows.Forms.Padding(2);
 			this.txbxJezyk.Name = "txbxJezyk";
 			this.txbxJezyk.Size = new System.Drawing.Size(302, 38);
 			this.txbxJezyk.TabIndex = 14;
@@ -228,7 +228,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-			this.ClientSize = new System.Drawing.Size(1123, 609);
+			this.ClientSize = new System.Drawing.Size(1123, 680);
 			this.Controls.Add(this.txbxJezyk);
 			this.Controls.Add(this.txbxPoziom);
 			this.Controls.Add(this.cmbbxKategoria);

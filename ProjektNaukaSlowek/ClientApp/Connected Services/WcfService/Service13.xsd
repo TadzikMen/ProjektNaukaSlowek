@@ -33,10 +33,11 @@
   <xs:element name="FormyNauki" nillable="true" type="tns:FormyNauki" />
   <xs:complexType name="Slowka">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Jezyk" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Kategoria" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Poziom" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="TlumaczenieSlowka" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="WprowadzoneSlowo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Slowko" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tlumaczenie" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Slowka" nillable="true" type="tns:Slowka" />
