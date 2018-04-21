@@ -10,12 +10,16 @@ namespace ServerApp.DTO
 	public class Slowka
 	{
 		[DataMember]
-		public string TlumaczenieSlowka { get; set; }
+		public string Jezyk { get; set; }
+		[DataMember]
+		public string Slowko { get; set; }
+		[DataMember]
+		public string Kategoria { get; set; }
 		[DataMember]
 		public string Poziom { get; set; }
 		[DataMember]
-		public string WprowadzoneSlowo { get; set; }
-		[DataMember]
-		public string Kategoria { get; set; }
+		public string Tlumaczenie { get; set; }
+
+
 	}
 }

@@ -15,8 +15,10 @@ namespace ClientApp
 		public Fiszki(string jezyk, string poziom)
 		{
 			InitializeComponent();
+
 			txbxJezyk.Text = jezyk;
 			txbxPoziom.Text = poziom;
+
 		}
 
 		private async void PobierzSlowko()
@@ -24,7 +26,7 @@ namespace ClientApp
 			WcfService.Slowka slowko = new WcfService.Slowka();
 			using (var client = new WcfService.Service1Client())
 			{
-				slowko = await client.LosujSlowkoDoFiszkiAsync(cmbbxKategoria.SelectedText, cmbbxKategoria.SelectedText, Models.Token.NumerToken);
+				slowko = await client.LosujSlowkoDoFiszkiAsync(txbxJezyk.Text, cmbbxKategoria.SelectedText, cmbbxKategoria.SelectedText, Models.Token.NumerToken);
 			}
 		}
 

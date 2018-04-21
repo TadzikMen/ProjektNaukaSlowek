@@ -213,41 +213,19 @@ namespace ServerApp
 			return zalogowanyUzytkownik;
 		}
 
-		public DTO.Slowka LosujSlowkoDoFiszki(string poziom, string kategoria, object token)
+		public DTO.Slowka LosujSlowkoDoFiszki(string jezyk, string poziom, string kategoria, object token)
 		{
 			DTO.Slowka slowka = new Slowka
 			{
+				Jezyk = jezyk,
 				Poziom = poziom,
 				Kategoria = kategoria
 			};
 			string wylosowaneSlowo;
 			int indeks;
+			List<Slowka> listaSlowek = new List<Slowka>();
 			List<string> listaPolskichSlowek;
-			Random rand = new Random();
-
-			using (var db = new System.Data.SqlClient.SqlConnection(
-				System.Configuration.ConfigurationManager.ConnectionStrings[
-					"PolaczenieZBazaDanych"].ConnectionString))
-			{
-				db.Open();
-				using (var cmd = new System.Data.SqlClient.SqlCommand())
-				{
-					cmd.Connection = db;
-					cmd.CommandText = "SELECT * FROM TLUMACZENIA";
-
-					using (var dr = cmd.ExecuteReader())
-					{
-						listaPolskichSlowek = new List<string>();
-						while (dr.Read())
-						{
-							listaPolskichSlowek.Add((string)dr["TLUMACZENIE"]);
-						}
-					}
-				}
-			}
-
-			indeks = rand.Next(listaPolskichSlowek.Count - 1);
-			wylosowaneSlowo = listaPolskichSlowek[indeks];
+			Random losujSlowko = new Random();
 
 			using (var db = new System.Data.SqlClient.SqlConnection(
 			System.Configuration.ConfigurationManager.ConnectionStrings[
@@ -257,23 +235,35 @@ namespace ServerApp
 				using (var cmd = new System.Data.SqlClient.SqlCommand())
 				{
 					cmd.Connection = db;
-					cmd.CommandText = "SELECT JEZYK.JEZYK, SLOWKA.SLOWKO, KATEGORIE.KATEGORIA, TLUMACZENIA.TLUMACZENIE " +
-						"FROM SLOWKA " +
-						"INNER JOIN TLUMACZENIA " +
-						"ON SLOWKA.ID_TLUMACZENIA = TLUMACZENIA.ID_TLUMACZENIA " +
-						"INNER JOIN JEZYK ON SLOWKA.ID_JEZYKA = JEZYK.ID_JEZYKA " +
-						"INNER JOIN KATEGORIE ON SLOWKA.ID_KATEGORII = KATEGORIE.ID_KATEGORII";
+					cmd.CommandText =
+						"SELECT SLOWKA.SLOWKO, TLUMACZENIA.TLUMACZENIE" +
+						"FROM POZIOMY" +
+							"INNER JOIN KATEGORIE ON POZIOMY.ID_POZIOMU = KATEGORIE.ID_POZIOMU" +
+							"INNER JOIN SLOWKA ON POZIOMY.ID_POZIOMU = SLOWKA.ID_POZIOMU" +
+								"AND KATEGORIE.ID_KATEGORII = SLOWKA.ID_KATEGORII" +
+							"INNER JOIN JEZYK ON SLOWKA.ID_JEZYKA = JEZYK.ID_JEZYKA" +
+							"INNER JOIN TLUMACZENIA ON SLOWKA.ID_TLUMACZENIA = TLUMACZENIA.ID_TLUMACZENIA" +
+						"WHERE" +
+							"JEZYK.JEZYK = @Jezyk" +
+							"AND KATEGORIE.KATEGORIA = @Kategoria" +
+							"AND POZIOMY.POZIOM = @Poziom";
 
 					using (var dr = cmd.ExecuteReader())
 					{
-						listaPolskichSlowek = new List<string>();
 						while (dr.Read())
 						{
-							listaPolskichSlowek.Add((string)dr["TLUMACZENIE"]);
+							listaSlowek.Add(new Slowka {
+								Slowko = (string)dr["SLOWKA"],
+								Tlumaczenie = (string)dr["TLUMACZENIE"]
+							});
 						}
 					}
 				}
 			}
+
+			indeks = losujSlowko.Next(0, listaSlowek.Count - 1);
+			slowka.Slowko = listaSlowek[indeks].Slowko;
+			slowka.Tlumaczenie = listaSlowek[indeks].Tlumaczenie;
 
 			return slowka;
 		}
