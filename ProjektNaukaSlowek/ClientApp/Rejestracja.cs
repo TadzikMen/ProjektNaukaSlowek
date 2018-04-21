@@ -64,16 +64,27 @@ namespace ClientApp
 				return false;
 		}
 
-		private bool SprawdzenieImieINazwisko(string imie, string nazwisko)
+        private bool SprawdzenieImieINazwisko(string imie, string nazwisko)
         {
-			if (imie == string.Empty || nazwisko == string.Empty)
-				return true;
-            else if(Convert.ToInt32(imie[0]) > 65 && Convert.ToInt32(imie[0]) < 90 && Convert.ToInt32(nazwisko[0]) > 65 && Convert.ToInt32(nazwisko[0]) < 90)
+            int[] polskieZnaki = new int[9] { 164, 143, 168, 157, 227, 224, 151, 141, 189 };
+            if (imie == string.Empty || nazwisko == string.Empty)
                 return true;
-            
-            else
-                return false;
+            // 	164 	143 	168 	157 	227 	224 	151 	141 	189
+            else if (Convert.ToInt32(imie[0]) > 65 && Convert.ToInt32(imie[0]) < 90 && Convert.ToInt32(nazwisko[0]) > 65 && Convert.ToInt32(nazwisko[0]) < 90)
+                return true;
 
+            else
+            {
+                for (int i = 0; i < 9; i++)
+                { 
+
+                    if (Convert.ToInt32(imie[0]) == polskieZnaki[i])
+                    {
+                        return false;
+                    }
+                 } 
+                    return true;
+            }
         }
 
 		public void WyswietlOczekiwanie()
