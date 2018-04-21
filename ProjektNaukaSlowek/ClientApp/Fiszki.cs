@@ -12,6 +12,7 @@ namespace ClientApp
 {
 	public partial class Fiszki : Form
 	{
+		WcfService.Slowka slowko = new WcfService.Slowka();
 		public Fiszki(string jezyk, string poziom)
 		{
 			InitializeComponent();
@@ -31,12 +32,13 @@ namespace ClientApp
 				{
 					cmbbxKategoria.Items.Add(item.Kategoria);
 				}
+
 			}
+			cmbbxKategoria.SelectedIndex = 0;
 		}
 
 		private async void PobierzSlowko()
 		{
-			WcfService.Slowka slowko = new WcfService.Slowka();
 			using (var client = new WcfService.Service1Client())
 			{
 				slowko = await client.LosujSlowkoDoFiszkiAsync(
@@ -45,11 +47,12 @@ namespace ClientApp
 					cmbbxKategoria.SelectedItem.ToString(), 
 					Models.Token.NumerToken);
 			}
+			txbSlowkoPolskie.Text = slowko.Tlumaczenie;
 		}
 
 		private void btnTlumacz_Click(object sender, EventArgs e)
 		{
-
+			txbTlumaczenie.Text = slowko.Slowko;
 		}
 
 		private void btnWroc_Click(object sender, EventArgs e)

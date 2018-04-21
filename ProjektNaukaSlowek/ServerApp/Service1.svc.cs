@@ -86,7 +86,6 @@ namespace ServerApp
             }
         }
 
-
         public bool SprawdzDaneLogowania(string login, string haslo)
 		{
 			Logowanie log = new Logowanie();
@@ -221,10 +220,8 @@ namespace ServerApp
 				Poziom = poziom,
 				Kategoria = kategoria
 			};
-			string wylosowaneSlowo;
 			int indeks;
-			List<Slowka> listaSlowek = new List<Slowka>();
-			List<string> listaPolskichSlowek;
+			List<Slowka> listaSlowek;
 			Random losujSlowko = new Random();
 
 			using (var db = new System.Data.SqlClient.SqlConnection(
@@ -236,24 +233,29 @@ namespace ServerApp
 				{
 					cmd.Connection = db;
 					cmd.CommandText =
-						"SELECT SLOWKA.SLOWKO, TLUMACZENIA.TLUMACZENIE" +
-						"FROM POZIOMY" +
-							"INNER JOIN KATEGORIE ON POZIOMY.ID_POZIOMU = KATEGORIE.ID_POZIOMU" +
-							"INNER JOIN SLOWKA ON POZIOMY.ID_POZIOMU = SLOWKA.ID_POZIOMU" +
-								"AND KATEGORIE.ID_KATEGORII = SLOWKA.ID_KATEGORII" +
-							"INNER JOIN JEZYK ON SLOWKA.ID_JEZYKA = JEZYK.ID_JEZYKA" +
-							"INNER JOIN TLUMACZENIA ON SLOWKA.ID_TLUMACZENIA = TLUMACZENIA.ID_TLUMACZENIA" +
-						"WHERE" +
-							"JEZYK.JEZYK = @Jezyk" +
-							"AND KATEGORIE.KATEGORIA = @Kategoria" +
+						"SELECT SLOWKA.SLOWKO, TLUMACZENIA.TLUMACZENIE " +
+						"FROM POZIOMY " +
+							"INNER JOIN KATEGORIE ON POZIOMY.ID_POZIOMU = KATEGORIE.ID_POZIOMU " +
+							"INNER JOIN SLOWKA ON POZIOMY.ID_POZIOMU = SLOWKA.ID_POZIOMU " +
+								"AND KATEGORIE.ID_KATEGORII = SLOWKA.ID_KATEGORII " +
+							"INNER JOIN JEZYK ON SLOWKA.ID_JEZYKA = JEZYK.ID_JEZYKA " +
+							"INNER JOIN TLUMACZENIA ON SLOWKA.ID_TLUMACZENIA = TLUMACZENIA.ID_TLUMACZENIA " +
+						"WHERE " +
+							"JEZYK.JEZYK = @Jezyk " +
+							"AND KATEGORIE.KATEGORIA = @Kategoria " +
 							"AND POZIOMY.POZIOM = @Poziom";
+
+					cmd.Parameters.Add("@Jezyk", System.Data.SqlDbType.NVarChar).Value = slowka.Jezyk;
+					cmd.Parameters.Add("@Kategoria", System.Data.SqlDbType.NVarChar).Value = slowka.Kategoria;
+					cmd.Parameters.Add("@Poziom", System.Data.SqlDbType.NVarChar).Value = slowka.Poziom;
 
 					using (var dr = cmd.ExecuteReader())
 					{
+						listaSlowek = new List<Slowka>();
 						while (dr.Read())
 						{
 							listaSlowek.Add(new Slowka {
-								Slowko = (string)dr["SLOWKA"],
+								Slowko = (string)dr["SLOWKO"],
 								Tlumaczenie = (string)dr["TLUMACZENIE"]
 							});
 						}
