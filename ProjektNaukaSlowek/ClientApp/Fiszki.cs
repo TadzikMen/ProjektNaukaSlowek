@@ -71,5 +71,10 @@ namespace ClientApp
 			txbTlumaczenie.Text = null;
 			PobierzSlowko();
         }
+
+        private void cmbbxKategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PobierzSlowko();
+        }
     }
 }
