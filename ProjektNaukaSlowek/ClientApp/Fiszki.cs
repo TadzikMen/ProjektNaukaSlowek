@@ -34,7 +34,6 @@ namespace ClientApp
 				}
 
 			}
-			cmbbxKategoria.SelectedIndex = 0;
 		}
 
 		private async void PobierzSlowko()
