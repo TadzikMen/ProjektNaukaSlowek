@@ -578,6 +578,7 @@ namespace ClientApp.WcfService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
         ClientApp.WcfService.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom, object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RozpocznijNauke", ReplyAction="http://tempuri.org/IService1/RozpocznijNaukeResponse")]
@@ -592,6 +593,7 @@ namespace ClientApp.WcfService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
         ClientApp.WcfService.Slowka LosujSlowkoDoFiszki(string jezyk, string poziom, string kategoria, object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LosujSlowkoDoFiszki", ReplyAction="http://tempuri.org/IService1/LosujSlowkoDoFiszkiResponse")]
@@ -602,6 +604,21 @@ namespace ClientApp.WcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GenerujToken", ReplyAction="http://tempuri.org/IService1/GenerujTokenResponse")]
         System.Threading.Tasks.Task<ClientApp.WcfService.Sesja> GenerujTokenAsync(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzKategorie", ReplyAction="http://tempuri.org/IService1/PobierzKategorieResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Logowanie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        System.Collections.Generic.List<ClientApp.WcfService.Slowka> PobierzKategorie(object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzKategorie", ReplyAction="http://tempuri.org/IService1/PobierzKategorieResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PobierzKategorieAsync(object token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -709,6 +726,14 @@ namespace ClientApp.WcfService {
         
         public System.Threading.Tasks.Task<ClientApp.WcfService.Sesja> GenerujTokenAsync(string login) {
             return base.Channel.GenerujTokenAsync(login);
+        }
+        
+        public System.Collections.Generic.List<ClientApp.WcfService.Slowka> PobierzKategorie(object token) {
+            return base.Channel.PobierzKategorie(token);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PobierzKategorieAsync(object token) {
+            return base.Channel.PobierzKategorieAsync(token);
         }
     }
 }

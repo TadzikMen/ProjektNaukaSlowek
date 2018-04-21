@@ -18,7 +18,20 @@ namespace ClientApp
 
 			txbxJezyk.Text = jezyk;
 			txbxPoziom.Text = poziom;
+			PrzekazWszystkieKategorie();
+		}
 
+		private async void PrzekazWszystkieKategorie()
+		{
+			List<WcfService.Slowka> kategorie = new List<WcfService.Slowka>();
+			using (var client = new WcfService.Service1Client())
+			{
+				kategorie = await client.PobierzKategorieAsync(Models.Token.NumerToken);
+				foreach (var item in kategorie)
+				{
+					cmbbxKategoria.Items.Add(item.Kategoria);
+				}
+			}
 		}
 
 		private async void PobierzSlowko()
@@ -26,7 +39,11 @@ namespace ClientApp
 			WcfService.Slowka slowko = new WcfService.Slowka();
 			using (var client = new WcfService.Service1Client())
 			{
-				slowko = await client.LosujSlowkoDoFiszkiAsync(txbxJezyk.Text, cmbbxKategoria.SelectedText, cmbbxKategoria.SelectedText, Models.Token.NumerToken);
+				slowko = await client.LosujSlowkoDoFiszkiAsync(
+					txbxJezyk.Text, 
+					txbxPoziom.Text, 
+					cmbbxKategoria.SelectedItem.ToString(), 
+					Models.Token.NumerToken);
 			}
 		}
 

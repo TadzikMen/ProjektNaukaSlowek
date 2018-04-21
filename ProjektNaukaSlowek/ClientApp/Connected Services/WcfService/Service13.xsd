@@ -51,4 +51,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Sesja" nillable="true" type="tns:Sesja" />
+  <xs:complexType name="ArrayOfSlowka">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Slowka" nillable="true" type="tns:Slowka" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSlowka" nillable="true" type="tns:ArrayOfSlowka" />
 </xs:schema>

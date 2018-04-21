@@ -416,5 +416,34 @@ namespace ServerApp
 
 			return formyNauki;
 		}
+
+		public List<Slowka> PobierzKategorie(object token)
+		{
+			List<Slowka> listaKategorii = new List<Slowka>();
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+					"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText = "SELECT KATEGORIA FROM KATEGORIE";
+					using (var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							listaKategorii.Add(new Slowka
+							{
+								Kategoria = (string)dr["KATEGORIA"]
+							});
+						}
+					}
+				}
+			}
+
+			return listaKategorii;
+		}
 	}
 }
