@@ -32,7 +32,6 @@ namespace ClientApp
 				{
 					cmbbxKategoria.Items.Add(item.Kategoria);
 				}
-
 			}
 		}
 
@@ -46,7 +45,15 @@ namespace ClientApp
 					cmbbxKategoria.SelectedItem.ToString(), 
 					Models.Token.NumerToken);
 			}
+			if (slowko.Tlumaczenie == null)
+			{
+				MessageBox.Show(this, "Brak słówek dla danej kategorii", "Uwaga!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				txbSlowkoPolskie.Text = null;
+				txbTlumaczenie.Text = null;
+				return;
+			}
 			txbSlowkoPolskie.Text = slowko.Tlumaczenie;
+
 		}
 
 		private void btnTlumacz_Click(object sender, EventArgs e)

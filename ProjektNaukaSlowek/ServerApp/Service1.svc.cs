@@ -262,7 +262,10 @@ namespace ServerApp
 					}
 				}
 			}
-
+			if (listaSlowek.Count == 0)
+			{
+				return slowka;
+			}
 			indeks = losujSlowko.Next(0, listaSlowek.Count - 1);
 			slowka.Slowko = listaSlowek[indeks].Slowko;
 			slowka.Tlumaczenie = listaSlowek[indeks].Tlumaczenie;
