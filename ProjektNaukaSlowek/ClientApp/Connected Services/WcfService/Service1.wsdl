@@ -6,6 +6,7 @@
       <xsd:import schemaLocation="http://localhost:64114/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:64114/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServerApp" />
       <xsd:import schemaLocation="http://localhost:64114/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO" />
+      <xsd:import schemaLocation="http://localhost:64114/Service1.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetData_InputMessage">
@@ -50,6 +51,24 @@
   <wsdl:message name="IService1_WyslijMailaRejestracja_OutputMessage">
     <wsdl:part name="parameters" element="tns:WyslijMailaRejestracjaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_RozpocznijNauke_InputMessage">
+    <wsdl:part name="parameters" element="tns:RozpocznijNauke" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RozpocznijNauke_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RozpocznijNaukeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LosujSlowkoDoFiszki_InputMessage">
+    <wsdl:part name="parameters" element="tns:LosujSlowkoDoFiszki" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LosujSlowkoDoFiszki_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LosujSlowkoDoFiszkiResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GenerujToken_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerujToken" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GenerujToken_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerujTokenResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -78,6 +97,18 @@
     <wsdl:operation name="WyslijMailaRejestracja">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/WyslijMailaRejestracja" message="tns:IService1_WyslijMailaRejestracja_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/WyslijMailaRejestracjaResponse" message="tns:IService1_WyslijMailaRejestracja_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RozpocznijNauke">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RozpocznijNauke" message="tns:IService1_RozpocznijNauke_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RozpocznijNaukeResponse" message="tns:IService1_RozpocznijNauke_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LosujSlowkoDoFiszki">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LosujSlowkoDoFiszki" message="tns:IService1_LosujSlowkoDoFiszki_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LosujSlowkoDoFiszkiResponse" message="tns:IService1_LosujSlowkoDoFiszki_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerujToken">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GenerujToken" message="tns:IService1_GenerujToken_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GenerujTokenResponse" message="tns:IService1_GenerujToken_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -138,6 +169,33 @@
     </wsdl:operation>
     <wsdl:operation name="WyslijMailaRejestracja">
       <soap:operation soapAction="http://tempuri.org/IService1/WyslijMailaRejestracja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RozpocznijNauke">
+      <soap:operation soapAction="http://tempuri.org/IService1/RozpocznijNauke" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LosujSlowkoDoFiszki">
+      <soap:operation soapAction="http://tempuri.org/IService1/LosujSlowkoDoFiszki" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerujToken">
+      <soap:operation soapAction="http://tempuri.org/IService1/GenerujToken" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

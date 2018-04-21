@@ -321,10 +321,10 @@ namespace ClientApp.WcfService {
         private string PoziomField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TlumaczenieSlowkaField;
+        private string SlowkoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string WprowadzoneSlowoField;
+        private string TlumaczenieSlowkaField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -363,6 +363,19 @@ namespace ClientApp.WcfService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Slowko {
+            get {
+                return this.SlowkoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SlowkoField, value) != true)) {
+                    this.SlowkoField = value;
+                    this.RaisePropertyChanged("Slowko");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string TlumaczenieSlowka {
             get {
                 return this.TlumaczenieSlowkaField;
@@ -371,19 +384,6 @@ namespace ClientApp.WcfService {
                 if ((object.ReferenceEquals(this.TlumaczenieSlowkaField, value) != true)) {
                     this.TlumaczenieSlowkaField = value;
                     this.RaisePropertyChanged("TlumaczenieSlowka");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string WprowadzoneSlowo {
-            get {
-                return this.WprowadzoneSlowoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.WprowadzoneSlowoField, value) != true)) {
-                    this.WprowadzoneSlowoField = value;
-                    this.RaisePropertyChanged("WprowadzoneSlowo");
                 }
             }
         }

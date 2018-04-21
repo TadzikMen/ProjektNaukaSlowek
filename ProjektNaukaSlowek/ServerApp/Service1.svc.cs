@@ -213,20 +213,219 @@ namespace ServerApp
 			return zalogowanyUzytkownik;
 		}
 
-		public FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom)
-		{
-			throw new NotImplementedException();
-		}
-
-		public Slowka ZwrocTlumaczenieSlowka(string slowo)
+		public DTO.Slowka LosujSlowkoDoFiszki(string poziom, string kategoria, object token)
 		{
 			DTO.Slowka slowka = new Slowka
 			{
-				WprowadzoneSlowo = slowo
+				Poziom = poziom,
+				Kategoria = kategoria
 			};
+			string wylosowaneSlowo;
+			int indeks;
+			List<string> listaPolskichSlowek;
+			Random rand = new Random();
 
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+					"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText = "SELECT * FROM TLUMACZENIA";
+
+					using (var dr = cmd.ExecuteReader())
+					{
+						listaPolskichSlowek = new List<string>();
+						while (dr.Read())
+						{
+							listaPolskichSlowek.Add((string)dr["TLUMACZENIE"]);
+						}
+					}
+				}
+			}
+
+			indeks = rand.Next(listaPolskichSlowek.Count - 1);
+			wylosowaneSlowo = listaPolskichSlowek[indeks];
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+			System.Configuration.ConfigurationManager.ConnectionStrings[
+				"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText = "SELECT JEZYK.JEZYK, SLOWKA.SLOWKO, KATEGORIE.KATEGORIA, TLUMACZENIA.TLUMACZENIE " +
+						"FROM SLOWKA " +
+						"INNER JOIN TLUMACZENIA " +
+						"ON SLOWKA.ID_TLUMACZENIA = TLUMACZENIA.ID_TLUMACZENIA " +
+						"INNER JOIN JEZYK ON SLOWKA.ID_JEZYKA = JEZYK.ID_JEZYKA " +
+						"INNER JOIN KATEGORIE ON SLOWKA.ID_KATEGORII = KATEGORIE.ID_KATEGORII";
+
+					using (var dr = cmd.ExecuteReader())
+					{
+						listaPolskichSlowek = new List<string>();
+						while (dr.Read())
+						{
+							listaPolskichSlowek.Add((string)dr["TLUMACZENIE"]);
+						}
+					}
+				}
+			}
 
 			return slowka;
+		}
+
+		public Sesja GenerujToken(string login)
+		{
+			//Wzór tokenu: XYZ123456
+			Sesja sesja = new Sesja
+			{
+				ListaTokenow = new List<string>()
+			};
+			Logowanie logowanie = new Logowanie
+			{
+				Login = login,
+				CzyZalogowany = true
+				
+			};
+			Random rand = new Random();
+			char[] slowaTokenu = new char[9];
+			int symbol;
+			int idTokenu;
+			
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+					"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText = "SELECT TOKEN FROM TOKEN_ACCESS";
+					using (var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							sesja.ListaTokenow.Add( 
+								(string)dr["TOKEN"]
+							);
+						}
+					}
+					cmd.CommandText = "SELECT id_uzytkownika FROM Uzytkownicy WHERE login_uzytkownika=@Login";
+					cmd.Parameters.Add("@Login", System.Data.SqlDbType.NVarChar).Value = logowanie.Login;
+					using (var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							sesja.IdUzytkownika = (int)dr["id_uzytkownika"];
+						}
+					}
+				}
+			}
+
+			for (int i = 0; i < 9; i++)
+			{
+				if (i < 3)
+				{
+					symbol = rand.Next(65, 90);
+					slowaTokenu[i] = (char)symbol;
+				}
+				else
+				{
+					symbol = rand.Next(48, 57);
+					slowaTokenu[i] = (char)symbol;
+				}
+			}
+
+			foreach (var item in slowaTokenu)
+				sesja.Token += item;
+
+			if (sesja.ListaTokenow != null)
+			{
+				while (sesja.ListaTokenow.Contains(sesja.Token))
+				{
+					for (int i = 0; i < 9; i++)
+					{
+						if (i < 3)
+						{
+							symbol = rand.Next(65, 90);
+							slowaTokenu[i] = (char)symbol;
+						}
+						else
+						{
+							symbol = rand.Next(48, 57);
+							slowaTokenu[i] = (char)symbol;
+						}
+					}
+				}
+			}
+
+			sesja.CzasZalogowania = DateTime.UtcNow;
+			sesja.CzasOstatniejAkcji = sesja.CzasZalogowania;
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+					"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText = "INSERT INTO TOKEN_ACCESS(ID_UZYTKOWNIKA, TOKEN, CZAS_LOGOWANIA, CZAS_OSTATNIEJ_AKCJI)" +
+						"VALUES(@ID_UZYTKOWNIKA, @TOKEN, @CZAS_LOGOWANIA, @CZAS_OSTATNIEJ_AKCJI); SELECT SCOPE_IDENTITY()";
+					cmd.Parameters.AddWithValue("@ID_UZYTKOWNIKA", sesja.IdUzytkownika);
+					cmd.Parameters.AddWithValue("@TOKEN", sesja.Token);
+					cmd.Parameters.AddWithValue("@CZAS_LOGOWANIA", sesja.CzasZalogowania);
+					cmd.Parameters.AddWithValue("@CZAS_OSTATNIEJ_AKCJI", sesja.CzasOstatniejAkcji);
+
+					idTokenu = (int)(decimal)cmd.ExecuteScalar();
+
+					cmd.CommandText = "UPDATE Uzytkownicy SET ID_TOKEN=@ID_TOKEN, czy_zalogowany=1 WHERE id_uzytkownika=@id_uzytkownika";
+					cmd.Parameters.AddWithValue("@ID_TOKEN", idTokenu);
+					cmd.Parameters.AddWithValue("@czy_zalogowany", logowanie.CzyZalogowany);
+
+					cmd.ExecuteNonQuery();
+				}
+			}
+
+			return sesja;
+		}
+
+		public DTO.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom, object token)
+		{
+			FormyNauki formyNauki = new FormyNauki
+			{
+				FormaNauki = formaNauki,
+				Jezyk = jezyk,
+				Poziom = poziom
+			};
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+			System.Configuration.ConfigurationManager.ConnectionStrings[
+				"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText = "SELECT FORMY_NAUKI.FORMA_NAUKI, POZIOMY.POZIOM, JEZYK.JEZYK " +
+						"FROM FORMY_NAUKI " +
+						"INNER JOIN POSTEP " +
+						"ON FORMY_NAUKI.ID_FORMY = POSTEP.ID_FORMY " +
+						"INNER JOIN POZIOMY " +
+						"ON POSTEP.ID_POZIOMU = POZIOMY.ID_POZIOMU " +
+						"INNER JOIN JEZYK ON POSTEP.ID_JEZYKA = JEZYK.ID_JEZYKA";
+
+					cmd.Parameters.Add("@FormaNauki", System.Data.SqlDbType.NChar).Value = formyNauki.FormaNauki;
+					cmd.Parameters.Add("@Poziom", System.Data.SqlDbType.NVarChar).Value = formyNauki.Poziom;
+					cmd.Parameters.Add("@Jezyk", System.Data.SqlDbType.NChar).Value = formyNauki.Jezyk;
+				}
+			}
+
+			return formyNauki;
 		}
 	}
 }

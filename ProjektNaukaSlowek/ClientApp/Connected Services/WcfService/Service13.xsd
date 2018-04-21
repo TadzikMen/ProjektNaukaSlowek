@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ServerApp.DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:64114/Service1.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:complexType name="Logowanie">
     <xs:sequence>
       <xs:element minOccurs="0" name="CzyZalogowany" type="xs:boolean" />
@@ -22,4 +23,31 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Uwierzytelnianie" nillable="true" type="tns:Uwierzytelnianie" />
+  <xs:complexType name="FormyNauki">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FormaNauki" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Jezyk" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Poziom" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FormyNauki" nillable="true" type="tns:FormyNauki" />
+  <xs:complexType name="Slowka">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Kategoria" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Poziom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TlumaczenieSlowka" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WprowadzoneSlowo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Slowka" nillable="true" type="tns:Slowka" />
+  <xs:complexType name="Sesja">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CzasOstatniejAkcji" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CzasZalogowania" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdUzytkownika" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ListaTokenow" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sesja" nillable="true" type="tns:Sesja" />
 </xs:schema>

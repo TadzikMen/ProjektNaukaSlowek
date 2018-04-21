@@ -12,7 +12,7 @@ namespace ServerApp.DTO
 		[DataMember]
 		public string FormaNauki { get; set; }
 		[DataMember]
-		public string WybranyJezyk { get; set; }
+		public string Jezyk { get; set; }
 		[DataMember]
 		public string Poziom { get; set; }
 	}

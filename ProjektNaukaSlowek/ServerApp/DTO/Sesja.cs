@@ -10,6 +10,14 @@ namespace ServerApp.DTO
 	public class Sesja
 	{
 		[DataMember]
-		public List<int> IdUzytkownika { get; set; }
+		public string Token { get; set; }
+		[DataMember]
+		public int IdUzytkownika { get; set; }
+		[DataMember]
+		public DateTime CzasZalogowania { get; set; }
+		[DataMember]
+		public DateTime CzasOstatniejAkcji { get; set; }
+		[DataMember]
+		public List<string> ListaTokenow { get; set; } 
 	}
 }

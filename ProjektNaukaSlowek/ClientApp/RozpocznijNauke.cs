@@ -13,14 +13,14 @@ namespace ClientApp
     public partial class RozpocznijNauke : Form
     {
 		Fiszki frmFiszki;
-        public RozpocznijNauke()
-        {
-            InitializeComponent();
+		public RozpocznijNauke()
+		{
+			InitializeComponent();
 
 			//Do późniejszej poprawy
 			UzupelnijWartosci();
-            
-    }
+
+		}
         
         public string PrzekazNumerPoziomu
 		{
@@ -61,13 +61,11 @@ namespace ClientApp
 			{
 				if (frmFiszki == null)
 				{
-					frmFiszki = new Fiszki();
+					frmFiszki = new Fiszki(cmBxWyborJezyka.SelectedItem.ToString(), cmBxWyborPoziomu.SelectedItem.ToString());
 					frmFiszki.FormClosed += Fiszki_FormClosed;
 				}
 				frmFiszki.Show(this);
 				Hide();
-
-				//frmFiszki.PobierzNumerPoziomu = "Poziom: " + rozpoczynanieNauki.Poziom;
 			}
 		}
 
