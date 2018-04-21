@@ -44,7 +44,7 @@ namespace ServerApp
 		DTO.Sesja GenerujToken(string login);
 
 		[OperationContract]
-		List<DTO.Slowka> PobierzKategorie(object token);
+		List<DTO.Slowka> PobierzKategorie(string poziom, object token);
 	}
 
 

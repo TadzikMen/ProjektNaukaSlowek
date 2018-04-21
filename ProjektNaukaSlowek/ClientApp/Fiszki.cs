@@ -27,7 +27,7 @@ namespace ClientApp
 			List<WcfService.Slowka> kategorie = new List<WcfService.Slowka>();
 			using (var client = new WcfService.Service1Client())
 			{
-				kategorie = await client.PobierzKategorieAsync(Models.Token.NumerToken);
+				kategorie = await client.PobierzKategorieAsync(txbxPoziom.Text, Models.Token.NumerToken);
 				foreach (var item in kategorie)
 				{
 					cmbbxKategoria.Items.Add(item.Kategoria);

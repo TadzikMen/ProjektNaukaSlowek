@@ -615,10 +615,10 @@ namespace ClientApp.WcfService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
-        System.Collections.Generic.List<ClientApp.WcfService.Slowka> PobierzKategorie(object token);
+        System.Collections.Generic.List<ClientApp.WcfService.Slowka> PobierzKategorie(string poziom, object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzKategorie", ReplyAction="http://tempuri.org/IService1/PobierzKategorieResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PobierzKategorieAsync(object token);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PobierzKategorieAsync(string poziom, object token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -728,12 +728,12 @@ namespace ClientApp.WcfService {
             return base.Channel.GenerujTokenAsync(login);
         }
         
-        public System.Collections.Generic.List<ClientApp.WcfService.Slowka> PobierzKategorie(object token) {
-            return base.Channel.PobierzKategorie(token);
+        public System.Collections.Generic.List<ClientApp.WcfService.Slowka> PobierzKategorie(string poziom, object token) {
+            return base.Channel.PobierzKategorie(poziom, token);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PobierzKategorieAsync(object token) {
-            return base.Channel.PobierzKategorieAsync(token);
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PobierzKategorieAsync(string poziom, object token) {
+            return base.Channel.PobierzKategorieAsync(poziom, token);
         }
     }
 }

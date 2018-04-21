@@ -410,19 +410,19 @@ namespace ServerApp
 						"ON POSTEP.ID_POZIOMU = POZIOMY.ID_POZIOMU " +
 						"INNER JOIN JEZYK ON POSTEP.ID_JEZYKA = JEZYK.ID_JEZYKA";
 
-					cmd.Parameters.Add("@FormaNauki", System.Data.SqlDbType.NChar).Value = formyNauki.FormaNauki;
+					cmd.Parameters.Add("@FormaNauki", System.Data.SqlDbType.NVarChar).Value = formyNauki.FormaNauki;
 					cmd.Parameters.Add("@Poziom", System.Data.SqlDbType.NVarChar).Value = formyNauki.Poziom;
-					cmd.Parameters.Add("@Jezyk", System.Data.SqlDbType.NChar).Value = formyNauki.Jezyk;
+					cmd.Parameters.Add("@Jezyk", System.Data.SqlDbType.NVarChar).Value = formyNauki.Jezyk;
 				}
 			}
 
 			return formyNauki;
 		}
 
-		public List<Slowka> PobierzKategorie(object token)
+		public List<Slowka> PobierzKategorie(string poziom, object token)
 		{
 			List<Slowka> listaKategorii = new List<Slowka>();
-
+			
 			using (var db = new System.Data.SqlClient.SqlConnection(
 				System.Configuration.ConfigurationManager.ConnectionStrings[
 					"PolaczenieZBazaDanych"].ConnectionString))
@@ -431,7 +431,14 @@ namespace ServerApp
 				using (var cmd = new System.Data.SqlClient.SqlCommand())
 				{
 					cmd.Connection = db;
-					cmd.CommandText = "SELECT KATEGORIA FROM KATEGORIE";
+					cmd.CommandText = 
+						"SELECT KATEGORIE.KATEGORIA " +
+						"FROM KATEGORIE " +
+						"INNER JOIN POZIOMY ON KATEGORIE.ID_POZIOMU = POZIOMY.ID_POZIOMU " +
+						"WHERE POZIOMY.POZIOM = @Poziom";
+
+					cmd.Parameters.Add("@Poziom", System.Data.SqlDbType.NVarChar).Value = poziom;
+
 					using (var dr = cmd.ExecuteReader())
 					{
 						while (dr.Read())
