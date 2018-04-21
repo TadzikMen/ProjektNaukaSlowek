@@ -107,6 +107,7 @@ namespace ClientApp
 					Models.ObslugaRejestracji obsRejestracji = new Models.ObslugaRejestracji(
 						tbxLogin.Text,
 						tbxHaslo.Text,
+						tbxWerHasla.Text,
 						tbxEmail.Text,
 						tbxImie.Text,
 						tbxNazwisko.Text);
