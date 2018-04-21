@@ -18,7 +18,7 @@ namespace ClientApp
             InitializeComponent();
         }
 
-		public bool WalidacjaHasla(string haslo)
+		private bool WalidacjaHasla(string haslo, string powtorzoneHaslo)
 		{
 			if (haslo.Length < 8)
 				return false;
@@ -28,7 +28,6 @@ namespace ClientApp
 
 			else
 				return false;
-
 		}
 
 		private bool SprawdzenieEmail(string email)
@@ -115,11 +114,11 @@ namespace ClientApp
 					czyPoprawneDane = obsRejestracji.SprawdzDaneWejsciowe(tbxLogin.Text, tbxHaslo.Text, tbxWerHasla.Text, tbxEmail.Text);
 					obsRejestracji.Lista = await client.PobierzLoginyMaileImionaAsync();
 
-                    if (!obsRejestracji.SprawdzCzyIstniejeUzytkownik(obsRejestracji.Lista, tbxLogin.Text, tbxEmail.Text))
+					if (!obsRejestracji.SprawdzCzyIstniejeUzytkownik(obsRejestracji.Lista, tbxLogin.Text, tbxEmail.Text))
 					{
 						oczekiwanie.Abort();
 						weryfikacja = false;
-                        this.Enabled = true;
+						this.Enabled = true;
 						MessageBox.Show(this, "Podany użytkownik lub e-mail już został użyty!", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 						WyczyscPola();
 						return;
@@ -128,45 +127,45 @@ namespace ClientApp
 					{
 						oczekiwanie.Abort();
 						weryfikacja = false;
-                        this.Enabled = true;
+						this.Enabled = true;
 						MessageBox.Show(this, "Wypełnij wszystkie pola!", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 						WyczyscPola();
 						return;
 					}
-                    else if (!WalidacjaHasla(tbxHaslo.Text))
-                    {
+					else if (!WalidacjaHasla(tbxHaslo.Text, tbxWerHasla.Text))
+					{
 						oczekiwanie.Abort();
 						weryfikacja = false;
-                        this.Enabled = true;
+						this.Enabled = true;
 						WyczyscPola();
 						MessageBox.Show(this, "Haslo powinno mieć powyżej 8 znaków i posiadać conajmniej jedną dużą literę oraz cyfrę", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (tbxHaslo.Text != tbxWerHasla.Text)
-                    {
-                        oczekiwanie.Abort();
-                        weryfikacja = false;
-                        this.Enabled = true;
-                        WyczyscPola();
-                        MessageBox.Show(this, "Podaj dwa takie same hasła", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (!SprawdzenieEmail(tbxEmail.Text))
-                    {
+					}
+					else if (tbxHaslo.Text != tbxWerHasla.Text)
+					{
 						oczekiwanie.Abort();
 						weryfikacja = false;
-                        this.Enabled = true;
-                        MessageBox.Show(this, "Nieprawidlowy adres e-mail", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						this.Enabled = true;
 						WyczyscPola();
+						MessageBox.Show(this, "Podaj dwa takie same hasła", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
-                    else if (!SprawdzenieImieINazwisko(tbxImie.Text,tbxNazwisko.Text))
-                    {
+					else if (!SprawdzenieEmail(tbxEmail.Text))
+					{
 						oczekiwanie.Abort();
 						weryfikacja = false;
-                        this.Enabled = true;
-                        MessageBox.Show(this, "Imie i nazwisko musi zaczynać się z wielkiej litery", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						this.Enabled = true;
+						MessageBox.Show(this, "Nieprawidlowy adres e-mail", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 						WyczyscPola();
 					}
-                    else
-                    {
+					else if (!SprawdzenieImieINazwisko(tbxImie.Text, tbxNazwisko.Text))
+					{
+						oczekiwanie.Abort();
+						weryfikacja = false;
+						this.Enabled = true;
+						MessageBox.Show(this, "Imie i nazwisko musi zaczynać się z wielkiej litery", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						WyczyscPola();
+					}
+					else
+					{
 						await client.WyslijMailaRejestracjaAsync(obsRejestracji.Login, obsRejestracji.Haslo, obsRejestracji.Email, obsRejestracji.Imie, obsRejestracji.Nazwisko);
 						await client.DodajUzytkownikaAsync(obsRejestracji.Login, obsRejestracji.Haslo, obsRejestracji.Email, obsRejestracji.Imie, obsRejestracji.Nazwisko);
 					}
