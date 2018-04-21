@@ -25,7 +25,7 @@ namespace ServerApp
 			}
 			return composite;
 		}
-
+        
         public void DodajUzytkownika(string login, string haslo, string email, string imie = null, string nazwisko = null)
 		{
 			DTO.Rejestracja uzytkownik = new Rejestracja();
@@ -62,8 +62,32 @@ namespace ServerApp
 				}
 			}
 		}
-		
-		public bool SprawdzDaneLogowania(string login, string haslo)
+        public void Formy_nauki()
+        {
+
+            List<FormyNauki> Formy_nauki;
+
+            using (var db = new System.Data.SqlClient.SqlConnection
+            (System.Configuration.ConfigurationManager.ConnectionStrings[
+                "PolaczenieZBazaDanych"].ConnectionString))
+            {
+                db.Open();
+                using (var cmd = new System.Data.SqlClient.SqlCommand())
+                {
+                    cmd.Connection = db;
+                    cmd.CommandText = "SELECT forma_nauki FROM FORMY_NAUKI";
+
+                    using (var dr = cmd.ExecuteReader())
+                    {
+                        Formy_nauki = new List<FormyNauki>();
+
+                    }
+                }
+            }
+        }
+
+
+        public bool SprawdzDaneLogowania(string login, string haslo)
 		{
 			Logowanie log = new Logowanie();
 			List<Logowanie> listaLoginow;
