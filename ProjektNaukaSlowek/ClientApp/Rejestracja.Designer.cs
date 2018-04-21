@@ -52,7 +52,7 @@
             this.btnZarejestruj.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnZarejestruj.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnZarejestruj.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnZarejestruj.Location = new System.Drawing.Point(1112, 732);
+            this.btnZarejestruj.Location = new System.Drawing.Point(1224, 749);
             this.btnZarejestruj.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnZarejestruj.Name = "btnZarejestruj";
             this.btnZarejestruj.Size = new System.Drawing.Size(180, 91);
@@ -91,7 +91,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(669, 391);
+            this.label3.Location = new System.Drawing.Point(669, 445);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 39);
             this.label3.TabIndex = 3;
@@ -103,7 +103,7 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label4.Location = new System.Drawing.Point(669, 497);
+            this.label4.Location = new System.Drawing.Point(668, 542);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(186, 39);
             this.label4.TabIndex = 4;
@@ -115,7 +115,7 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(668, 597);
+            this.label5.Location = new System.Drawing.Point(668, 635);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 39);
             this.label5.TabIndex = 5;
@@ -143,16 +143,17 @@
             // tbxImie
             // 
             this.tbxImie.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tbxImie.Location = new System.Drawing.Point(1009, 391);
+            this.tbxImie.Location = new System.Drawing.Point(1009, 445);
             this.tbxImie.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxImie.Name = "tbxImie";
             this.tbxImie.Size = new System.Drawing.Size(329, 36);
             this.tbxImie.TabIndex = 9;
+            this.tbxImie.TextChanged += new System.EventHandler(this.tbxImie_TextChanged);
             // 
             // tbxNazwisko
             // 
             this.tbxNazwisko.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tbxNazwisko.Location = new System.Drawing.Point(1009, 497);
+            this.tbxNazwisko.Location = new System.Drawing.Point(1009, 542);
             this.tbxNazwisko.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxNazwisko.Name = "tbxNazwisko";
             this.tbxNazwisko.Size = new System.Drawing.Size(329, 36);
@@ -161,7 +162,7 @@
             // tbxEmail
             // 
             this.tbxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tbxEmail.Location = new System.Drawing.Point(1009, 597);
+            this.tbxEmail.Location = new System.Drawing.Point(1009, 635);
             this.tbxEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(329, 36);
@@ -174,7 +175,7 @@
             this.btnWróć.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnWróć.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnWróć.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnWróć.Location = new System.Drawing.Point(628, 732);
+            this.btnWróć.Location = new System.Drawing.Point(628, 749);
             this.btnWróć.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnWróć.Name = "btnWróć";
             this.btnWróć.Size = new System.Drawing.Size(180, 91);
@@ -189,7 +190,7 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label6.Location = new System.Drawing.Point(1013, 674);
+            this.label6.Location = new System.Drawing.Point(1381, 684);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(232, 39);
             this.label6.TabIndex = 12;
@@ -201,7 +202,7 @@
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label7.Location = new System.Drawing.Point(669, 313);
+            this.label7.Location = new System.Drawing.Point(668, 337);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(240, 39);
             this.label7.TabIndex = 13;
@@ -210,7 +211,7 @@
             // tbxWerHasla
             // 
             this.tbxWerHasla.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tbxWerHasla.Location = new System.Drawing.Point(1009, 317);
+            this.tbxWerHasla.Location = new System.Drawing.Point(1009, 337);
             this.tbxWerHasla.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbxWerHasla.Name = "tbxWerHasla";
             this.tbxWerHasla.Size = new System.Drawing.Size(329, 36);
@@ -222,7 +223,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1387, 760);
+            this.ClientSize = new System.Drawing.Size(1470, 886);
             this.Controls.Add(this.tbxWerHasla);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);

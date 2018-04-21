@@ -219,5 +219,10 @@ namespace ClientApp
         {
 
         }
+
+        private void tbxImie_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

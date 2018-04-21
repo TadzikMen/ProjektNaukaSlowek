@@ -39,10 +39,10 @@
             this.pasekPostepu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pasekPostepu.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pasekPostepu.ForeColor = System.Drawing.SystemColors.Info;
-            this.pasekPostepu.Location = new System.Drawing.Point(176, 353);
+            this.pasekPostepu.Location = new System.Drawing.Point(196, 376);
             this.pasekPostepu.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.pasekPostepu.Name = "pasekPostepu";
-            this.pasekPostepu.Size = new System.Drawing.Size(639, 28);
+            this.pasekPostepu.Size = new System.Drawing.Size(639, 38);
             this.pasekPostepu.TabIndex = 0;
             // 
             // timer1
@@ -61,7 +61,7 @@
             this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "SplashScreen";
             this.ShowInTaskbar = false;
