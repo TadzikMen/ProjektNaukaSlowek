@@ -350,17 +350,16 @@ namespace ServerApp
 				using (var cmd = new System.Data.SqlClient.SqlCommand())
 				{
 					cmd.Connection = db;
-					cmd.CommandText = "INSERT INTO TOKEN_ACCESS(ID_UZYTKOWNIKA, TOKEN, CZAS_LOGOWANIA, CZAS_OSTATNIEJ_AKCJI)" +
-						"VALUES(@ID_UZYTKOWNIKA, @TOKEN, @CZAS_LOGOWANIA, @CZAS_OSTATNIEJ_AKCJI); SELECT SCOPE_IDENTITY()";
-					cmd.Parameters.AddWithValue("@ID_UZYTKOWNIKA", sesja.IdUzytkownika);
+					cmd.CommandText = "INSERT INTO TOKEN_ACCESS(TOKEN, CZAS_LOGOWANIA, CZAS_OSTATNIEJ_AKCJI)" +
+						"VALUES(@TOKEN, @CZAS_LOGOWANIA, @CZAS_OSTATNIEJ_AKCJI); SELECT SCOPE_IDENTITY()";
 					cmd.Parameters.AddWithValue("@TOKEN", sesja.Token);
 					cmd.Parameters.AddWithValue("@CZAS_LOGOWANIA", sesja.CzasZalogowania);
 					cmd.Parameters.AddWithValue("@CZAS_OSTATNIEJ_AKCJI", sesja.CzasOstatniejAkcji);
 
 					idTokenu = (int)(decimal)cmd.ExecuteScalar();
 
-					cmd.CommandText = "UPDATE Uzytkownicy SET ID_TOKEN=@ID_TOKEN, czy_zalogowany=1 WHERE id_uzytkownika=@id_uzytkownika";
-					cmd.Parameters.AddWithValue("@ID_TOKEN", idTokenu);
+					cmd.CommandText = "UPDATE Uzytkownicy SET token=@TOKEN, czy_zalogowany=1 WHERE id_uzytkownika=@id_uzytkownika";
+					cmd.Parameters.AddWithValue("@id_uzytkownika", sesja.IdUzytkownika);
 					cmd.Parameters.AddWithValue("@czy_zalogowany", logowanie.CzyZalogowany);
 
 					cmd.ExecuteNonQuery();
