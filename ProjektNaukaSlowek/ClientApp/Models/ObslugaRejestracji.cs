@@ -9,18 +9,20 @@ namespace ClientApp.Models
 {
 	public class ObslugaRejestracji
 	{
-		public ObslugaRejestracji(string login, string haslo, string email, string imie = null, string nazwisko = null)
+		public ObslugaRejestracji(string login, string haslo, string haslo2, string email, string imie = null, string nazwisko = null)
 		{
 			this.Login = login;
 			this.Haslo = haslo;
-			this.Email = email;
+            this.Haslo2 = haslo2;
+            this.Email = email;
 			this.Imie = imie;
 			this.Nazwisko = nazwisko;
 		}
 
 		public string Login { get; set; }
 		public string Haslo { get; set; }
-		public string Email { get; set; }
+        public string Haslo2 { get; set; }
+        public string Email { get; set; }
 		public string Imie { get; set; }
 		public string Nazwisko { get; set; }
 
@@ -37,9 +39,9 @@ namespace ClientApp.Models
                 _lista = value;
             }
         }
-		public bool SprawdzDaneWejsciowe(string login, string haslo, string email)
+		public bool SprawdzDaneWejsciowe(string login, string haslo, string haslo2, string email)
 		{
-			if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(haslo) || string.IsNullOrEmpty(email))
+			if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(haslo) || string.IsNullOrEmpty(haslo2) || string.IsNullOrEmpty(email))
 				return false;
 			else
 				return true;
