@@ -69,7 +69,6 @@ namespace ClientApp
             int[] polskieZnaki = new int[9] { 164, 143, 168, 157, 227, 224, 151, 141, 189 };
             if (imie == string.Empty || nazwisko == string.Empty)
                 return true;
-            // 	164 	143 	168 	157 	227 	224 	151 	141 	189
             else if (Convert.ToInt32(imie[0]) > 65 && Convert.ToInt32(imie[0]) < 90 && Convert.ToInt32(nazwisko[0]) > 65 && Convert.ToInt32(nazwisko[0]) < 90)
                 return true;
 
@@ -112,7 +111,7 @@ namespace ClientApp
 						tbxImie.Text,
 						tbxNazwisko.Text);
 					
-					czyPoprawneDane = obsRejestracji.SprawdzDaneWejsciowe(tbxLogin.Text, tbxHaslo.Text, tbxEmail.Text);
+					czyPoprawneDane = obsRejestracji.SprawdzDaneWejsciowe(tbxLogin.Text, tbxHaslo.Text, tbxWerHasla.Text, tbxEmail.Text);
 					obsRejestracji.Lista = await client.PobierzLoginyMaileImionaAsync();
 
                     if (!obsRejestracji.SprawdzCzyIstniejeUzytkownik(obsRejestracji.Lista, tbxLogin.Text, tbxEmail.Text))
@@ -140,6 +139,14 @@ namespace ClientApp
                         this.Enabled = true;
 						WyczyscPola();
 						MessageBox.Show(this, "Haslo powinno mieć powyżej 8 znaków i posiadać conajmniej jedną dużą literę oraz cyfrę", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (tbxHaslo.Text != tbxWerHasla.Text)
+                    {
+                        oczekiwanie.Abort();
+                        weryfikacja = false;
+                        this.Enabled = true;
+                        WyczyscPola();
+                        MessageBox.Show(this, "Podaj dwa takie same hasła", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else if (!SprawdzenieEmail(tbxEmail.Text))
                     {
@@ -188,6 +195,7 @@ namespace ClientApp
 		{
 			tbxLogin.Text = null;
 			tbxHaslo.Text = null;
+            tbxWerHasla.Text = null;
 			tbxImie.Text = null;
 			tbxNazwisko.Text = null;
 			tbxEmail.Text = null;
@@ -205,6 +213,11 @@ namespace ClientApp
             {
                 btnZarejestruj_Click(sender, e);
             }
+        }
+
+        private void Rejestracja_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
