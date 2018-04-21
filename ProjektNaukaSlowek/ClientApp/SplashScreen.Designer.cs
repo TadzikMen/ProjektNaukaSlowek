@@ -28,38 +28,46 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.pasekPostepu = new System.Windows.Forms.ProgressBar();
-			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.SuspendLayout();
-			// 
-			// pasekPostepu
-			// 
-			this.pasekPostepu.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.pasekPostepu.Location = new System.Drawing.Point(131, 190);
-			this.pasekPostepu.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-			this.pasekPostepu.Name = "pasekPostepu";
-			this.pasekPostepu.Size = new System.Drawing.Size(479, 23);
-			this.pasekPostepu.TabIndex = 0;
-			// 
-			// timer1
-			// 
-			this.timer1.Enabled = true;
-			this.timer1.Interval = 8;
-			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-			// 
-			// SplashScreen
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(763, 464);
-			this.Controls.Add(this.pasekPostepu);
-			this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Name = "SplashScreen";
-			this.ShowInTaskbar = false;
-			this.Text = "SplashScreen";
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashScreen));
+            this.pasekPostepu = new System.Windows.Forms.ProgressBar();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
+            // 
+            // pasekPostepu
+            // 
+            this.pasekPostepu.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pasekPostepu.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pasekPostepu.ForeColor = System.Drawing.SystemColors.Info;
+            this.pasekPostepu.Location = new System.Drawing.Point(176, 353);
+            this.pasekPostepu.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.pasekPostepu.Name = "pasekPostepu";
+            this.pasekPostepu.Size = new System.Drawing.Size(639, 28);
+            this.pasekPostepu.TabIndex = 0;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 8;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // SplashScreen
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(1017, 571);
+            this.Controls.Add(this.pasekPostepu);
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
+            this.Name = "SplashScreen";
+            this.ShowInTaskbar = false;
+            this.Text = "SplashScreen";
+            this.Load += new System.EventHandler(this.SplashScreen_Load);
+            this.ResumeLayout(false);
 
 		}
 

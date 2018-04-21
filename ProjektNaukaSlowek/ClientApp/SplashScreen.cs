@@ -25,5 +25,10 @@ namespace ClientApp
 			if (pasekPostepu.Value == 100)
 				timer1.Stop();
 		}
-	}
+
+        private void SplashScreen_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
