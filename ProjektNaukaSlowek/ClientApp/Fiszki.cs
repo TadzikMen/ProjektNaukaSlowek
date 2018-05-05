@@ -17,6 +17,7 @@ namespace ClientApp
 		{
 			InitializeComponent();
 
+			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
 			txbxJezyk.Text = jezyk;
 			txbxPoziom.Text = poziom;
 			PrzekazWszystkieKategorie();
@@ -58,28 +59,28 @@ namespace ClientApp
 
 		private void btnTlumacz_Click(object sender, EventArgs e)
 		{
+			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
 			txbTlumaczenie.Text = slowko.Slowko;
 		}
 
 		private void btnWroc_Click(object sender, EventArgs e)
 		{
+			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
 			Owner.Show();
 			Hide();
 		}
 
-        private void Fiszki_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnKolejneSlowko_Click(object sender, EventArgs e)
         {
 			txbTlumaczenie.Text = null;
+			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
 			PobierzSlowko();
-        }
+		}
 
         private void cmbbxKategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
+			txbTlumaczenie.Text = null;
+			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
             PobierzSlowko();
         }
     }

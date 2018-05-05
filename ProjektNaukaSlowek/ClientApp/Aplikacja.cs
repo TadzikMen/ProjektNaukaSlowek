@@ -22,7 +22,8 @@ namespace ClientApp
 		public Aplikacja()
         {
             InitializeComponent();
-        }
+			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
+		}
 
 		public string PobierzUzytkownika
 		{

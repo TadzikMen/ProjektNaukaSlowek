@@ -81,8 +81,9 @@ namespace ClientApp
                         return false;
                     }
                  } 
-                    return true;
+                return true;
             }
+
         }
 
 		public void WyswietlOczekiwanie()

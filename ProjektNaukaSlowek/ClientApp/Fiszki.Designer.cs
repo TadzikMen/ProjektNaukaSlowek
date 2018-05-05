@@ -198,7 +198,7 @@
 			this.cmbbxKategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.cmbbxKategoria.FormattingEnabled = true;
 			this.cmbbxKategoria.Location = new System.Drawing.Point(810, 246);
-			this.cmbbxKategoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.cmbbxKategoria.Margin = new System.Windows.Forms.Padding(2);
 			this.cmbbxKategoria.Name = "cmbbxKategoria";
 			this.cmbbxKategoria.Size = new System.Drawing.Size(302, 33);
 			this.cmbbxKategoria.TabIndex = 12;
@@ -209,7 +209,7 @@
 			this.txbxPoziom.Enabled = false;
 			this.txbxPoziom.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.txbxPoziom.Location = new System.Drawing.Point(810, 179);
-			this.txbxPoziom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.txbxPoziom.Margin = new System.Windows.Forms.Padding(2);
 			this.txbxPoziom.Name = "txbxPoziom";
 			this.txbxPoziom.Size = new System.Drawing.Size(302, 38);
 			this.txbxPoziom.TabIndex = 13;
@@ -220,7 +220,7 @@
 			this.txbxJezyk.Enabled = false;
 			this.txbxJezyk.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.txbxJezyk.Location = new System.Drawing.Point(810, 126);
-			this.txbxJezyk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.txbxJezyk.Margin = new System.Windows.Forms.Padding(2);
 			this.txbxJezyk.Name = "txbxJezyk";
 			this.txbxJezyk.Size = new System.Drawing.Size(302, 38);
 			this.txbxJezyk.TabIndex = 14;
@@ -250,7 +250,6 @@
 			this.Name = "Fiszki";
 			this.Text = "Fiszki";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-			this.Load += new System.EventHandler(this.Fiszki_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

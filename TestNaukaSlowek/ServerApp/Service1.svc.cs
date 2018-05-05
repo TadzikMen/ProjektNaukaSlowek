@@ -1,18 +1,18 @@
-﻿using ServerApp.DTO;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Web;
+using System.Text;
+using ServerApp.DTO;
 
 namespace ServerApp
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
-    public class Service1 : IService1
+	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
+	// NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
+	public class Service1 : IService1
 	{
-		public string GetData(int value)
-		{
-			return string.Format("You entered: {0}", value);
-		}
-
 		public CompositeType GetDataUsingDataContract(CompositeType composite)
 		{
 			if (composite == null)
@@ -25,14 +25,14 @@ namespace ServerApp
 			}
 			return composite;
 		}
-        
-        public void DodajUzytkownika(string login, string haslo, string email, string imie = null, string nazwisko = null)
+
+		public void DodajUzytkownika(string login, string haslo, string email, string imie = null, string nazwisko = null)
 		{
 			DTO.Rejestracja uzytkownik = new Rejestracja();
 			int Id;
 
 			uzytkownik.Login = login;
-            uzytkownik.Haslo = Hashing.HashPassword(haslo);
+			uzytkownik.Haslo = Hashing.HashPassword(haslo);
 			uzytkownik.Imie = imie;
 			uzytkownik.Nazwisko = nazwisko;
 			uzytkownik.Email = email;
@@ -63,7 +63,7 @@ namespace ServerApp
 			}
 		}
 
-        public bool SprawdzDaneLogowania(string login, string haslo)
+		public bool SprawdzDaneLogowania(string login, string haslo)
 		{
 			Logowanie log = new Logowanie();
 			List<Logowanie> listaLoginow;
@@ -95,9 +95,9 @@ namespace ServerApp
 
 			foreach (var item in listaLoginow)
 			{
-                //	if (item.Login == login && item.Haslo == haslo)
-                if (item.Login == login && Hashing.ValidatePassword(haslo, item.Haslo) == true)
-                {
+				//	if (item.Login == login && item.Haslo == haslo)
+				if (item.Login == login && Hashing.ValidatePassword(haslo, item.Haslo) == true)
+				{
 					log.Login = login;
 					log.Haslo = haslo;
 					return true;
@@ -233,7 +233,8 @@ namespace ServerApp
 						listaSlowek = new List<Slowka>();
 						while (dr.Read())
 						{
-							listaSlowek.Add(new Slowka {
+							listaSlowek.Add(new Slowka
+							{
 								Slowko = (string)dr["SLOWKO"],
 								Tlumaczenie = (string)dr["TLUMACZENIE"]
 							});
@@ -243,7 +244,7 @@ namespace ServerApp
 			}
 			if (listaSlowek.Count == 0)
 				return slowka;
-			
+
 			indeks = losujSlowko.Next(0, listaSlowek.Count - 1);
 			slowka.Slowko = listaSlowek[indeks].Slowko;
 			slowka.Tlumaczenie = listaSlowek[indeks].Tlumaczenie;
@@ -267,7 +268,7 @@ namespace ServerApp
 			char[] slowaTokenu = new char[9];
 			int symbol;
 			int idTokenu;
-			
+
 			using (var db = new System.Data.SqlClient.SqlConnection(
 				System.Configuration.ConfigurationManager.ConnectionStrings[
 					"PolaczenieZBazaDanych"].ConnectionString))
@@ -281,7 +282,7 @@ namespace ServerApp
 					{
 						while (dr.Read())
 						{
-							sesja.ListaTokenow.Add( 
+							sesja.ListaTokenow.Add(
 								(string)dr["TOKEN"]
 							);
 						}
@@ -346,7 +347,7 @@ namespace ServerApp
 				using (var cmd = new System.Data.SqlClient.SqlCommand())
 				{
 					cmd.Connection = db;
-					cmd.CommandText = 
+					cmd.CommandText =
 						"INSERT INTO TOKEN_ACCESS(TOKEN, CZAS_LOGOWANIA, CZAS_OSTATNIEJ_AKCJI)" +
 						"VALUES(@TOKEN, @CZAS_LOGOWANIA, @CZAS_OSTATNIEJ_AKCJI); " +
 						"SELECT SCOPE_IDENTITY()";
@@ -357,13 +358,14 @@ namespace ServerApp
 
 					idTokenu = (int)(decimal)cmd.ExecuteScalar();
 
-					cmd.CommandText = 
-						"UPDATE Uzytkownicy SET token=@TOKEN, czy_zalogowany=1 " +
+					cmd.CommandText =
+						"UPDATE Uzytkownicy SET id_token=@idTokenu, czy_zalogowany=1 " +
 						"WHERE id_uzytkownika=@id_uzytkownika";
 
+					cmd.Parameters.AddWithValue("@idTokenu", idTokenu);
 					cmd.Parameters.AddWithValue("@id_uzytkownika", sesja.IdUzytkownika);
 					cmd.Parameters.AddWithValue("@czy_zalogowany", logowanie.CzyZalogowany);
-					
+
 					cmd.ExecuteNonQuery();
 				}
 			}
@@ -371,14 +373,9 @@ namespace ServerApp
 			return sesja;
 		}
 
-		public DTO.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom, object token)
+		public List<DTO.FormyNauki> PobierzFormyNauki(object token)
 		{
-			FormyNauki formyNauki = new FormyNauki
-			{
-				FormaNauki = formaNauki,
-				Jezyk = jezyk,
-				Poziom = poziom
-			};
+			List<DTO.FormyNauki> formyNauki = new List<FormyNauki>();
 
 			using (var db = new System.Data.SqlClient.SqlConnection(
 			System.Configuration.ConfigurationManager.ConnectionStrings[
@@ -388,17 +385,22 @@ namespace ServerApp
 				using (var cmd = new System.Data.SqlClient.SqlCommand())
 				{
 					cmd.Connection = db;
-					cmd.CommandText = "SELECT FORMY_NAUKI.FORMA_NAUKI, POZIOMY.POZIOM, JEZYK.JEZYK " +
-						"FROM FORMY_NAUKI " +
-						"INNER JOIN POSTEP " +
-						"ON FORMY_NAUKI.ID_FORMY = POSTEP.ID_FORMY " +
-						"INNER JOIN POZIOMY " +
-						"ON POSTEP.ID_POZIOMU = POZIOMY.ID_POZIOMU " +
-						"INNER JOIN JEZYK ON POSTEP.ID_JEZYKA = JEZYK.ID_JEZYKA";
+					cmd.CommandText =
+						"SELECT DISTINCT FORMY_NAUKI.FORMA_NAUKI, POZIOMY.POZIOM, JEZYK.JEZYK " +
+						"FROM FORMY_NAUKI, POZIOMY, JEZYK";
 
-					cmd.Parameters.Add("@FormaNauki", System.Data.SqlDbType.NVarChar).Value = formyNauki.FormaNauki;
-					cmd.Parameters.Add("@Poziom", System.Data.SqlDbType.NVarChar).Value = formyNauki.Poziom;
-					cmd.Parameters.Add("@Jezyk", System.Data.SqlDbType.NVarChar).Value = formyNauki.Jezyk;
+					using (var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							formyNauki.Add(new FormyNauki
+							{
+								FormaNauki = (string)dr["FORMA_NAUKI"],
+								Jezyk = (string)dr["JEZYK"],
+								Poziom = (string)dr["POZIOM"],
+							});
+						}
+					}
 				}
 			}
 
@@ -408,7 +410,7 @@ namespace ServerApp
 		public List<Slowka> PobierzKategorie(string poziom, object token)
 		{
 			List<Slowka> listaKategorii = new List<Slowka>();
-			
+
 			using (var db = new System.Data.SqlClient.SqlConnection(
 				System.Configuration.ConfigurationManager.ConnectionStrings[
 					"PolaczenieZBazaDanych"].ConnectionString))
@@ -417,7 +419,7 @@ namespace ServerApp
 				using (var cmd = new System.Data.SqlClient.SqlCommand())
 				{
 					cmd.Connection = db;
-					cmd.CommandText = 
+					cmd.CommandText =
 						"SELECT KATEGORIE.KATEGORIA " +
 						"FROM KATEGORIE " +
 						"INNER JOIN POZIOMY ON KATEGORIE.ID_POZIOMU = POZIOMY.ID_POZIOMU " +
@@ -457,20 +459,21 @@ namespace ServerApp
 				using (var cmd = new System.Data.SqlClient.SqlCommand())
 				{
 					cmd.Connection = db;
-					cmd.CommandText = 
+					cmd.CommandText =
 						"UPDATE TOKEN_ACCESS " +
 						"SET CZAS_OSTATNIEJ_AKCJI=@CzasOstatniejAkcji " +
 						"WHERE TOKEN=@Token";
 
-					cmd.Parameters.Add("@CzasOstatniejAkcji",System.Data.SqlDbType.DateTime).Value=obiektSesji.CzasOstatniejAkcji;
+					cmd.Parameters.Add("@CzasOstatniejAkcji", System.Data.SqlDbType.DateTime).Value = obiektSesji.CzasOstatniejAkcji;
 					cmd.Parameters.Add("@Token", System.Data.SqlDbType.NVarChar).Value = obiektSesji.Token;
 					cmd.ExecuteNonQuery();
 				}
 			}
 		}
 
-		public void WylogowanieUzytkownika(object token)
+		public void WylogujUzytkownika(object token)
 		{
+			int idToken = 0;
 			Sesja obiektSesji = new Sesja
 			{
 				CzasOstatniejAkcji = DateTime.UtcNow,
@@ -490,15 +493,45 @@ namespace ServerApp
 				{
 					cmd.Connection = db;
 					cmd.CommandText =
-						"UPDATE Uzytkownicy SET czy_zalogowany=0 " +
-						"SET czy_zalogowany=@CzasOstatniejAkcji " +
+						"SELECT Uzytkownicy.login_uzytkownika, Uzytkownicy.id_token, TOKEN_ACCESS.TOKEN " +
+						"FROM TOKEN_ACCESS INNER JOIN " +
+						"Uzytkownicy ON TOKEN_ACCESS.ID_TOKEN = Uzytkownicy.id_token " +
 						"WHERE TOKEN=@Token";
 
+					cmd.Parameters.AddWithValue("@Token", obiektSesji.Token);
+
+					using (var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							idToken = (int)dr["ID_TOKEN"];
+							logowanie.Login = (string)dr["login_uzytkownika"];
+						}
+					}
+
+					cmd.CommandText =
+						"UPDATE Uzytkownicy " +
+						"SET czy_zalogowany=@CzyZalogowany, id_token=@IdToken " +
+						"WHERE login_uzytkownika=@Login";
+
 					cmd.Parameters.Add("@CzasOstatniejAkcji", System.Data.SqlDbType.DateTime).Value = obiektSesji.CzasOstatniejAkcji;
-					cmd.Parameters.Add("@Token", System.Data.SqlDbType.NVarChar).Value = obiektSesji.Token;
+					cmd.Parameters.AddWithValue("@CzyZalogowany", logowanie.CzyZalogowany);
+					cmd.Parameters.AddWithValue("@Login", logowanie.Login);
+					cmd.Parameters.AddWithValue("@IdToken", DBNull.Value);
+					cmd.ExecuteNonQuery();
+
+					cmd.CommandText =
+						"DELETE FROM TOKEN_ACCESS " +
+						"WHERE TOKEN=@Token";
+					
 					cmd.ExecuteNonQuery();
 				}
 			}
+		}
+
+		public string GetData(int value)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

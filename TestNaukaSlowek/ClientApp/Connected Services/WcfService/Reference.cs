@@ -569,31 +569,33 @@ namespace ClientApp.WcfService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/WyslijMailaRejestracja", ReplyAction="http://tempuri.org/IService1/WyslijMailaRejestracjaResponse")]
         System.Threading.Tasks.Task WyslijMailaRejestracjaAsync(string login, string haslo, string email, string imie, string nazwisko);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RozpocznijNauke", ReplyAction="http://tempuri.org/IService1/RozpocznijNaukeResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzFormyNauki", ReplyAction="http://tempuri.org/IService1/PobierzFormyNaukiResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Logowanie))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.FormyNauki>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
-        ClientApp.WcfService.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom, object token);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
+        System.Collections.Generic.List<ClientApp.WcfService.FormyNauki> PobierzFormyNauki(object token);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RozpocznijNauke", ReplyAction="http://tempuri.org/IService1/RozpocznijNaukeResponse")]
-        System.Threading.Tasks.Task<ClientApp.WcfService.FormyNauki> RozpocznijNaukeAsync(string formaNauki, string jezyk, string poziom, object token);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzFormyNauki", ReplyAction="http://tempuri.org/IService1/PobierzFormyNaukiResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.FormyNauki>> PobierzFormyNaukiAsync(object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LosujSlowkoDoFiszki", ReplyAction="http://tempuri.org/IService1/LosujSlowkoDoFiszkiResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Logowanie))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.FormyNauki>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
         ClientApp.WcfService.Slowka LosujSlowkoDoFiszki(string jezyk, string poziom, string kategoria, object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LosujSlowkoDoFiszki", ReplyAction="http://tempuri.org/IService1/LosujSlowkoDoFiszkiResponse")]
@@ -606,34 +608,52 @@ namespace ClientApp.WcfService {
         System.Threading.Tasks.Task<ClientApp.WcfService.Sesja> GenerujTokenAsync(string login);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzKategorie", ReplyAction="http://tempuri.org/IService1/PobierzKategorieResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Logowanie))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.FormyNauki>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
         System.Collections.Generic.List<ClientApp.WcfService.Slowka> PobierzKategorie(string poziom, object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzKategorie", ReplyAction="http://tempuri.org/IService1/PobierzKategorieResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PobierzKategorieAsync(string poziom, object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AktualizujAktywnoscUzytkownika", ReplyAction="http://tempuri.org/IService1/AktualizujAktywnoscUzytkownikaResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Logowanie))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.FormyNauki>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
         void AktualizujAktywnoscUzytkownika(object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AktualizujAktywnoscUzytkownika", ReplyAction="http://tempuri.org/IService1/AktualizujAktywnoscUzytkownikaResponse")]
         System.Threading.Tasks.Task AktualizujAktywnoscUzytkownikaAsync(object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/WylogujUzytkownika", ReplyAction="http://tempuri.org/IService1/WylogujUzytkownikaResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Logowanie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.FormyNauki>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
+        void WylogujUzytkownika(object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/WylogujUzytkownika", ReplyAction="http://tempuri.org/IService1/WylogujUzytkownikaResponse")]
+        System.Threading.Tasks.Task WylogujUzytkownikaAsync(object token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -719,12 +739,12 @@ namespace ClientApp.WcfService {
             return base.Channel.WyslijMailaRejestracjaAsync(login, haslo, email, imie, nazwisko);
         }
         
-        public ClientApp.WcfService.FormyNauki RozpocznijNauke(string formaNauki, string jezyk, string poziom, object token) {
-            return base.Channel.RozpocznijNauke(formaNauki, jezyk, poziom, token);
+        public System.Collections.Generic.List<ClientApp.WcfService.FormyNauki> PobierzFormyNauki(object token) {
+            return base.Channel.PobierzFormyNauki(token);
         }
         
-        public System.Threading.Tasks.Task<ClientApp.WcfService.FormyNauki> RozpocznijNaukeAsync(string formaNauki, string jezyk, string poziom, object token) {
-            return base.Channel.RozpocznijNaukeAsync(formaNauki, jezyk, poziom, token);
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.FormyNauki>> PobierzFormyNaukiAsync(object token) {
+            return base.Channel.PobierzFormyNaukiAsync(token);
         }
         
         public ClientApp.WcfService.Slowka LosujSlowkoDoFiszki(string jezyk, string poziom, string kategoria, object token) {
@@ -757,6 +777,14 @@ namespace ClientApp.WcfService {
         
         public System.Threading.Tasks.Task AktualizujAktywnoscUzytkownikaAsync(object token) {
             return base.Channel.AktualizujAktywnoscUzytkownikaAsync(token);
+        }
+        
+        public void WylogujUzytkownika(object token) {
+            base.Channel.WylogujUzytkownika(token);
+        }
+        
+        public System.Threading.Tasks.Task WylogujUzytkownikaAsync(object token) {
+            return base.Channel.WylogujUzytkownikaAsync(token);
         }
     }
 }

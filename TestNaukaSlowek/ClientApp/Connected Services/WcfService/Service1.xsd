@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:64114/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServerApp" />
-  <xs:import schemaLocation="http://localhost:64114/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO" />
+  <xs:import schemaLocation="http://localhost:59679/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServerApp" />
+  <xs:import schemaLocation="http://localhost:59679/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO" />
   <xs:element name="GetData">
     <xs:complexType>
       <xs:sequence>
@@ -103,20 +103,17 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="RozpocznijNauke">
+  <xs:element name="PobierzFormyNauki">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="formaNauki" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="jezyk" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="poziom" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="token" nillable="true" type="xs:anyType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RozpocznijNaukeResponse">
+  <xs:element name="PobierzFormyNaukiResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ServerApp.DTO" minOccurs="0" name="RozpocznijNaukeResult" nillable="true" type="q5:FormyNauki" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ServerApp.DTO" minOccurs="0" name="PobierzFormyNaukiResult" nillable="true" type="q5:ArrayOfFormyNauki" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -174,6 +171,18 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="AktualizujAktywnoscUzytkownikaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WylogujUzytkownika">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WylogujUzytkownikaResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
