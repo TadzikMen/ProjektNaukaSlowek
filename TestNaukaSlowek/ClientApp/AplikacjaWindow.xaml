@@ -62,8 +62,8 @@
             </Button.Background>
         </Button>
 
-        <Rectangle Opacity="0.4" Grid.ColumnSpan="3" Grid.Column="1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="55" Margin="15.4,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="501"/>
-        <Label x:Name="lblUsername" FontSize="30" Margin="7.4,15,75.6,10.2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Grid.ColumnSpan="3" Height="50" Width="501" Grid.Column="1"/>
+        <Rectangle Opacity="0.4" Grid.ColumnSpan="3" Grid.Column="1" Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="55" Margin="15.4,10,0,0" Stroke="Black" VerticalAlignment="Center" Width="501"/>
+        <Label x:Name="lblUsername" FontSize="30" Margin="49,20,33,5" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Grid.ColumnSpan="3" Height="50" Width="501" Grid.Column="1"/>
 
     </Grid>
 </Window>

@@ -34,10 +34,7 @@ namespace ClientApp
 				powitanie = await client.WyswietlEkranPowitalnyAsync(Models.Token.NumerToken);
 			}
 
-			if (powitanie.Imie != null)
-				lblUsername.Content += $"Witaj, {powitanie.Imie}!";
-			else
-				lblUsername.Content += $"Witaj, {powitanie.Login}!";
+			lblUsername.Content = (string.IsNullOrEmpty(powitanie.Imie) ? $"Witaj, {powitanie.Login}!" : $"Witaj, {powitanie.Imie}!");
 		}
 
 		private async void btnWyloguj_Click(object sender, RoutedEventArgs e)
