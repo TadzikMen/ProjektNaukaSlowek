@@ -99,6 +99,12 @@
   <wsdl:message name="IService1_PobierzWszystkieSlowkaDoSlownika_OutputMessage">
     <wsdl:part name="parameters" element="tns:PobierzWszystkieSlowkaDoSlownikaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_WyszukajTlumaczenieSlowka_InputMessage">
+    <wsdl:part name="parameters" element="tns:WyszukajTlumaczenieSlowka" />
+  </wsdl:message>
+  <wsdl:message name="IService1_WyszukajTlumaczenieSlowka_OutputMessage">
+    <wsdl:part name="parameters" element="tns:WyszukajTlumaczenieSlowkaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -159,6 +165,10 @@
     <wsdl:operation name="PobierzWszystkieSlowkaDoSlownika">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/PobierzWszystkieSlowkaDoSlownika" message="tns:IService1_PobierzWszystkieSlowkaDoSlownika_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/PobierzWszystkieSlowkaDoSlownikaResponse" message="tns:IService1_PobierzWszystkieSlowkaDoSlownika_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WyszukajTlumaczenieSlowka">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/WyszukajTlumaczenieSlowka" message="tns:IService1_WyszukajTlumaczenieSlowka_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/WyszukajTlumaczenieSlowkaResponse" message="tns:IService1_WyszukajTlumaczenieSlowka_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -291,6 +301,15 @@
     </wsdl:operation>
     <wsdl:operation name="PobierzWszystkieSlowkaDoSlownika">
       <soap:operation soapAction="http://tempuri.org/IService1/PobierzWszystkieSlowkaDoSlownika" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WyszukajTlumaczenieSlowka">
+      <soap:operation soapAction="http://tempuri.org/IService1/WyszukajTlumaczenieSlowka" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

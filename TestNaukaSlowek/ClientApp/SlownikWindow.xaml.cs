@@ -42,9 +42,26 @@ namespace ClientApp
 			}
 		}
 
+		private async void SzukajTlumaczenieSlowa()
+		{
+			List<WcfService.Slowka> slowka = new List<WcfService.Slowka>();
+			try
+			{
+				using (var client = new WcfService.Service1Client())
+				{
+					slowka = await client.WyszukajTlumaczenieSlowkaAsync(tbxSlowko.Text, Models.Token.NumerToken);
+				}
+				dgSlownik.ItemsSource = slowka;
+			}
+			catch
+			{
+				MessageBox.Show("Błąd pobierania słówek z bazy danych!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
 		private void btnSzukaj_Click(object sender, RoutedEventArgs e)
 		{
-
+			SzukajTlumaczenieSlowa();
 		}
 
 		private void btnFiltruj_Click(object sender, RoutedEventArgs e)
@@ -58,5 +75,7 @@ namespace ClientApp
 			rnw.Show();
 			this.Close();
 		}
+
+		private void btnPokazWszystko_Click(object sender, RoutedEventArgs e) => PobierzWszystkieSlowka();
 	}
 }
