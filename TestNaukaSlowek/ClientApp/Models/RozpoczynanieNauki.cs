@@ -13,7 +13,7 @@ namespace ClientApp.Models
 		public string FormaNauki { get; set; }
 		public string Jezyk { get; set; }
 		public string Poziom { get; set; }
-		public bool SprawdzDaneWejsciowe { get => _sprawdzDaneWejsciowe; set => _sprawdzDaneWejsciowe = value; }
+		public bool SprawdzDaneWejsciowe { get { return _sprawdzDaneWejsciowe; } set { _sprawdzDaneWejsciowe = value; } }
 
 		public RozpoczynanieNauki(string jezyk, string poziom, string formaNauki)
 		{

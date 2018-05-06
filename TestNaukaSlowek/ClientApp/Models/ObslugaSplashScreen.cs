@@ -8,7 +8,7 @@ namespace ClientApp.Models
 {
 	public static class ObslugaSplashScreen
 	{
-		public static bool CzySplashOdpalony { get => _czySplashOdpalony; set => _czySplashOdpalony = value; }
+		public static bool CzySplashOdpalony { get { return _czySplashOdpalony; } set { _czySplashOdpalony = value; } }
 		private static bool _czySplashOdpalony = false;
 	}
 }

@@ -13,6 +13,9 @@ namespace ClientApp.Models
 		private WcfService.Uwierzytelnianie _listaDoPrzekazaniaWLogowaniu;
 		
 		public List<WcfService.Uwierzytelnianie> ListaUserow { get; set; }
-		public Logowanie DaneLogowania { get => _daneLogowania; set => _daneLogowania = value; }
+		public Logowanie DaneLogowania {
+            get { return _daneLogowania; }
+            set { _daneLogowania = value; }
+        }
 	}
 }
