@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
-        Title="FiszkiWindow" MinHeight="550" MinWidth="1024" Height="626.5" Width="1275.5">
+        Title="FiszkiWindow" MinHeight="600" MinWidth="1080" Height="626" Width="1200">
     <Window.Background>
         <ImageBrush ImageSource="Images/backgroundImage.jpg"/>
     </Window.Background>
@@ -13,6 +13,7 @@
     <Window.Resources>
         <Style x:Key="TextBoxStyle" TargetType="TextBox">
             <Setter Property="FontSize" Value="20"/>
+            <Setter Property="IsReadOnly" Value="True"/>
             <!--<Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>-->
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -28,30 +29,14 @@
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
-            <Style.Triggers>
-                <EventTrigger RoutedEvent="GotFocus">
-                    <BeginStoryboard >
-                        <Storyboard >
-                            <DoubleAnimation Storyboard.TargetProperty="Background.GradientStops[0].Offset" From="0" To="1" Duration="0:0:2"></DoubleAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="LostFocus" >
-                    <BeginStoryboard >
-                        <Storyboard >
-                            <DoubleAnimation Storyboard.TargetProperty="Background.GradientStops[0].Offset" From="1" To="0" Duration="0:0:2"></DoubleAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Style.Triggers>
         </Style>
     </Window.Resources>
 
     <Grid>
         <Grid.Resources>
             <Style TargetType="Label">
-                <Setter Property="Width" Value="480"/>
-                <Setter Property="Height" Value="48"/>
+                <!--<Setter Property="Width" Value="480"/>
+                <Setter Property="Height" Value="48"/>-->
                 <Setter Property="FontSize" Value="18"/>
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="Foreground" Value="DarkOrange"/>

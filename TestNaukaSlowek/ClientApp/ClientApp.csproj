@@ -153,6 +153,9 @@
     <None Include="Connected Services\WcfService\ClientApp.WcfService.Logowanie.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\WcfService\ClientApp.WcfService.Rejestracja.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\WcfService\ClientApp.WcfService.Sesja.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

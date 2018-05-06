@@ -78,6 +78,7 @@ namespace ClientApp.WcfService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Logowanie", Namespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ClientApp.WcfService.Rejestracja))]
     public partial class Logowanie : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -147,6 +148,61 @@ namespace ClientApp.WcfService {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Rejestracja", Namespace="http://schemas.datacontract.org/2004/07/ServerApp.DTO")]
+    [System.SerializableAttribute()]
+    public partial class Rejestracja : ClientApp.WcfService.Logowanie {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImieField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NazwiskoField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Imie {
+            get {
+                return this.ImieField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImieField, value) != true)) {
+                    this.ImieField = value;
+                    this.RaisePropertyChanged("Imie");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nazwisko {
+            get {
+                return this.NazwiskoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NazwiskoField, value) != true)) {
+                    this.NazwiskoField = value;
+                    this.RaisePropertyChanged("Nazwisko");
+                }
             }
         }
     }
@@ -578,6 +634,7 @@ namespace ClientApp.WcfService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Rejestracja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
         System.Collections.Generic.List<ClientApp.WcfService.FormyNauki> PobierzFormyNauki(object token);
@@ -594,6 +651,7 @@ namespace ClientApp.WcfService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Rejestracja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
         ClientApp.WcfService.Slowka LosujSlowkoDoFiszki(string jezyk, string poziom, string kategoria, object token);
@@ -616,6 +674,7 @@ namespace ClientApp.WcfService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Rejestracja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
         System.Collections.Generic.List<ClientApp.WcfService.Slowka> PobierzKategorie(string poziom, object token);
@@ -632,6 +691,7 @@ namespace ClientApp.WcfService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Rejestracja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
         void AktualizujAktywnoscUzytkownika(object token);
@@ -648,12 +708,30 @@ namespace ClientApp.WcfService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Rejestracja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
         void WylogujUzytkownika(object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/WylogujUzytkownika", ReplyAction="http://tempuri.org/IService1/WylogujUzytkownikaResponse")]
         System.Threading.Tasks.Task WylogujUzytkownikaAsync(object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/WyswietlEkranPowitalny", ReplyAction="http://tempuri.org/IService1/WyswietlEkranPowitalnyResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Logowanie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.FormyNauki>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Rejestracja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
+        ClientApp.WcfService.Rejestracja WyswietlEkranPowitalny(object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/WyswietlEkranPowitalny", ReplyAction="http://tempuri.org/IService1/WyswietlEkranPowitalnyResponse")]
+        System.Threading.Tasks.Task<ClientApp.WcfService.Rejestracja> WyswietlEkranPowitalnyAsync(object token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -785,6 +863,14 @@ namespace ClientApp.WcfService {
         
         public System.Threading.Tasks.Task WylogujUzytkownikaAsync(object token) {
             return base.Channel.WylogujUzytkownikaAsync(token);
+        }
+        
+        public ClientApp.WcfService.Rejestracja WyswietlEkranPowitalny(object token) {
+            return base.Channel.WyswietlEkranPowitalny(token);
+        }
+        
+        public System.Threading.Tasks.Task<ClientApp.WcfService.Rejestracja> WyswietlEkranPowitalnyAsync(object token) {
+            return base.Channel.WyswietlEkranPowitalnyAsync(token);
         }
     }
 }

@@ -17,9 +17,9 @@ namespace ClientApp.Models
 
 		public RozpoczynanieNauki(string jezyk, string poziom, string formaNauki)
 		{
-			this.Jezyk = jezyk ?? throw new ArgumentNullException(nameof(jezyk));
-			this.Poziom = poziom ?? throw new ArgumentNullException(nameof(poziom));
-			this.FormaNauki = formaNauki ?? throw new ArgumentNullException(nameof(formaNauki));
+			this.Jezyk = jezyk;
+			this.Poziom = poziom;
+			this.FormaNauki = formaNauki;
 			_sprawdzDaneWejsciowe = SprawdzPoprawnoscWyboru(this.Jezyk, this.Poziom, this.FormaNauki);
 		}
 

@@ -22,7 +22,23 @@ namespace ClientApp
         public AplikacjaWindow()
         {
             InitializeComponent();
-        }
+			WyswietlPowitanie();
+		}
+
+		private async void WyswietlPowitanie()
+		{
+			WcfService.Rejestracja powitanie = new WcfService.Rejestracja();
+
+			using (var client=new WcfService.Service1Client())
+			{
+				powitanie = await client.WyswietlEkranPowitalnyAsync(Models.Token.NumerToken);
+			}
+
+			if (powitanie.Imie != null)
+				lblUsername.Content += $"Witaj, {powitanie.Imie}!";
+			else
+				lblUsername.Content += $"Witaj, {powitanie.Login}!";
+		}
 
 		private async void btnWyloguj_Click(object sender, RoutedEventArgs e)
 		{

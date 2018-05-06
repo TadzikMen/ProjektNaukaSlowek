@@ -26,6 +26,11 @@ namespace ServerApp
 			return composite;
 		}
 
+		public string GetData(int value)
+		{
+			throw new NotImplementedException();
+		}
+
 		public void DodajUzytkownika(string login, string haslo, string email, string imie = null, string nazwisko = null)
 		{
 			DTO.Rejestracja uzytkownik = new Rejestracja();
@@ -529,9 +534,42 @@ namespace ServerApp
 			}
 		}
 
-		public string GetData(int value)
+		public Rejestracja WyswietlEkranPowitalny(object token)
 		{
-			throw new NotImplementedException();
+			Rejestracja loginImie = new Rejestracja();
+			Sesja sesja = new Sesja
+			{
+				Token = token.ToString()
+			};
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+				"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText =
+						"SELECT Uzytkownicy.imie_uzytkownika, Uzytkownicy.login_uzytkownika, TOKEN_ACCESS.TOKEN " +
+						"FROM TOKEN_ACCESS " +
+						"INNER JOIN " +
+						"Uzytkownicy ON TOKEN_ACCESS.ID_TOKEN = Uzytkownicy.id_token " +
+						"WHERE TOKEN=@Token";
+
+					cmd.Parameters.AddWithValue("@Token", sesja.Token);
+					using(var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							loginImie.Login = (string)dr["login_uzytkownika"];
+							loginImie.Imie = (string)dr["imie_uzytkownika"];
+						}
+					}
+				}
+			}
+
+			return loginImie;
 		}
 	}
 }
