@@ -48,17 +48,14 @@ namespace ClientApp
 					icon: MessageBoxImage.Error);
 			}
 
-			var formyNauki = wyborFormy.ListaWyboruNauki.Select(o => o.FormaNauki).Distinct().ToList();
-			var jezyki = wyborFormy.ListaWyboruNauki.Select(o => o.Jezyk).Distinct().ToList();
-			var poziomy = wyborFormy.ListaWyboruNauki.Select(o => o.Poziom).Distinct().ToList();
 
-			foreach (var item in formyNauki)
+			foreach (var item in wyborFormy.ListaWyboruNauki.Select(x => x.FormaNauki).Distinct().ToList())
 				cmBxWybierzFormeNauki.Items.Add(item);
 
-			foreach (var item in jezyki)
+			foreach (var item in wyborFormy.ListaWyboruNauki.Select(x => x.Jezyk).Distinct().ToList())
 				cmBxWybierzJezyk.Items.Add(item);
 
-			foreach (var item in poziomy)
+			foreach (var item in wyborFormy.ListaWyboruNauki.Select(x => x.Poziom).Distinct().ToList())
 				cmBxWybierzPoziom.Items.Add(item);
 
 		}
@@ -93,7 +90,6 @@ namespace ClientApp
 					MessageBoxButton.OK,
 					MessageBoxImage.Error);
 			}
-
 		}
 
 		private void btnWroc_Click(object sender, RoutedEventArgs e)

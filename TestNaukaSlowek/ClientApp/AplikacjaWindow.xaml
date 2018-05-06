@@ -42,8 +42,8 @@
         <Button x:Name="btnSprawdzSwojeOsiagniecia" Content="Zobacz Swoje Osiągnięcia" Grid.Column="3" Margin="75,12,18,11" Grid.Row="4" />
         <Button x:Name="btnWyloguj" Content="Wyloguj Się" Grid.Column="1" Margin="15,14,5,3" Grid.Row="5" Width="100" Height="40" Click="btnWyloguj_Click"/>
 
-        <Rectangle Opacity="0.4" Grid.ColumnSpan="3" Grid.Column="1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="55" Margin="15,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="501"/>
-        <Label x:Name="lblUsername" FontSize="30" Margin="20,15,5,10" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Grid.ColumnSpan="3" Height="50" Width="501" Grid.Column="1"/>
+        <Rectangle Opacity="0.4" Grid.ColumnSpan="3" Grid.Column="1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="55" Margin="15,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="494"/>
+        <Label x:Name="lblUsername" FontSize="30" Margin="7,15,18,10" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Grid.ColumnSpan="3" Height="50" Width="502" Grid.Column="1"/>
 
     </Grid>
 </Window>

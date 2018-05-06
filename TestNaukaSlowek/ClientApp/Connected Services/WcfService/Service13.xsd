@@ -63,4 +63,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSlowka" nillable="true" type="tns:ArrayOfSlowka" />
+  <xs:complexType name="Rejestracja">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Logowanie">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Imie" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Nazwisko" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Rejestracja" nillable="true" type="tns:Rejestracja" />
 </xs:schema>

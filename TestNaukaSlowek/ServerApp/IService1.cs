@@ -52,6 +52,9 @@ namespace ServerApp
 
 		[OperationContract]
 		void WylogujUzytkownika(object token);
+
+		[OperationContract]
+		DTO.Rejestracja WyswietlEkranPowitalny(object token);
 	}
 
 
