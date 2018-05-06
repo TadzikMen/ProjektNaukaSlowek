@@ -48,16 +48,24 @@
             <ImageBrush ImageSource="Images/backgroundImage.jpg"/>
         </Grid.Background>
 
-        <Label Content="Wybierz Język:" Margin="31,79,9,10" Width="199" Height="42" Grid.Column="1" />
-        <Label Content="Wybierz Poziom:" Margin="30,15,9,22" Width="200" Height="38" Grid.Row="1" Grid.Column="1" />
-        <Label Content="Wybierz Formę Nauki:" Margin="31,10,6,42" Width="202" Height="38" Grid.Row="2" Grid.Column="1" />
+        <Label Content="Wybierz Język:" Margin="31,79,9,10" Width="199" Height="42" Grid.Column="1" Foreground="#FF606060" />
+        <Label Content="Wybierz Poziom:" Margin="30,15,9,22" Width="200" Height="38" Grid.Row="1" Grid.Column="1" Foreground="#FF606060" />
+        <Label Content="Wybierz Formę Nauki:" Margin="31,10,6,42" Width="202" Height="38" Grid.Row="2" Grid.Column="1" Foreground="#FF606060" />
 
         <ComboBox x:Name="cmBxWybierzJezyk" Margin="20,84,38,19" Height="28" Grid.Column="2" />
         <ComboBox x:Name="cmBxWybierzPoziom" Margin="20,25,38,22" Height="28" Grid.Row="1" Grid.Column="2" />
         <ComboBox x:Name="cmBxWybierzFormeNauki" Margin="20,20,38,42" Height="28" Grid.Row="2" Grid.Column="2" />
 
-        <Button x:Name="btnWroc" Content="Wróć" Margin="30.5,35,58,39" Click="btnWroc_Click" Grid.Row="3" Grid.Column="1" />
-        <Button x:Name="btnRozpocznij" Content="Rozpocznij Naukę" Margin="120,35,38,39" Click="btnRozpocznij_Click" Grid.Row="3" Grid.Column="2" />
+        <Button x:Name="btnWroc" Content="Wróć" Margin="30.5,35,58,39" Click="btnWroc_Click" Grid.Row="3" Grid.Column="1" FontSize="14" FontWeight="Bold" FontFamily="Segoe Print" >
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnRozpocznij" Content="Rozpocznij Naukę" Margin="120,35,38,39" Click="btnRozpocznij_Click" Grid.Row="3" Grid.Column="2" FontWeight="Bold" FontFamily="Segoe Print" FontSize="14" >
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

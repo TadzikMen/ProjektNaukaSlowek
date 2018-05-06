@@ -80,15 +80,23 @@
         <TextBox x:Name="tbxNazwisko" HorizontalAlignment="Left" Margin="10,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.Row="5" Grid.Column="3" />
         <TextBox x:Name="tbxEmail" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.Row="6" Grid.Column="3" />
 
-        <Button x:Name="btnPotwierdz" Content="Potwierdź" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="140" Height="56" Click="btnPotwierdz_Click_1" Grid.Row="7" Grid.Column="3"/>
-        <Button x:Name="btnWroc" Content="Wróć" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" Width="140" Height="56" Click="btnWroc_Click_1" Grid.Row="7" Grid.Column="2"/>
+        <Button x:Name="btnPotwierdz" Content="Potwierdź" HorizontalAlignment="Left" Margin="123.2,6.6,0,0" VerticalAlignment="Top" Width="140" Height="56" Click="btnPotwierdz_Click_1" Grid.Row="7" Grid.Column="3" FontWeight="Bold" FontFamily="Segoe Print" FontSize="14">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnWroc" Content="Wróć" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" Width="140" Height="56" Click="btnWroc_Click_1" Grid.Row="7" Grid.Column="2" FontWeight="Bold" FontFamily="Segoe Print" FontSize="14">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
 
-        <Label Content="Login:" Grid.Column="2" HorizontalAlignment="Left" Margin="15,23,0,0" Grid.Row="1" VerticalAlignment="Top" Height="42" Width="183"/>
-        <Label Content="Hasło:" Grid.Column="2" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="42" Width="183"/>
-        <Label Content="Powtórz Hasło:" Grid.Column="2" HorizontalAlignment="Left" Margin="15,6,0,0" Grid.Row="3" VerticalAlignment="Top" Height="42" Width="183"/>
-        <Label Content="Imię:" Grid.Column="2" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="42" Width="183"/>
-        <Label Content="Nazwisko:" Grid.Column="2" HorizontalAlignment="Left" Margin="15,12,0,0" Grid.Row="5" VerticalAlignment="Top" Height="42" Width="183"/>
-        <Label Content="E-Mail:" Grid.Column="2" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="6" VerticalAlignment="Top" Height="42" Width="183"/>
+        <Label Content="Login:" Grid.Column="2" HorizontalAlignment="Left" Margin="15,23,0,0" Grid.Row="1" VerticalAlignment="Top" Height="42" Width="183" Background="Transparent" Foreground="#FF606060"/>
+        <Label Content="Hasło:" Grid.Column="2" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="42" Width="183" Foreground="#FF606060"/>
+        <Label Content="Powtórz Hasło:" Grid.Column="2" HorizontalAlignment="Left" Margin="15,6,0,0" Grid.Row="3" VerticalAlignment="Top" Height="42" Width="183" Foreground="#FF606060"/>
+        <Label Content="Imię:" Grid.Column="2" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="42" Width="183" Foreground="#FF606060"/>
+        <Label Content="Nazwisko:" Grid.Column="2" HorizontalAlignment="Left" Margin="15,12,0,0" Grid.Row="5" VerticalAlignment="Top" Height="42" Width="183" Foreground="#FF606060"/>
+        <Label Content="E-Mail:" Grid.Column="2" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="6" VerticalAlignment="Top" Height="42" Width="183" Foreground="#FF606060"/>
 
     </Grid>
 </Window>

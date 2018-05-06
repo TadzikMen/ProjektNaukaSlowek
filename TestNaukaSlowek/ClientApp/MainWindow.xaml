@@ -8,13 +8,12 @@
         Title="Menu Główne" Height="520" Width="910">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="131*"/>
-            <ColumnDefinition Width="157*"/>
-            <ColumnDefinition Width="111*"/>
-            <ColumnDefinition Width="153*"/>
-            <ColumnDefinition Width="89*"/>
-            <ColumnDefinition Width="139*"/>
-            <ColumnDefinition Width="112*"/>
+            <ColumnDefinition Width="167*"/>
+            <ColumnDefinition Width="125*"/>
+            <ColumnDefinition Width="39*"/>
+            <ColumnDefinition Width="318*"/>
+            <ColumnDefinition Width="141*"/>
+            <ColumnDefinition Width="114*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="112*"/>
@@ -31,9 +30,21 @@
                 <Setter Property="Cursor" Value="Hand"/>
             </Style>
         </Grid.Resources>
-        <Button x:Name="btnZaloguj" Content="Logowanie" Margin="10,21,11,10" HorizontalAlignment="Center" VerticalAlignment="Center" Height="59" Width="132" Grid.Column="3" Grid.Row="1" Click="btnZaloguj_Click"/>
-        <Button x:Name="btnRejestracja" Content="Rejestracja" Margin="10,10,11,24" Click="btnRejestracja_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Height="59" Width="132" Grid.Row="3" Grid.Column="3"/>
-        <Button x:Name="btnWyjscie" Content="Wyjście" HorizontalAlignment="Center" Margin="10,27,146,10" VerticalAlignment="Center" Width="132" Height="58" Click="btnWyjscie_Click" Grid.Row="4" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnZaloguj" Content="Logowanie" Margin="59.8,23.2,50.6,12.2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="59" Width="208" Grid.Column="3" Grid.Row="1" Click="btnZaloguj_Click" FontFamily="Segoe Print" FontWeight="Bold" FontSize="14">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnRejestracja" Content="Rejestracja" Margin="59.8,12.4,50.6,26.2" Click="btnRejestracja_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Height="59" Width="208" Grid.Row="3" Grid.Column="3" FontFamily="Segoe Print" FontWeight="Bold" FontSize="14">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnWyjscie" Content="Wyjście" HorizontalAlignment="Center" Margin="167,30.8,32.2,10.4" VerticalAlignment="Center" Width="132" Height="58" Click="btnWyjscie_Click" Grid.Row="4" FontFamily="Segoe Print" Grid.ColumnSpan="3" FontWeight="Bold" FontSize="14">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

@@ -77,19 +77,52 @@
             <RowDefinition Height="133*"/>
         </Grid.RowDefinitions>
 
-        <Label Content="Wybrany Język: " Margin="108,25,36,154" Width="Auto" Height="Auto" Grid.Column="1"/>
-        <Label Content="Wybrany Poziom: " Margin="108,95,36,84" Width="Auto" Height="Auto" Grid.Column="1"/>
-        <Label Content="Wybrana Kategoria: " Margin="108,173,36,10" Width="Auto" Height="Auto" Grid.Column="1" />
-        <Label x:Name="lblJezyk" Margin="21,25,55,154" Grid.Column="2" Grid.ColumnSpan="2" Width="Auto" Height="Auto" />
-        <Label x:Name="lblPoziom" Margin="21,95,51,84" Height="Auto" Width="Auto" Grid.ColumnSpan="2" Grid.Column="2" />
-        <ComboBox x:Name="cmBxWybranaKategoria" Margin="21,173,51,10" SelectionChanged="cmBxWybranaKategoria_SelectionChanged" Grid.Column="2" Grid.ColumnSpan="2" />
+        <Label Content="Wybrany Język: " Margin="108,25,36,154" Width="Auto" Height="Auto" Grid.Column="1" Foreground="White"/>
+        <Label Content="Wybrany Poziom: " Margin="108,95,36,84" Width="Auto" Height="Auto" Grid.Column="1" Foreground="#FF606060"/>
+        <Label Content="Wybrana Kategoria: " Margin="108,173,36,10" Width="Auto" Height="Auto" Grid.Column="1" Foreground="#FF606060" />
+        <Label x:Name="lblJezyk" Margin="21,25,55,154" Grid.Column="2" Grid.ColumnSpan="2" Width="Auto" Height="Auto" Foreground="White" />
+        <Label x:Name="lblPoziom" Margin="21,95,51,84" Height="Auto" Width="Auto" Grid.ColumnSpan="2" Grid.Column="2" Foreground="#FF606060" />
+        <ComboBox x:Name="cmBxWybranaKategoria" Margin="21.4,173,10,10" SelectionChanged="cmBxWybranaKategoria_SelectionChanged" Grid.Column="2" Grid.ColumnSpan="2" FontSize="18" BorderBrush="#FFAEAEAE" Foreground="Black" RenderTransformOrigin="0.5,0.5" >
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
 
-        <TextBox x:Name="tbxSlowko" Margin="52,10,10,10" TextWrapping="Wrap" Style="{StaticResource TextBoxStyle}" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" />
-        <TextBox x:Name="tbxTlumaczenie" Margin="10,10,51,10" TextWrapping="Wrap" Style="{StaticResource TextBoxStyle}" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" />
+        <TextBox x:Name="tbxSlowko" Margin="52,10,10,10" TextWrapping="Wrap" Style="{StaticResource TextBoxStyle}" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" BorderBrush="Gainsboro" FontSize="36" >
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF153D52" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <TextBox x:Name="tbxTlumaczenie" Margin="10,10,51,10" TextWrapping="Wrap" Style="{StaticResource TextBoxStyle}" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" FontSize="36" >
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF45052A" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
 
-        <Button x:Name="btnTlumacz" Content="Tłumacz" Margin="21,10,10,70" Click="btnTlumacz_Click" Grid.Column="2" Grid.Row="1" />
-        <Button x:Name="btnKolejneSlowko" Content="Kolejne Słówko" Margin="21,32,17,10" Click="btnKolejneSlowko_Click" Grid.Column="2" Grid.Row="2" />
-        <Button x:Name="btnWroc" Content="Wróć" Margin="52,42,256,43" Click="btnWroc_Click" Grid.Row="3" Grid.Column="1" />
+        <Button x:Name="btnTlumacz" Content="Tłumacz" Margin="21.4,39,16.6,40.2" Click="btnTlumacz_Click" Grid.Column="2" Grid.Row="1" BorderBrush="#FFA0A0A0" FontSize="14" FontFamily="Segoe Print" FontWeight="Bold" >
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnKolejneSlowko" Content="Kolejne Słówko" Margin="17.4,9.8,9.6,32.2" Click="btnKolejneSlowko_Click" Grid.Column="2" Grid.Row="2" FontSize="14" FontFamily="Segoe Print" FontWeight="Bold" >
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnWroc" Content="Wróć" Margin="52,42,256,43" Click="btnWroc_Click" Grid.Row="3" Grid.Column="1" FontSize="14" FontFamily="Segoe Print" FontWeight="Bold" >
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
 
 
     </Grid>
