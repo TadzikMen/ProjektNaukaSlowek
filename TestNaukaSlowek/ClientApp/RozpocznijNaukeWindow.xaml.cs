@@ -104,5 +104,23 @@ namespace ClientApp
 			aw.Show();
 			this.Close();
 		}
+
+		private void cmBxWybierzFormeNauki_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+		{
+			if("Słownik" == cmBxWybierzFormeNauki.SelectedItem.ToString())
+			{
+				cmBxWybierzJezyk.Foreground = new SolidColorBrush(Colors.Gray);
+				cmBxWybierzPoziom.Foreground = new SolidColorBrush(Colors.Gray);
+				cmBxWybierzJezyk.IsEnabled = false;
+				cmBxWybierzPoziom.IsEnabled = false;
+			}
+			else
+			{
+				cmBxWybierzJezyk.Foreground = new SolidColorBrush(Colors.Black);
+				cmBxWybierzPoziom.Foreground = new SolidColorBrush(Colors.Black);
+				cmBxWybierzJezyk.IsEnabled = true;
+				cmBxWybierzPoziom.IsEnabled = true;
+			}
+		}
 	}
 }

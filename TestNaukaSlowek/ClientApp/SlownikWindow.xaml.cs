@@ -36,12 +36,12 @@ namespace ClientApp
 				}
 				dgSlownik.ItemsSource = slowka;
 			}
-			catch (Exception ex)
+			catch
 			{
-				MessageBox.Show(ex.ToString(), "", MessageBoxButton.OK, MessageBoxImage.Error);
-				//MessageBox.Show("Błąd pobierania słówek z bazy danych!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+				MessageBox.Show("Błąd pobierania słówek z bazy danych!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
+
 		private void btnSzukaj_Click(object sender, RoutedEventArgs e)
 		{
 

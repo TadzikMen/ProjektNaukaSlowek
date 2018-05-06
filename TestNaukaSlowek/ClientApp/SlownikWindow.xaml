@@ -47,7 +47,7 @@
 
         <WrapPanel Margin="10" Grid.Column="0" Grid.Row="1">
             <Label Content="Szukaj Słówko:" Margin="10,10,0,0" Width="145"/>
-            <TextBox Width="211" Margin="20,10,0,0" Height="28" />
+            <TextBox x:Name="tbxSlowko" Width="211" Margin="20,10,0,0" Height="28" />
             <Button x:Name="btnSzukaj" Content="Szukaj" Margin="10" Width="121" Height="38" Click="btnSzukaj_Click"/>
         </WrapPanel>
 
