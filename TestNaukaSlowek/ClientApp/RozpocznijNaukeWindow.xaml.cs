@@ -68,7 +68,7 @@ namespace ClientApp
 					jezyk: this.cmBxWybierzJezyk.SelectedItem.ToString(),
 					poziom: this.cmBxWybierzPoziom.SelectedItem.ToString(),
 					formaNauki: this.cmBxWybierzFormeNauki.SelectedItem.ToString());
-				
+
 				if (rozpoczynanieNauki.SprawdzDaneWejsciowe)
 				{
 					if (rozpoczynanieNauki.FormaNauki == "Fiszki")
@@ -78,6 +78,12 @@ namespace ClientApp
 							cmBxWybierzPoziom.SelectedItem.ToString());
 
 						fw.Show();
+						this.Close();
+					}
+					if (rozpoczynanieNauki.FormaNauki == "Słownik")
+					{
+						SlownikWindow sw = new SlownikWindow();
+						sw.Show();
 						this.Close();
 					}
 				}
@@ -98,7 +104,5 @@ namespace ClientApp
 			aw.Show();
 			this.Close();
 		}
-
-
 	}
 }

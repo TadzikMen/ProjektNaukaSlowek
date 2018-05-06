@@ -86,6 +86,9 @@
     <Compile Include="RozpocznijNaukeWindow.xaml.cs">
       <DependentUpon>RozpocznijNaukeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SlownikWindow.xaml.cs">
+      <DependentUpon>SlownikWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SplashWindow.xaml.cs">
       <DependentUpon>SplashWindow.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RozpocznijNaukeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SlownikWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

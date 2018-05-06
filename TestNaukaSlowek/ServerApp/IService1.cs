@@ -55,6 +55,9 @@ namespace ServerApp
 
 		[OperationContract]
 		DTO.Rejestracja WyswietlEkranPowitalny(object token);
+
+		[OperationContract]
+		List<DTO.Slowka> PobierzWszystkieSlowkaDoSlownika(object token);
 	}
 
 

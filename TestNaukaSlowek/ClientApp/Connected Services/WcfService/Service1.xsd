@@ -201,4 +201,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="PobierzWszystkieSlowkaDoSlownika">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzWszystkieSlowkaDoSlownikaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ServerApp.DTO" minOccurs="0" name="PobierzWszystkieSlowkaDoSlownikaResult" nillable="true" type="q10:ArrayOfSlowka" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

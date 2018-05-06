@@ -571,5 +571,40 @@ namespace ServerApp
 
 			return loginImie;
 		}
+
+		public List<Slowka> PobierzWszystkieSlowkaDoSlownika(object token)
+		{
+			List<Slowka> listaSlowek = new List<Slowka>();
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+				"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText =
+						"SELECT SLOWKA.SLOWKO, TLUMACZENIA.TLUMACZENIE, JEZYK.JEZYK " +
+						"FROM SLOWKA " +
+						"LEFT JOIN TLUMACZENIA ON SLOWKA.ID_TLUMACZENIA = TLUMACZENIA.ID_TLUMACZENIA " +
+						"LEFT JOIN JEZYK ON SLOWKA.ID_JEZYKA = JEZYK.ID_JEZYKA";
+					using (var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							listaSlowek.Add(new Slowka
+							{
+								Slowko = (string)dr["SLOWKO"],
+								Tlumaczenie = (string)dr["TLUMACZENIE"],
+								Jezyk = (string)dr["JEZYK"],
+							});
+						}
+					}
+				}
+			}
+
+			return listaSlowek;
+		}
 	}
 }
