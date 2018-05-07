@@ -28,7 +28,7 @@ namespace ClientApp.Models
 
 		private List<WcfService.Uwierzytelnianie> _lista;
 
-		public List<Uwierzytelnianie> Lista { get => _lista; set => _lista = value; }
+		public List<Uwierzytelnianie> Lista { get { return _lista; } set { _lista = value; } }
 
 		public bool SprawdzDaneWejsciowe(string login, string haslo, string haslo2, string email)
 		{

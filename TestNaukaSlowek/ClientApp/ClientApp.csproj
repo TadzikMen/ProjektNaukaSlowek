@@ -86,8 +86,8 @@
     <Compile Include="RozpocznijNaukeWindow.xaml.cs">
       <DependentUpon>RozpocznijNaukeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TlumaczenieSlowek.xaml.cs">
-      <DependentUpon>TlumaczenieSlowek.xaml</DependentUpon>
+    <Compile Include="SlownikWindow.xaml.cs">
+      <DependentUpon>SlownikWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SplashWindow.xaml.cs">
       <DependentUpon>SplashWindow.xaml</DependentUpon>
@@ -124,7 +124,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TlumaczenieSlowek.xaml">
+    <Page Include="SlownikWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -732,6 +732,40 @@ namespace ClientApp.WcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/WyswietlEkranPowitalny", ReplyAction="http://tempuri.org/IService1/WyswietlEkranPowitalnyResponse")]
         System.Threading.Tasks.Task<ClientApp.WcfService.Rejestracja> WyswietlEkranPowitalnyAsync(object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzWszystkieSlowkaDoSlownika", ReplyAction="http://tempuri.org/IService1/PobierzWszystkieSlowkaDoSlownikaResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Logowanie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.FormyNauki>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Rejestracja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
+        System.Collections.Generic.List<ClientApp.WcfService.Slowka> PobierzWszystkieSlowkaDoSlownika(object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzWszystkieSlowkaDoSlownika", ReplyAction="http://tempuri.org/IService1/PobierzWszystkieSlowkaDoSlownikaResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PobierzWszystkieSlowkaDoSlownikaAsync(object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/WyszukajTlumaczenieSlowka", ReplyAction="http://tempuri.org/IService1/WyszukajTlumaczenieSlowkaResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Logowanie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.FormyNauki>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Rejestracja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
+        System.Collections.Generic.List<ClientApp.WcfService.Slowka> WyszukajTlumaczenieSlowka(string szukaneSlowo, object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/WyszukajTlumaczenieSlowka", ReplyAction="http://tempuri.org/IService1/WyszukajTlumaczenieSlowkaResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> WyszukajTlumaczenieSlowkaAsync(string szukaneSlowo, object token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -871,6 +905,22 @@ namespace ClientApp.WcfService {
         
         public System.Threading.Tasks.Task<ClientApp.WcfService.Rejestracja> WyswietlEkranPowitalnyAsync(object token) {
             return base.Channel.WyswietlEkranPowitalnyAsync(token);
+        }
+        
+        public System.Collections.Generic.List<ClientApp.WcfService.Slowka> PobierzWszystkieSlowkaDoSlownika(object token) {
+            return base.Channel.PobierzWszystkieSlowkaDoSlownika(token);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PobierzWszystkieSlowkaDoSlownikaAsync(object token) {
+            return base.Channel.PobierzWszystkieSlowkaDoSlownikaAsync(token);
+        }
+        
+        public System.Collections.Generic.List<ClientApp.WcfService.Slowka> WyszukajTlumaczenieSlowka(string szukaneSlowo, object token) {
+            return base.Channel.WyszukajTlumaczenieSlowka(szukaneSlowo, token);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> WyszukajTlumaczenieSlowkaAsync(string szukaneSlowo, object token) {
+            return base.Channel.WyszukajTlumaczenieSlowkaAsync(szukaneSlowo, token);
         }
     }
 }

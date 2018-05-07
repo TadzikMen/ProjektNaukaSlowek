@@ -65,21 +65,30 @@ namespace ClientApp
 			try
 			{
 				Models.RozpoczynanieNauki rozpoczynanieNauki = new Models.RozpoczynanieNauki(
-					jezyk: this.cmBxWybierzJezyk.SelectedItem.ToString(),
+					formaNauki: this.cmBxWybierzFormeNauki.SelectedItem.ToString(),
 					poziom: this.cmBxWybierzPoziom.SelectedItem.ToString(),
-					formaNauki: this.cmBxWybierzFormeNauki.SelectedItem.ToString());
-				
-				if (rozpoczynanieNauki.SprawdzDaneWejsciowe)
-				{
-					if (rozpoczynanieNauki.FormaNauki == "Fiszki")
-					{
-						FiszkiWindow fw = new FiszkiWindow(
-							cmBxWybierzJezyk.SelectedItem.ToString(),
-							cmBxWybierzPoziom.SelectedItem.ToString());
+					jezyk: this.cmBxWybierzJezyk.SelectedItem.ToString());
 
-						fw.Show();
-						this.Close();
-					}
+				if (
+					rozpoczynanieNauki.FormaNauki == "Słownik" ||
+					string.IsNullOrEmpty(rozpoczynanieNauki.Jezyk) ||
+					string.IsNullOrEmpty(rozpoczynanieNauki.Poziom))
+				{
+					SlownikWindow sw = new SlownikWindow();
+					sw.Show();
+					this.Close();
+				}
+				else if (
+					rozpoczynanieNauki.FormaNauki == "Fiszki" &&
+					!string.IsNullOrEmpty(rozpoczynanieNauki.Jezyk) ||
+					!string.IsNullOrEmpty(rozpoczynanieNauki.Poziom))
+				{
+					FiszkiWindow fw = new FiszkiWindow(
+						cmBxWybierzJezyk.SelectedItem.ToString(),
+						cmBxWybierzPoziom.SelectedItem.ToString());
+
+					fw.Show();
+					this.Close();
 				}
 			}
 			catch
@@ -99,6 +108,27 @@ namespace ClientApp
 			this.Close();
 		}
 
+		private void cmBxWybierzFormeNauki_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+		{
+			if("Słownik" == cmBxWybierzFormeNauki.SelectedItem.ToString())
+			{
+				cmBxWybierzJezyk.Foreground = new SolidColorBrush(Colors.Gray);
+				cmBxWybierzPoziom.Foreground = new SolidColorBrush(Colors.Gray);
+				cmBxWybierzJezyk.IsEnabled = false;
+				cmBxWybierzPoziom.IsEnabled = false;
+			}
+			else
+			{
+				cmBxWybierzJezyk.Foreground = new SolidColorBrush(Colors.Black);
+				cmBxWybierzPoziom.Foreground = new SolidColorBrush(Colors.Black);
+				cmBxWybierzJezyk.IsEnabled = true;
+				cmBxWybierzPoziom.IsEnabled = true;
+			}
+		}
 
-	}
+        private void cmBxWybierzJezyk_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+    }
 }

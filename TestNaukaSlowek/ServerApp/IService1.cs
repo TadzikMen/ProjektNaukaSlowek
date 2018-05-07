@@ -12,7 +12,6 @@ namespace ServerApp
 	[ServiceContract]
 	public interface IService1
 	{
-
 		[OperationContract]
 		string GetData(int value);
 
@@ -55,6 +54,12 @@ namespace ServerApp
 
 		[OperationContract]
 		DTO.Rejestracja WyswietlEkranPowitalny(object token);
+
+		[OperationContract]
+		List<DTO.Slowka> PobierzWszystkieSlowkaDoSlownika(object token);
+
+		[OperationContract]
+		List<DTO.Slowka> WyszukajTlumaczenieSlowka(string szukaneSlowo, object token);
 	}
 
 
