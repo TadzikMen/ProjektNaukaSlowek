@@ -77,5 +77,10 @@ namespace ClientApp
 		}
 
 		private void btnPokazWszystko_Click(object sender, RoutedEventArgs e) => PobierzWszystkieSlowka();
-	}
+
+        private void cmBxJezyk_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+    }
 }

@@ -125,5 +125,10 @@ namespace ClientApp
 				cmBxWybierzPoziom.IsEnabled = true;
 			}
 		}
-	}
+
+        private void cmBxWybierzJezyk_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+    }
 }

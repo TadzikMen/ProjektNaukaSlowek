@@ -52,7 +52,7 @@
         <Label Content="Wybierz Poziom:" Margin="30,15,9,22" Width="200" Height="38" Grid.Row="1" Grid.Column="1" Foreground="#FF606060" />
         <Label Content="Wybierz Formę Nauki:" Margin="31,10,6,42" Width="202" Height="38" Grid.Row="2" Grid.Column="1" Foreground="#FF606060" />
 
-        <ComboBox x:Name="cmBxWybierzJezyk" Margin="20,84,38,19" Height="28" Grid.Column="2" />
+        <ComboBox x:Name="cmBxWybierzJezyk" Margin="20,84,38,19" Height="28" Grid.Column="2" SelectionChanged="cmBxWybierzJezyk_SelectionChanged" />
         <ComboBox x:Name="cmBxWybierzPoziom" Margin="20,25,38,22" Height="28" Grid.Row="1" Grid.Column="2" />
         <ComboBox x:Name="cmBxWybierzFormeNauki" Margin="20,20,38,42" Height="28" Grid.Row="2" Grid.Column="2" SelectionChanged="cmBxWybierzFormeNauki_SelectionChanged_1" />
 
