@@ -97,7 +97,7 @@ namespace ClientApp
 
 		private void cmBxWybranaKategoria_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			tbxTlumaczenie.Text = null;
+			
 			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
 			PobierzSlowko();
 		}

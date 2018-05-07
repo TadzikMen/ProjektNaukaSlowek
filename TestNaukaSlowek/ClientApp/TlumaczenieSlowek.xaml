@@ -1,0 +1,29 @@
+﻿<Window x:Class="ClientApp.Slownik"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientApp"
+        mc:Ignorable="d"
+        Title="Slownik" Height="700" Width="1024">
+    <Grid>
+        <Label x:Name="label" Content="Słówko do przetłumaczenia" HorizontalAlignment="Left" Height="24" Margin="10,202,0,0" VerticalAlignment="Top" Width="169"/>
+        <TextBox x:Name="TxbTlumaczenie" HorizontalAlignment="Left" Height="29" Margin="10,326,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="169"/>
+        <Label x:Name="TlumaczenieLab" Content="Label" HorizontalAlignment="Left" Height="21" Margin="10,282,0,0" VerticalAlignment="Top" Width="169"/>
+        <Label x:Name="LabTlumaczenie" Content="Słówko do przetłumaczenia" HorizontalAlignment="Left" Height="24" Margin="10,231,0,0" VerticalAlignment="Top" Width="169"/>
+        <Label Content="Wybrany Język: " Margin="13,17,754.6,605.4" Width="Auto" Height="Auto" Foreground="White"/>
+        <Label Content="Wybrany Poziom: " Margin="13,87,754.6,535.4" Width="Auto" Height="Auto" Foreground="#FF606060"/>
+        <Label Content="Wybrana Kategoria: " Margin="38,387,729.6,239.4" Width="Auto" Height="Auto" Foreground="#FF606060" />
+        <Label x:Name="lblJezyk" Margin="320,17,240.6,605.4" Width="Auto" Height="Auto" Foreground="White" />
+        <Label x:Name="lblPoziom" Margin="320,87,236.6,535.4" Height="Auto" Width="Auto" Foreground="#FF606060" />
+        <ComboBox x:Name="cmBxWybranaKategoria" Margin="346,387,170.6,239.4" SelectionChanged="cmBxWybranaKategoria_SelectionChanged" FontSize="18" BorderBrush="#FFAEAEAE" Foreground="Black" RenderTransformOrigin="0.5,0.5" >
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+
+    </Grid>
+</Window>
