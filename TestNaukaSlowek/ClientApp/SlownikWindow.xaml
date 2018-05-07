@@ -38,9 +38,9 @@
         <DockPanel Margin="10" Grid.Row="1" Grid.Column="1" Grid.RowSpan="7">
             <DataGrid DockPanel.Dock="Bottom" x:Name="dgSlownik" ItemsSource="{Binding Path=slowka}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Słówko" Binding="{Binding Path=Slowko}"/>
-                    <DataGridTextColumn Header="Tłumaczenie" Binding="{Binding Path=Tlumaczenie}"/>
-                    <DataGridTextColumn Header="Język" Binding="{Binding Path=Jezyk}"/>
+                    <DataGridTextColumn IsReadOnly="True" Header="Słówko" Binding="{Binding Path=Slowko}"/>
+                    <DataGridTextColumn IsReadOnly="True" Header="Tłumaczenie" Binding="{Binding Path=Tlumaczenie}"/>
+                    <DataGridTextColumn IsReadOnly="True" Header="Język" Binding="{Binding Path=Jezyk}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
