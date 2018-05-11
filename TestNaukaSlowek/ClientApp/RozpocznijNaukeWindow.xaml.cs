@@ -60,45 +60,51 @@ namespace ClientApp
 
 		}
 
-		private void btnRozpocznij_Click(object sender, RoutedEventArgs e)
+		private void PrzelaczOknoNauki()
 		{
-			try
-			{
-				Models.RozpoczynanieNauki rozpoczynanieNauki = new Models.RozpoczynanieNauki(
-					formaNauki: this.cmBxWybierzFormeNauki.SelectedItem.ToString(),
-					poziom: this.cmBxWybierzPoziom.SelectedItem.ToString(),
-					jezyk: this.cmBxWybierzJezyk.SelectedItem.ToString());
+			Models.RozpoczynanieNauki rozpoczynanie;
 
-				if (
-					rozpoczynanieNauki.FormaNauki == "Słownik" ||
-					string.IsNullOrEmpty(rozpoczynanieNauki.Jezyk) ||
-					string.IsNullOrEmpty(rozpoczynanieNauki.Poziom))
+			if (cmBxWybierzFormeNauki.SelectedIndex != -1)
+			{
+				rozpoczynanie = new Models.RozpoczynanieNauki(cmBxWybierzFormeNauki.SelectedItem.ToString());
+				if (rozpoczynanie.FormaNauki == "Słownik")
 				{
 					SlownikWindow sw = new SlownikWindow();
 					sw.Show();
 					this.Close();
 				}
-				else if (
-					rozpoczynanieNauki.FormaNauki == "Fiszki" &&
-					!string.IsNullOrEmpty(rozpoczynanieNauki.Jezyk) ||
-					!string.IsNullOrEmpty(rozpoczynanieNauki.Poziom))
+				else
 				{
-					FiszkiWindow fw = new FiszkiWindow(
-						cmBxWybierzJezyk.SelectedItem.ToString(),
-						cmBxWybierzPoziom.SelectedItem.ToString());
+					if (cmBxWybierzJezyk.SelectedIndex == -1 || cmBxWybierzPoziom.SelectedIndex == -1)
+						MessageBox.Show("Nie wybrano wymaganych wartości z listy!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
 
-					fw.Show();
-					this.Close();
+					else
+					{
+						rozpoczynanie.Jezyk = cmBxWybierzJezyk.SelectedItem.ToString();
+						rozpoczynanie.Poziom = cmBxWybierzPoziom.SelectedItem.ToString();
+
+						if (rozpoczynanie.FormaNauki == "Fiszki")
+						{
+							FiszkiWindow fw = new FiszkiWindow(rozpoczynanie.Jezyk, rozpoczynanie.Poziom);
+							fw.Show();
+							this.Close();
+						}
+						else if (rozpoczynanie.FormaNauki == "Gramatyka")
+						{
+							//Otwieranie okna do nauki gramatyki / testów
+						}
+						else
+							MessageBox.Show("Nie wybrano wymaganych wartości z listy!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+
+					}
 				}
 			}
-			catch
-			{
-				MessageBox.Show(
-					$"Brak wybranych wartości. Wybierz wartości z listy rozwijanej!",
-					"Błąd!",
-					MessageBoxButton.OK,
-					MessageBoxImage.Error);
-			}
+
+		}
+
+		private void btnRozpocznij_Click(object sender, RoutedEventArgs e)
+		{
+			PrzelaczOknoNauki();
 		}
 
 		private void btnWroc_Click(object sender, RoutedEventArgs e)

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
-        Title="SlownikWindow" Height="612.25" Width="857.25">
+        Title="SlownikWindow" Height="612.25" Width="849.75">
     <Grid>
         <Grid.Resources>
             <Style TargetType="Label">
@@ -38,9 +38,9 @@
         <DockPanel Margin="10" Grid.Row="1" Grid.Column="1" Grid.RowSpan="7">
             <DataGrid DockPanel.Dock="Bottom" x:Name="dgSlownik" ItemsSource="{Binding Path=slowka}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn IsReadOnly="True" Header="Słówko" Binding="{Binding Path=Slowko}"/>
-                    <DataGridTextColumn IsReadOnly="True" Header="Tłumaczenie" Binding="{Binding Path=Tlumaczenie}"/>
-                    <DataGridTextColumn IsReadOnly="True" Header="Język" Binding="{Binding Path=Jezyk}"/>
+                    <DataGridTextColumn Width="auto" IsReadOnly="True" Header="Słówko" Binding="{Binding Path=Slowko}"/>
+                    <DataGridTextColumn Width="auto" IsReadOnly="True" Header="Tłumaczenie" Binding="{Binding Path=Tlumaczenie}"/>
+                    <DataGridTextColumn Width="auto" IsReadOnly="True" Header="Język" Binding="{Binding Path=Jezyk}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
