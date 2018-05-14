@@ -22,7 +22,7 @@ namespace ClientApp
         public SlownikWindow()
         {
             InitializeComponent();
-			PobierzWszystkieSlowka();
+			//PobierzWszystkieSlowka();
         }
 
 		private async void PobierzWszystkieSlowka()
@@ -69,18 +69,18 @@ namespace ClientApp
 
 		}
 
-		private void btnWroc_Click(object sender, RoutedEventArgs e)
-		{
-			RozpocznijNaukeWindow rnw = new RozpocznijNaukeWindow();
-			rnw.Show();
-			this.Close();
-		}
-
 		private void btnPokazWszystko_Click(object sender, RoutedEventArgs e) => PobierzWszystkieSlowka();
 
         private void cmBxJezyk_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
-    }
+
+		private void btnWroc_Click_1(object sender, RoutedEventArgs e)
+		{
+			RozpocznijNaukeWindow rnw = new RozpocznijNaukeWindow();
+			rnw.Show();
+			this.Close();
+		}
+	}
 }

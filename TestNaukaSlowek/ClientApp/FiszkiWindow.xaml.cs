@@ -97,12 +97,11 @@ namespace ClientApp
 
 		private void cmBxWybranaKategoria_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			
 			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
 			PobierzSlowko();
 		}
 
-		private void btnWroc_Click(object sender, RoutedEventArgs e)
+		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			RozpocznijNaukeWindow rnw = new RozpocznijNaukeWindow();
 			rnw.Show();

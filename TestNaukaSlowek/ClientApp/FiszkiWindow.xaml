@@ -5,110 +5,92 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
-        Title="FiszkiWindow" MinHeight="600" MinWidth="1080" Height="626" Width="1200">
+        Title="FiszkiWindow" MinHeight="750" MinWidth="400" Height="800" Width="900">
     <Window.Background>
-        <ImageBrush ImageSource="Images/backgroundImage.jpg"/>
+        <ImageBrush ImageSource="Images/backgroundImage.jpg" />
     </Window.Background>
+    <DockPanel LastChildFill="True">
+        <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Top" >
+            <WrapPanel>
+                <Label Content="Wybrany Język:" FontSize="16" Foreground="Wheat"/>
+                <Label x:Name="lblJezyk" FontSize="16" Foreground="Wheat" />
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Wybrany Poziom:" FontSize="16" Foreground="Wheat" />
+                <Label x:Name="lblPoziom" FontSize="16" Foreground="Wheat"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Wybrana Kategoria:" FontSize="16" Foreground="Wheat" />
+                <ComboBox x:Name="cmBxWybranaKategoria" Width="250" FontSize="16" Foreground="Black" VerticalContentAlignment="Center" SelectionChanged="cmBxWybranaKategoria_SelectionChanged"/>
+            </WrapPanel>
+        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150*" />
+                <ColumnDefinition Width="150*" />
+                <ColumnDefinition Width="150*" />
+            </Grid.ColumnDefinitions>
 
-    <Window.Resources>
-        <Style x:Key="TextBoxStyle" TargetType="TextBox">
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="IsReadOnly" Value="True"/>
-            <!--<Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>-->
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="24"/>
-            <!--<Setter Property="Width" Value="380"/>
-            <Setter Property="Height" Value="194"/>-->
-            <Setter Property="Background">
-                <Setter.Value>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="White" Offset="0"/>
-                        <GradientStop Color="#FF5F5F5F" Offset="1"/>
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
+            <Grid.Resources>
+                <Style TargetType="StackPanel">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Height" Value="80" />
+                    <Setter Property="Width" Value="280" />
+                    <Setter Property="TextAlignment" Value="Center" />
+                    <Setter Property="Padding" Value="30" />
+                    <Setter Property="FontSize" Value="26" />
+                    <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+                </Style>
+                <Style TargetType="Border">
+                    <Setter Property="BorderBrush" Value="FloralWhite" />
+                    <Setter Property="BorderThickness" Value="3" />
+                    <Setter Property="Width" Value="300" />
+                    <Setter Property="Height" Value="115" />
+                </Style>
+                <Style TargetType="WrapPanel">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="Grid.Column" Value="0" />
+                    <Setter Property="Grid.ColumnSpan" Value="3" />
+                    <Setter Property="Margin" Value="30,0,0,0" />
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="FontFamily" Value="Segoe Print" />
+                    <Setter Property="FontSize" Value="14" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Width" Value="110" />
+                    <Setter Property="Height" Value="40" />
+                    <Setter Property="Margin" Value="0,15,0,15" />
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="335*"/>
+                <RowDefinition Height="62*"/>
+            </Grid.RowDefinitions>
 
-    <Grid>
-        <Grid.Resources>
-            <Style TargetType="Label">
-                <!--<Setter Property="Width" Value="480"/>
-                <Setter Property="Height" Value="48"/>-->
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Foreground" Value="DarkOrange"/>
-            </Style>
-            <Style TargetType="Button">
-                <!--<Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="HorizontalAlignment" Value="Center"/>-->
-                <!--<Setter Property="Width" Value="121"/>
-                <Setter Property="Height" Value="49"/>-->
-            </Style>
-        </Grid.Resources>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="148*"/>
-            <ColumnDefinition Width="423*"/>
-            <ColumnDefinition Width="149*"/>
-            <ColumnDefinition Width="422*"/>
-            <ColumnDefinition Width="138*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="227*"/>
-            <RowDefinition Height="135*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="133*"/>
-        </Grid.RowDefinitions>
-
-        <Label Content="Wybrany Język: " Margin="108,25,36,154" Width="Auto" Height="Auto" Grid.Column="1" Foreground="White"/>
-        <Label Content="Wybrany Poziom: " Margin="108,95,36,84" Width="Auto" Height="Auto" Grid.Column="1" Foreground="#FF606060"/>
-        <Label Content="Wybrana Kategoria: " Margin="108,173,36,10" Width="Auto" Height="Auto" Grid.Column="1" Foreground="#FF606060" />
-        <Label x:Name="lblJezyk" Margin="21,25,55,154" Grid.Column="2" Grid.ColumnSpan="2" Width="Auto" Height="Auto" Foreground="White" />
-        <Label x:Name="lblPoziom" Margin="21,95,51,84" Height="Auto" Width="Auto" Grid.ColumnSpan="2" Grid.Column="2" Foreground="#FF606060" />
-        <ComboBox x:Name="cmBxWybranaKategoria" Margin="21.4,173,10,10" SelectionChanged="cmBxWybranaKategoria_SelectionChanged" Grid.Column="2" Grid.ColumnSpan="2" FontSize="18" BorderBrush="#FFAEAEAE" Foreground="Black" RenderTransformOrigin="0.5,0.5" >
-            <ComboBox.Background>
-                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </LinearGradientBrush>
-            </ComboBox.Background>
-        </ComboBox>
-
-        <TextBox x:Name="tbxSlowko" Margin="52,10,10,10" TextWrapping="Wrap" Style="{StaticResource TextBoxStyle}" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" BorderBrush="Gainsboro" FontSize="36" >
-            <TextBox.Background>
-                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                    <GradientStop Color="White" Offset="0"/>
-                    <GradientStop Color="#FF153D52" Offset="1"/>
-                </LinearGradientBrush>
-            </TextBox.Background>
-        </TextBox>
-        <TextBox x:Name="tbxTlumaczenie" Margin="10,10,51,10" TextWrapping="Wrap" Style="{StaticResource TextBoxStyle}" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" FontSize="36" >
-            <TextBox.Background>
-                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                    <GradientStop Color="White" Offset="0"/>
-                    <GradientStop Color="#FF45052A" Offset="1"/>
-                </LinearGradientBrush>
-            </TextBox.Background>
-        </TextBox>
-
-        <Button x:Name="btnTlumacz" Content="Tłumacz" Margin="21.4,39,16.6,40.2" Click="btnTlumacz_Click" Grid.Column="2" Grid.Row="1" BorderBrush="#FFA0A0A0" FontSize="14" FontFamily="Segoe Print" FontWeight="Bold" >
-            <Button.Background>
-                <ImageBrush/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="btnKolejneSlowko" Content="Kolejne Słówko" Margin="17.4,9.8,9.6,32.2" Click="btnKolejneSlowko_Click" Grid.Column="2" Grid.Row="2" FontSize="14" FontFamily="Segoe Print" FontWeight="Bold" >
-            <Button.Background>
-                <ImageBrush/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="btnWroc" Content="Wróć" Margin="52,42,256,43" Click="btnWroc_Click" Grid.Row="3" Grid.Column="1" FontSize="14" FontFamily="Segoe Print" FontWeight="Bold" >
-            <Button.Background>
-                <ImageBrush/>
-            </Button.Background>
-        </Button>
-
-
-    </Grid>
+            <WrapPanel Margin="56,70,26,8.5">
+                <StackPanel Margin="0,0,50,0">
+                    <Border>
+                        <TextBlock x:Name="tbxSlowko" />
+                    </Border>
+                </StackPanel>
+                <StackPanel Margin="50,0,100,0">
+                    <Button x:Name="btnTlumacz" Content="Tłumacz" Click="btnTlumacz_Click"/>
+                    <Button x:Name="btnKolejneSlowko" Content="Kolejne Słówko" Click="btnKolejneSlowko_Click"/>
+                </StackPanel>
+                <StackPanel>
+                    <Border>
+                        <TextBlock x:Name="tbxTlumaczenie"/>
+                    </Border>
+                </StackPanel>
+            </WrapPanel>
+            <StackPanel Grid.Column="0" Grid.Row="1" Margin="15,0,0,0">
+                <Button Content="Wróć" Click="Button_Click" />
+            </StackPanel>
+        </Grid>
+    </DockPanel>
 </Window>
