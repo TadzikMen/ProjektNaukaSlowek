@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
-        Title="SlownikWindow" Height="615" Width="840" MinHeight="550" MinWidth="410">
+        Title="SlownikWindow" Height="580" Width="802" MinHeight="580" MinWidth="430">
     <Window.Background>
         <ImageBrush ImageSource="Images/backgroundImage.jpg"/>
     </Window.Background>
