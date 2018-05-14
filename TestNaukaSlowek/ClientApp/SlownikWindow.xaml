@@ -51,11 +51,11 @@
         </Grid.ColumnDefinitions>
 
         <DockPanel>
-            <DataGrid x:Name="dgSlownik" ItemsSource="{Binding Path=slowka}" AutoGenerateColumns="False" >
+            <DataGrid x:Name="dgSlownik" ItemsSource="{Binding Path=slowka}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn IsReadOnly="True" Header="Słówko" Binding="{Binding Path=Slowko}"/>
-                    <DataGridTextColumn IsReadOnly="True" Header="Tłumaczenie" Binding="{Binding Path=Tlumaczenie}"/>
-                    <DataGridTextColumn IsReadOnly="True" Header="Język" Binding="{Binding Path=Jezyk}"/>
+                    <DataGridTextColumn IsReadOnly="True" Header="Słówko" Width="*" Binding="{Binding Path=Slowko}"/>
+                    <DataGridTextColumn IsReadOnly="True" Header="Tłumaczenie" Width="*" Binding="{Binding Path=Tlumaczenie}"/>
+                    <DataGridTextColumn IsReadOnly="True" Header="Język" Width="*" Binding="{Binding Path=Jezyk}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
