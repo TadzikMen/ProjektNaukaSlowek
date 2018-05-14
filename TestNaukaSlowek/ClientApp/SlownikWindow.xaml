@@ -63,7 +63,7 @@
         <Border Grid.Column="0" Grid.Row="0" >
             <StackPanel>
                 <WrapPanel>
-                    <Label Content="Szukaj Słówko:"/>
+                    <Label Content="Szukaj Słówko:" Foreground="White" />
                     <TextBox VerticalContentAlignment="Stretch" x:Name="tbxSlowko" Width="200"/>
                 </WrapPanel>
                 <WrapPanel>
