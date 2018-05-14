@@ -26,12 +26,18 @@
             <Style TargetType="Button">
                 <Setter Property="Cursor" Value="Hand"/>
                 <Setter Property="Margin" Value="0,0,15,15"/>
-                <Setter Property="Width" Value="145"/>
+                <Setter Property="Width" Value="150"/>
                 <Setter Property="Height" Value="30"/>
                 <Setter Property="FontFamily" Value="Segoe Print" />
             </Style>
             <Style TargetType="ComboBox">
                 <Setter Property="Cursor" Value="Hand"/>
+            </Style>
+            <Style TargetType="DockPanel">
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="Grid.Column" Value="1" />
+                <Setter Property="Grid.Row" Value="0" />
+                <Setter Property="Grid.RowSpan" Value="2" />
             </Style>
         </Grid.Resources>
 
@@ -44,7 +50,7 @@
             <ColumnDefinition Width="35*"/>
         </Grid.ColumnDefinitions>
 
-        <DockPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" >
+        <DockPanel>
             <DataGrid x:Name="dgSlownik" ItemsSource="{Binding Path=slowka}" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
                     <DataGridTextColumn IsReadOnly="True" Header="Słówko" Binding="{Binding Path=Slowko}"/>
