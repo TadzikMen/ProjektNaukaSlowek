@@ -24,25 +24,7 @@ namespace ClientApp
 		public SlownikWindow()
         {
             InitializeComponent();
-			//PobierzWszystkieSlowka();
         }
-
-		//private async void PobierzWszystkieSlowka()
-		//{
-		//	List<WcfService.Slowka> slowka = new List<WcfService.Slowka>();
-		//	try
-		//	{
-		//		using (var client = new WcfService.Service1Client())
-		//		{
-		//			slowka = await client.PobierzWszystkieSlowkaDoSlownikaAsync(Models.Token.NumerToken);
-		//		}
-		//		dgSlownik.ItemsSource = slowka;
-		//	}
-		//	catch
-		//	{
-		//		MessageBox.Show("Błąd pobierania słówek z bazy danych!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-		//	}
-		//}
 
 		private async void SzukajTlumaczenieSlowa()
 		{
@@ -60,6 +42,11 @@ namespace ClientApp
 			{
 				MessageBox.Show("Błąd pobierania słówek z bazy danych!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
+		}
+
+		private async void FiltrujDane()
+		{
+
 		}
 
 		private void btnSzukaj_Click(object sender, RoutedEventArgs e) => SzukajTlumaczenieSlowa();
