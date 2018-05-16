@@ -23,11 +23,37 @@ namespace ClientApp
 
 		public SlownikWindow()
         {
+			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
             InitializeComponent();
+			ZaladujDaneDoFiltrowania();
         }
+
+		private async void ZaladujDaneDoFiltrowania()
+		{
+			List<WcfService.Slowka> listaDoFiltrowania = new List<WcfService.Slowka>(); 
+			try
+			{
+				using (var client = new WcfService.Service1Client())
+				{
+					listaDoFiltrowania = await client.PrzekazDaneDoFiltrowaniaAsync(Models.Token.NumerToken);
+				}
+
+				foreach (var item in listaDoFiltrowania)
+				{
+					cmBxJezyk.Items.Add(item.Jezyk);
+					cmBxKategoria.Items.Add(item.Kategoria);
+					cmBxPoziom.Items.Add(item.Poziom);
+				}
+			}
+			catch (Exception)
+			{
+				MessageBox.Show($"Błąd połączenia z serwerem!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
 
 		private async void SzukajTlumaczenieSlowa()
 		{
+			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
 			List<WcfService.Slowka> slowka = new List<WcfService.Slowka>();
 
 			try
@@ -66,7 +92,7 @@ namespace ClientApp
 
         private void cmBxJezyk_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
         }
 
 		private void btnWroc_Click_1(object sender, RoutedEventArgs e)

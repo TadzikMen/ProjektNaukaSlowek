@@ -766,6 +766,23 @@ namespace ClientApp.WcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/WyszukajTlumaczenieSlowka", ReplyAction="http://tempuri.org/IService1/WyszukajTlumaczenieSlowkaResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> WyszukajTlumaczenieSlowkaAsync(string szukaneSlowo, object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PrzekazDaneDoFiltrowania", ReplyAction="http://tempuri.org/IService1/PrzekazDaneDoFiltrowaniaResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Logowanie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.FormyNauki>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Rejestracja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
+        System.Collections.Generic.List<ClientApp.WcfService.Slowka> PrzekazDaneDoFiltrowania(object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PrzekazDaneDoFiltrowania", ReplyAction="http://tempuri.org/IService1/PrzekazDaneDoFiltrowaniaResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PrzekazDaneDoFiltrowaniaAsync(object token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -921,6 +938,14 @@ namespace ClientApp.WcfService {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> WyszukajTlumaczenieSlowkaAsync(string szukaneSlowo, object token) {
             return base.Channel.WyszukajTlumaczenieSlowkaAsync(szukaneSlowo, token);
+        }
+        
+        public System.Collections.Generic.List<ClientApp.WcfService.Slowka> PrzekazDaneDoFiltrowania(object token) {
+            return base.Channel.PrzekazDaneDoFiltrowania(token);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PrzekazDaneDoFiltrowaniaAsync(object token) {
+            return base.Channel.PrzekazDaneDoFiltrowaniaAsync(token);
         }
     }
 }

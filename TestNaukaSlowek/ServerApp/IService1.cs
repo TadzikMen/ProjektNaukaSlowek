@@ -60,6 +60,9 @@ namespace ServerApp
 
 		[OperationContract]
 		List<DTO.Slowka> WyszukajTlumaczenieSlowka(string szukaneSlowo, object token);
+
+		[OperationContract]
+		List<DTO.Slowka> PrzekazDaneDoFiltrowania(object token);
 	}
 
 

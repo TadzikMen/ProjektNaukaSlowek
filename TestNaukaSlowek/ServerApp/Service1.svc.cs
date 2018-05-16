@@ -650,5 +650,64 @@ namespace ServerApp
 
 			return tlumaczenie;
 		}
+
+		public List<Slowka> PrzekazDaneDoFiltrowania(object token)
+		{
+			List<Slowka> daneDoFiltrowania = new List<Slowka>();
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+				"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText =
+						"SELECT JEZYK FROM JEZYK";
+
+					using (var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							daneDoFiltrowania.Add(new Slowka
+							{
+								Jezyk = (string)dr["JEZYK"],
+							});
+						}
+					}
+
+					cmd.CommandText =
+						"SELECT KATEGORIA FROM KATEGORIE";
+
+					using (var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							daneDoFiltrowania.Add(new Slowka
+							{
+								Kategoria = (string)dr["KATEGORIA"],
+							});
+						}
+					}
+
+					cmd.CommandText =
+						"SELECT POZIOM FROM POZIOMY";
+
+					using (var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							daneDoFiltrowania.Add(new Slowka
+							{
+								Poziom = (string)dr["POZIOM"],
+							});
+						}
+					}
+				}
+			}
+
+			return daneDoFiltrowania;
+		}
 	}
 }

@@ -56,6 +56,8 @@
                     <DataGridTextColumn IsReadOnly="True" Header="Słówko" Width="*" Binding="{Binding Path=Slowko}"/>
                     <DataGridTextColumn IsReadOnly="True" Header="Tłumaczenie" Width="*" Binding="{Binding Path=Tlumaczenie}"/>
                     <DataGridTextColumn IsReadOnly="True" Header="Język" Width="*" Binding="{Binding Path=Jezyk}"/>
+                    <DataGridTextColumn IsReadOnly="True" Header="Kategoria" Width="*" Visibility="{Binding Path=Konwerter}" Binding="{Binding Path=Kategoria}"/>
+                    <DataGridTextColumn IsReadOnly="True" Header="Poziom" Width="*" Visibility="{Binding Path=Konwerter}" Binding="{Binding Path=Poziom}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>

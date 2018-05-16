@@ -71,6 +71,8 @@ namespace ClientApp
 
 		private void btnOk_Click(object sender, RoutedEventArgs e)
 		{
+			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
+			this._slownikWindow.tbxSlowko.Text = string.Empty;
 
 			if (cmBxJezyk.SelectedIndex == -1)
 				MessageBox.Show("Nie wybrano żadnej wartości!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
