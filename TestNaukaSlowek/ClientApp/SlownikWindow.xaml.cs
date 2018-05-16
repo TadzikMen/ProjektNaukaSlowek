@@ -38,16 +38,22 @@ namespace ClientApp
 					listaDoFiltrowania = await client.PrzekazDaneDoFiltrowaniaAsync(Models.Token.NumerToken);
 				}
 
-				foreach (var item in listaDoFiltrowania)
-				{
+				var listaJezykow = listaDoFiltrowania.Where(x => x.Jezyk != null).ToList();
+				var listaKategorii = listaDoFiltrowania.Where(x => x.Kategoria != null).ToList();
+				var listaPoziomow = listaDoFiltrowania.Where(x => x.Poziom != null).ToList();
+
+				foreach (var item in listaJezykow)
 					cmBxJezyk.Items.Add(item.Jezyk);
+
+				foreach (var item in listaKategorii)
 					cmBxKategoria.Items.Add(item.Kategoria);
+
+				foreach (var item in listaPoziomow)
 					cmBxPoziom.Items.Add(item.Poziom);
-				}
 			}
 			catch (Exception)
 			{
-				MessageBox.Show($"Błąd połączenia z serwerem!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+				MessageBox.Show($"Błąd pobierania danych do filtrowania słownika!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
