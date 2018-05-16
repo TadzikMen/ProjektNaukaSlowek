@@ -19,32 +19,35 @@ namespace ClientApp
     /// </summary>
     public partial class SlownikWindow : Window
     {
-        public SlownikWindow()
+		WyborWszystkichSlowekWindow wyborWszystkichSlowekWindow;
+
+		public SlownikWindow()
         {
             InitializeComponent();
 			//PobierzWszystkieSlowka();
         }
 
-		private async void PobierzWszystkieSlowka()
-		{
-			List<WcfService.Slowka> slowka = new List<WcfService.Slowka>();
-			try
-			{
-				using (var client = new WcfService.Service1Client())
-				{
-					slowka = await client.PobierzWszystkieSlowkaDoSlownikaAsync(Models.Token.NumerToken);
-				}
-				dgSlownik.ItemsSource = slowka;
-			}
-			catch
-			{
-				MessageBox.Show("Błąd pobierania słówek z bazy danych!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-			}
-		}
+		//private async void PobierzWszystkieSlowka()
+		//{
+		//	List<WcfService.Slowka> slowka = new List<WcfService.Slowka>();
+		//	try
+		//	{
+		//		using (var client = new WcfService.Service1Client())
+		//		{
+		//			slowka = await client.PobierzWszystkieSlowkaDoSlownikaAsync(Models.Token.NumerToken);
+		//		}
+		//		dgSlownik.ItemsSource = slowka;
+		//	}
+		//	catch
+		//	{
+		//		MessageBox.Show("Błąd pobierania słówek z bazy danych!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+		//	}
+		//}
 
 		private async void SzukajTlumaczenieSlowa()
 		{
 			List<WcfService.Slowka> slowka = new List<WcfService.Slowka>();
+
 			try
 			{
 				using (var client = new WcfService.Service1Client())
@@ -59,17 +62,20 @@ namespace ClientApp
 			}
 		}
 
-		private void btnSzukaj_Click(object sender, RoutedEventArgs e)
-		{
-			SzukajTlumaczenieSlowa();
-		}
+		private void btnSzukaj_Click(object sender, RoutedEventArgs e) => SzukajTlumaczenieSlowa();
+
 
 		private void btnFiltruj_Click(object sender, RoutedEventArgs e)
 		{
 
 		}
 
-		private void btnPokazWszystko_Click(object sender, RoutedEventArgs e) => PobierzWszystkieSlowka();
+		private void btnPokazWszystko_Click(object sender, RoutedEventArgs e)
+		{
+			wyborWszystkichSlowekWindow = new WyborWszystkichSlowekWindow(this);
+			wyborWszystkichSlowekWindow.ShowDialog();
+		}
+	
 
         private void cmBxJezyk_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -51,7 +51,7 @@
         </Grid.ColumnDefinitions>
 
         <DockPanel>
-            <DataGrid x:Name="dgSlownik" ItemsSource="{Binding Path=slowka}" AutoGenerateColumns="False">
+            <DataGrid x:Name="dgSlownik" ItemsSource="{Binding Path=listaSlowek}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn IsReadOnly="True" Header="Słówko" Width="*" Binding="{Binding Path=Slowko}"/>
                     <DataGridTextColumn IsReadOnly="True" Header="Tłumaczenie" Width="*" Binding="{Binding Path=Tlumaczenie}"/>

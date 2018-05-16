@@ -56,7 +56,7 @@ namespace ServerApp
 		DTO.Rejestracja WyswietlEkranPowitalny(object token);
 
 		[OperationContract]
-		List<DTO.Slowka> PobierzWszystkieSlowkaDoSlownika(object token);
+		List<DTO.Slowka> PobierzWszystkieSlowkaDoSlownika(string jezyk, object token);
 
 		[OperationContract]
 		List<DTO.Slowka> WyszukajTlumaczenieSlowka(string szukaneSlowo, object token);

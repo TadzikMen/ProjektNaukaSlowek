@@ -48,7 +48,6 @@ namespace ClientApp
 					icon: MessageBoxImage.Error);
 			}
 
-
 			foreach (var item in wyborFormy.ListaWyboruNauki.Select(x => x.FormaNauki).Distinct().ToList())
 				cmBxWybierzFormeNauki.Items.Add(item);
 

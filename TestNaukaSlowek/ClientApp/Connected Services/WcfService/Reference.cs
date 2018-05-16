@@ -745,10 +745,10 @@ namespace ClientApp.WcfService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Rejestracja))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
-        System.Collections.Generic.List<ClientApp.WcfService.Slowka> PobierzWszystkieSlowkaDoSlownika(object token);
+        System.Collections.Generic.List<ClientApp.WcfService.Slowka> PobierzWszystkieSlowkaDoSlownika(string jezyk, object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzWszystkieSlowkaDoSlownika", ReplyAction="http://tempuri.org/IService1/PobierzWszystkieSlowkaDoSlownikaResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PobierzWszystkieSlowkaDoSlownikaAsync(object token);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PobierzWszystkieSlowkaDoSlownikaAsync(string jezyk, object token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/WyszukajTlumaczenieSlowka", ReplyAction="http://tempuri.org/IService1/WyszukajTlumaczenieSlowkaResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Logowanie))]
@@ -907,12 +907,12 @@ namespace ClientApp.WcfService {
             return base.Channel.WyswietlEkranPowitalnyAsync(token);
         }
         
-        public System.Collections.Generic.List<ClientApp.WcfService.Slowka> PobierzWszystkieSlowkaDoSlownika(object token) {
-            return base.Channel.PobierzWszystkieSlowkaDoSlownika(token);
+        public System.Collections.Generic.List<ClientApp.WcfService.Slowka> PobierzWszystkieSlowkaDoSlownika(string jezyk, object token) {
+            return base.Channel.PobierzWszystkieSlowkaDoSlownika(jezyk, token);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PobierzWszystkieSlowkaDoSlownikaAsync(object token) {
-            return base.Channel.PobierzWszystkieSlowkaDoSlownikaAsync(token);
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PobierzWszystkieSlowkaDoSlownikaAsync(string jezyk, object token) {
+            return base.Channel.PobierzWszystkieSlowkaDoSlownikaAsync(jezyk, token);
         }
         
         public System.Collections.Generic.List<ClientApp.WcfService.Slowka> WyszukajTlumaczenieSlowka(string szukaneSlowo, object token) {

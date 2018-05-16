@@ -572,7 +572,7 @@ namespace ServerApp
 			return loginImie;
 		}
 
-		public List<Slowka> PobierzWszystkieSlowkaDoSlownika(object token)
+		public List<Slowka> PobierzWszystkieSlowkaDoSlownika(string jezyk, object token)
 		{
 			List<Slowka> listaSlowek = new List<Slowka>();
 
@@ -588,7 +588,9 @@ namespace ServerApp
 						"SELECT SLOWKA.SLOWKO, TLUMACZENIA.TLUMACZENIE, JEZYK.JEZYK " +
 						"FROM SLOWKA " +
 						"LEFT JOIN TLUMACZENIA ON SLOWKA.ID_TLUMACZENIA = TLUMACZENIA.ID_TLUMACZENIA " +
-						"LEFT JOIN JEZYK ON SLOWKA.ID_JEZYKA = JEZYK.ID_JEZYKA";
+						"LEFT JOIN JEZYK ON SLOWKA.ID_JEZYKA = JEZYK.ID_JEZYKA " +
+						"WHERE JEZYK=@jezyk";
+					cmd.Parameters.AddWithValue("@jezyk", jezyk);
 					using (var dr = cmd.ExecuteReader())
 					{
 						while (dr.Read())
