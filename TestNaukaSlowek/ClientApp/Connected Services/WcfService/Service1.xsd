@@ -245,4 +245,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="FiltrujPrzezParametry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="jezyk" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="poziom" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="kategoria" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FiltrujPrzezParametryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ServerApp.DTO" minOccurs="0" name="FiltrujPrzezParametryResult" nillable="true" type="q13:ArrayOfSlowka" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

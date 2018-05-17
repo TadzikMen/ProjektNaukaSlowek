@@ -30,7 +30,7 @@ namespace ClientApp
 
 		private async void ZaladujDaneDoFiltrowania()
 		{
-			List<WcfService.Slowka> listaDoFiltrowania = new List<WcfService.Slowka>(); 
+			List<WcfService.Slowka> listaDoFiltrowania = new List<WcfService.Slowka>();
 			try
 			{
 				using (var client = new WcfService.Service1Client())
@@ -78,17 +78,30 @@ namespace ClientApp
 
 		private async void FiltrujDane()
 		{
-
+			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
+			List<WcfService.Slowka> listaSlowek = new List<WcfService.Slowka>();
+			try
+			{
+				using (var client =new WcfService.Service1Client())
+				{
+					listaSlowek = await client.FiltrujPrzezParametryAsync(
+						cmBxJezyk.SelectedItem.ToString(),
+						cmBxPoziom.SelectedItem.ToString(),
+						cmBxKategoria.SelectedItem.ToString(),
+						Models.Token.NumerToken);
+				}
+				dgSlownik.ItemsSource = listaSlowek;
+				dgtcKategoria.Visibility = Visibility.Visible;
+				dgtcPoziom.Visibility = Visibility.Visible;
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Błąd pobierania słówek z bazy danych!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
 		}
 
 		private void btnSzukaj_Click(object sender, RoutedEventArgs e) => SzukajTlumaczenieSlowa();
-
-
-		private void btnFiltruj_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
-
+		
 		private void btnPokazWszystko_Click(object sender, RoutedEventArgs e)
 		{
 			wyborWszystkichSlowekWindow = new WyborWszystkichSlowekWindow(this);
@@ -106,6 +119,11 @@ namespace ClientApp
 			RozpocznijNaukeWindow rnw = new RozpocznijNaukeWindow();
 			rnw.Show();
 			this.Close();
+		}
+
+		private void btnFiltruj_Click_1(object sender, RoutedEventArgs e)
+		{
+			FiltrujDane();
 		}
 	}
 }

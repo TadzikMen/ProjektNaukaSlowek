@@ -709,5 +709,50 @@ namespace ServerApp
 
 			return daneDoFiltrowania;
 		}
+
+		public List<Slowka> FiltrujPrzezParametry(string jezyk, string poziom, string kategoria, object token)
+		{
+			List<Slowka> filtrowaneDane = new List<Slowka>();
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+				"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText =
+						"SELECT SLOWKA.SLOWKO, TLUMACZENIA.TLUMACZENIE, JEZYK.JEZYK, KATEGORIE.KATEGORIA, POZIOMY.POZIOM " +
+						"FROM SLOWKA " +
+						"LEFT JOIN TLUMACZENIA ON SLOWKA.ID_TLUMACZENIA = TLUMACZENIA.ID_TLUMACZENIA " +
+						"LEFT JOIN JEZYK ON SLOWKA.ID_JEZYKA = JEZYK.ID_JEZYKA " +
+						"LEFT JOIN KATEGORIE ON SLOWKA.ID_KATEGORII = KATEGORIE.ID_KATEGORII " +
+						"LEFT JOIN POZIOMY ON SLOWKA.ID_POZIOMU = POZIOMY.ID_POZIOMU " +
+						"WHERE JEZYK=@Jezyk AND POZIOM=@Poziom AND KATEGORIA=@Kategoria";
+
+					cmd.Parameters.AddWithValue("@Jezyk", jezyk);
+					cmd.Parameters.AddWithValue("@Poziom", poziom);
+					cmd.Parameters.AddWithValue("@Kategoria", kategoria);
+
+					using (var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							filtrowaneDane.Add(new Slowka
+							{
+								Slowko = (string)dr["SLOWKO"],
+								Tlumaczenie = (string)dr["TLUMACZENIE"],
+								Jezyk = (string)dr["JEZYK"],
+								Kategoria = (string)dr["KATEGORIA"],
+								Poziom = (string)dr["POZIOM"]
+							});
+						}
+					}
+				}
+			}
+
+			return filtrowaneDane;
+		}
 	}
 }

@@ -783,6 +783,23 @@ namespace ClientApp.WcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PrzekazDaneDoFiltrowania", ReplyAction="http://tempuri.org/IService1/PrzekazDaneDoFiltrowaniaResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PrzekazDaneDoFiltrowaniaAsync(object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/FiltrujPrzezParametry", ReplyAction="http://tempuri.org/IService1/FiltrujPrzezParametryResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Logowanie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.FormyNauki>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Rejestracja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
+        System.Collections.Generic.List<ClientApp.WcfService.Slowka> FiltrujPrzezParametry(string jezyk, string poziom, string kategoria, object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/FiltrujPrzezParametry", ReplyAction="http://tempuri.org/IService1/FiltrujPrzezParametryResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> FiltrujPrzezParametryAsync(string jezyk, string poziom, string kategoria, object token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -946,6 +963,14 @@ namespace ClientApp.WcfService {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PrzekazDaneDoFiltrowaniaAsync(object token) {
             return base.Channel.PrzekazDaneDoFiltrowaniaAsync(token);
+        }
+        
+        public System.Collections.Generic.List<ClientApp.WcfService.Slowka> FiltrujPrzezParametry(string jezyk, string poziom, string kategoria, object token) {
+            return base.Channel.FiltrujPrzezParametry(jezyk, poziom, kategoria, token);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> FiltrujPrzezParametryAsync(string jezyk, string poziom, string kategoria, object token) {
+            return base.Channel.FiltrujPrzezParametryAsync(jezyk, poziom, kategoria, token);
         }
     }
 }
