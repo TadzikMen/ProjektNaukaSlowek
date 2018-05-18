@@ -800,6 +800,23 @@ namespace ClientApp.WcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/FiltrujPrzezParametry", ReplyAction="http://tempuri.org/IService1/FiltrujPrzezParametryResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> FiltrujPrzezParametryAsync(string jezyk, string poziom, string kategoria, object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/FiltrujKategorieDoSlownika", ReplyAction="http://tempuri.org/IService1/FiltrujKategorieDoSlownikaResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Logowanie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Uwierzytelnianie>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Uwierzytelnianie))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.FormyNauki>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.FormyNauki))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Slowka))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Sesja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<ClientApp.WcfService.Slowka>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.Rejestracja))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ClientApp.WcfService.CompositeType))]
+        System.Collections.Generic.List<ClientApp.WcfService.Slowka> FiltrujKategorieDoSlownika(string poziom, object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/FiltrujKategorieDoSlownika", ReplyAction="http://tempuri.org/IService1/FiltrujKategorieDoSlownikaResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> FiltrujKategorieDoSlownikaAsync(string poziom, object token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -971,6 +988,14 @@ namespace ClientApp.WcfService {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> FiltrujPrzezParametryAsync(string jezyk, string poziom, string kategoria, object token) {
             return base.Channel.FiltrujPrzezParametryAsync(jezyk, poziom, kategoria, token);
+        }
+        
+        public System.Collections.Generic.List<ClientApp.WcfService.Slowka> FiltrujKategorieDoSlownika(string poziom, object token) {
+            return base.Channel.FiltrujKategorieDoSlownika(poziom, token);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> FiltrujKategorieDoSlownikaAsync(string poziom, object token) {
+            return base.Channel.FiltrujKategorieDoSlownikaAsync(poziom, token);
         }
     }
 }

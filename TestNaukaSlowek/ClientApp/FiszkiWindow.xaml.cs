@@ -46,23 +46,29 @@ namespace ClientApp
 
 		private async void PobierzSlowko()
 		{
-			using (var client = new WcfService.Service1Client())
+			try
 			{
-				slowko = await client.LosujSlowkoDoFiszkiAsync(
-					lblJezyk.Content.ToString(),
-					lblPoziom.Content.ToString(),
-					cmBxWybranaKategoria.SelectedItem.ToString(),
-					Models.Token.NumerToken);
+				using (var client = new WcfService.Service1Client())
+				{
+					slowko = await client.LosujSlowkoDoFiszkiAsync(
+						lblJezyk.Content.ToString(),
+						lblPoziom.Content.ToString(),
+						cmBxWybranaKategoria.SelectedItem.ToString(),
+						Models.Token.NumerToken);
+				}
+				if (slowko.Tlumaczenie == null)
+				{
+					MessageBox.Show(this, "Brak słówek dla danej kategorii", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Warning);
+					tbxSlowko.Text = null;
+					tbxTlumaczenie.Text = null;
+					return;
+				}
+				tbxSlowko.Text = slowko.Tlumaczenie;
 			}
-			if (slowko.Tlumaczenie == null)
+			catch
 			{
-				MessageBox.Show(this, "Brak słówek dla danej kategorii", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Warning);
-				tbxSlowko.Text = null;
-				tbxTlumaczenie.Text = null;
-				return;
+				MessageBox.Show(this, "Błąd połączenia z serwerem!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Warning);
 			}
-			tbxSlowko.Text = slowko.Tlumaczenie;
-
 		}
 
 		private void btnTlumacz_Click(object sender, RoutedEventArgs e)

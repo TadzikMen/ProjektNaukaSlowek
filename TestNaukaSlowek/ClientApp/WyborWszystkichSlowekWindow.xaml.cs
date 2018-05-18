@@ -73,6 +73,8 @@ namespace ClientApp
 		{
 			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
 			this._slownikWindow.tbxSlowko.Text = string.Empty;
+			this._slownikWindow.dgtcKategoria.Visibility = Visibility.Hidden;
+			this._slownikWindow.dgtcPoziom.Visibility = Visibility.Hidden;
 
 			if (cmBxJezyk.SelectedIndex == -1)
 				MessageBox.Show("Nie wybrano żadnej wartości!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);

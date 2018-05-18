@@ -66,6 +66,9 @@ namespace ServerApp
 
 		[OperationContract]
 		List<DTO.Slowka> FiltrujPrzezParametry(string jezyk, string poziom, string kategoria, object token);
+
+		[OperationContract]
+		List<DTO.Slowka> FiltrujKategorieDoSlownika(string poziom, object token);
 	}
 
 

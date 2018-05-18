@@ -18,7 +18,7 @@ namespace ClientApp
 	/// Interaction logic for RozpocznijNaukeWindow.xaml
 	/// </summary>
 	public partial class RozpocznijNaukeWindow : Window
-	{
+	{ 
 		public RozpocznijNaukeWindow()
 		{
 			InitializeComponent();

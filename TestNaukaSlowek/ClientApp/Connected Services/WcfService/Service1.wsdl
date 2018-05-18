@@ -117,6 +117,12 @@
   <wsdl:message name="IService1_FiltrujPrzezParametry_OutputMessage">
     <wsdl:part name="parameters" element="tns:FiltrujPrzezParametryResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_FiltrujKategorieDoSlownika_InputMessage">
+    <wsdl:part name="parameters" element="tns:FiltrujKategorieDoSlownika" />
+  </wsdl:message>
+  <wsdl:message name="IService1_FiltrujKategorieDoSlownika_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FiltrujKategorieDoSlownikaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -189,6 +195,10 @@
     <wsdl:operation name="FiltrujPrzezParametry">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/FiltrujPrzezParametry" message="tns:IService1_FiltrujPrzezParametry_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/FiltrujPrzezParametryResponse" message="tns:IService1_FiltrujPrzezParametry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FiltrujKategorieDoSlownika">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/FiltrujKategorieDoSlownika" message="tns:IService1_FiltrujKategorieDoSlownika_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/FiltrujKategorieDoSlownikaResponse" message="tns:IService1_FiltrujKategorieDoSlownika_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -348,6 +358,15 @@
     </wsdl:operation>
     <wsdl:operation name="FiltrujPrzezParametry">
       <soap:operation soapAction="http://tempuri.org/IService1/FiltrujPrzezParametry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FiltrujKategorieDoSlownika">
+      <soap:operation soapAction="http://tempuri.org/IService1/FiltrujKategorieDoSlownika" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

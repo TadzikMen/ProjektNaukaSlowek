@@ -91,7 +91,7 @@
                 </WrapPanel>
                 <WrapPanel>
                     <Label Content="Wybierz Poziom:"/>
-                    <ComboBox x:Name="cmBxPoziom" Width="230" />
+                    <ComboBox x:Name="cmBxPoziom" Width="230" SelectionChanged="cmBxPoziom_SelectionChanged" />
                 </WrapPanel>
                 <WrapPanel>
                     <Label Content="Wybierz Kategorię:"/>
