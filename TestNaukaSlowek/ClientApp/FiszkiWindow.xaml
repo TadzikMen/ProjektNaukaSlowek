@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
-        Title="FiszkiWindow" MinHeight="750" MinWidth="400" Height="800" Width="900">
+        Title="FiszkiWindow" MinHeight="700" MinWidth="457" Height="800" Width="1050">
     <Window.Background>
         <ImageBrush ImageSource="Images/backgroundImage.jpg" />
     </Window.Background>
+    
     <DockPanel LastChildFill="True">
         <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Top" >
             <WrapPanel>
@@ -21,7 +22,7 @@
             </WrapPanel>
             <WrapPanel>
                 <Label Content="Wybrana Kategoria:" FontSize="16" Foreground="Wheat" />
-                <ComboBox x:Name="cmBxWybranaKategoria" Width="250" FontSize="16" Foreground="Black" VerticalContentAlignment="Center" SelectionChanged="cmBxWybranaKategoria_SelectionChanged"/>
+                <ComboBox x:Name="cmBxWybranaKategoria" Margin="25,0,0,0" Width="270" FontSize="16" Foreground="Black" VerticalContentAlignment="Center" SelectionChanged="cmBxWybranaKategoria_SelectionChanged"/>
             </WrapPanel>
         </StackPanel>
         <Grid>
@@ -41,10 +42,12 @@
                     <Setter Property="Width" Value="280" />
                     <Setter Property="TextAlignment" Value="Center" />
                     <Setter Property="Padding" Value="30" />
-                    <Setter Property="FontSize" Value="26" />
+                    <Setter Property="FontSize" Value="29" />
                     <Setter Property="TextWrapping" Value="WrapWithOverflow" />
                 </Style>
                 <Style TargetType="Border">
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="HorizontalAlignment" Value="Center" />
                     <Setter Property="BorderBrush" Value="FloralWhite" />
                     <Setter Property="BorderThickness" Value="3" />
                     <Setter Property="Width" Value="300" />
@@ -75,7 +78,22 @@
             <WrapPanel Margin="56,70,26,8.5">
                 <StackPanel Margin="0,0,50,0">
                     <Border>
-                        <TextBlock x:Name="tbxSlowko" />
+                        <TextBlock x:Name="tbxSlowko" Text="{Binding Tlumaczenie, NotifyOnTargetUpdated=True}">
+                            <TextBlock.Triggers>
+                                <EventTrigger RoutedEvent="Binding.TargetUpdated">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation 
+                                                Storyboard.TargetName="tbxSlowko"
+                                                Storyboard.TargetProperty="(TextBlock.Opacity)"
+                                                From="0.0" To="1.0" Duration="0:0:5"
+                                                AutoReverse="True" RepeatBehavior="0:0:5"
+                                                />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </TextBlock.Triggers>
+                        </TextBlock>
                     </Border>
                 </StackPanel>
                 <StackPanel Margin="50,0,100,0">
@@ -84,7 +102,22 @@
                 </StackPanel>
                 <StackPanel>
                     <Border>
-                        <TextBlock x:Name="tbxTlumaczenie"/>
+                        <TextBlock x:Name="tbxTlumaczenie" Text="{Binding Slowko, NotifyOnTargetUpdated=True}">
+                            <TextBlock.Triggers>
+                                <EventTrigger RoutedEvent="Binding.TargetUpdated">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation 
+                                                Storyboard.TargetName="tbxTlumaczenie"
+                                                Storyboard.TargetProperty="(TextBlock.Opacity)"
+                                                From="0.0" To="1.0" Duration="0:0:5"
+                                                AutoReverse="True" RepeatBehavior="0:0:5"
+                                                />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </TextBlock.Triggers>
+                        </TextBlock>
                     </Border>
                 </StackPanel>
             </WrapPanel>

@@ -63,7 +63,7 @@ namespace ClientApp
 					tbxTlumaczenie.Text = null;
 					return;
 				}
-				tbxSlowko.Text = slowko.Tlumaczenie;
+				tbxSlowko.DataContext = slowko;
 			}
 			catch
 			{
@@ -80,7 +80,6 @@ namespace ClientApp
 			}
 			else
 			{
-
 				Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
 				tbxTlumaczenie.Text = slowko.Slowko;
 			}
