@@ -24,11 +24,11 @@ namespace ClientApp
         public Tlumaczenie(string jezyk, string poziom)
         {
             InitializeComponent();
-
             Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
             lblJezyk.Content = jezyk;
             lblPoziom.Content = poziom;
             PrzekazWszystkieKategorie();
+    
         }
 
         private async void PrzekazWszystkieKategorie()
@@ -52,6 +52,9 @@ namespace ClientApp
             {
                 using (var client = new WcfService.Service1Client())
                 {
+
+                    Border1.Visibility = Visibility.Visible;
+                    tbxTlumaczenieUzytkownika.Text = "Tutaj wpisz tłumaczenie";
                     slowko = await client.LosujSlowkoDoFiszkiAsync(
                         lblJezyk.Content.ToString(),
                         lblPoziom.Content.ToString(),
@@ -76,43 +79,64 @@ namespace ClientApp
 
         private void btnSprawdz_Click(object sender, RoutedEventArgs e)
         {
-            
 
-            if (tbxTlumaczenieUzytkownika.Text.ToLower() == Slowko)
+            if (cmBxWybranaKategoria.SelectedItem == null)
             {
+                MessageBox.Show("Nie wybrano żadnej kategorii!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (tbxTlumaczenieUzytkownika.Text.ToLower() == Slowko)
+            {
+                tbxTlumaczenie.Foreground = Brushes.Green;
                 tbxTlumaczenie.Text = "Dobrze przetłumaczyłeś słówko";
             }
             else
             {
+
+                tbxTlumaczenie.Foreground = Brushes.Red;
                 tbxTlumaczenie.Text = "Źle przetłumaczyłeś słówko";
+            }
+        }
+
+        private void KlikEnter(object sender, KeyEventArgs e)
+        {
+            Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
+            if (e.Key == Key.Return)
+            {
+                if (tbxTlumaczenie.Text == "Dobrze przetłumaczyłeś słówko")
+                {
+                    btnKolejneSlowko_Click(sender, e);
+                }
+                else
+                {
+                    btnSprawdz_Click(sender, e);
+                }
             }
         }
 
         private void btnTlumacz_Click(object sender, RoutedEventArgs e)
         {
-            
+            Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
+
             if (cmBxWybranaKategoria.SelectedItem == null)
             {
                 MessageBox.Show("Nie wybrano żadnej kategorii!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
             }
             else
             {
-                    Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
                     tbxTlumaczenie.Text = Slowko ;
             }
         }
         private void btnKolejneSlowko_Click(object sender, RoutedEventArgs e)
         {
+            Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
             if (cmBxWybranaKategoria.SelectedItem == null)
             {
                 MessageBox.Show("Nie wybrano żadnej kategorii!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
             }
             else
             {
+                tbxTlumaczenie.Foreground = Brushes.Black;
                 tbxTlumaczenie.Text = null;
-                Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
                 PobierzSlowko();
             }
         }

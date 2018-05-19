@@ -30,7 +30,7 @@
                     <Label Content="Wybrana Kategoria:" FontSize="16" Foreground="Wheat" />
                 </WrapPanel>
             </StackPanel>
-            <ComboBox x:Name="cmBxWybranaKategoria" FontSize="16" Foreground="Black" VerticalContentAlignment="Center" SelectionChanged="cmBxWybranaKategoria_SelectionChanged" Margin="1.8,64,0.6,0" Grid.Column="2"/>
+            <ComboBox x:Name="cmBxWybranaKategoria" FontSize="16" Foreground="Black" VerticalContentAlignment="Center" SelectionChanged="cmBxWybranaKategoria_SelectionChanged" Margin="1.8,64,124.6,0" Grid.Column="2"/>
         </Grid>
         <Grid Margin="0,96,0.2,0.4">
 
@@ -110,8 +110,8 @@
                         </TextBlock.Triggers>
                     </TextBlock>
                 </StackPanel>
-                <Border Height="46" Width="307">
-                    <TextBox x:Name="tbxTlumaczenieUzytkownika" TextWrapping="Wrap" Text="Tutaj wpisz swoje tłumaczenie" Margin="-3.2,-3.2,-3,-2.8"/>
+                <Border x:Name="Border1" Height="46" Width="307" Visibility="Hidden">
+                    <TextBox x:Name="tbxTlumaczenieUzytkownika"  TextWrapping="Wrap"  Margin="-3.2,-3.2,-3,-2.8" KeyDown="KlikEnter"/>
                 </Border>
                 <StackPanel Margin="50,0,100,0" Height="215">
                     <Button x:Name="btnSprawdź" Content="Sprawdzenie" Click="btnSprawdz_Click"/>
