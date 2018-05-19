@@ -21,6 +21,7 @@ namespace ClientApp
 	{
 		WyborWszystkichSlowekWindow wyborWszystkichSlowekWindow;
 		List<WcfService.Slowka> listaDoFiltrowania;
+		bool czyFiltrowacKategorie = false;
 
 		public SlownikWindow()
 		{
@@ -38,7 +39,6 @@ namespace ClientApp
 				{
 					listaDoFiltrowania = await client.PrzekazDaneDoFiltrowaniaAsync(Models.Token.NumerToken);
 				}
-				//TODO: ZMIEŃ LINQ DO TEJ LISTY BO ZMIENIŁEM ZAPYTANIE DO BAZY
 
 				foreach (var item in listaDoFiltrowania.Select(p=>p.Jezyk).Distinct().ToList())
 					cmBxJezyk.Items.Add(item);
@@ -58,7 +58,7 @@ namespace ClientApp
 		private async void SzukajTlumaczenieSlowa()
 		{
 			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
-			WyczyscDaneFiltra();
+			//WyczyscDaneFiltra();
 			List<WcfService.Slowka> slowka = new List<WcfService.Slowka>();
 
 			try
@@ -105,7 +105,7 @@ namespace ClientApp
 
 		private void btnPokazWszystko_Click(object sender, RoutedEventArgs e)
 		{
-			WyczyscDaneFiltra();
+			//WyczyscDaneFiltra();
 			wyborWszystkichSlowekWindow = new WyborWszystkichSlowekWindow(this);
 			wyborWszystkichSlowekWindow.ShowDialog();
 		}
@@ -124,6 +124,7 @@ namespace ClientApp
 
 		private void WyczyscDaneFiltra()
 		{
+			czyFiltrowacKategorie = false;
 			cmBxJezyk.SelectedIndex = -1;
 			cmBxKategoria.SelectedIndex = -1;
 			cmBxPoziom.SelectedIndex = -1;
@@ -157,8 +158,7 @@ namespace ClientApp
 
 		private void cmBxPoziom_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			if(cmBxKategoria.SelectedIndex != -1)
-				PobierzKategorie();
+			PobierzKategorie();
 		}
 	}
 }
