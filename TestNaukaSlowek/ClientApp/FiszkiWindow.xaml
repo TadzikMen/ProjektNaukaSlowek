@@ -25,6 +25,7 @@
                 <ComboBox x:Name="cmBxWybranaKategoria" Margin="25,0,0,0" Width="270" FontSize="16" Foreground="Black" VerticalContentAlignment="Center" SelectionChanged="cmBxWybranaKategoria_SelectionChanged"/>
             </WrapPanel>
         </StackPanel>
+        
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150*" />

@@ -96,7 +96,10 @@ namespace ClientApp
                         }
                         else if (rozpoczynanie.FormaNauki == "Gramatyka")
 						{
-							//Otwieranie okna do nauki gramatyki / testów
+							Tlumaczenie tlumaczenie = new Tlumaczenie(rozpoczynanie.Jezyk, rozpoczynanie.Poziom);
+							tlumaczenie.Show();
+							this.Close();
+							
 						}
 						else
 							MessageBox.Show("Nie wybrano wymaganych wartości z listy!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
