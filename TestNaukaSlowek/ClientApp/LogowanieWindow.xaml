@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
         Title="LogowanieWindow" Height="450" Width="800">
-    <Grid>
+    <Grid x:Name="Grid1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="96*"/>
             <ColumnDefinition Width="111*"/>
@@ -43,7 +43,7 @@
         <Label Cursor="Arrow" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Height="47" Margin="15,21,5,5" Grid.Row="2" Content="Hasło" Width="178" Foreground="#FF606060"/>
 
         <TextBox x:Name="tbxLogin" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Margin="25,4,10,13" Grid.Row="1" TextWrapping="Wrap" />
-        <PasswordBox x:Name="passBox" VerticalContentAlignment="Center" FontSize="20" Grid.Column="3" HorizontalAlignment="Center" Margin="25,21,10,10" Grid.Row="2" VerticalAlignment="Center" Width="245" Height="42"/>
+        <PasswordBox x:Name="passBox" VerticalContentAlignment="Center" FontSize="20" Grid.Column="3" HorizontalAlignment="Center" Margin="25,21,10,10" Grid.Row="2" VerticalAlignment="Center" Width="245" Height="42" KeyDown="KlikNaEnter"/>
 
         <Button x:Name="btnZaloguj" Cursor="Hand" Content="Zaloguj" Grid.Column="3" HorizontalAlignment="Center" Margin="154,14,10,10" Grid.Row="4" VerticalAlignment="Center" Width="116" Height="48" Click="btnZaloguj_Click" FontWeight="Bold" FontFamily="Segoe Print" FontSize="14">
             <Button.Background>

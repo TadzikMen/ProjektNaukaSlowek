@@ -29,9 +29,19 @@ namespace ClientApp
 			ZalogujUzytkownika();
 		}
 
-		private async void ZalogujUzytkownika()
+        private void KlikNaEnter(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key == Key.Return)
+            {
+                ZalogujUzytkownika();
+            }
+        }
+        private async void ZalogujUzytkownika()
 		{
-			Models.ObslugaLogowania obsLogowania = new Models.ObslugaLogowania();
+
+            Grid1.IsEnabled = false;
+            Models.ObslugaLogowania obsLogowania = new Models.ObslugaLogowania();
 			bool czyPoprawneDane = false;
 
 			try
@@ -77,7 +87,8 @@ namespace ClientApp
 					MessageBox.Show(this, "Brak użytkownika w bazie!", "Błąd!", MessageBoxButton.OK, MessageBoxImage.Error);
 					tbxLogin.Text = null;
 					passBox.Password = null;
-				}
+                    Grid1.IsEnabled = true;
+                }
 
 			}
 		}

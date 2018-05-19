@@ -88,7 +88,13 @@ namespace ClientApp
 							fw.Show();
 							this.Close();
 						}
-						else if (rozpoczynanie.FormaNauki == "Gramatyka")
+                        else if (rozpoczynanie.FormaNauki == "Tlumaczenie")
+                        {
+                            Tlumaczenie fw = new Tlumaczenie(rozpoczynanie.Jezyk, rozpoczynanie.Poziom);
+                            fw.Show();
+                            this.Close();
+                        }
+                        else if (rozpoczynanie.FormaNauki == "Gramatyka")
 						{
 							//Otwieranie okna do nauki gramatyki / testów
 						}
