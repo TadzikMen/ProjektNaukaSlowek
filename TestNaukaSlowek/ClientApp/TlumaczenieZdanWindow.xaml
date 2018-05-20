@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
-        Title="TlumaczenieZdanWindow" Height="450" Width="800">
+        Title="TlumaczenieZdanWindow" Height="466.5" MinWidth="540" Width="750.5">
 
     <Window.Background>
         <ImageBrush ImageSource="Images/backgroundImage.jpg" />
@@ -18,17 +18,20 @@
                 <Label x:Name="lblJezyk" FontSize="16" Foreground="Wheat"/>
             </WrapPanel>
         </StackPanel>
+
         <Grid>
             <Grid.Resources>
                 <Style TargetType="TextBlock">
                     <Setter Property="Width" Value="280" />
                     <Setter Property="Height" Value="80" />
                     <Setter Property="TextAlignment" Value="Center" />
+                    <Setter Property="FontSize" Value="18" />
                 </Style>
                 <Style TargetType="TextBox">
                     <Setter Property="Height" Value="80" />
                     <Setter Property="Width" Value="280" />
                     <Setter Property="Margin" Value="0,15,0,15" />
+                    <Setter Property="FontSize" Value="22" />
                 </Style>
                 <Style TargetType="Border">
                     <Setter Property="BorderThickness" Value="3" />
@@ -40,15 +43,19 @@
                     <Setter Property="Height" Value="40" />
                     <Setter Property="Width" Value="110" />
                     <Setter Property="Margin" Value="0,15,0,0" />
+                    <Setter Property="Cursor" Value="Hand" />
                 </Style>
                 <Style TargetType="StackPanel">
                     <Setter Property="Margin" Value="15" />
                 </Style>
                 <Style TargetType="WrapPanel">
-                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <!--<Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="VerticalAlignment" Value="Center" />-->
+                    <!--<Setter Property="Grid.ColumnSpan" Value="3" />-->
+                    <Setter Property="Margin" Value="15" />
                 </Style>
             </Grid.Resources>
-            
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="300*"/>
                 <RowDefinition Height="75*"/>
@@ -56,33 +63,34 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100*" />
-                <ColumnDefinition Width="180*" />
-                <ColumnDefinition Width="200*" />
+                <ColumnDefinition Width="100*" />
+                <ColumnDefinition Width="100*" />
             </Grid.ColumnDefinitions>
 
-            <WrapPanel Grid.Column="1" Grid.ColumnSpan="2" >
-                <StackPanel>
+            <WrapPanel Grid.Column="0" Grid.ColumnSpan="3" Margin="50,0,0,0">
+                <StackPanel >
                     <Border>
-                        <TextBlock x:Name="tbxWylosowaneZdanie" >
+                        <TextBlock x:Name="tbxWylosowaneZdanie" TextWrapping="WrapWithOverflow">
 
                         </TextBlock>
                     </Border>
-                    <TextBox x:Name="tbxWprowadzoneZdanie">
+                    <TextBox x:Name="tbxWprowadzoneZdanie" TextWrapping="Wrap">
 
                     </TextBox>
-                    <TextBlock x:Name="tbxTlumaczenie">
-                        
+                    <TextBlock x:Name="tbxTlumaczenie" TextWrapping="WrapWithOverflow">
+
                     </TextBlock>
                 </StackPanel>
+            </WrapPanel>
+            <WrapPanel Grid.Column="2">
                 <StackPanel>
                     <Button x:Name="btnSprawdz" Content="Sprawdź" Click="btnSprawdz_Click"/>
                     <Button x:Name="btnPokazTlumaczenie" Content="Pokaż Tłumaczenie" Click="btnPokazTlumaczenie_Click"/>
                     <Button x:Name="btnKolejneZdanie" Content="Kolejne Zdanie" Click="btnKolejneZdanie_Click"/>
                 </StackPanel>
             </WrapPanel>
-            
-            <StackPanel Margin="0" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
-                <Button Content="Wróć" Margin="0" Click="Button_Click"/>
+            <StackPanel Margin="0" Grid.Column="0" Grid.Row="1" >
+                <Button Content="Wróć" Click="Button_Click"/>
             </StackPanel>
         </Grid>
     </DockPanel>

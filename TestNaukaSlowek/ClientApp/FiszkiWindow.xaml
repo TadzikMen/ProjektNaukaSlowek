@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
-        Title="FiszkiWindow" MinHeight="700" MinWidth="457" Height="800" Width="1050">
+        Title="FiszkiWindow" MinHeight="700" MinWidth="457" Height="764" Width="1068">
     <Window.Background>
         <ImageBrush ImageSource="Images/backgroundImage.jpg" />
     </Window.Background>
-    
+
     <DockPanel LastChildFill="True">
         <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Top" >
             <WrapPanel>
@@ -25,7 +25,7 @@
                 <ComboBox x:Name="cmBxWybranaKategoria" Margin="25,0,0,0" Width="270" FontSize="16" Foreground="Black" VerticalContentAlignment="Center" SelectionChanged="cmBxWybranaKategoria_SelectionChanged"/>
             </WrapPanel>
         </StackPanel>
-        
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150*" />

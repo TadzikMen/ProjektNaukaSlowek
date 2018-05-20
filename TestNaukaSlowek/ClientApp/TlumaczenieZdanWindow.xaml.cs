@@ -21,7 +21,7 @@ namespace ClientApp
     {
 		List<WcfService.Slowka> listaZdan;
 		int wylosowanyIndeks;
-		string wylosowaneZdanie;
+
 
 		public TlumaczenieZdanWindow(string jezyk)
         {
@@ -34,6 +34,7 @@ namespace ClientApp
 		{
 			try
 			{
+				string wylosowaneZdanie;
 				listaZdan = new List<WcfService.Slowka>();
 				Random rand = new Random();
 
@@ -51,7 +52,7 @@ namespace ClientApp
 				}
 				else
 					MessageBox.Show(this, "Brak słówek dla danej kategorii", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Warning);
-				
+
 			}
 			catch
 			{
@@ -86,13 +87,14 @@ namespace ClientApp
 		private void btnPokazTlumaczenie_Click(object sender, RoutedEventArgs e)
 		{
 			tbxTlumaczenie.Foreground = Brushes.Black;
-			tbxTlumaczenie.Text = wylosowaneZdanie;
+			tbxTlumaczenie.Text = listaZdan[wylosowanyIndeks].Slowko;
 		}
 
 		private void btnKolejneZdanie_Click(object sender, RoutedEventArgs e)
 		{
 			tbxTlumaczenie.Foreground = Brushes.Black;
 			tbxTlumaczenie.Text = string.Empty;
+			tbxWprowadzoneZdanie.Text = string.Empty;
 			LosujZdanie();
 		}
 
