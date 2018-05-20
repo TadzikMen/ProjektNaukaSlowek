@@ -39,10 +39,7 @@ namespace ClientApp
                 }
             }
         }
-
-
-     
-
+		
         private async void PobierzSlowko()
         {
             slowka.Clear();
@@ -50,8 +47,6 @@ namespace ClientApp
             {
                 using (var client = new WcfService.Service1Client())
                 {
-
-                    Border1.Visibility = Visibility.Visible;
                     tbxTlumaczenieUzytkownika.Text = "Tutaj wpisz tłumaczenie";
                     slowka = await client.FiltrujPrzezParametryAsync(
                         lblJezyk.Content.ToString(),
@@ -90,14 +85,10 @@ namespace ClientApp
             }
             else if (tbxTlumaczenieUzytkownika.Text.ToLower() == Slowko)
             {
-               
-
                 tbxTlumaczenie.Foreground = Brushes.Green;
                 tbxTlumaczenie.Text = "Dobrze przetłumaczyłeś słówko";
                 slowka.RemoveAt(Liczbaa);
                 Poprawnosc = true;
-
-
             }
             else
             {

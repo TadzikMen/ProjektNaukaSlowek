@@ -9,37 +9,31 @@
     <Window.Background>
         <ImageBrush ImageSource="Images/backgroundImage.jpg" />
     </Window.Background>
-    <Grid>
-        <Grid Margin="344,-5,177.2,679.4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0*"/>
-                <ColumnDefinition Width="203*"/>
-                <ColumnDefinition Width="318*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel HorizontalAlignment="Center" Margin="46,0,8.2,0" Width="149" Grid.Column="1" >
 
-                <WrapPanel>
-                    <Label Content="Wybrany Język:" FontSize="16" Foreground="Wheat"/>
-                    <Label x:Name="lblJezyk" FontSize="16" Foreground="Wheat" />
-                </WrapPanel>
-                <WrapPanel>
-                    <Label Content="Wybrany Poziom:" FontSize="16" Foreground="Wheat" />
-                    <Label x:Name="lblPoziom" FontSize="16" Foreground="Wheat"/>
-                </WrapPanel>
-                <WrapPanel>
-                    <Label Content="Wybrana Kategoria:" FontSize="16" Foreground="Wheat" />
-                </WrapPanel>
-            </StackPanel>
-            <ComboBox x:Name="cmBxWybranaKategoria" FontSize="16" Foreground="Black" VerticalContentAlignment="Center" SelectionChanged="cmBxWybranaKategoria_SelectionChanged" Margin="1.8,64,124.6,0" Grid.Column="2"/>
-        </Grid>
-        <Grid Margin="0,96,0.2,0.4">
+    <DockPanel LastChildFill="True">
+        <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Top">
+            <WrapPanel>
+                <Label Content="Wybrany Język:" FontSize="16" Foreground="Wheat"/>
+                <Label x:Name="lblJezyk" FontSize="16" Foreground="Wheat" />
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Wybrany Poziom:" FontSize="16" Foreground="Wheat" />
+                <Label x:Name="lblPoziom" FontSize="16" Foreground="Wheat"/>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Wybrana Kategoria:" FontSize="16" Foreground="Wheat" />
+                <ComboBox x:Name="cmBxWybranaKategoria" Width="270" FontSize="16" Foreground="Black" VerticalContentAlignment="Center" SelectionChanged="cmBxWybranaKategoria_SelectionChanged" />
+            </WrapPanel>
+        </StackPanel>
 
+        <Grid>
             <Grid.Resources>
                 <Style TargetType="{x:Type StackPanel}">
                     <Setter Property="HorizontalAlignment" Value="Center" />
                     <Setter Property="VerticalAlignment" Value="Center" />
                 </Style>
                 <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Margin" Value="0,15,0,15" />
                     <Setter Property="Height" Value="80" />
                     <Setter Property="Width" Value="280" />
                     <Setter Property="TextAlignment" Value="Center" />
@@ -73,9 +67,9 @@
                 </Style>
             </Grid.Resources>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="243*" />
-                <ColumnDefinition Width="312*" />
-                <ColumnDefinition Width="488*" />
+                <ColumnDefinition Width="110*" />
+                <ColumnDefinition Width="210*" />
+                <ColumnDefinition Width="280*" />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -83,16 +77,8 @@
                 <RowDefinition Height="62*"/>
             </Grid.RowDefinitions>
 
-            <WrapPanel Margin="243,80,232.2,18.8" Height="470" RenderTransformOrigin="0.5,0.5" Width="568">
-                <WrapPanel.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform AngleX="-0.358"/>
-                        <RotateTransform/>
-                        <TranslateTransform X="-0.606"/>
-                    </TransformGroup>
-                </WrapPanel.RenderTransform>
-                <StackPanel Margin="0,0,50,0">
+            <WrapPanel>
+                <StackPanel Margin="0,0,50,0" >
                     <TextBlock x:Name="tbxSlowko" Text="{Binding Tlumaczenie, NotifyOnTargetUpdated=True}">
                         <TextBlock.Triggers>
                             <EventTrigger RoutedEvent="Binding.TargetUpdated">
@@ -109,16 +95,9 @@
                             </EventTrigger>
                         </TextBlock.Triggers>
                     </TextBlock>
-                </StackPanel>
-                <Border x:Name="Border1" Height="46" Width="307" Visibility="Hidden">
-                    <TextBox x:Name="tbxTlumaczenieUzytkownika"  TextWrapping="Wrap"  Margin="-3.2,-3.2,-3,-2.8" KeyDown="KlikEnter"/>
-                </Border>
-                <StackPanel Margin="50,0,100,0" Height="215">
-                    <Button x:Name="btnSprawdź" Content="Sprawdzenie" Click="btnSprawdz_Click"/>
-                    <Button x:Name="btnTlumacz" Content="Pokaż &#xD;&#xA;Tłumaczenie" Height="56" Click="btnTlumacz_Click"/>
-                    <Button x:Name="btnKolejneSlowko" Content="Kolejne Słówko" Click="btnKolejneSlowko_Click"/>
-                </StackPanel>
-                <StackPanel>
+                    <Border x:Name="Border1" Height="46" Width="307" Visibility="Visible">
+                        <TextBox x:Name="tbxTlumaczenieUzytkownika" TextWrapping="Wrap" KeyDown="KlikEnter"/>
+                    </Border>
                     <TextBlock x:Name="tbxTlumaczenie" Text="{Binding Slowko, NotifyOnTargetUpdated=True}" Height="105" VerticalAlignment="Top">
                         <TextBlock.Triggers>
                             <EventTrigger RoutedEvent="Binding.TargetUpdated">
@@ -136,11 +115,17 @@
                         </TextBlock.Triggers>
                     </TextBlock>
                 </StackPanel>
+
+                <StackPanel Margin="50,0,100,0" Height="215">
+                    <Button x:Name="btnSprawdź" Content="Sprawdzenie" Click="btnSprawdz_Click"/>
+                    <Button x:Name="btnTlumacz" Content="Pokaż &#xD;&#xA;Tłumaczenie" Height="56" Click="btnTlumacz_Click"/>
+                    <Button x:Name="btnKolejneSlowko" Content="Kolejne Słówko" Click="btnKolejneSlowko_Click"/>
+                </StackPanel>
             </WrapPanel>
-            <StackPanel Grid.Column="0" Grid.Row="1" Margin="78,17.2,55.2,17.6" Height="70" Width="110">
+            
+            <StackPanel Grid.Column="0" Grid.Row="1" Height="70" Width="110">
                 <Button Content="Wróć" Click="Button_Click" />
             </StackPanel>
         </Grid>
-
-    </Grid>
+    </DockPanel>
 </Window>
