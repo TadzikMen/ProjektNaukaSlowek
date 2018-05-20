@@ -42,16 +42,10 @@ namespace ClientApp
 				{
 					listaZdan = await client.PobierzZdaniaDoTlumaczeniaAsync(lblJezyk.Content.ToString(), Models.Token.NumerToken);
 				}
+				wylosowanyIndeks = rand.Next(0, listaZdan.Count);
+				wylosowaneZdanie = listaZdan[wylosowanyIndeks].Tlumaczenie;
 
-				if (listaZdan.Count != 0)
-				{
-					wylosowanyIndeks = rand.Next(0, listaZdan.Count);
-					wylosowaneZdanie = listaZdan[wylosowanyIndeks].Tlumaczenie;
-
-					tbxWylosowaneZdanie.Text = wylosowaneZdanie;
-				}
-				else
-					MessageBox.Show(this, "Brak słówek dla danej kategorii", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Warning);
+				tbxWylosowaneZdanie.Text = wylosowaneZdanie;
 
 			}
 			catch
