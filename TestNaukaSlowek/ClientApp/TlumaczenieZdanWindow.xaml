@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
-        Title="TlumaczenieZdanWindow" Height="466.5" MinWidth="540" Width="750.5">
+        Title="TlumaczenieZdanWindow" Height="435" MinWidth="540" Width="805.5">
 
     <Window.Background>
         <ImageBrush ImageSource="Images/backgroundImage.jpg" />
@@ -49,10 +49,10 @@
                     <Setter Property="Margin" Value="15" />
                 </Style>
                 <Style TargetType="WrapPanel">
-                    <!--<Setter Property="HorizontalAlignment" Value="Center" />
-                    <Setter Property="VerticalAlignment" Value="Center" />-->
-                    <!--<Setter Property="Grid.ColumnSpan" Value="3" />-->
-                    <Setter Property="Margin" Value="15" />
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="Grid.ColumnSpan" Value="3" />
+                    <Setter Property="Margin" Value="50,0,0,0" />
                 </Style>
             </Grid.Resources>
 
@@ -67,8 +67,8 @@
                 <ColumnDefinition Width="100*" />
             </Grid.ColumnDefinitions>
 
-            <WrapPanel Grid.Column="0" Grid.ColumnSpan="3" Margin="50,0,0,0">
-                <StackPanel >
+            <WrapPanel>
+                <StackPanel Margin="0,0,60,0">
                     <Border>
                         <TextBlock x:Name="tbxWylosowaneZdanie" TextWrapping="WrapWithOverflow">
 
@@ -81,14 +81,13 @@
 
                     </TextBlock>
                 </StackPanel>
-            </WrapPanel>
-            <WrapPanel Grid.Column="2">
                 <StackPanel>
                     <Button x:Name="btnSprawdz" Content="Sprawdź" Click="btnSprawdz_Click"/>
                     <Button x:Name="btnPokazTlumaczenie" Content="Pokaż Tłumaczenie" Click="btnPokazTlumaczenie_Click"/>
                     <Button x:Name="btnKolejneZdanie" Content="Kolejne Zdanie" Click="btnKolejneZdanie_Click"/>
                 </StackPanel>
             </WrapPanel>
+            
             <StackPanel Margin="0" Grid.Column="0" Grid.Row="1" >
                 <Button Content="Wróć" Click="Button_Click"/>
             </StackPanel>
