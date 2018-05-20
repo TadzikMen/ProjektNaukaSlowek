@@ -69,6 +69,9 @@ namespace ServerApp
 
 		[OperationContract]
 		List<DTO.Slowka> FiltrujKategorieDoSlownika(string poziom, object token);
+
+		[OperationContract]
+		List<DTO.Slowka> PobierzZdaniaDoTlumaczenia(string jezyk, object token);
 	}
 
 

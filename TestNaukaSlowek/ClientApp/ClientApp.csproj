@@ -95,6 +95,9 @@
     <Compile Include="Tlumaczenie.xaml.cs">
       <DependentUpon>Tlumaczenie.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TlumaczenieZdanWindow.xaml.cs">
+      <DependentUpon>TlumaczenieZdanWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WyborWszystkichSlowekWindow.xaml.cs">
       <DependentUpon>WyborWszystkichSlowekWindow.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Tlumaczenie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TlumaczenieZdanWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

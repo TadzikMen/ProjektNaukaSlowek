@@ -764,5 +764,44 @@ namespace ServerApp
 
 			return listaKategorii;
 		}
+
+		public List<Slowka> PobierzZdaniaDoTlumaczenia(string jezyk, object token)
+		{
+			List<Slowka> listaZdan = new List<Slowka>();
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+				"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText =
+						"SELECT SLOWKA.SLOWKO, TLUMACZENIA.TLUMACZENIE, JEZYK.JEZYK, KATEGORIE.KATEGORIA " +
+						"FROM SLOWKA " +
+						"LEFT JOIN TLUMACZENIA on SLOWKA.ID_TLUMACZENIA=TLUMACZENIA.ID_TLUMACZENIA " +
+						"LEFT JOIN JEZYK ON SLOWKA.ID_JEZYKA=JEZYK.ID_JEZYKA " +
+						"LEFT JOIN KATEGORIE ON SLOWKA.ID_KATEGORII=KATEGORIE.ID_KATEGORII " +
+						"WHERE JEZYK.JEZYK=@Jezyk AND KATEGORIA IS NULL";
+
+					cmd.Parameters.AddWithValue("@Jezyk", jezyk);
+
+					using (var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							listaZdan.Add(new Slowka
+							{
+								Slowko = (string)dr["SLOWKO"],
+								Tlumaczenie = (string)dr["TLUMACZENIE"],
+							});
+						}
+					}
+				}
+			}
+
+			return listaZdan;
+		}
 	}
 }

@@ -277,4 +277,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="PobierzZdaniaDoTlumaczenia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="jezyk" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PobierzZdaniaDoTlumaczeniaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/ServerApp.DTO" minOccurs="0" name="PobierzZdaniaDoTlumaczeniaResult" nillable="true" type="q15:ArrayOfSlowka" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
