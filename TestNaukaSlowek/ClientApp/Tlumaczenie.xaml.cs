@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ClientApp
 {
@@ -23,6 +16,7 @@ namespace ClientApp
         List<WcfService.Slowka> slowka = new List<WcfService.Slowka>();
         string Slowko;
         int Liczbaa;
+        bool Poprawnosc = true;
         public Tlumaczenie(string jezyk, string poziom)
         {
             InitializeComponent();
@@ -51,7 +45,7 @@ namespace ClientApp
 
         private async void PobierzSlowko()
         {
-      
+            slowka.Clear();
             try
             {
                 using (var client = new WcfService.Service1Client())
@@ -67,18 +61,23 @@ namespace ClientApp
 
                     LosujSlowko();
                 }
-                if (slowka.Count == 0)
-                {
-                    MessageBox.Show(this, "Brak słówek dla danej kategorii", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    tbxSlowko.Text = null;
-                    tbxTlumaczenie.Text = null;
-                    return;
-                }
-                
+                BrakSlowek();
+
+
             }
             catch
             {
                 MessageBox.Show(this, "Błąd połączenia z serwerem!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void BrakSlowek()
+        {
+            if (slowka.Count == 0)
+            {
+                MessageBox.Show(this, "Brak słówek dla danej kategorii", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                tbxSlowko.Text = null;
+                tbxTlumaczenie.Text = null;
             }
         }
 
@@ -91,20 +90,27 @@ namespace ClientApp
             }
             else if (tbxTlumaczenieUzytkownika.Text.ToLower() == Slowko)
             {
+               
+
                 tbxTlumaczenie.Foreground = Brushes.Green;
                 tbxTlumaczenie.Text = "Dobrze przetłumaczyłeś słówko";
                 slowka.RemoveAt(Liczbaa);
-                var delay = Task.Delay(100).ContinueWith(_ =>
-                {
-                    btnKolejneSlowko_Click(sender, e);
-                });
-                
+                Poprawnosc = true;
+
+
             }
             else
             {
 
                 tbxTlumaczenie.Foreground = Brushes.Red;
-                tbxTlumaczenie.Text = "Źle przetłumaczyłeś słówko";
+               
+                if (Poprawnosc == true)
+                {
+                    tbxTlumaczenie.Text = "Źle przetłumaczyłeś słówko";
+                    Poprawnosc = false;
+                }
+                
+                slowka.Add(slowka[Liczbaa]);
             }
         }
 
@@ -128,22 +134,32 @@ namespace ClientApp
             else
             {
                     tbxTlumaczenie.Text = Slowko ;
+                if (Poprawnosc == true)
+                {
+                    tbxTlumaczenie.Text = "Źle przetłumaczyłeś słówko";
+                    Poprawnosc = false;
+                }
             }
         }
 
         private void LosujSlowko()
         {
+            BrakSlowek();
             tbxTlumaczenie.Text = "";
-            Random rand = new Random();
-            Liczbaa = rand.Next(0, slowka.Count);
-            tbxSlowko.Text = slowka[Liczbaa].Tlumaczenie.ToString();
+            if (slowka.Count != 0)
+            {
+                Random rand = new Random();
+                Liczbaa = rand.Next(0, slowka.Count);
+                tbxSlowko.Text = slowka[Liczbaa].Tlumaczenie.ToString();
 
-            Slowko = slowka[Liczbaa].Slowko.ToString().ToLower();
+                Slowko = slowka[Liczbaa].Slowko.ToString().ToLower();
+            }
 
         }
 
         private void btnKolejneSlowko_Click(object sender, RoutedEventArgs e)
         {
+            tbxTlumaczenieUzytkownika.Text = "";
             Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
             if (cmBxWybranaKategoria.SelectedItem == null)
             {
