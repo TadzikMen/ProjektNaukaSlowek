@@ -19,8 +19,10 @@ namespace ClientApp
     /// </summary>
     public partial class Tlumaczenie : Window
     {
-        WcfService.Slowka slowko = new WcfService.Slowka();
+
+        List<WcfService.Slowka> slowka = new List<WcfService.Slowka>();
         string Slowko;
+        int Liczbaa;
         public Tlumaczenie(string jezyk, string poziom)
         {
             InitializeComponent();
@@ -44,10 +46,12 @@ namespace ClientApp
             }
         }
 
+
      
 
         private async void PobierzSlowko()
         {
+      
             try
             {
                 using (var client = new WcfService.Service1Client())
@@ -55,21 +59,22 @@ namespace ClientApp
 
                     Border1.Visibility = Visibility.Visible;
                     tbxTlumaczenieUzytkownika.Text = "Tutaj wpisz tłumaczenie";
-                    slowko = await client.LosujSlowkoDoFiszkiAsync(
+                    slowka = await client.FiltrujPrzezParametryAsync(
                         lblJezyk.Content.ToString(),
                         lblPoziom.Content.ToString(),
                         cmBxWybranaKategoria.SelectedItem.ToString(),
                         Models.Token.NumerToken);
-                    Slowko = slowko.Slowko.ToLower();
+
+                    LosujSlowko();
                 }
-                if (slowko.Tlumaczenie == null)
+                if (slowka.Count == 0)
                 {
                     MessageBox.Show(this, "Brak słówek dla danej kategorii", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Warning);
                     tbxSlowko.Text = null;
                     tbxTlumaczenie.Text = null;
                     return;
                 }
-                tbxSlowko.DataContext = slowko;
+                
             }
             catch
             {
@@ -88,6 +93,12 @@ namespace ClientApp
             {
                 tbxTlumaczenie.Foreground = Brushes.Green;
                 tbxTlumaczenie.Text = "Dobrze przetłumaczyłeś słówko";
+                slowka.RemoveAt(Liczbaa);
+                var delay = Task.Delay(100).ContinueWith(_ =>
+                {
+                    btnKolejneSlowko_Click(sender, e);
+                });
+                
             }
             else
             {
@@ -102,14 +113,7 @@ namespace ClientApp
             Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
             if (e.Key == Key.Return)
             {
-                if (tbxTlumaczenie.Text == "Dobrze przetłumaczyłeś słówko")
-                {
-                    btnKolejneSlowko_Click(sender, e);
-                }
-                else
-                {
-                    btnSprawdz_Click(sender, e);
-                }
+                btnSprawdz_Click(sender, e);
             }
         }
 
@@ -126,6 +130,18 @@ namespace ClientApp
                     tbxTlumaczenie.Text = Slowko ;
             }
         }
+
+        private void LosujSlowko()
+        {
+            tbxTlumaczenie.Text = "";
+            Random rand = new Random();
+            Liczbaa = rand.Next(0, slowka.Count);
+            tbxSlowko.Text = slowka[Liczbaa].Tlumaczenie.ToString();
+
+            Slowko = slowka[Liczbaa].Slowko.ToString().ToLower();
+
+        }
+
         private void btnKolejneSlowko_Click(object sender, RoutedEventArgs e)
         {
             Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
@@ -137,7 +153,7 @@ namespace ClientApp
             {
                 tbxTlumaczenie.Foreground = Brushes.Black;
                 tbxTlumaczenie.Text = null;
-                PobierzSlowko();
+                LosujSlowko();
             }
         }
 
