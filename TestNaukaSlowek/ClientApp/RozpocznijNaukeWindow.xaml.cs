@@ -88,7 +88,7 @@ namespace ClientApp
 							fw.Show();
 							this.Close();
 						}
-                        else if (rozpoczynanie.FormaNauki == "Tlumaczenie")
+                        else if (rozpoczynanie.FormaNauki == "Tłumaczenie słówek")
                         {
                             Tlumaczenie fw = new Tlumaczenie(rozpoczynanie.Jezyk, rozpoczynanie.Poziom);
                             fw.Show();
