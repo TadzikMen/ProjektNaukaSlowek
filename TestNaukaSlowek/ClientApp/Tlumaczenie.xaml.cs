@@ -11,7 +11,7 @@ namespace ClientApp
     /// Interaction logic for Tlumaczenie.xaml
     /// </summary>
     public partial class Tlumaczenie : Window
-    {
+	{ 
 
         List<WcfService.Slowka> slowka = new List<WcfService.Slowka>();
         string Slowko;
@@ -92,7 +92,6 @@ namespace ClientApp
             }
             else
             {
-
                 tbxTlumaczenie.Foreground = Brushes.Red;
                
                 if (Poprawnosc == true)

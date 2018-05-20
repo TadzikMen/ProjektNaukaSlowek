@@ -94,12 +94,18 @@ namespace ClientApp
                             fw.Show();
                             this.Close();
                         }
-                        else if (rozpoczynanie.FormaNauki == "Gramatyka")
+                        else if (rozpoczynanie.FormaNauki == "Tłumaczenie słówek")
 						{
 							Tlumaczenie tlumaczenie = new Tlumaczenie(rozpoczynanie.Jezyk, rozpoczynanie.Poziom);
 							tlumaczenie.Show();
 							this.Close();
 							
+						}
+						else if (rozpoczynanie.FormaNauki == "Tłumaczenie zdań")
+						{
+							TlumaczenieZdanWindow tzw = new TlumaczenieZdanWindow(rozpoczynanie.Jezyk);
+							tzw.Show();
+							this.Close();
 						}
 						else
 							MessageBox.Show("Nie wybrano wymaganych wartości z listy!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
