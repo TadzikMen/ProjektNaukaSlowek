@@ -19,7 +19,6 @@ namespace ClientApp
     /// </summary>
     public partial class AplikacjaWindow : Window
     {
-		bool czyAdmin;
 		public AplikacjaWindow()
         {
             InitializeComponent();
@@ -31,6 +30,7 @@ namespace ClientApp
 		{
 			try
 			{
+				bool czyAdmin;
 				WcfService.Rejestracja loginUsera = new WcfService.Rejestracja(); 
 				using (var client = new WcfService.Service1Client())
 				{
