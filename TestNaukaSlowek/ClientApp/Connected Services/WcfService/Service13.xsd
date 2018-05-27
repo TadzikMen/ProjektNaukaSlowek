@@ -39,6 +39,7 @@
   <xs:element name="FormyNauki" nillable="true" type="tns:FormyNauki" />
   <xs:complexType name="Slowka">
     <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
       <xs:element minOccurs="0" name="Jezyk" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Kategoria" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Poziom" nillable="true" type="xs:string" />

@@ -48,33 +48,33 @@ namespace ClientApp
                 WielkoscLiter = true;
             }
         }
-		
-        private async void PobierzSlowko()
-        {
-            slowka.Clear();
-            try
-            {
-                using (var client = new WcfService.Service1Client())
-                {
-                    tbxTlumaczenieUzytkownika.Text = "Tutaj wpisz tłumaczenie";
-                    slowka = await client.FiltrujPrzezParametryAsync(
-                        lblJezyk.Content.ToString(),
-                        lblPoziom.Content.ToString(),
-                        cmBxWybranaKategoria.SelectedItem.ToString(),
-                        Models.Token.NumerToken);
-                    SprawdzWielkoscLiter();
 
-                    LosujSlowko();
-                }
-                BrakSlowek();
+		private async void PobierzSlowko()
+		{
+			slowka.Clear();
+			try
+			{
+				using (var client = new WcfService.Service1Client())
+				{
+					tbxTlumaczenieUzytkownika.Text = "Tutaj wpisz tłumaczenie";
+					slowka = await client.FiltrujPrzezParametryAsync(
+						lblJezyk.Content.ToString(),
+						lblPoziom.Content.ToString(),
+						cmBxWybranaKategoria.SelectedItem.ToString(),
+						Models.Token.NumerToken);
+					SprawdzWielkoscLiter();
 
-                
-           }
-            catch
-            {
-                MessageBox.Show(this, "Błąd połączenia z serwerem!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-}
+					LosujSlowko();
+				}
+				BrakSlowek();
+
+
+			}
+			catch
+			{
+				MessageBox.Show(this, "Błąd połączenia z serwerem!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Warning);
+			}
+		}
 
         private void BrakSlowek()
         {

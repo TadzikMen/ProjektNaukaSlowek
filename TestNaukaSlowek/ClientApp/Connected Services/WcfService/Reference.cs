@@ -371,6 +371,9 @@ namespace ClientApp.WcfService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string JezykField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -381,10 +384,7 @@ namespace ClientApp.WcfService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SlowkoField;
-
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IDField;
-
+        
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TlumaczenieField;
         
@@ -395,6 +395,19 @@ namespace ClientApp.WcfService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
             }
         }
         
@@ -443,29 +456,13 @@ namespace ClientApp.WcfService {
                 return this.SlowkoField;
             }
             set {
-                if ((object.ReferenceEquals(this.Slowko, value) != true)) {
+                if ((object.ReferenceEquals(this.SlowkoField, value) != true)) {
                     this.SlowkoField = value;
                     this.RaisePropertyChanged("Slowko");
                 }
             }
         }
-
-        public int ID
-        {
-            get
-            {
-                return this.IDField;
-            }
-            set
-            {
-                if ((object.ReferenceEquals(this.ID, value) != true))
-                {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string Tlumaczenie {
             get {
@@ -1025,8 +1022,6 @@ namespace ClientApp.WcfService {
         public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> FiltrujPrzezParametryAsync(string jezyk, string poziom, string kategoria, object token) {
             return base.Channel.FiltrujPrzezParametryAsync(jezyk, poziom, kategoria, token);
         }
-
-
         
         public System.Collections.Generic.List<ClientApp.WcfService.Slowka> FiltrujKategorieDoSlownika(string poziom, object token) {
             return base.Channel.FiltrujKategorieDoSlownika(poziom, token);
