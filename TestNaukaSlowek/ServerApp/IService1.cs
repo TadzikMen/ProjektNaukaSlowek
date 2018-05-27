@@ -72,6 +72,12 @@ namespace ServerApp
 
 		[OperationContract]
 		List<DTO.Slowka> PobierzZdaniaDoTlumaczenia(string jezyk, object token);
+
+		[OperationContract]
+		void DodajUzytkownika(string login, string email, bool czyAdmin, string imie = null, string nazwisko = null);
+
+		[OperationContract]
+		void DodajSlowko(string slowko, string tlumaczenie, string jezyk, string kategoria, string poziom);
 	}
 
 

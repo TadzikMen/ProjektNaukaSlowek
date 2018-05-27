@@ -806,5 +806,70 @@ namespace ServerApp
 
 			return listaZdan;
 		}
+
+		public void DodajUzytkownika(string login, string email, bool czyAdmin, string imie = null, string nazwisko = null)
+		{
+
+		}
+
+		public void DodajSlowko(string slowko, string tlumaczenie, string jezyk, string kategoria, string poziom)
+		{
+			int idSlowka, idTlumaczenia, idKategorii, idPoziomu, idJezyka;
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+					"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText =
+						"INSERT INTO TLUMACZENIA(TLUMACZENIE) " +
+						"VALUES(@Tlumaczenie); " +
+						"SELECT SCOPE_IDENTITY()";
+
+					cmd.Parameters.AddWithValue("@Tlumaczenie", tlumaczenie);
+					idTlumaczenia = (int)(decimal)cmd.ExecuteScalar();
+
+					cmd.CommandText =
+						"INSERT INTO JEZYK(JEZYK) " +
+						"VALUES(@Jezyk); " +
+						"SELECT SCOPE_IDENTITY()";
+
+					cmd.Parameters.AddWithValue("@Jezyk", jezyk);
+					idJezyka = (int)(decimal)cmd.ExecuteScalar();
+
+					cmd.CommandText =
+						"INSERT INTO POZIOMY(POZIOM) " +
+						"VALUES(@Poziom); " +
+						"SELECT SCOPE_IDENTITY()";
+
+					cmd.Parameters.AddWithValue("@Poziom", poziom);
+					idPoziomu = (int)(decimal)cmd.ExecuteScalar();
+
+					cmd.CommandText =
+						"INSERT INTO KATEGORIE(KATEGORIA, ID_POZIOMU) " +
+						"VALUES(@Kategoria, @IdPoziomu); " +
+						"SELECT SCOPE_IDENTITY()";
+
+					cmd.Parameters.AddWithValue("@Kategoria", kategoria);
+					cmd.Parameters.AddWithValue("@IdPoziomu", idPoziomu);
+					idKategorii = (int)(decimal)cmd.ExecuteScalar();
+
+					cmd.CommandText =
+						"INSERT INTO SLOWKA(SLOWKO, ID_JEZYKA, ID_KATEGORII, ID_POZIOMU, ID_TLUMACZENIA) " +
+						"VALUES(@Slowko, @IdJezyka, @IdKategorii, @IdPoziomu, @IdTlumaczenia); " +
+						"SELECT SCOPE_IDENTITY()";
+
+					cmd.Parameters.AddWithValue("@Slowko", slowko);
+					cmd.Parameters.AddWithValue("@IdJezyka", idJezyka);
+					cmd.Parameters.AddWithValue("@IdKategorii", idKategorii);
+					cmd.Parameters.AddWithValue("@IdPoziomu", idPoziomu);
+					cmd.Parameters.AddWithValue("@IdTlumaczenia", idTlumaczenia);
+					idSlowka = (int)(decimal)cmd.ExecuteScalar();
+				}
+			}
+		}
 	}
 }
