@@ -22,6 +22,8 @@ namespace ClientApp
         public KontynuujNauke()
         {
             InitializeComponent();
+            PobierzFormyNauki();
+            Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
         }
         private string PrzekazWybranyPoziom => cmBxWybierzPoziom.SelectedValue.ToString();
 
@@ -49,7 +51,6 @@ namespace ClientApp
                 cmBxWybierzFormeNauki.Items.Add(item);
             cmBxWybierzFormeNauki.Items.RemoveAt(0); //usunięcie słownika i fiszek
             cmBxWybierzFormeNauki.Items.RemoveAt(0);
-
             foreach (var item in wyborFormy.ListaWyboruNauki.Select(x => x.Jezyk).Distinct().ToList())
                 cmBxWybierzJezyk.Items.Add(item);
 
@@ -89,18 +90,11 @@ namespace ClientApp
                         }
                         else if (rozpoczynanie.FormaNauki == "Tłumaczenie słówek")
                         {
-                            Tlumaczenie fw = new Tlumaczenie(rozpoczynanie.Jezyk, rozpoczynanie.Poziom);
+                            Tlumaczenie fw = new Tlumaczenie(rozpoczynanie.Jezyk, rozpoczynanie.Poziom, false);
                             fw.Show();
                             this.Close();
                         }
-                        else if (rozpoczynanie.FormaNauki == "Tłumaczenie słówek")
-                        {
-                            Tlumaczenie tlumaczenie = new Tlumaczenie(rozpoczynanie.Jezyk, rozpoczynanie.Poziom);
-                            tlumaczenie.Show();
-                            this.Close();
-
-                        }
-                        else if (rozpoczynanie.FormaNauki == "Tłumaczenie zdań")
+                        else  if (rozpoczynanie.FormaNauki == "Tłumaczenie zdań")
                         {
                             TlumaczenieZdanWindow tzw = new TlumaczenieZdanWindow(rozpoczynanie.Jezyk);
                             tzw.Show();

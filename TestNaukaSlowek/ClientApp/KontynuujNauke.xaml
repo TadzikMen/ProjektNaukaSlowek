@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
-        Title="KontynuujNauke" Height="300" Width="300">
-    <Grid Margin="0,0,-500,-149.6">
+        Title="RozpocznijNaukeWindow" Height="622.8" Width="1265.6">
+    <Grid Margin="0,0,3.6,-18.8">
         <Grid.Resources>
             <Style TargetType="{x:Type Label}">
                 <Setter Property="VerticalContentAlignment" Value="Center"/>

@@ -18,16 +18,19 @@ namespace ClientApp
         int NumerWTabeliDanegoSlowka;
         bool Poprawnosc = true;
         bool WielkoscLiter = false;
-        public Tlumaczenie(string jezyk, string poziom)
+        bool Pochodzenie;
+        
+        public Tlumaczenie(string jezyk, string poziom, bool pochodzenie)
         {
             InitializeComponent();
             Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
             lblJezyk.Content = jezyk;
             lblPoziom.Content = poziom;
+            Pochodzenie = pochodzenie;
             PrzekazWszystkieKategorie();
     
         }
-
+        
         private async void PrzekazWszystkieKategorie()
         {
             List<WcfService.Slowka> kategorie = new List<WcfService.Slowka>();
@@ -63,7 +66,10 @@ namespace ClientApp
 						cmBxWybranaKategoria.SelectedItem.ToString(),
 						Models.Token.NumerToken);
 					SprawdzWielkoscLiter();
-
+                    if(Pochodzenie == false)
+                    {
+                        KontynuacjaNauki.KontynuujNauke(ref slowka);
+                    }
 					LosujSlowko();
 				}
 				BrakSlowek();

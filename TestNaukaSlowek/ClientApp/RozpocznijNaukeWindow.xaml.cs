@@ -22,9 +22,9 @@ namespace ClientApp
 		public RozpocznijNaukeWindow()
 		{
 			InitializeComponent();
-			PobierzFormyNauki();
-			Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
-		}
+            PobierzFormyNauki();
+            Models.AktualizacjaCzasuPracy.AktualizujSesjeUzytkownika();
+        }
 
 		private string PrzekazWybranyPoziom => cmBxWybierzPoziom.SelectedValue.ToString();
 
@@ -88,15 +88,9 @@ namespace ClientApp
 							fw.Show();
 							this.Close();
 						}
-                        else if (rozpoczynanie.FormaNauki == "Tłumaczenie słówek")
-                        {
-                            Tlumaczenie fw = new Tlumaczenie(rozpoczynanie.Jezyk, rozpoczynanie.Poziom);
-                            fw.Show();
-                            this.Close();
-                        }
-                        else if (rozpoczynanie.FormaNauki == "Tłumaczenie słówek")
+                        else  if (rozpoczynanie.FormaNauki == "Tłumaczenie słówek")
 						{
-							Tlumaczenie tlumaczenie = new Tlumaczenie(rozpoczynanie.Jezyk, rozpoczynanie.Poziom);
+							Tlumaczenie tlumaczenie = new Tlumaczenie(rozpoczynanie.Jezyk, rozpoczynanie.Poziom,true);
 							tlumaczenie.Show();
 							this.Close();
 							
@@ -147,6 +141,11 @@ namespace ClientApp
 		}
 
         private void cmBxWybierzJezyk_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cmBxWybierzPoziom_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

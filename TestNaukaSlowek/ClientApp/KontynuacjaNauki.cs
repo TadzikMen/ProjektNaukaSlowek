@@ -64,5 +64,40 @@ namespace ClientApp
             sr.Close();
 
         }
+
+        public static void KontynuujNauke( ref List<WcfService.Slowka> Slowka)
+        {
+            WczytaniePliku();
+            List<int> Numery = new List<int>();
+            List<int> Punkty = new List<int>();
+
+            for (int i = 0; i < Elementy.Count-1; i++)
+            {
+                string[] Podział = Elementy[i].Split(' ');
+                Numery.Add(Convert.ToInt32( Podział[0]));
+                Punkty.Add(Convert.ToInt32(Podział[1]));
+            }
+
+           for(int k=0; k< Slowka.Count(); k++)
+            {
+                for(int j=0; j<Numery.Count(); j++)
+                {
+                    if(Slowka[k].ID == Numery[j] && Punkty[j] < 1)
+                    {
+                        Slowka.RemoveAt(k);
+                        k--;
+                        break;
+                    }
+                }
+            }
+            Elementy.Clear();
+            //for (int i = 0; i < Slowka.Count; i++)
+            //{
+            //    int temp = Slowka[i].ID;
+            //    temp =  Numery.Find(s => s.Equals(temp));
+            //    Slowka
+            //}
+
+        }
 }
 }
