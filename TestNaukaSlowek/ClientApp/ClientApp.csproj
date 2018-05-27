@@ -73,6 +73,9 @@
     <Compile Include="DodawanieSlowkaWindow.xaml.cs">
       <DependentUpon>DodawanieSlowkaWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DodawanieUzytkownikaWindow.xaml.cs">
+      <DependentUpon>DodawanieUzytkownikaWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FiszkiWindow.xaml.cs">
       <DependentUpon>FiszkiWindow.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DodawanieSlowkaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DodawanieUzytkownikaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

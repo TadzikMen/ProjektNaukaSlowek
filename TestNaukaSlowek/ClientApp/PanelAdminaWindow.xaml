@@ -35,7 +35,7 @@
             </Grid.Resources>
 
             <StackPanel Grid.Column="0" Grid.RowSpan="3">
-                <Button x:Name="btnDodajUzytkownika" Content="Dodaj Użytkownika" Click="btnDodajUzytkownika_Click"/>
+                <Button x:Name="btnDodajUzytkownika" Content="Usuń Użytkownika" Click="btnDodajUzytkownika_Click"/>
                 <Button x:Name="btnDodajSlowko" Content="Dodaj słówko" Click="btnDodajSlowko_Click" />
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.RowSpan="3">
