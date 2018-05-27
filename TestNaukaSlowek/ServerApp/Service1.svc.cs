@@ -807,7 +807,7 @@ namespace ServerApp
 			return listaZdan;
 		}
 
-		public void DodajUzytkownika(string login, string email, bool czyAdmin, string imie = null, string nazwisko = null)
+		public void DodajUzytkownikaRecznie(string login, string email, bool czyAdmin, string imie = null, string nazwisko = null)
 		{
 
 		}

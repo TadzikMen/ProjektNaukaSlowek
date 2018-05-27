@@ -850,6 +850,18 @@ namespace ClientApp.WcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PobierzZdaniaDoTlumaczenia", ReplyAction="http://tempuri.org/IService1/PobierzZdaniaDoTlumaczeniaResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PobierzZdaniaDoTlumaczeniaAsync(string jezyk, object token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DodajUzytkownikaRecznie", ReplyAction="http://tempuri.org/IService1/DodajUzytkownikaRecznieResponse")]
+        void DodajUzytkownikaRecznie(string login, string email, bool czyAdmin, string imie, string nazwisko);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DodajUzytkownikaRecznie", ReplyAction="http://tempuri.org/IService1/DodajUzytkownikaRecznieResponse")]
+        System.Threading.Tasks.Task DodajUzytkownikaRecznieAsync(string login, string email, bool czyAdmin, string imie, string nazwisko);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DodajSlowko", ReplyAction="http://tempuri.org/IService1/DodajSlowkoResponse")]
+        void DodajSlowko(string slowko, string tlumaczenie, string jezyk, string kategoria, string poziom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DodajSlowko", ReplyAction="http://tempuri.org/IService1/DodajSlowkoResponse")]
+        System.Threading.Tasks.Task DodajSlowkoAsync(string slowko, string tlumaczenie, string jezyk, string kategoria, string poziom);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1037,6 +1049,22 @@ namespace ClientApp.WcfService {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PobierzZdaniaDoTlumaczeniaAsync(string jezyk, object token) {
             return base.Channel.PobierzZdaniaDoTlumaczeniaAsync(jezyk, token);
+        }
+        
+        public void DodajUzytkownikaRecznie(string login, string email, bool czyAdmin, string imie, string nazwisko) {
+            base.Channel.DodajUzytkownikaRecznie(login, email, czyAdmin, imie, nazwisko);
+        }
+        
+        public System.Threading.Tasks.Task DodajUzytkownikaRecznieAsync(string login, string email, bool czyAdmin, string imie, string nazwisko) {
+            return base.Channel.DodajUzytkownikaRecznieAsync(login, email, czyAdmin, imie, nazwisko);
+        }
+        
+        public void DodajSlowko(string slowko, string tlumaczenie, string jezyk, string kategoria, string poziom) {
+            base.Channel.DodajSlowko(slowko, tlumaczenie, jezyk, kategoria, poziom);
+        }
+        
+        public System.Threading.Tasks.Task DodajSlowkoAsync(string slowko, string tlumaczenie, string jezyk, string kategoria, string poziom) {
+            return base.Channel.DodajSlowkoAsync(slowko, tlumaczenie, jezyk, kategoria, poziom);
         }
     }
 }

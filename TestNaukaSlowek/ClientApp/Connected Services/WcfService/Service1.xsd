@@ -292,4 +292,36 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="DodajUzytkownikaRecznie">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="czyAdmin" type="xs:boolean" />
+        <xs:element minOccurs="0" name="imie" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nazwisko" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DodajUzytkownikaRecznieResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DodajSlowko">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="slowko" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tlumaczenie" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="jezyk" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="kategoria" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="poziom" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DodajSlowkoResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
