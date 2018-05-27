@@ -74,6 +74,9 @@
       <DependentUpon>FiszkiWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="KontynuacjaNauki.cs" />
+    <Compile Include="KontynuujNauke.xaml.cs">
+      <DependentUpon>KontynuujNauke.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LogowanieWindow.xaml.cs">
       <DependentUpon>LogowanieWindow.xaml</DependentUpon>
     </Compile>
@@ -117,6 +120,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FiszkiWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KontynuujNauke.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

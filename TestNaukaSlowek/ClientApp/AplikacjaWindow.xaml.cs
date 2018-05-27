@@ -61,5 +61,12 @@ namespace ClientApp
 			rozpocznijWindow.Show();
 			this.Close();
 		}
-	}
+
+        private void btnKontynuujNauke_Click(object sender, RoutedEventArgs e)
+        {
+            KontynuujNauke KontynuujNauke = new KontynuujNauke();
+            KontynuujNauke.Show();
+            this.Close();
+        }
+    }
 }

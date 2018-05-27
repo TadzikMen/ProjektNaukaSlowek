@@ -7,31 +7,62 @@ using System.Threading.Tasks;
 
 namespace ClientApp
 {
-    class KontynuacjaNauki
+    public class KontynuacjaNauki
     {
-        void zapis(int ID_SLowka)
+        static string SciezkaZapisu = @"C:\testowy\plik4.txt";
+        static List<string> Elementy = new List<string>();
+        public static void zapis(int Id_SLowka, int WartoscPunktowaOdpowiedzi)
         {
-            if (!File.Exists(@"C:\plik4.txt"))
-            {
-                File.Create(@"C:\plik4.txt");
-            }
-            FileStream fs = new FileStream(@"D:\plik4.txt", FileMode.Open, FileAccess.ReadWrite);
-            
+           
+            WczytaniePliku();
 
-            fs.Close();
+            bool Test = true;
+            for (int i = 0; i < Elementy.Count()-1; i++)
+            {
+                string[] Podział =Elementy[i].Split(' ');
+                
+                if( Convert.ToInt32(Podział[0]) == Id_SLowka)
+                {
+                    int temp = Convert.ToInt32(Podział[1]);
+                    temp = temp + WartoscPunktowaOdpowiedzi;
+                    Podział[1] = Convert.ToString(temp);
+                    Elementy[i] = Podział[0] + " " + Podział[1];
+                    Test = false;
+                    break;
+                }
+            }
+            if(Test == true)
+            {
+                Elementy.Add(Id_SLowka + " " + "-1");
+            }
+            StreamWriter sw = new StreamWriter(SciezkaZapisu);
+            for (int i = 0; i < Elementy.Count; i++)
+            {
+                if (Elementy[i] != null)
+                {
+                    sw.WriteLine(Elementy[i]);
+                }
+            }
+            sw.Close();
+            Elementy.Clear();
+
+
         }
         
-        void odczyt()
+       
+       private static void WczytaniePliku()
         {
-            if (!File.Exists(@"C:\plik4.txt"))
-            {
-                File.Create(@"C:\plik4.txt");
-            }
-            FileStream fs = new FileStream(@"D:\plik4.txt", FileMode.Open, FileAccess.Read);
-
-
-
+            FileStream fs = new FileStream(SciezkaZapisu, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             fs.Close();
+
+            StreamReader sr = new StreamReader(SciezkaZapisu);
+            do
+            {
+            
+                Elementy.Add(sr.ReadLine()); 
+            } while (Elementy.Last() != null);
+            sr.Close();
+
         }
 }
 }
