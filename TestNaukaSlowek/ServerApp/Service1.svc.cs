@@ -697,7 +697,7 @@ namespace ServerApp
 				{
 					cmd.Connection = db;
 					cmd.CommandText =
-						"SELECT SLOWKA.SLOWKO, TLUMACZENIA.TLUMACZENIE, JEZYK.JEZYK, KATEGORIE.KATEGORIA, POZIOMY.POZIOM " +
+                        "SELECT SLOWKA.SLOWKO, SLOWKA.ID_SLOWKA, TLUMACZENIA.TLUMACZENIE, JEZYK.JEZYK, KATEGORIE.KATEGORIA, POZIOMY.POZIOM " +
 						"FROM SLOWKA " +
 						"LEFT JOIN TLUMACZENIA ON SLOWKA.ID_TLUMACZENIA = TLUMACZENIA.ID_TLUMACZENIA " +
 						"LEFT JOIN JEZYK ON SLOWKA.ID_JEZYKA = JEZYK.ID_JEZYKA " +
@@ -716,6 +716,7 @@ namespace ServerApp
 							filtrowaneDane.Add(new Slowka
 							{
 								Slowko = (string)dr["SLOWKO"],
+                                ID = (int)dr["ID_SLOWKA"],
 								Tlumaczenie = (string)dr["TLUMACZENIE"],
 								Jezyk = (string)dr["JEZYK"],
 								Kategoria = (string)dr["KATEGORIA"],
@@ -728,6 +729,8 @@ namespace ServerApp
 
 			return filtrowaneDane;
 		}
+
+
 
 		public List<Slowka> FiltrujKategorieDoSlownika(string poziom, object token)
 		{

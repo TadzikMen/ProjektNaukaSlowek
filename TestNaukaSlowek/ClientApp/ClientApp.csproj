@@ -70,6 +70,7 @@
     <Compile Include="FiszkiWindow.xaml.cs">
       <DependentUpon>FiszkiWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="KontynuacjaNauki.cs" />
     <Compile Include="LogowanieWindow.xaml.cs">
       <DependentUpon>LogowanieWindow.xaml</DependentUpon>
     </Compile>

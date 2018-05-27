@@ -68,13 +68,13 @@ namespace ClientApp
                 }
                 BrakSlowek();
 
-
-            }
+                
+           }
             catch
             {
                 MessageBox.Show(this, "Błąd połączenia z serwerem!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-        }
+}
 
         private void BrakSlowek()
         {
@@ -95,6 +95,7 @@ namespace ClientApp
             }
             else if (tbxTlumaczenieUzytkownika.Text.ToLower() == Slowko && WielkoscLiter == false)
             {
+                
                 tbxTlumaczenie.Foreground = Brushes.Green;
                 tbxTlumaczenie.Text = "Dobrze przetłumaczyłeś słówko";
                 slowka.RemoveAt(NumerWTabeliDanegoSlowka);
@@ -152,13 +153,14 @@ namespace ClientApp
             {
                 Random rand = new Random();
                 NumerWTabeliDanegoSlowka = rand.Next(0, slowka.Count);
-                tbxSlowko.Text = slowka[NumerWTabeliDanegoSlowka].Tlumaczenie.ToString();
+                // tbxSlowko.Text = slowka[NumerWTabeliDanegoSlowka].Tlumaczenie.ToString();
+                tbxSlowko.Text = slowka[NumerWTabeliDanegoSlowka].ID.ToString();
                 if (WielkoscLiter == false)
                 {
                     Slowko = slowka[NumerWTabeliDanegoSlowka].Slowko.ToString().ToLower();
                 }
                 else
-                {
+                {  
                     Slowko = slowka[NumerWTabeliDanegoSlowka].Slowko.ToString();
                 }
             }

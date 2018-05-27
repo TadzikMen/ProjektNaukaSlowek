@@ -13,7 +13,9 @@ namespace ServerApp.DTO
 		public string Jezyk { get; set; }
 		[DataMember]
 		public string Slowko { get; set; }
-		[DataMember]
+        [DataMember]
+        public int ID { get; set; }
+        [DataMember]
 		public string Kategoria { get; set; }
 		[DataMember]
 		public string Poziom { get; set; }
