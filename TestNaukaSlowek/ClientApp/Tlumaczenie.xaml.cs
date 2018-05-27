@@ -15,8 +15,9 @@ namespace ClientApp
 
         List<WcfService.Slowka> slowka = new List<WcfService.Slowka>();
         string Slowko;
-        int Liczbaa;
+        int NumerWTabeliDanegoSlowka;
         bool Poprawnosc = true;
+        bool WielkoscLiter = false;
         public Tlumaczenie(string jezyk, string poziom)
         {
             InitializeComponent();
@@ -39,6 +40,14 @@ namespace ClientApp
                 }
             }
         }
+
+        private void SprawdzWielkoscLiter()
+        {
+           if( lblJezyk.Content.ToString()== "NIEMIECKI " || lblJezyk.Content.ToString() == "HISZPANSKI ")
+            {
+                WielkoscLiter = true;
+            }
+        }
 		
         private async void PobierzSlowko()
         {
@@ -53,6 +62,7 @@ namespace ClientApp
                         lblPoziom.Content.ToString(),
                         cmBxWybranaKategoria.SelectedItem.ToString(),
                         Models.Token.NumerToken);
+                    SprawdzWielkoscLiter();
 
                     LosujSlowko();
                 }
@@ -83,11 +93,18 @@ namespace ClientApp
             {
                 MessageBox.Show("Nie wybrano żadnej kategorii!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else if (tbxTlumaczenieUzytkownika.Text.ToLower() == Slowko)
+            else if (tbxTlumaczenieUzytkownika.Text.ToLower() == Slowko && WielkoscLiter == false)
             {
                 tbxTlumaczenie.Foreground = Brushes.Green;
                 tbxTlumaczenie.Text = "Dobrze przetłumaczyłeś słówko";
-                slowka.RemoveAt(Liczbaa);
+                slowka.RemoveAt(NumerWTabeliDanegoSlowka);
+                Poprawnosc = true;
+            }
+            else if (tbxTlumaczenieUzytkownika.Text == Slowko && WielkoscLiter == true)
+            {
+                tbxTlumaczenie.Foreground = Brushes.Green;
+                tbxTlumaczenie.Text = "Dobrze przetłumaczyłeś słówko";
+                slowka.RemoveAt(NumerWTabeliDanegoSlowka);
                 Poprawnosc = true;
             }
             else
@@ -100,7 +117,7 @@ namespace ClientApp
                     Poprawnosc = false;
                 }
                 
-                slowka.Add(slowka[Liczbaa]);
+                slowka.Add(slowka[NumerWTabeliDanegoSlowka]);
             }
         }
 
@@ -123,12 +140,7 @@ namespace ClientApp
             }
             else
             {
-                    tbxTlumaczenie.Text = Slowko ;
-                if (Poprawnosc == true)
-                {
-                    tbxTlumaczenie.Text = "Źle przetłumaczyłeś słówko";
-                    Poprawnosc = false;
-                }
+                    tbxTlumaczenie.Text = Slowko;                
             }
         }
 
@@ -139,10 +151,16 @@ namespace ClientApp
             if (slowka.Count != 0)
             {
                 Random rand = new Random();
-                Liczbaa = rand.Next(0, slowka.Count);
-                tbxSlowko.Text = slowka[Liczbaa].Tlumaczenie.ToString();
-
-                Slowko = slowka[Liczbaa].Slowko.ToString().ToLower();
+                NumerWTabeliDanegoSlowka = rand.Next(0, slowka.Count);
+                tbxSlowko.Text = slowka[NumerWTabeliDanegoSlowka].Tlumaczenie.ToString();
+                if (WielkoscLiter == false)
+                {
+                    Slowko = slowka[NumerWTabeliDanegoSlowka].Slowko.ToString().ToLower();
+                }
+                else
+                {
+                    Slowko = slowka[NumerWTabeliDanegoSlowka].Slowko.ToString();
+                }
             }
 
         }
