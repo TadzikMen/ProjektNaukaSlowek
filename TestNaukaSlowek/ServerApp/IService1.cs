@@ -78,6 +78,12 @@ namespace ServerApp
 
 		[OperationContract]
 		void DodajSlowko(string slowko, string tlumaczenie, string jezyk, string kategoria, string poziom);
+
+		[OperationContract]
+		List<DTO.Slowka> PrzekazJezykiKategoriePoziomy();
+
+		[OperationContract]
+		bool SprawdzCzyUzytkownikJestAdminem(string login);
 	}
 
 

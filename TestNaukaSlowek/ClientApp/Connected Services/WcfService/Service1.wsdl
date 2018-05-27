@@ -141,6 +141,18 @@
   <wsdl:message name="IService1_DodajSlowko_OutputMessage">
     <wsdl:part name="parameters" element="tns:DodajSlowkoResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_PrzekazJezykiKategoriePoziomy_InputMessage">
+    <wsdl:part name="parameters" element="tns:PrzekazJezykiKategoriePoziomy" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PrzekazJezykiKategoriePoziomy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PrzekazJezykiKategoriePoziomyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SprawdzCzyUzytkownikJestAdminem_InputMessage">
+    <wsdl:part name="parameters" element="tns:SprawdzCzyUzytkownikJestAdminem" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SprawdzCzyUzytkownikJestAdminem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SprawdzCzyUzytkownikJestAdminemResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -229,6 +241,14 @@
     <wsdl:operation name="DodajSlowko">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DodajSlowko" message="tns:IService1_DodajSlowko_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DodajSlowkoResponse" message="tns:IService1_DodajSlowko_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PrzekazJezykiKategoriePoziomy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PrzekazJezykiKategoriePoziomy" message="tns:IService1_PrzekazJezykiKategoriePoziomy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PrzekazJezykiKategoriePoziomyResponse" message="tns:IService1_PrzekazJezykiKategoriePoziomy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SprawdzCzyUzytkownikJestAdminem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SprawdzCzyUzytkownikJestAdminem" message="tns:IService1_SprawdzCzyUzytkownikJestAdminem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SprawdzCzyUzytkownikJestAdminemResponse" message="tns:IService1_SprawdzCzyUzytkownikJestAdminem_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -424,6 +444,24 @@
     </wsdl:operation>
     <wsdl:operation name="DodajSlowko">
       <soap:operation soapAction="http://tempuri.org/IService1/DodajSlowko" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrzekazJezykiKategoriePoziomy">
+      <soap:operation soapAction="http://tempuri.org/IService1/PrzekazJezykiKategoriePoziomy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SprawdzCzyUzytkownikJestAdminem">
+      <soap:operation soapAction="http://tempuri.org/IService1/SprawdzCzyUzytkownikJestAdminem" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

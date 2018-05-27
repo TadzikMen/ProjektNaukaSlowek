@@ -324,4 +324,30 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="PrzekazJezykiKategoriePoziomy">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PrzekazJezykiKategoriePoziomyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/ServerApp.DTO" minOccurs="0" name="PrzekazJezykiKategoriePoziomyResult" nillable="true" type="q16:ArrayOfSlowka" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SprawdzCzyUzytkownikJestAdminem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SprawdzCzyUzytkownikJestAdminemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SprawdzCzyUzytkownikJestAdminemResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

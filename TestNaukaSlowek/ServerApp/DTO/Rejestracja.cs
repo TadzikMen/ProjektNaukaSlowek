@@ -15,5 +15,7 @@ namespace ServerApp.DTO
 		public string Nazwisko { get; set; }
 		[DataMember]
 		public string Email { get; set; }
+		[DataMember]
+		public bool CzyAdmin { get; set; }
 	}
 }

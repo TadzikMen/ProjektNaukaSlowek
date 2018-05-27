@@ -42,6 +42,7 @@ namespace ServerApp
 			uzytkownik.Nazwisko = nazwisko;
 			uzytkownik.Email = email;
 			uzytkownik.CzyZalogowany = false;
+			uzytkownik.CzyAdmin = false;
 
 			using (var db = new System.Data.SqlClient.SqlConnection(
 				System.Configuration.ConfigurationManager.ConnectionStrings[
@@ -52,8 +53,8 @@ namespace ServerApp
 				{
 					cmd.Connection = db;
 					cmd.CommandText = "INSERT INTO Uzytkownicy(" +
-						"login_uzytkownika, haslo_uzytkownika, imie_uzytkownika, nazwisko_uzytkownika, email_uzytkownika, czy_zalogowany) " +
-						"VALUES(@Login, @Haslo, @Imie, @Nazwisko, @Email, @CzyZalogowany);" +
+						"login_uzytkownika, haslo_uzytkownika, imie_uzytkownika, nazwisko_uzytkownika, email_uzytkownika, czy_zalogowany, czy_admin) " +
+						"VALUES(@Login, @Haslo, @Imie, @Nazwisko, @Email, @CzyZalogowany, @CzyAdmin);" +
 						"SELECT SCOPE_IDENTITY();";
 
 					cmd.Parameters.AddWithValue("@Login", uzytkownik.Login);
@@ -62,6 +63,7 @@ namespace ServerApp
 					cmd.Parameters.AddWithValue("@Nazwisko", uzytkownik.Nazwisko);
 					cmd.Parameters.AddWithValue("@Email", uzytkownik.Email);
 					cmd.Parameters.AddWithValue("@CzyZalogowany", uzytkownik.CzyZalogowany);
+					cmd.Parameters.AddWithValue("@CzyAdmin", uzytkownik.CzyAdmin);
 
 					Id = (int)(decimal)cmd.ExecuteScalar();
 				}
@@ -814,7 +816,11 @@ namespace ServerApp
 
 		public void DodajSlowko(string slowko, string tlumaczenie, string jezyk, string kategoria, string poziom)
 		{
-			int idSlowka, idTlumaczenia, idKategorii, idPoziomu, idJezyka;
+			int idSlowka = 0;
+			int idTlumaczenia = 0;
+			int idKategorii = 0;
+			int idPoziomu = 0;
+			int idJezyka = 0;
 
 			using (var db = new System.Data.SqlClient.SqlConnection(
 				System.Configuration.ConfigurationManager.ConnectionStrings[
@@ -825,37 +831,33 @@ namespace ServerApp
 				{
 					cmd.Connection = db;
 					cmd.CommandText =
+						"SELECT DISTINCT POZIOMY.ID_POZIOMU, KATEGORIE.ID_KATEGORII, JEZYK.ID_JEZYKA " +
+						"FROM SLOWKA " +
+						"LEFT JOIN POZIOMY ON SLOWKA.ID_POZIOMU = POZIOMY.ID_POZIOMU " +
+						"LEFT JOIN KATEGORIE ON SLOWKA.ID_KATEGORII = POZIOMY.ID_POZIOMU " +
+						"LEFT JOIN JEZYK ON SLOWKA.ID_POZIOMU = POZIOMY.ID_POZIOMU " +
+						"WHERE POZIOMY.POZIOM = @Poziom AND KATEGORIE.KATEGORIA = @Kategoria AND JEZYK.JEZYK = @Jezyk";
+					cmd.Parameters.AddWithValue("@Poziom", poziom);
+					cmd.Parameters.AddWithValue("@Kategoria", kategoria);
+					cmd.Parameters.AddWithValue("@Jezyk", jezyk);
+
+					using (var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							idPoziomu = (int)dr["ID_POZIOMU"];
+							idKategorii = (int)dr["ID_KATEGORII"];
+							idJezyka = (int)dr["ID_JEZYKA"];
+						}
+					}
+
+					cmd.CommandText =
 						"INSERT INTO TLUMACZENIA(TLUMACZENIE) " +
 						"VALUES(@Tlumaczenie); " +
 						"SELECT SCOPE_IDENTITY()";
 
 					cmd.Parameters.AddWithValue("@Tlumaczenie", tlumaczenie);
 					idTlumaczenia = (int)(decimal)cmd.ExecuteScalar();
-
-					cmd.CommandText =
-						"INSERT INTO JEZYK(JEZYK) " +
-						"VALUES(@Jezyk); " +
-						"SELECT SCOPE_IDENTITY()";
-
-					cmd.Parameters.AddWithValue("@Jezyk", jezyk);
-					idJezyka = (int)(decimal)cmd.ExecuteScalar();
-
-					cmd.CommandText =
-						"INSERT INTO POZIOMY(POZIOM) " +
-						"VALUES(@Poziom); " +
-						"SELECT SCOPE_IDENTITY()";
-
-					cmd.Parameters.AddWithValue("@Poziom", poziom);
-					idPoziomu = (int)(decimal)cmd.ExecuteScalar();
-
-					cmd.CommandText =
-						"INSERT INTO KATEGORIE(KATEGORIA, ID_POZIOMU) " +
-						"VALUES(@Kategoria, @IdPoziomu); " +
-						"SELECT SCOPE_IDENTITY()";
-
-					cmd.Parameters.AddWithValue("@Kategoria", kategoria);
-					cmd.Parameters.AddWithValue("@IdPoziomu", idPoziomu);
-					idKategorii = (int)(decimal)cmd.ExecuteScalar();
 
 					cmd.CommandText =
 						"INSERT INTO SLOWKA(SLOWKO, ID_JEZYKA, ID_KATEGORII, ID_POZIOMU, ID_TLUMACZENIA) " +
@@ -870,6 +872,68 @@ namespace ServerApp
 					idSlowka = (int)(decimal)cmd.ExecuteScalar();
 				}
 			}
+		}
+
+		public List<Slowka> PrzekazJezykiKategoriePoziomy()
+		{
+			List<Slowka> listaDanych = new List<Slowka>();
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+				"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText =
+						"SELECT DISTINCT JEZYK.JEZYK, POZIOMY.POZIOM, KATEGORIE.KATEGORIA FROM JEZYK, KATEGORIE, POZIOMY";
+
+					using (var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							listaDanych.Add(new Slowka
+							{
+								Jezyk = (string)dr["JEZYK"],
+								Poziom = (string)dr["POZIOM"],
+								Kategoria = (string)dr["KATEGORIA"]
+							});
+						}
+					}
+				}
+			}
+
+			return listaDanych;
+		}
+
+		public bool SprawdzCzyUzytkownikJestAdminem(string login)
+		{
+			bool czyAdmin = false;
+
+			using (var db = new System.Data.SqlClient.SqlConnection(
+				System.Configuration.ConfigurationManager.ConnectionStrings[
+				"PolaczenieZBazaDanych"].ConnectionString))
+			{
+				db.Open();
+				using (var cmd = new System.Data.SqlClient.SqlCommand())
+				{
+					cmd.Connection = db;
+					cmd.CommandText =
+						"SELECT czy_admin FROM Uzytkownicy WHERE login_uzytkownika=@login";
+					cmd.Parameters.AddWithValue("@login", login);
+					
+					using(var dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							czyAdmin = (bool)dr["czy_admin"];
+						}
+					}
+				}
+			}
+
+			return czyAdmin;
 		}
 	}
 }

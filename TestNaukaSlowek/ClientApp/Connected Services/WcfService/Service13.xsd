@@ -68,6 +68,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Logowanie">
         <xs:sequence>
+          <xs:element minOccurs="0" name="CzyAdmin" type="xs:boolean" />
           <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Imie" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Nazwisko" nillable="true" type="xs:string" />

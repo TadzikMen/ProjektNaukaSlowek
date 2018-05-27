@@ -19,10 +19,31 @@ namespace ClientApp
     /// </summary>
     public partial class AplikacjaWindow : Window
     {
-        public AplikacjaWindow()
+		static bool czyAdmin;
+		public AplikacjaWindow()
         {
             InitializeComponent();
 			WyswietlPowitanie();
+			SprawdzCzyAdmin();
+		}
+
+		private async void SprawdzCzyAdmin()
+		{
+			try
+			{
+				WcfService.Rejestracja loginUsera = new WcfService.Rejestracja(); 
+				using (var client = new WcfService.Service1Client())
+				{
+					loginUsera = await client.WyswietlEkranPowitalnyAsync(Models.Token.NumerToken);
+					czyAdmin = await client.SprawdzCzyUzytkownikJestAdminemAsync(loginUsera.Login);
+					if (czyAdmin)
+						btnPanelAdmina.Visibility = Visibility.Visible;
+				}
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Błąd przy połączeniu z serwerem!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
 		}
 
 		private async void WyswietlPowitanie()
@@ -69,5 +90,12 @@ namespace ClientApp
             KontynuujNauke.Show();
             this.Close();
         }
-    }
+
+		private void btnPanelAdmina_Click(object sender, RoutedEventArgs e)
+		{
+			PanelAdminaWindow paw = new PanelAdminaWindow();
+			paw.Show();
+			this.Close();
+		}
+	}
 }

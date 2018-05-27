@@ -1,0 +1,48 @@
+﻿<Window x:Class="ClientApp.DodawanieSlowkaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientApp"
+        mc:Ignorable="d"
+        Title="DodawanieSlowkaWindow" Height="500" Width="600" ResizeMode="NoResize" Background="Gray">
+    <Border BorderBrush="LightGray" BorderThickness="3" Margin="40">
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontSize" Value="22" />
+                    <Setter Property="Margin" Value="0,20,0,0" />
+                </Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Margin" Value="0,23,0,0" />
+                    <Setter Property="Height" Value="32" />
+                </Style>
+                <Style TargetType="ComboBox">
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Margin" Value="0,30,0,0" />
+                    <Setter Property="Height" Value="30" />
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="189*"/>
+                <ColumnDefinition Width="319*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <Label Content="Słówko:" />
+                <Label Content="Tłumaczenie:" />
+                <Label Content="Język:" />
+                <Label Content="Kategoria:" />
+                <Label Content="Poziom:" />
+                <Button x:Name="btnOk" Content="Potwierdź" Margin="0,20,0,0" Height="50" Width="120" Click="btnOk_Click"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBox x:Name="tbxSlowko"/>
+                <TextBox x:Name="tbxTlumaczenie"/>
+                <ComboBox x:Name="cmbxJezyk"/>
+                <ComboBox x:Name="cmbxKategoria"/>
+                <ComboBox x:Name="cmbxPoziom"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

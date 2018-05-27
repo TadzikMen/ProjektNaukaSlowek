@@ -56,6 +56,7 @@
                 <ImageBrush/>
             </Button.Background>
         </Button>
+        <Button x:Name="btnPanelAdmina" Visibility="Hidden" Content="Panel Administratora" Grid.Column="2" Grid.Row="5" FontWeight="Bold" FontFamily="Segoe Print" Width="228" Click="btnPanelAdmina_Click"/>
         <Button x:Name="btnWyloguj" Content="Wyloguj Się" Grid.Column="1" Margin="13.4,14.4,6.6,2.4" Grid.Row="5" Width="100" Height="40" Click="btnWyloguj_Click" Foreground="#FF080808" BorderBrush="#FF494949" FontWeight="Bold" FontFamily="Segoe Print">
             <Button.Background>
                 <ImageBrush/>

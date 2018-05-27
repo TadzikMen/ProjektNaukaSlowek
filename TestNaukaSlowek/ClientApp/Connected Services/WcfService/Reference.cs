@@ -159,6 +159,9 @@ namespace ClientApp.WcfService {
     public partial class Rejestracja : ClientApp.WcfService.Logowanie {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CzyAdminField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -166,6 +169,19 @@ namespace ClientApp.WcfService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NazwiskoField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool CzyAdmin {
+            get {
+                return this.CzyAdminField;
+            }
+            set {
+                if ((this.CzyAdminField.Equals(value) != true)) {
+                    this.CzyAdminField = value;
+                    this.RaisePropertyChanged("CzyAdmin");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string Email {
@@ -862,6 +878,18 @@ namespace ClientApp.WcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DodajSlowko", ReplyAction="http://tempuri.org/IService1/DodajSlowkoResponse")]
         System.Threading.Tasks.Task DodajSlowkoAsync(string slowko, string tlumaczenie, string jezyk, string kategoria, string poziom);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PrzekazJezykiKategoriePoziomy", ReplyAction="http://tempuri.org/IService1/PrzekazJezykiKategoriePoziomyResponse")]
+        System.Collections.Generic.List<ClientApp.WcfService.Slowka> PrzekazJezykiKategoriePoziomy();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PrzekazJezykiKategoriePoziomy", ReplyAction="http://tempuri.org/IService1/PrzekazJezykiKategoriePoziomyResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PrzekazJezykiKategoriePoziomyAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SprawdzCzyUzytkownikJestAdminem", ReplyAction="http://tempuri.org/IService1/SprawdzCzyUzytkownikJestAdminemResponse")]
+        bool SprawdzCzyUzytkownikJestAdminem(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/SprawdzCzyUzytkownikJestAdminem", ReplyAction="http://tempuri.org/IService1/SprawdzCzyUzytkownikJestAdminemResponse")]
+        System.Threading.Tasks.Task<bool> SprawdzCzyUzytkownikJestAdminemAsync(string login);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1065,6 +1093,22 @@ namespace ClientApp.WcfService {
         
         public System.Threading.Tasks.Task DodajSlowkoAsync(string slowko, string tlumaczenie, string jezyk, string kategoria, string poziom) {
             return base.Channel.DodajSlowkoAsync(slowko, tlumaczenie, jezyk, kategoria, poziom);
+        }
+        
+        public System.Collections.Generic.List<ClientApp.WcfService.Slowka> PrzekazJezykiKategoriePoziomy() {
+            return base.Channel.PrzekazJezykiKategoriePoziomy();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ClientApp.WcfService.Slowka>> PrzekazJezykiKategoriePoziomyAsync() {
+            return base.Channel.PrzekazJezykiKategoriePoziomyAsync();
+        }
+        
+        public bool SprawdzCzyUzytkownikJestAdminem(string login) {
+            return base.Channel.SprawdzCzyUzytkownikJestAdminem(login);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SprawdzCzyUzytkownikJestAdminemAsync(string login) {
+            return base.Channel.SprawdzCzyUzytkownikJestAdminemAsync(login);
         }
     }
 }
