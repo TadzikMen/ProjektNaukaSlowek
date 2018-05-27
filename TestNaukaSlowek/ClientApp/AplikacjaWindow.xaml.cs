@@ -19,7 +19,7 @@ namespace ClientApp
     /// </summary>
     public partial class AplikacjaWindow : Window
     {
-		static bool czyAdmin;
+		bool czyAdmin;
 		public AplikacjaWindow()
         {
             InitializeComponent();
