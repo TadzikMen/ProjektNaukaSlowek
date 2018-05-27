@@ -62,7 +62,8 @@ namespace ClientApp
 			this.Close();
 		}
 
-        private void btnKontynuujNauke_Click(object sender, RoutedEventArgs e)
+
+        private void btnKontynuujNauke_Click_1(object sender, RoutedEventArgs e)
         {
             KontynuujNauke KontynuujNauke = new KontynuujNauke();
             KontynuujNauke.Show();
