@@ -9,7 +9,7 @@ namespace ClientApp
 {
     public class KontynuacjaNauki
     {
-        static string SciezkaZapisu = @"C:\testowy\plik4.txt";
+        static string SciezkaZapisu = @"RozaazoR.omg";
         static List<string> Elementy = new List<string>();
         public static void zapis(int Id_SLowka, int WartoscPunktowaOdpowiedzi)
         {
@@ -82,7 +82,7 @@ namespace ClientApp
             {
                 for(int j=0; j<Numery.Count(); j++)
                 {
-                    if(Slowka[k].ID == Numery[j] && Punkty[j] < 1)
+                    if(Slowka[k].ID == Numery[j] && Punkty[j] > 1)
                     {
                         Slowka.RemoveAt(k);
                         k--;

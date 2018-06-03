@@ -51,6 +51,7 @@ namespace ClientApp
                 cmBxWybierzFormeNauki.Items.Add(item);
             cmBxWybierzFormeNauki.Items.RemoveAt(0); //usunięcie słownika i fiszek
             cmBxWybierzFormeNauki.Items.RemoveAt(0);
+            cmBxWybierzFormeNauki.Items.RemoveAt(1);
             foreach (var item in wyborFormy.ListaWyboruNauki.Select(x => x.Jezyk).Distinct().ToList())
                 cmBxWybierzJezyk.Items.Add(item);
 
@@ -66,13 +67,7 @@ namespace ClientApp
             if (cmBxWybierzFormeNauki.SelectedIndex != -1)
             {
                 rozpoczynanie = new Models.RozpoczynanieNauki(cmBxWybierzFormeNauki.SelectedItem.ToString());
-                if (rozpoczynanie.FormaNauki == "Słownik")
-                {
-                    SlownikWindow sw = new SlownikWindow();
-                    sw.Show();
-                    this.Close();
-                }
-                else
+               
                 {
                     if (cmBxWybierzJezyk.SelectedIndex == -1 || cmBxWybierzPoziom.SelectedIndex == -1)
                         MessageBox.Show("Nie wybrano wymaganych wartości z listy!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -82,13 +77,7 @@ namespace ClientApp
                         rozpoczynanie.Jezyk = cmBxWybierzJezyk.SelectedItem.ToString();
                         rozpoczynanie.Poziom = cmBxWybierzPoziom.SelectedItem.ToString();
 
-                        if (rozpoczynanie.FormaNauki == "Fiszki")
-                        {
-                            FiszkiWindow fw = new FiszkiWindow(rozpoczynanie.Jezyk, rozpoczynanie.Poziom);
-                            fw.Show();
-                            this.Close();
-                        }
-                        else if (rozpoczynanie.FormaNauki == "Tłumaczenie słówek")
+                        if (rozpoczynanie.FormaNauki == "Tłumaczenie słówek")
                         {
                             Tlumaczenie fw = new Tlumaczenie(rozpoczynanie.Jezyk, rozpoczynanie.Poziom, false);
                             fw.Show();

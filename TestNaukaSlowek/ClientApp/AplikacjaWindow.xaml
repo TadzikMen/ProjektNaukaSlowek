@@ -41,17 +41,7 @@
                 <ImageBrush/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnKontynuujNauke" Content="Kontynuuj Naukę" Grid.Column="2" Margin="33.4,10.2,43.4,12.6" Grid.Row="2" FontWeight="Bold" FontFamily="Segoe Print" Width="228" Click="btnKontynuujNauke_Click_1" >
-            <Button.Background>
-                <ImageBrush/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="btnSprawdzSwojePostepy" Content="Sprawdź Swoje Postępy" Grid.Column="2" Margin="33.4,14.4,43.4,10" Grid.Row="3" FontWeight="Bold" FontFamily="Segoe Print" Width="228" >
-            <Button.Background>
-                <ImageBrush/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="btnSprawdzSwojeOsiagniecia" Content="Zobacz Swoje Osiągnięcia" Grid.Column="2" Margin="33.4,10,43.4,13.6" Grid.Row="4" FontWeight="Bold" FontFamily="Segoe Print" Width="228" >
+        <Button x:Name="btnKontynuujNauke" Content="Kontynuuj Naukę" Grid.Column="2" Margin="33.4,0.4,43.4,24" Grid.Row="3" FontWeight="Bold" FontFamily="Segoe Print" Width="228" Click="btnKontynuujNauke_Click_1" >
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>
