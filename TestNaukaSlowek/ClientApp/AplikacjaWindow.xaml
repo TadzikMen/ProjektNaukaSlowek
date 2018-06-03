@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
-        Title="AplikacjaWindow" Height="456" Width="800">
+        Title="AplikacjaWindow" MinHeight="700" MinWidth="457" Height="764" Width="1068">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Images/backgroundImage.jpg"/>
@@ -36,18 +36,18 @@
             </Style>
         </Grid.Resources>
 
-        <Button x:Name="btnRozpocznijNauke" Content="Rozpocznij Naukę" Grid.Column="2" Margin="33.4,13.8,43.4,9.8" Grid.Row="1" Click="btnRozpocznijNauke_Click" FontWeight="Bold" FontFamily="Segoe Print" Width="228" >
+        <Button x:Name="btnRozpocznijNauke" Content="Rozpocznij Naukę" Grid.Column="2" Margin="90.2,59.4,57.8,106.4" Grid.Row="1" Click="btnRozpocznijNauke_Click" FontWeight="Bold" FontFamily="Segoe Print" Width="260" Grid.RowSpan="2" Height="87" >
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnKontynuujNauke" Content="Kontynuuj Naukę" Grid.Column="2" Margin="33.4,0.4,43.4,24" Grid.Row="3" FontWeight="Bold" FontFamily="Segoe Print" Width="228" Click="btnKontynuujNauke_Click_1" >
+        <Button x:Name="btnKontynuujNauke" Content="Kontynuuj Naukę" Grid.Column="2" Margin="90.2,126,57.8,49.4" Grid.Row="2" FontWeight="Bold" FontFamily="Segoe Print" Width="260" Click="btnKontynuujNauke_Click_1" Height="79" Grid.RowSpan="2" >
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>
         </Button>
         <Button x:Name="btnPanelAdmina" Visibility="Hidden" Content="Panel Administratora" Grid.Column="2" Grid.Row="5" FontWeight="Bold" FontFamily="Segoe Print" Width="228" Click="btnPanelAdmina_Click"/>
-        <Button x:Name="btnWyloguj" Content="Wyloguj Się" Grid.Column="1" Margin="13.4,14.4,6.6,2.4" Grid.Row="5" Width="100" Height="40" Click="btnWyloguj_Click" Foreground="#FF080808" BorderBrush="#FF494949" FontWeight="Bold" FontFamily="Segoe Print">
+        <Button x:Name="btnWyloguj" Content="Wyloguj Się" Grid.Column="1" Margin="0,24,9.8,0.4" Grid.Row="5" Width="151" Height="74" Click="btnWyloguj_Click" Foreground="#FF080808" BorderBrush="#FF494949" FontWeight="Bold" FontFamily="Segoe Print">
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>

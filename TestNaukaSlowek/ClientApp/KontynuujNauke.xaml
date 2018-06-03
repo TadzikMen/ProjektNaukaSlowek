@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
-        Title="RozpocznijNaukeWindow" Height="622.8" Width="1265.6">
+        Title="RozpocznijNaukeWindow"  MinHeight="700" MinWidth="457" Height="764" Width="1068">
     <Grid Margin="0,0,3.6,-18.8">
         <Grid.Resources>
             <Style TargetType="{x:Type Label}">
@@ -54,12 +54,12 @@
         <ComboBox x:Name="cmBxWybierzJezyk" Margin="20,84,38,19" Height="28" Grid.Column="2" SelectionChanged="cmBxWybierzJezyk_SelectionChanged" />
         <ComboBox x:Name="cmBxWybierzPoziom" Margin="20,25,38,22" Height="28" Grid.Row="1" Grid.Column="2" />
 
-        <Button x:Name="btnWroc" Content="Wróć" Margin="30.5,35,58,39" Click="btnWroc_Click" Grid.Row="3" Grid.Column="1" FontSize="14" FontWeight="Bold" FontFamily="Segoe Print" >
+        <Button x:Name="btnWroc" Content="Wróć" Margin="70.4,36.6,48.8,87.8" Click="btnWroc_Click" Grid.Row="3" Grid.Column="1" FontSize="14" FontWeight="Bold" FontFamily="Segoe Print" Height="98" Width="200" >
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnRozpocznij" Content="Rozpocznij Naukę" Margin="120,35,38,39" Click="btnRozpocznij_Click" Grid.Row="3" Grid.Column="2" FontWeight="Bold" FontFamily="Segoe Print" FontSize="14" >
+        <Button x:Name="btnRozpocznij" Content="Rozpocznij Naukę" Margin="171.2,36.6,39.2,87.8" Click="btnRozpocznij_Click" Grid.Row="3" Grid.Column="2" FontWeight="Bold" FontFamily="Segoe Print" FontSize="14" Height="98" Width="200" >
             <Button.Background>
                 <ImageBrush/>
             </Button.Background>
