@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ClientApp
 {
@@ -47,11 +38,7 @@ namespace ClientApp
                     icon: MessageBoxImage.Error);
             }
 
-            foreach (var item in wyborFormy.ListaWyboruNauki.Select(x => x.FormaNauki).Distinct().ToList())
-                cmBxWybierzFormeNauki.Items.Add(item);
-            cmBxWybierzFormeNauki.Items.RemoveAt(0); //usunięcie słownika i fiszek
-            cmBxWybierzFormeNauki.Items.RemoveAt(0);
-            cmBxWybierzFormeNauki.Items.RemoveAt(1);
+            
             foreach (var item in wyborFormy.ListaWyboruNauki.Select(x => x.Jezyk).Distinct().ToList())
                 cmBxWybierzJezyk.Items.Add(item);
 
@@ -64,37 +51,18 @@ namespace ClientApp
         {
             Models.RozpoczynanieNauki rozpoczynanie;
 
-            if (cmBxWybierzFormeNauki.SelectedIndex != -1)
-            {
-                rozpoczynanie = new Models.RozpoczynanieNauki(cmBxWybierzFormeNauki.SelectedItem.ToString());
+            
+                rozpoczynanie = new Models.RozpoczynanieNauki();
                
-                {
-                    if (cmBxWybierzJezyk.SelectedIndex == -1 || cmBxWybierzPoziom.SelectedIndex == -1)
-                        MessageBox.Show("Nie wybrano wymaganych wartości z listy!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    else
-                    {
+                
                         rozpoczynanie.Jezyk = cmBxWybierzJezyk.SelectedItem.ToString();
                         rozpoczynanie.Poziom = cmBxWybierzPoziom.SelectedItem.ToString();
-
-                        if (rozpoczynanie.FormaNauki == "Tłumaczenie słówek")
-                        {
+            
                             Tlumaczenie fw = new Tlumaczenie(rozpoczynanie.Jezyk, rozpoczynanie.Poziom, false);
                             fw.Show();
                             this.Close();
-                        }
-                        else  if (rozpoczynanie.FormaNauki == "Tłumaczenie zdań")
-                        {
-                            TlumaczenieZdanWindow tzw = new TlumaczenieZdanWindow(rozpoczynanie.Jezyk);
-                            tzw.Show();
-                            this.Close();
-                        }
-                        else
-                            MessageBox.Show("Nie wybrano wymaganych wartości z listy!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    }
-                }
-            }
+                       
+              
 
         }
 
@@ -110,23 +78,6 @@ namespace ClientApp
             this.Close();
         }
 
-        private void cmBxWybierzFormeNauki_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-            if ("Słownik" == cmBxWybierzFormeNauki.SelectedItem.ToString())
-            {
-                cmBxWybierzJezyk.Foreground = new SolidColorBrush(Colors.Gray);
-                cmBxWybierzPoziom.Foreground = new SolidColorBrush(Colors.Gray);
-                cmBxWybierzJezyk.IsEnabled = false;
-                cmBxWybierzPoziom.IsEnabled = false;
-            }
-            else
-            {
-                cmBxWybierzJezyk.Foreground = new SolidColorBrush(Colors.Black);
-                cmBxWybierzPoziom.Foreground = new SolidColorBrush(Colors.Black);
-                cmBxWybierzJezyk.IsEnabled = true;
-                cmBxWybierzPoziom.IsEnabled = true;
-            }
-        }
 
         private void cmBxWybierzJezyk_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
