@@ -31,7 +31,7 @@ namespace ClientApp
 			}
 			catch (Exception)
 			{
-				//MessageBox.Show("Błąd przy połączeniu z serwerem!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+				MessageBox.Show("Błąd przy połączeniu z serwerem!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
